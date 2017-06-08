@@ -27,7 +27,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
 <meta property="og:description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 ##    箭头函数 &amp;lt;span style=&amp;quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#F">
-<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta property="og:updated_time" content="2017-06-08T09:47:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6新特性总结">
 <meta name="twitter:description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 ##    箭头函数 &amp;lt;span style=&amp;quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#F">
@@ -79,13 +79,6 @@
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -151,7 +144,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/JavaScript/未分类/">未分类</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
 
             
         </h5>
@@ -169,30 +162,30 @@
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">
-            Rest 
+            Rest
 
     
 
 
-#### 
-    我们可以使用 rest 操作符来允许无限参数。 
+####
+    我们可以使用 rest 操作符来允许无限参数。
 
-#### 
-     
+####
+    
 function demo(part1, ...part2) {
     return {part1, part2}
 }
 
 console.log(demo(1,2,3,4,5,6))
- 
 
-### 
-    结果： 
+
+###
+    结果：
 
 demo(1,2,3,4,5,6) -> {"part1":1,"part2":[2,3,4,5,6]}
 
 ##    Let
-####    let是新的var。 因为它有块级作用域。 
+####    let是新的var。 因为它有块级作用域。
 {
    var globalVar = "from demo1"
 }
@@ -208,47 +201,47 @@ console.log(globalLet)
 globalVar -> from demo1
 globalLet -> ReferenceError: globalLet is not defined
 
-####    但是，它不会向window分配任何内容： 
+####    但是，它不会向window分配任何内容：
 let me = "go";  // 全局作用域
 var i = "able"; // 全局作用域
 
-console.log(window.me); 
+console.log(window.me);
 console.log(window.i);
 
 ###    结果：
 window.me -> undefined
 window.i -> able
 
-####    不能使用let重新声明一个变量： 
-#### 
+####    不能使用let重新声明一个变量：
+####
 let me = "foo";
-let me = "bar"; 
+let me = "bar";
 console.log(me);
 
 ###    结果：
 SyntaxError: Identifier 'me' has already been declared
 var me = "foo";
-var me = "bar"; 
+var me = "bar";
 console.log(me)
 
 ###    结果：
 me -> bar
 
-## 
+##
 ##    Const
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**const 是只读变量。**</span> 
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**const 是只读变量。**</span>
 
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">** **</span> 
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">** **</span>
 **const a = "b"
 a = "a"**
-** ** 
+** **
 
-### 
-    **结果：** 
+###
+    **结果：**
 
 TypeError: Assignment to constant variable.
 
-#### 
+####
 ####    应该注意，const 对象仍然可以被改变的。
 const a = { a: "a" }
 a.a = "b"
@@ -257,10 +250,10 @@ console.log(a)
 ###    结果：
 a -> {"a":"b"}
 
-## 
-##    For..of 
-####    迭代器的新类型，可以替代for..in。它返回的是值而不是keys 
-#### 
+##
+##    For..of
+####    迭代器的新类型，可以替代for..in。它返回的是值而不是keys
+####
 let list = [4, 5, 6];
 console.log(list)
 for (let i in list) {
@@ -275,7 +268,7 @@ i -> 2
 let list = [4, 5, 6];
 console.log(list)
 for (let i of list) {
-   console.log(i); 
+   console.log(i);
 }
 
 ###    结果：
@@ -284,10 +277,10 @@ i -> 4
 i -> 5
 i -> 6
 
-## 
+##
 ##    迭代器（Iterators）
-####    迭代器是一个比数组更动态的类型。 
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;"> </span> 
+####    迭代器是一个比数组更动态的类型。
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;"> </span>
 let infinite = {
   [Symbol.iterator]() {
     let c = 0;
@@ -322,8 +315,8 @@ n -> 8
 n -> 9
 n -> 10
 
-####    使用Typescript，我们可以看到它接口的样子： 
-#### 
+####    使用Typescript，我们可以看到它接口的样子：
+####
 Typescript 代码:
 interface IteratorResult {
   done: boolean;
@@ -336,9 +329,9 @@ interface Iterable {
   [Symbol.iterator](): Iterator
 }
 
-## 
+##
 ###    生成器（Generators）
-####    生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。 
+####    生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。
 var infinity = {
   [Symbol.iterator]: function*() {
     var c = 1;
@@ -369,16 +362,16 @@ n -> 8
 n -> 9
 n -> 10
 
-####    使用Typescript 再次显示接口： 
-####    Typescript 代码: 
+####    使用Typescript 再次显示接口：
+####    Typescript 代码:
 interface Generator extends Iterator {
     next(value?: any): IteratorResult;
     throw(exception: any);
 }
 
-## 
+##
 ###    function* Iterators and generator
-####    一个产量的例子* 
+####    一个产量的例子*
 function* anotherGenerator(i) {
   yield i + 1;
   yield i + 2;
@@ -393,10 +386,10 @@ function* generator(i) {
 
 var gen = generator(10);
 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
 console.log(gen.next().value);
 
 ###    结果：
@@ -406,9 +399,9 @@ gen.next().value -> 12
 gen.next().value -> 13
 gen.next().value -> 20
 
-## 
+##
 ###    Unicode
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">ES6 为Unicode 提供了更好的支持。</span> 
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">ES6 为Unicode 提供了更好的支持。</span>
 var regex = new RegExp('\u{61}', 'u');
 
 console.log(regex.unicode)
@@ -417,10 +410,10 @@ console.log("\uD842\uDFD7".codePointAt())
 
 ###    结果：
 regex.unicode -> true
-"" -> 
+"" ->
 "".codePointAt() -> 134103
 
-## 
+##
 ###    模块和模块加载器
 ####    原生支持模块。
 import defaultMember from "module-name";
@@ -450,7 +443,7 @@ Import Export
 
 ##    Set
 ####    Set 为数学对应，其中所有项目都是唯一的。对于知道SQL的人来说，这相当于distinct。
-#### 
+####
 var set = new Set();
 set.add("Potato").add("Tomato").add("Tomato");
 console.log(set.size)
@@ -468,7 +461,7 @@ item -> Potato
 item -> Tomato**
 ** **
 
-## 
+##
     **
     
         WeakSet
@@ -491,7 +484,7 @@ item -> Tomato**
             <time class="post-time" title="2017-04-25 12:28:31" datetime="2017-04-25T04:28:31.000Z"  itemprop="datePublished">2017-04-25</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/JavaScript/未分类/">未分类</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
 
 
 
@@ -507,11 +500,11 @@ item -> Tomato**
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章<a href="http://es6.ruanyifeng.com/。" target="_blank" rel="external">http://es6.ruanyifeng.com/。</a></p>
 <p>##<br>    箭头函数</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;function() 函数的简写表示法，但它不绑定 this。&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;function() 函数的简写表示法，但它不绑定 this。&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;&lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">var odds = evens.map(v =&gt; v + 1);  // no parentes and no brackets
 var nums = evens.map((v, i) =&gt; v + i);
 var pairs = evens.map(v =&gt; ({even: v, odd: v + 1}));
@@ -523,9 +516,9 @@ nums.forEach(v =&gt; {
 });</pre>
 
 <p>##<br>    this是如何工作的</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">var object = {
-    name: "Name", 
+    name: "Name",
     arrowGetName: () =&gt; this.name,
     regularGetName: function() { return this.name },
     arrowGetThis: () =&gt; this,
@@ -549,13 +542,13 @@ Object {
     regularGetThis: function
 }
 
-console.log(object.name) =&gt; 
+console.log(object.name) =&gt;
 Name
 
 console.log(object.arrowGetName());  =&gt;
 undefined
 
-console.log(object.arrowGetThis());  =&gt;  [object Window] 
+console.log(object.arrowGetThis());  =&gt;  [object Window]
 Window {
     stop: function,
     open: function,
@@ -579,7 +572,7 @@ Object {
     regularGetThis: function
 }</pre>
 
-<p>## </p>
+<p>##</p>
 <p>##<br>    我们知道“真正”语言中的类(Classes)。在 ES6 中类(Classes)其实是原型继承的语法糖。</p>
 <pre><code>ES6代码
 </code></pre><pre class="prettyprint lang-js">class SkinnedMesh extends THREE.Mesh {
@@ -637,7 +630,7 @@ console.log(obj.prop_42)</pre>
 <pre class="prettyprint lang-js">obj.handler -&gt; () =&gt; "handler"
 obj.handler() -&gt; handler
 obj.toString() -&gt; d The ProtoOBject To string
-obj.prop_42 -&gt; 
+obj.prop_42 -&gt;
 (() =&gt; 42)()  是一个立即执行函数 (() =&gt; 42)() 相当于
 (function() {
     return 42;
@@ -664,13 +657,13 @@ console.log(b)
 console.log(c)</pre>
 
 <p>###<br>    结果：</p>
-<p>### </p>
+<p>###</p>
 <pre class="prettyprint lang-js">a -&gt; a
 b -&gt; b
 c -&gt; c</pre>
 
 <p>##<br>    使用速记表示法</p>
-<p>## </p>
+<p>##</p>
 <pre class="prettyprint lang-js">nodes = () =&gt; { return {lhs: "a", op: "b", rhs: "c"}}
 
 // binds `op`, `lhs` and `rhs` in scope
@@ -699,15 +692,15 @@ console.log(m({name: 5}))
 </pre>
 
 <p>###<br>    结果：</p>
-<pre><code>** ** 
+<pre><code>** **
 </code></pre><pre class="prettyprint lang-js">**g({name: 5}) -&gt; 5
 m({name: 5}) -&gt; 5**</pre>
-** ** 
+** **
 
-## 
-    **故障弱化解构** 
+##
+    **故障弱化解构**
 
-    ** ** 
+    ** **
 
 <pre class="prettyprint lang-js">**var [a] = []
 var [b = 1] = []
@@ -746,13 +739,13 @@ console.log(f(...[1,2,3]))</pre>
 
 <p>##<br>    在数组中</p>
 <pre class="prettyprint lang-js">var parts = ["shoulders", "knees"];
-var lyrics = ["head", ...parts, "and", "toes"]; 
+var lyrics = ["head", ...parts, "and", "toes"];
 
 console.log(lyrics)</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">var parts = ["shoulders", "knees"];
-var lyrics = ["head", ...parts, "and", "toes"]; 
+var lyrics = ["head", ...parts, "and", "toes"];
 
 console.log(lyrics)</pre>
 
@@ -760,11 +753,11 @@ console.log(lyrics)</pre>
 <pre class="prettyprint lang-js">lyrics -&gt; ["head","shoulders","knees","and","toes"]</pre>
 
 <p>##<br>    扩展 + 对象字面量</p>
-<p>#### </p>
+<p>####</p>
 <pre><code>    我们可以使用这个创造很酷的对象。
 
 &lt;div&gt;
-    &lt;span style=&quot;font-weight:normal;&quot;&gt; 
+    &lt;span style=&quot;font-weight:normal;&quot;&gt;
 </code></pre><pre class="prettyprint lang-js">let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
 console.log(x); // 1
 console.log(y); // 2
@@ -777,32 +770,32 @@ console.log(obj)
 可惜的是它还不支持：
 
 npm install --save-dev babel-plugin-transform-object-rest-spread</pre>
- 
+
         <h2>
-            <span style="font-weight:normal;">Rest</span> 
+            <span style="font-weight:normal;">Rest</span>
 
     
 
 
-#### 
-    <span style="font-weight:normal;"><span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">我们可以使用 rest 操作符来允许无限参数。</span></span> 
+####
+    <span style="font-weight:normal;"><span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">我们可以使用 rest 操作符来允许无限参数。</span></span>
 
-#### 
-    <span style="font-weight:normal;"> 
+####
+    <span style="font-weight:normal;">
 <pre class="prettyprint lang-js">function demo(part1, ...part2) {
     return {part1, part2}
 }
 
 console.log(demo(1,2,3,4,5,6))</pre>
-</span> 
+</span>
 
-### 
-    <span style="font-weight:normal;">结果：</span> 
+###
+    <span style="font-weight:normal;">结果：</span>
 
 <pre class="prettyprint lang-js">demo(1,2,3,4,5,6) -&gt; {"part1":1,"part2":[2,3,4,5,6]}</pre>
 
 <p>##<br>    Let</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">let是新的var。 因为它有块级作用域。</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">let是新的var。 因为它有块级作用域。</span></p>
 <pre class="prettyprint lang-js">{
    var globalVar = "from demo1"
 }
@@ -818,47 +811,47 @@ console.log(globalLet)</pre>
 <pre class="prettyprint lang-js">globalVar -&gt; from demo1
 globalLet -&gt; ReferenceError: globalLet is not defined</pre>
 
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">但是，它不会向window分配任何内容：</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">但是，它不会向window分配任何内容：</span></p>
 <pre class="prettyprint lang-js">let me = "go";  // 全局作用域
 var i = "able"; // 全局作用域
 
-console.log(window.me); 
+console.log(window.me);
 console.log(window.i);</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">window.me -&gt; undefined
 window.i -&gt; able</pre>
 
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">不能使用let重新声明一个变量：</span> </p>
-<p>#### </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">不能使用let重新声明一个变量：</span></p>
+<p>####</p>
 <pre class="prettyprint lang-js">let me = "foo";
-let me = "bar"; 
+let me = "bar";
 console.log(me);</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">SyntaxError: Identifier 'me' has already been declared</pre>
 <pre class="prettyprint lang-js">var me = "foo";
-var me = "bar"; 
+var me = "bar";
 console.log(me)</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">me -&gt; bar</pre>
 
-<p>## </p>
+<p>##</p>
 <p>##<br>    Const</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;**const 是只读变量。**&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;**const 是只读变量。**&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;** **&lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;** **&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">**const a = "b"
 a = "a"**</pre>
-** ** 
+** **
 
-### 
-    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**结果：**</span> 
+###
+    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**结果：**</span>
 
 <pre class="prettyprint lang-js">TypeError: Assignment to constant variable.</pre>
 
-<p>#### </p>
+<p>####</p>
 <p>####<br>    <strong>应该注意</strong>，const 对象仍然可以被改变的。</p>
 <pre class="prettyprint lang-js">const a = { a: "a" }
 a.a = "b"
@@ -867,10 +860,10 @@ console.log(a)</pre>
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">a -&gt; {"a":"b"}</pre>
 
-<p>## </p>
-<p>##<br>    <strong>For..of</strong> </p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器的新类型，可以替代for..in。它返回的是值而不是keys</span> </p>
-<p>#### </p>
+<p>##</p>
+<p>##<br>    <strong>For..of</strong></p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器的新类型，可以替代for..in。它返回的是值而不是keys</span></p>
+<p>####</p>
 <pre class="prettyprint lang-js">let list = [4, 5, 6];
 console.log(list)
 for (let i in list) {
@@ -885,7 +878,7 @@ i -&gt; 2</pre>
 <pre class="prettyprint lang-js">let list = [4, 5, 6];
 console.log(list)
 for (let i of list) {
-   console.log(i); 
+   console.log(i);
 }</pre>
 
 <p>###<br>    结果：</p>
@@ -894,10 +887,10 @@ i -&gt; 4
 i -&gt; 5
 i -&gt; 6</pre>
 
-<p>## </p>
+<p>##</p>
 <p>##<br>    迭代器（Iterators）</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器是一个比数组更动态的类型。</span> </p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器是一个比数组更动态的类型。</span></p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">let infinite = {
   [Symbol.iterator]() {
     let c = 0;
@@ -932,8 +925,8 @@ n -&gt; 8
 n -&gt; 9
 n -&gt; 10</pre>
 
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript，我们可以看到它接口的样子：</span> </p>
-<p>#### </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript，我们可以看到它接口的样子：</span></p>
+<p>####</p>
 <pre class="prettyprint lang-js">Typescript 代码:
 interface IteratorResult {
   done: boolean;
@@ -946,9 +939,9 @@ interface Iterable {
   [Symbol.iterator](): Iterator
 }</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    生成器（Generators）</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。</span></p>
 <pre class="prettyprint lang-js">var infinity = {
   [Symbol.iterator]: function*() {
     var c = 1;
@@ -979,16 +972,16 @@ n -&gt; 8
 n -&gt; 9
 n -&gt; 10</pre>
 
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript 再次显示接口：</span> </p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Typescript 代码:</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript 再次显示接口：</span></p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Typescript 代码:</span></p>
 <pre class="prettyprint lang-js">interface Generator extends Iterator {
     next(value?: any): IteratorResult;
     throw(exception: any);
 }</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    function* Iterators and generator</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">一个产量的例子*</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">一个产量的例子*</span></p>
 <pre class="prettyprint lang-js">function* anotherGenerator(i) {
   yield i + 1;
   yield i + 2;
@@ -1003,10 +996,10 @@ function* generator(i) {
 
 var gen = generator(10);
 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
 console.log(gen.next().value);</pre>
 
 <p>###<br>    结果：</p>
@@ -1016,9 +1009,9 @@ gen.next().value -&gt; 12
 gen.next().value -&gt; 13
 gen.next().value -&gt; 20</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    Unicode</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 为Unicode 提供了更好的支持。&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 为Unicode 提供了更好的支持。&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">var regex = new RegExp('\u{61}', 'u');
 
 console.log(regex.unicode)
@@ -1027,10 +1020,10 @@ console.log("\uD842\uDFD7".codePointAt())</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">regex.unicode -&gt; true
-"" -&gt; 
+"" -&gt;
 "".codePointAt() -&gt; 134103</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    模块和模块加载器</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">原生支持模块。</span></p>
 <pre class="prettyprint lang-js">import defaultMember from "module-name";
@@ -1060,7 +1053,7 @@ Import Export</pre>
 
 <p>##<br>    Set</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Set 为数学对应，其中所有项目都是唯一的。对于知道SQL的人来说，这相当于distinct。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var set = new Set();
 set.add("Potato").add("Tomato").add("Tomato");
 console.log(set.size)
@@ -1078,7 +1071,7 @@ item -&gt; Potato
 item -&gt; Tomato**</pre>
 ** **
 
-## 
+##
     **
     <h3 id="weakset" style="font-size:16px;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;background-color:#FFFFFF;">
         WeakSet
@@ -1086,7 +1079,7 @@ item -&gt; Tomato**</pre>
 **
 </h3></h2>
 
-#### 
+####
     <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">WeakSet对象允许您在集合中存储弱持有的对象。没有引用的对象将被垃圾回收。</span>
 
 <pre class="prettyprint lang-js">var item = { a:"Potato"}
@@ -1141,7 +1134,7 @@ map.get({a: "a"}) -&gt; undefined</pre>
 
 <p>##<br>    WeakMap</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用键的对象，并且只保留对键的弱引用。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var wm = new WeakMap();
 
 var o1  = {}
@@ -1175,7 +1168,7 @@ TypeError: wm[Symbol.iterator] is not a function</pre>
 
 <p>##<br>    代理（Proxy）</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">代理可以用来改变对象的行为。 它们允许我们定义 trap 。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var obj = function ProfanityGenerator() {
     return {
        words: "Horrible words"    
@@ -1198,7 +1191,7 @@ console.log(proxy.words);</pre>
 <p>###<br>    结果</p>
 <pre class="prettyprint lang-js">proxy.words -&gt; Nice words</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    提供以下 trap ：</p>
 <pre class="prettyprint lang-js">var handler =
 {
@@ -1247,7 +1240,7 @@ Symbol("a") === Symbol("a") -&gt; false</pre>
 
 <p>##<br>    可继承内置函数</p>
 <p>####<br>    我们现在可以继承原生类</p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">class CustomArray extends Array {
 
 }
@@ -1260,7 +1253,7 @@ console.log(a[0])</pre>
 
 <pre class="prettyprint lang-js">a[0] -&gt; 2</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    不能使用数组的代理(Proxy)来覆盖getter函数。</p>
 <p>###<br>    新类库</p>
 <p>###<br>    各种新的方法和常量</p>
@@ -1279,8 +1272,8 @@ console.log("abc".repeat(3) )
 console.log(Array.of(1, 2, 3) )
 console.log([0, 0, 0].fill(7, 1) )
 console.log([1, 2, 3].find(x =&gt; x == 3) )
-console.log([1, 2, 3].findIndex(x =&gt; x == 2)) 
-console.log([1, 2, 3, 4, 5].copyWithin(3, 0)) 
+console.log([1, 2, 3].findIndex(x =&gt; x == 2))
+console.log([1, 2, 3, 4, 5].copyWithin(3, 0))
 console.log(["a", "b", "c"].entries() )
 console.log(["a", "b", "c"].keys() )
 console.log(["a", "b", "c"].values() )
@@ -1288,7 +1281,7 @@ console.log(["a", "b", "c"].values() )
 console.log(Object.assign({}, { origin: new Point(0,0) }))**</pre>
 ** **
 
-### 
+###
     **结果：**
 
 <pre class="prettyprint lang-js">Number.EPSILON -&gt; 2.220446049250313e-16
@@ -1310,7 +1303,7 @@ Array.of(1, 2, 3) -&gt; [1,2,3]
 Object.assign({}, { origin: new Point(0,0) }) -&gt; ReferenceError: Point is not defined
 文档: Number, Math, Array.from, Array.of, Array.prototype.copyWithin, Object.assign</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    二进制和八进制</p>
 <p>####<br>    <span style="color:#777777;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">二进制和八进制数字的字面量。</span></p>
 <pre class="prettyprint lang-js">console.log(0b11111)
@@ -1324,10 +1317,10 @@ console.log(0xff); // also in es5</pre>
 0o2342 -&gt; 1250
 0xff -&gt; 255</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    Promises</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">异步编程。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var p1 = new Promise((resolve, reject) =&gt; {
   setTimeout(() =&gt; resolve("1"), 101)
 })
@@ -1348,7 +1341,7 @@ Promise.all([p1, p2]).then((res) =&gt; {
 res -&gt; ["1","2"]</pre>
 
 <p>##<br>    快速的Promise</p>
-<p>## </p>
+<p>##</p>
 <pre class="prettyprint lang-js">var p1 = Promise.resolve("1")
 var p2 = Promise.reject("2")
 
@@ -1361,7 +1354,7 @@ Promise.race([p1, p2]).then((res) =&gt; {
 
 <p>##<br>    快速失败</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">如果一个 promise 失败，all和race也将 reject(拒绝)。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var p1 = new Promise((resolve, reject) =&gt; {
   setTimeout(() =&gt; resolve("1"), 1001)
 })
@@ -1409,9 +1402,9 @@ Reflect.has(y, "x") -&gt; false</pre>
 <p>##<br>    尾调用(Tail Call)优化</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">尾调用的概念非常简单，一句话就能说清楚，就是指某个函数的最后一步是调用另一个函数。</span></p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">ES6可以确保尾调用不会造成堆栈溢出。 （不是所有的实现工作）。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">function factorial(n, acc = 1) {
-    if (n &lt;= 1) return acc; 
+    if (n &lt;= 1) return acc;
     return factorial(n - 1, n * acc);
 }
 console.log(factorial(10))
@@ -1428,13 +1421,14 @@ factorial(1000) -&gt; Infinity
 factorial(10000) -&gt; Infinity
 factorial(100000) -&gt; RangeError: Maximum call stack size exceeded
 factorial(1000000) -&gt; RangeError: Maximum call stack size exceeded</pre>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+    Last updated: <time datetime="2017-06-08T09:47:07.000Z" itemprop="dateUpdated">2017-06-08 17:47:07</time>
 </span><br>
 
 

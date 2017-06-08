@@ -27,7 +27,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
 <meta property="og:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图： ![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox">
-<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta property="og:updated_time" content="2017-06-08T09:51:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鼠标或键盘控制3D盒子旋转">
 <meta name="twitter:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图： ![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox">
@@ -79,13 +79,6 @@
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -151,7 +144,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/HTML5/">HTML5</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML5/">HTML5</a></li></ul>
 
             
         </h5>
@@ -174,7 +167,7 @@
             <time class="post-time" title="2016-05-12 00:59:22" datetime="2016-05-11T16:59:22.000Z"  itemprop="datePublished">2016-05-12</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/HTML5/">HTML5</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML5/">HTML5</a></li></ul>
 
 
 
@@ -189,46 +182,46 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：</p>
-<pre><code>![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox2.png) 
+<pre><code>![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox2.png)
 
-&lt;span style=&quot;font-size:14px;&quot;&gt;两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的&lt;/span&gt; 
+&lt;span style=&quot;font-size:14px;&quot;&gt;两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的&lt;/span&gt;
 
 &lt;span style=&quot;font-size:14px;&quot;&gt;通过键盘控制3D盒子旋转，demo链接：[http://chenqiangyi.com/example/3Dbox1.html](http://chenqiangyi.com/example/3Dbox1.html)&lt;/span&gt;
 
 &lt;span style=&quot;font-size:14px;&quot;&gt;通过鼠标控制3D盒子旋转，demo链接：[http://chenqiangyi.com/example/3Dbox1.html](http://chenqiangyi.com/example/3Dbox1.html)&lt;/span&gt;
 
-&lt;span style=&quot;color:#E53333;font-size:16px;&quot;&gt;1.页面布局&lt;/span&gt; 
+&lt;span style=&quot;color:#E53333;font-size:16px;&quot;&gt;1.页面布局&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;&quot;&gt;需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：&lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;&quot;&gt;需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt;
 </code></pre><pre class="prettyprint lang-css">#div1 .right{ transform:rotateY(90deg) translateZ(100px);}</pre>
 然后就是左边的面，和右边的相似，只是旋转角度相反而已：
 
-    <span style="font-size:16px;"> </span> 
+    <span style="font-size:16px;"> </span>
 
 <pre class="prettyprint lang-css">#div1 .left{ transform:rotateY(-90deg) translateZ(100px);}</pre>
 前后面就是直接沿Z轴平移100px和-100px即可
 
-    <span style="font-size:16px;"> </span> 
+    <span style="font-size:16px;"> </span>
 
 <pre class="prettyprint lang-css">#div1 .front{ transform:translateZ(100px);}
 #div1 .back{ transform:translateZ(-100px);}</pre>
 上边的面就是沿Z轴平移100px然后再按照X轴旋转90度，相反下边的面沿y轴旋转-90度
 
-    <span style="font-size:16px;"> </span> 
+    <span style="font-size:16px;"> </span>
 
 <pre class="prettyprint lang-css">#div1 .top{ transform:rotateX(90deg) translateZ(100px);}
 #div1 .bottom{ transform:rotateX(-90deg) translateZ(100px);}</pre>
 然后就是为了看到3D效果，需要在其父级添加3D模型 &nbsp;transform-style: preserve-3d;
 
-    <span style="font-size:16px;">这样基本的布局就完成了</span> 
+    <span style="font-size:16px;">这样基本的布局就完成了</span>
 
-    <span style="font-size:16px;color:#E53333;">2.js控制</span> 
+    <span style="font-size:16px;color:#E53333;">2.js控制</span>
 
-<span style="font-size:14px;">首先介绍键盘的控制，我们知道键盘的按下去与松开都对应一个onkeydown事件和onkeyup事件，我们可以用事件对象获取其中的动作当按上键的时候我们可以得到他的ev.keycode=37,同理可以得到其他键的值，我们可以先定义bTop=bBotton=bLeft=bRight=false，当按下去的时候，判定哪个键对应的方向为true，然后当松开的 时候再令<span style="font-size:14px;line-height:21px;">bTop=bBotton=bLeft=bRight=false</span>这样在就可控制他的停止与运动了，然后我们开一个定时器，让他在某个方向上每隔30ms加10，这样就把X，y的值获取到了。</span> 
+<span style="font-size:14px;">首先介绍键盘的控制，我们知道键盘的按下去与松开都对应一个onkeydown事件和onkeyup事件，我们可以用事件对象获取其中的动作当按上键的时候我们可以得到他的ev.keycode=37,同理可以得到其他键的值，我们可以先定义bTop=bBotton=bLeft=bRight=false，当按下去的时候，判定哪个键对应的方向为true，然后当松开的 时候再令<span style="font-size:14px;line-height:21px;">bTop=bBotton=bLeft=bRight=false</span>这样在就可控制他的停止与运动了，然后我们开一个定时器，让他在某个方向上每隔30ms加10，这样就把X，y的值获取到了。</span>
 
-    <span style="font-size:14px;"> </span> 
+    <span style="font-size:14px;"> </span>
 
 <pre class="prettyprint lang-js">document.onkeydown=function(ev){
         if(ev.keyCode==37){
@@ -259,7 +252,7 @@
         }
     }</pre>
 
-<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;然后就是改变他的X，y的变化，进行相应的运动变换&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;然后就是改变他的X，y的变化，进行相应的运动变换&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">//左右 y
     var y=0;
     //上下
@@ -281,11 +274,11 @@
         console.log(1)
         oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
     },30)</pre>
-<span style="font-size:14px;">这样键盘的控制就结束了，接下来就是鼠标的控制了</span> 
+<span style="font-size:14px;">这样键盘的控制就结束了，接下来就是鼠标的控制了</span>
 
-    <span style="font-size:16px;color:#E53333;">3.鼠标的控制</span> 
+    <span style="font-size:16px;color:#E53333;">3.鼠标的控制</span>
 
-    <span style="font-size:14px;">主要运用鼠标的事件，当鼠标在网页上移动时会有相应的X和Y值得变化，这样我们就很容易得到鼠标的按下的位置和移动时的位置，我们可以根据在鼠标X轴移动的距离看做是他沿Y轴转动的角度，同时Y轴也是这样。</span> 
+    <span style="font-size:14px;">主要运用鼠标的事件，当鼠标在网页上移动时会有相应的X和Y值得变化，这样我们就很容易得到鼠标的按下的位置和移动时的位置，我们可以根据在鼠标X轴移动的距离看做是他沿Y轴转动的角度，同时Y轴也是这样。</span>
 
 <pre class="prettyprint lang-js">document.onmousedown=function(ev){
         var disX=ev.clientX-y;
@@ -302,15 +295,15 @@
         }
         return false;
     }    </pre>
-<span style="font-size:14px;">这样两个效果就基本完成了。</span> 
+<span style="font-size:14px;">这样两个效果就基本完成了。</span>
 
-    <span style="font-size:16px;color:#E53333;">4.总结</span> 
+    <span style="font-size:16px;color:#E53333;">4.总结</span>
 
-    <span style="font-size:14px;">这个效果主要运用到了键盘的控制事件，以及盒子的拖拽模型，还有就是布局的知识，在以后会加上在移动端的控制。</span> 
+    <span style="font-size:14px;">这个效果主要运用到了键盘的控制事件，以及盒子的拖拽模型，还有就是布局的知识，在以后会加上在移动端的控制。</span>
 
-    <span style="font-size:14px;">最后附上两个模型的源代码：</span> 
+    <span style="font-size:14px;">最后附上两个模型的源代码：</span>
 
-    <span style="font-size:14px;">键盘控制3D盒子旋转：</span> 
+    <span style="font-size:14px;">键盘控制3D盒子旋转：</span>
 
 <pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -405,7 +398,7 @@ window.onload=function(){
 &lt;/html&gt;
 </pre>
 
-<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;鼠标控制3D盒子旋转：&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;鼠标控制3D盒子旋转：&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -450,7 +443,7 @@ window.onload=function(){
             document.onmousemove=document.onmouseup=null;
         }
         return false;
-    }    
+    }
 }
 &lt;/script&gt;
 &lt;/head&gt;
@@ -467,7 +460,7 @@ window.onload=function(){
 &lt;/html&gt;
 </pre>
 
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;over&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;over&lt;/span&gt;
 </code></pre>
         </div>
 
@@ -475,7 +468,7 @@ window.onload=function(){
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+    Last updated: <time datetime="2017-06-08T09:51:16.000Z" itemprop="dateUpdated">2017-06-08 17:51:16</time>
 </span><br>
 
 

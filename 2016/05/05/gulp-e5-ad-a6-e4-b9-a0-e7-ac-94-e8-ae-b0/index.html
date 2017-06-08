@@ -29,7 +29,7 @@
 <meta property="og:description" content="最近学习了一下代码构建工具中的gulp和grunt,两者的操作基本相似，在整个流程中配置部分容易出错，稍有一点错误，则项目就无法构建，在学习中前前后后装了几遍才得到gulp的正确姿势，现在来回顾一下gulp学习中用到的知识，用以复习和加深印象简介：gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自">
 <meta property="og:image" content="http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/gulp-3-246x300.png">
 <meta property="og:image" content="http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/gulp-less-2-300x161.png">
-<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta property="og:updated_time" content="2017-06-08T09:47:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gulp学习笔记">
 <meta name="twitter:description" content="最近学习了一下代码构建工具中的gulp和grunt,两者的操作基本相似，在整个流程中配置部分容易出错，稍有一点错误，则项目就无法构建，在学习中前前后后装了几遍才得到gulp的正确姿势，现在来回顾一下gulp学习中用到的知识，用以复习和加深印象简介：gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自">
@@ -82,13 +82,6 @@
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -154,7 +147,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具gulp/">构建工具gulp</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
 
             
         </h5>
@@ -184,7 +177,7 @@
             <time class="post-time" title="2016-05-05 23:43:03" datetime="2016-05-05T15:43:03.000Z"  itemprop="datePublished">2016-05-05</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具gulp/">构建工具gulp</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
 
 
 
@@ -215,13 +208,14 @@
                 </div>
                 <div class="image-caption">gulp-less-2</div>
             </figure><br><br>7.3、将会安装在node_modules的gulp-less目录下，该目录下有一个gulp-less的使用帮助文档README.md；<br><br>7.4、为了能正常使用，我们还得本地安装gulp：<strong><code>cnpm install gulp --save-dev</code></strong>；<br><br>PS：细心的你可能会发现，我们全局安装了gulp，项目也安装了gulp，全局安装gulp是为了执行gulp任务，本地安装gulp则是为了调用gulp插件的功能。<br><br>### 8、新建gulpfile.js文件（重要）<br><br>8.1、说明：gulpfile.js是gulp项目的配置文件，是位于项目根目录的普通js文件（其实将gulpfile.js放入其他文件夹下亦可）。<br><br>8.2、它大概是这样一个js文件：<br><br><div class="code-box"><br><div id="crayon-572b558d91f01919571102" class="crayon-syntax crayon-theme-raygun crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover"><br><div class="crayon-toolbar" data-settings=" show"><br><div class="crayon-tools"><br><div id="crayon-572b558d91f01919571102-1" class="crayon-line"><span class="crayon-c">//导入工具包 require(‘node_modules里对应模块’)</span></div><br><div id="crayon-572b558d91f01919571102-2" class="crayon-line crayon-striped-line"><span class="crayon-t">var</span> <span class="crayon-v">gulp</span> <span class="crayon-o">=</span> <span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">‘gulp’</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span> <span class="crayon-c">//本地安装gulp所用到的地方</span></div><br><div id="crayon-572b558d91f01919571102-3" class="crayon-line"><span class="crayon-h">    </span><span class="crayon-v">less</span> <span class="crayon-o">=</span> <span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">‘gulp-less’</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><br><div id="crayon-572b558d91f01919571102-4" class="crayon-line crayon-striped-line"></div><br><div id="crayon-572b558d91f01919571102-5" class="crayon-line"><span class="crayon-c">//定义一个testLess任务（自定义任务名称）</span></div><br><div id="crayon-572b558d91f01919571102-6" class="crayon-line crayon-striped-line"><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">task</span><span class="crayon-sy">(</span><span class="crayon-s">‘testLess’</span><span class="crayon-sy">,</span> <span class="crayon-t">function</span> <span class="crayon-sy">(</span><span class="crayon-sy">)</span> <span class="crayon-sy">{</span></div><br><div id="crayon-572b558d91f01919571102-7" class="crayon-line"><span class="crayon-h">    </span><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">src</span><span class="crayon-sy">(</span><span class="crayon-s">‘src/less/index.less’</span><span class="crayon-sy">)</span> <span class="crayon-c">//该任务针对的文件</span></div><br><div id="crayon-572b558d91f01919571102-8" class="crayon-line crayon-striped-line"><span class="crayon-h">        </span><span class="crayon-sy">.</span><span class="crayon-e">pipe</span><span class="crayon-sy">(</span><span class="crayon-e">less</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span> <span class="crayon-c">//该任务调用的模块</span></div><br><div id="crayon-572b558d91f01919571102-9" class="crayon-line"><span class="crayon-h">        </span><span class="crayon-sy">.</span><span class="crayon-e">pipe</span><span class="crayon-sy">(</span><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">dest</span><span class="crayon-sy">(</span><span class="crayon-s">‘src/css’</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span> <span class="crayon-c">//将会在src/css下生成index.css</span></div><br><div id="crayon-572b558d91f01919571102-10" class="crayon-line crayon-striped-line"><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><br><div id="crayon-572b558d91f01919571102-11" class="crayon-line"></div><br><div id="crayon-572b558d91f01919571102-12" class="crayon-line crayon-striped-line"><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">task</span><span class="crayon-sy">(</span><span class="crayon-s">‘default’</span><span class="crayon-sy">,</span><span class="crayon-sy">[</span><span class="crayon-s">‘testLess’</span><span class="crayon-sy">,</span> <span class="crayon-s">‘elseTask’</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span> <span class="crayon-c">//定义默认任务</span></div><br><div id="crayon-572b558d91f01919571102-13" class="crayon-line"></div><br><div id="crayon-572b558d91f01919571102-14" class="crayon-line crayon-striped-line"><span class="crayon-c">//gulp.task(name[, deps], fn) 定义任务  name：任务名称 deps：依赖任务名称 fn：回调函数</span></div><br><div id="crayon-572b558d91f01919571102-15" class="crayon-line"><span class="crayon-c">//gulp.src(globs[, options]) 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组) </span></div><br><div id="crayon-572b558d91f01919571102-16" class="crayon-line crayon-striped-line"><span class="crayon-c">//gulp.dest(path[, options]) 处理完后文件生成路径</span></div><br></div><br></div><br><div class="crayon-plain-wrap"><br><br>### 9、运行gulp<br><br>9.1、说明：命令提示符执行<strong>gulp 任务名称</strong>；<br><br>9.2、编译less：命令提示符执行<strong>gulp testLess</strong>；<br><br>9.3、当执行<strong>gulp default</strong>或<strong>gulp</strong>将会调用default任务里的所有任务[‘testLess’,’elseTask’]<br><br><strong>10、</strong>其中gulp的安装顺序应该为：<br><br>10.1      运行环境   npm install gulp-cli -g<br>10.2    初始化   package.json文件      npm init<br><br>10.3    执行环境    npm install gulp –save-dev        然后在你创建项目的目录里出现node_modules文件夹，并且里面需要有gulp文件夹，否则后面的操作不能用<br><br>10.4    安装插件    npm install –save-dev gulp-uglify      可以在github上面找到相应的插件功能介绍<br><br>10.5    创建gulpfile.js文件，并且一个项目中只有一个gulpfile.js文件，而且系统只认这个文件，如果要进行不同的工程操作就需要修改里面的配置文件了<br><br><strong>10.5.1</strong>压缩文件的配置：<br><br>//1 请求一个模块<br>var gulp = require(“gulp”);<br>var uglify = require(“gulp-uglify”);<br><br>//2 配置任务<br>gulp.task(“yasjs”,function(){<br>return gulp.src(“src/<em>.js”)<br>.pipe(uglify())<br>.pipe(gulp.dest(“dest”));<br>//.pipe(gulp.dest(“dest/all.min.js”));//不能写文件名 只能是目录<br>});<br><br>//3 注册任务<br>gulp.task(“defalut”,[“yasjs”]);<br><br> 其中请求模块和注册任务基本是不变的，只需要修改配置任务即可，例子中的</em>.js代表的是src目录下的所有js文件，后面的.pipe(gulp.dest(“dest”));只能是目录，dest中不能包含文件名。<br><br><strong>10.5.2压缩合并</strong><br><br>//1 请求一个模块<br>var gulp = require(“gulp”);<br>var uglify = require(“gulp-uglify”);<br>var rename = require(“gulp-rename”);<br>//concat 使用的时候必有文件名称<br>var concat = require(“gulp-concat”);<br>var cssmin = require(“gulp-cssmin”);<br><br>//2 配置任务<br>gulp.task(“cssmin”,function(){<br>return gulp.src(“src/*.css”)<br>.pipe(concat(“all.css”))<br>.pipe(cssmin())//不要重名 没有参数<br>.pipe(rename(“all.min.css”))<br>.pipe(gulp.dest(“dest”));<br><br>});<br><br>//3 注册任务<br>gulp.task(“default”,[“cssmin”]);<br><br> 请求模块和注册模块基本不变，配置部分的cssmin()中没有参数，不要重名，他们的顺序是先合并，再压缩<br><br>### 11、总结<br><br>11.1、安装nodejs；<br><br>11.2、新建package.json文件；<br><br>11.3、全局和本地安装gulp；<br><br>11.4、安装gulp插件；<br><br>11.5、新建gulpfile.js文件；<br><br>11.6、通过命令提示符运行gulp任务。<br><br></div><br></div><br></div><br></article>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+    Last updated: <time datetime="2017-06-08T09:47:29.000Z" itemprop="dateUpdated">2017-06-08 17:47:29</time>
 </span><br>
 
 

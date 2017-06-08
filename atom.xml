@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-08T06:15:40.000Z</updated>
+  <updated>2017-06-08T09:50:06.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,38 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2017/06/08/hello-world/"/>
-    <id>http://yoursite.com/2017/06/08/hello-world/</id>
-    <published>2017-06-08T06:15:40.000Z</published>
-    <updated>2017-06-08T06:15:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>vue键盘事件小技巧</title>
     <link href="http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/"/>
     <id>http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/</id>
     <published>2017-05-10T14:04:01.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:50:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下：</p>
 <pre class="prettyprint lang-js">mounted() {
@@ -89,30 +62,30 @@ methods: {
 &lt;/head&gt;
 &lt;body&gt;
     &lt;div id="box"&gt;
-        &lt;input type="text" placeholder="请输入" @keyup="show($event)"&gt; 
+        &lt;input type="text" placeholder="请输入" @keyup="show($event)"&gt;
 
         &lt;input type="text" placeholder="请输入" @keyup.13="show($event)"&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
 
-<pre><code>&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.13 回车&lt;/span&gt; 
+<pre><code>&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.13 回车&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.enter 回车&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.enter 回车&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.left 左键&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.left 左键&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.right 右键&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.right 右键&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.up 上键&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.up 上键&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.down 下键&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.down 下键&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;@keyup.&lt;span class=&quot;hljs-keyword&quot;&gt;delete 删除键&lt;span style=&quot;color:#4C33E5;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;@keyup.&lt;span class=&quot;hljs-keyword&quot;&gt;delete 删除键&lt;span style=&quot;color:#4C33E5;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;&quot;&gt;其他按键别名：&lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;&quot;&gt;其他按键别名：&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt;
 </code></pre><ul>
 <li>.enter</li>
 <li>.tab</li>
@@ -122,8 +95,8 @@ methods: {
 <li>.up</li>
 <li>.down</li>
 <li>.left</li>
-<li><p>.right<br><span style="color:#34495E;font-family:&quot;font-size:15px;background-color:#FFFFFF;">可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应：</span> </p>
-<p><span style="font-size:16px;"> </span> </p>
+<li><p>.right<br><span style="color:#34495E;font-family:&quot;font-size:15px;background-color:#FFFFFF;">可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应：</span></p>
+<p><span style="font-size:16px;"> </span></p>
 </li>
 <li><p>.ctrl</p>
 </li>
@@ -131,16 +104,16 @@ methods: {
 <li>.shift</li>
 <li>.meta<br><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">注意：在Mac系统键盘上，meta对应命令键 (⌘)。在Windows系统键盘meta对应windows徽标键(⊞)。在Sun操作系统键盘上，meta对应实心宝石键 (◆)。在其他特定键盘上，尤其在MIT和Lisp键盘及其后续，比如Knight键盘，space-cadet键盘，meta被标记为“META”。在Symbolics键盘上，meta被标记为“META” 或者 “Meta”。</span></li>
 </ul>
-<p><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">例如:</span> </p>
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt; 
+<p><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">例如:</span></p>
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt;
 </code></pre><pre>        
 
 <div class="line">
-    <span class="comment" style="color:#B3B3B3;">&lt;!-- Alt + C --&gt;</span> 
+    <span class="comment" style="color:#B3B3B3;">&lt;!-- Alt + C --&gt;</span>
 </div>
 
 <div class="line">
-    <span class="tag" style="color:#2973B7;">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string" style="color:#42B983;">"clear"</span>&gt;</span> 
+    <span class="tag" style="color:#2973B7;">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string" style="color:#42B983;">"clear"</span>&gt;</span>
 </div>
 
 <div class="line">
@@ -148,17 +121,17 @@ methods: {
 </div>
 
 <div class="line">
-    <span class="comment" style="color:#B3B3B3;">&lt;!-- Ctrl + Click --&gt;</span> 
+    <span class="comment" style="color:#B3B3B3;">&lt;!-- Ctrl + Click --&gt;</span>
 </div>
 
 <div class="line">
-    <span class="tag" style="color:#2973B7;">&lt;<span class="name">div</span> @<span class="attr">click.ctrl</span>=<span class="string" style="color:#42B983;">"doSomething"</span>&gt;</span>Do something<span class="tag" style="color:#2973B7;">&lt;/<span class="name">div</span>&gt;</span> 
+    <span class="tag" style="color:#2973B7;">&lt;<span class="name">div</span> @<span class="attr">click.ctrl</span>=<span class="string" style="color:#42B983;">"doSomething"</span>&gt;</span>Do something<span class="tag" style="color:#2973B7;">&lt;/<span class="name">div</span>&gt;</span>
 </div>
 </pre>
 
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt; 
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt;
 </code></pre><p></p>
-<p> </p>
+<p></p>
 ]]></content>
     
     <summary type="html">
@@ -168,8 +141,6 @@ methods: {
     </summary>
     
       <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
-    
-      <category term="vue" scheme="http://yoursite.com/categories/JavaScript/vue/"/>
     
     
       <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
@@ -185,15 +156,15 @@ methods: {
     <link href="http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/"/>
     <id>http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/</id>
     <published>2017-04-25T04:28:31.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:47:07.000Z</updated>
     
     <content type="html"><![CDATA[<p>ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章<a href="http://es6.ruanyifeng.com/。" target="_blank" rel="external">http://es6.ruanyifeng.com/。</a></p>
 <p>##<br>    箭头函数</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;function() 函数的简写表示法，但它不绑定 this。&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;function() 函数的简写表示法，但它不绑定 this。&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;&lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">var odds = evens.map(v =&gt; v + 1);  // no parentes and no brackets
 var nums = evens.map((v, i) =&gt; v + i);
 var pairs = evens.map(v =&gt; ({even: v, odd: v + 1}));
@@ -205,9 +176,9 @@ nums.forEach(v =&gt; {
 });</pre>
 
 <p>##<br>    this是如何工作的</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">var object = {
-    name: "Name", 
+    name: "Name",
     arrowGetName: () =&gt; this.name,
     regularGetName: function() { return this.name },
     arrowGetThis: () =&gt; this,
@@ -231,13 +202,13 @@ Object {
     regularGetThis: function
 }
 
-console.log(object.name) =&gt; 
+console.log(object.name) =&gt;
 Name
 
 console.log(object.arrowGetName());  =&gt;
 undefined
 
-console.log(object.arrowGetThis());  =&gt;  [object Window] 
+console.log(object.arrowGetThis());  =&gt;  [object Window]
 Window {
     stop: function,
     open: function,
@@ -261,7 +232,7 @@ Object {
     regularGetThis: function
 }</pre>
 
-<p>## </p>
+<p>##</p>
 <p>##<br>    我们知道“真正”语言中的类(Classes)。在 ES6 中类(Classes)其实是原型继承的语法糖。</p>
 <pre><code>ES6代码
 </code></pre><pre class="prettyprint lang-js">class SkinnedMesh extends THREE.Mesh {
@@ -319,7 +290,7 @@ console.log(obj.prop_42)</pre>
 <pre class="prettyprint lang-js">obj.handler -&gt; () =&gt; "handler"
 obj.handler() -&gt; handler
 obj.toString() -&gt; d The ProtoOBject To string
-obj.prop_42 -&gt; 
+obj.prop_42 -&gt;
 (() =&gt; 42)()  是一个立即执行函数 (() =&gt; 42)() 相当于
 (function() {
     return 42;
@@ -346,13 +317,13 @@ console.log(b)
 console.log(c)</pre>
 
 <p>###<br>    结果：</p>
-<p>### </p>
+<p>###</p>
 <pre class="prettyprint lang-js">a -&gt; a
 b -&gt; b
 c -&gt; c</pre>
 
 <p>##<br>    使用速记表示法</p>
-<p>## </p>
+<p>##</p>
 <pre class="prettyprint lang-js">nodes = () =&gt; { return {lhs: "a", op: "b", rhs: "c"}}
 
 // binds `op`, `lhs` and `rhs` in scope
@@ -381,15 +352,15 @@ console.log(m({name: 5}))
 </pre>
 
 <p>###<br>    结果：</p>
-<pre><code>** ** 
+<pre><code>** **
 </code></pre><pre class="prettyprint lang-js">**g({name: 5}) -&gt; 5
 m({name: 5}) -&gt; 5**</pre>
-** ** 
+** **
 
-## 
-    **故障弱化解构** 
+##
+    **故障弱化解构**
 
-    ** ** 
+    ** **
 
 <pre class="prettyprint lang-js">**var [a] = []
 var [b = 1] = []
@@ -428,13 +399,13 @@ console.log(f(...[1,2,3]))</pre>
 
 <p>##<br>    在数组中</p>
 <pre class="prettyprint lang-js">var parts = ["shoulders", "knees"];
-var lyrics = ["head", ...parts, "and", "toes"]; 
+var lyrics = ["head", ...parts, "and", "toes"];
 
 console.log(lyrics)</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">var parts = ["shoulders", "knees"];
-var lyrics = ["head", ...parts, "and", "toes"]; 
+var lyrics = ["head", ...parts, "and", "toes"];
 
 console.log(lyrics)</pre>
 
@@ -442,11 +413,11 @@ console.log(lyrics)</pre>
 <pre class="prettyprint lang-js">lyrics -&gt; ["head","shoulders","knees","and","toes"]</pre>
 
 <p>##<br>    扩展 + 对象字面量</p>
-<p>#### </p>
+<p>####</p>
 <pre><code>    我们可以使用这个创造很酷的对象。
 
 &lt;div&gt;
-    &lt;span style=&quot;font-weight:normal;&quot;&gt; 
+    &lt;span style=&quot;font-weight:normal;&quot;&gt;
 </code></pre><pre class="prettyprint lang-js">let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
 console.log(x); // 1
 console.log(y); // 2
@@ -459,32 +430,32 @@ console.log(obj)
 可惜的是它还不支持：
 
 npm install --save-dev babel-plugin-transform-object-rest-spread</pre>
- 
+
         <h2>
-            <span style="font-weight:normal;">Rest</span> 
+            <span style="font-weight:normal;">Rest</span>
 
     
 
 
-#### 
-    <span style="font-weight:normal;"><span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">我们可以使用 rest 操作符来允许无限参数。</span></span> 
+####
+    <span style="font-weight:normal;"><span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">我们可以使用 rest 操作符来允许无限参数。</span></span>
 
-#### 
-    <span style="font-weight:normal;"> 
+####
+    <span style="font-weight:normal;">
 <pre class="prettyprint lang-js">function demo(part1, ...part2) {
     return {part1, part2}
 }
 
 console.log(demo(1,2,3,4,5,6))</pre>
-</span> 
+</span>
 
-### 
-    <span style="font-weight:normal;">结果：</span> 
+###
+    <span style="font-weight:normal;">结果：</span>
 
 <pre class="prettyprint lang-js">demo(1,2,3,4,5,6) -&gt; {"part1":1,"part2":[2,3,4,5,6]}</pre>
 
 <p>##<br>    Let</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">let是新的var。 因为它有块级作用域。</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">let是新的var。 因为它有块级作用域。</span></p>
 <pre class="prettyprint lang-js">{
    var globalVar = "from demo1"
 }
@@ -500,47 +471,47 @@ console.log(globalLet)</pre>
 <pre class="prettyprint lang-js">globalVar -&gt; from demo1
 globalLet -&gt; ReferenceError: globalLet is not defined</pre>
 
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">但是，它不会向window分配任何内容：</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">但是，它不会向window分配任何内容：</span></p>
 <pre class="prettyprint lang-js">let me = "go";  // 全局作用域
 var i = "able"; // 全局作用域
 
-console.log(window.me); 
+console.log(window.me);
 console.log(window.i);</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">window.me -&gt; undefined
 window.i -&gt; able</pre>
 
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">不能使用let重新声明一个变量：</span> </p>
-<p>#### </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">不能使用let重新声明一个变量：</span></p>
+<p>####</p>
 <pre class="prettyprint lang-js">let me = "foo";
-let me = "bar"; 
+let me = "bar";
 console.log(me);</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">SyntaxError: Identifier 'me' has already been declared</pre>
 <pre class="prettyprint lang-js">var me = "foo";
-var me = "bar"; 
+var me = "bar";
 console.log(me)</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">me -&gt; bar</pre>
 
-<p>## </p>
+<p>##</p>
 <p>##<br>    Const</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;**const 是只读变量。**&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;**const 是只读变量。**&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;** **&lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;** **&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">**const a = "b"
 a = "a"**</pre>
-** ** 
+** **
 
-### 
-    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**结果：**</span> 
+###
+    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**结果：**</span>
 
 <pre class="prettyprint lang-js">TypeError: Assignment to constant variable.</pre>
 
-<p>#### </p>
+<p>####</p>
 <p>####<br>    <strong>应该注意</strong>，const 对象仍然可以被改变的。</p>
 <pre class="prettyprint lang-js">const a = { a: "a" }
 a.a = "b"
@@ -549,10 +520,10 @@ console.log(a)</pre>
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">a -&gt; {"a":"b"}</pre>
 
-<p>## </p>
-<p>##<br>    <strong>For..of</strong> </p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器的新类型，可以替代for..in。它返回的是值而不是keys</span> </p>
-<p>#### </p>
+<p>##</p>
+<p>##<br>    <strong>For..of</strong></p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器的新类型，可以替代for..in。它返回的是值而不是keys</span></p>
+<p>####</p>
 <pre class="prettyprint lang-js">let list = [4, 5, 6];
 console.log(list)
 for (let i in list) {
@@ -567,7 +538,7 @@ i -&gt; 2</pre>
 <pre class="prettyprint lang-js">let list = [4, 5, 6];
 console.log(list)
 for (let i of list) {
-   console.log(i); 
+   console.log(i);
 }</pre>
 
 <p>###<br>    结果：</p>
@@ -576,10 +547,10 @@ i -&gt; 4
 i -&gt; 5
 i -&gt; 6</pre>
 
-<p>## </p>
+<p>##</p>
 <p>##<br>    迭代器（Iterators）</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器是一个比数组更动态的类型。</span> </p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器是一个比数组更动态的类型。</span></p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">let infinite = {
   [Symbol.iterator]() {
     let c = 0;
@@ -614,8 +585,8 @@ n -&gt; 8
 n -&gt; 9
 n -&gt; 10</pre>
 
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript，我们可以看到它接口的样子：</span> </p>
-<p>#### </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript，我们可以看到它接口的样子：</span></p>
+<p>####</p>
 <pre class="prettyprint lang-js">Typescript 代码:
 interface IteratorResult {
   done: boolean;
@@ -628,9 +599,9 @@ interface Iterable {
   [Symbol.iterator](): Iterator
 }</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    生成器（Generators）</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。</span></p>
 <pre class="prettyprint lang-js">var infinity = {
   [Symbol.iterator]: function*() {
     var c = 1;
@@ -661,16 +632,16 @@ n -&gt; 8
 n -&gt; 9
 n -&gt; 10</pre>
 
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript 再次显示接口：</span> </p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Typescript 代码:</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript 再次显示接口：</span></p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Typescript 代码:</span></p>
 <pre class="prettyprint lang-js">interface Generator extends Iterator {
     next(value?: any): IteratorResult;
     throw(exception: any);
 }</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    function* Iterators and generator</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">一个产量的例子*</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">一个产量的例子*</span></p>
 <pre class="prettyprint lang-js">function* anotherGenerator(i) {
   yield i + 1;
   yield i + 2;
@@ -685,10 +656,10 @@ function* generator(i) {
 
 var gen = generator(10);
 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
-console.log(gen.next().value); 
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
 console.log(gen.next().value);</pre>
 
 <p>###<br>    结果：</p>
@@ -698,9 +669,9 @@ gen.next().value -&gt; 12
 gen.next().value -&gt; 13
 gen.next().value -&gt; 20</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    Unicode</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 为Unicode 提供了更好的支持。&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 为Unicode 提供了更好的支持。&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">var regex = new RegExp('\u{61}', 'u');
 
 console.log(regex.unicode)
@@ -709,10 +680,10 @@ console.log("\uD842\uDFD7".codePointAt())</pre>
 
 <p>###<br>    结果：</p>
 <pre class="prettyprint lang-js">regex.unicode -&gt; true
-"" -&gt; 
+"" -&gt;
 "".codePointAt() -&gt; 134103</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    模块和模块加载器</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">原生支持模块。</span></p>
 <pre class="prettyprint lang-js">import defaultMember from "module-name";
@@ -742,7 +713,7 @@ Import Export</pre>
 
 <p>##<br>    Set</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Set 为数学对应，其中所有项目都是唯一的。对于知道SQL的人来说，这相当于distinct。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var set = new Set();
 set.add("Potato").add("Tomato").add("Tomato");
 console.log(set.size)
@@ -760,7 +731,7 @@ item -&gt; Potato
 item -&gt; Tomato**</pre>
 ** **
 
-## 
+##
     **
     <h3 id="weakset" style="font-size:16px;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;background-color:#FFFFFF;">
         WeakSet
@@ -768,7 +739,7 @@ item -&gt; Tomato**</pre>
 **
 </h3></h2>
 
-#### 
+####
     <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">WeakSet对象允许您在集合中存储弱持有的对象。没有引用的对象将被垃圾回收。</span>
 
 <pre class="prettyprint lang-js">var item = { a:"Potato"}
@@ -823,7 +794,7 @@ map.get({a: "a"}) -&gt; undefined</pre>
 
 <p>##<br>    WeakMap</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用键的对象，并且只保留对键的弱引用。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var wm = new WeakMap();
 
 var o1  = {}
@@ -857,7 +828,7 @@ TypeError: wm[Symbol.iterator] is not a function</pre>
 
 <p>##<br>    代理（Proxy）</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">代理可以用来改变对象的行为。 它们允许我们定义 trap 。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var obj = function ProfanityGenerator() {
     return {
        words: "Horrible words"    
@@ -880,7 +851,7 @@ console.log(proxy.words);</pre>
 <p>###<br>    结果</p>
 <pre class="prettyprint lang-js">proxy.words -&gt; Nice words</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    提供以下 trap ：</p>
 <pre class="prettyprint lang-js">var handler =
 {
@@ -929,7 +900,7 @@ Symbol("a") === Symbol("a") -&gt; false</pre>
 
 <p>##<br>    可继承内置函数</p>
 <p>####<br>    我们现在可以继承原生类</p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">class CustomArray extends Array {
 
 }
@@ -942,7 +913,7 @@ console.log(a[0])</pre>
 
 <pre class="prettyprint lang-js">a[0] -&gt; 2</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    不能使用数组的代理(Proxy)来覆盖getter函数。</p>
 <p>###<br>    新类库</p>
 <p>###<br>    各种新的方法和常量</p>
@@ -961,8 +932,8 @@ console.log("abc".repeat(3) )
 console.log(Array.of(1, 2, 3) )
 console.log([0, 0, 0].fill(7, 1) )
 console.log([1, 2, 3].find(x =&gt; x == 3) )
-console.log([1, 2, 3].findIndex(x =&gt; x == 2)) 
-console.log([1, 2, 3, 4, 5].copyWithin(3, 0)) 
+console.log([1, 2, 3].findIndex(x =&gt; x == 2))
+console.log([1, 2, 3, 4, 5].copyWithin(3, 0))
 console.log(["a", "b", "c"].entries() )
 console.log(["a", "b", "c"].keys() )
 console.log(["a", "b", "c"].values() )
@@ -970,7 +941,7 @@ console.log(["a", "b", "c"].values() )
 console.log(Object.assign({}, { origin: new Point(0,0) }))**</pre>
 ** **
 
-### 
+###
     **结果：**
 
 <pre class="prettyprint lang-js">Number.EPSILON -&gt; 2.220446049250313e-16
@@ -992,7 +963,7 @@ Array.of(1, 2, 3) -&gt; [1,2,3]
 Object.assign({}, { origin: new Point(0,0) }) -&gt; ReferenceError: Point is not defined
 文档: Number, Math, Array.from, Array.of, Array.prototype.copyWithin, Object.assign</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    二进制和八进制</p>
 <p>####<br>    <span style="color:#777777;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">二进制和八进制数字的字面量。</span></p>
 <pre class="prettyprint lang-js">console.log(0b11111)
@@ -1006,10 +977,10 @@ console.log(0xff); // also in es5</pre>
 0o2342 -&gt; 1250
 0xff -&gt; 255</pre>
 
-<p>## </p>
+<p>##</p>
 <p>###<br>    Promises</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">异步编程。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var p1 = new Promise((resolve, reject) =&gt; {
   setTimeout(() =&gt; resolve("1"), 101)
 })
@@ -1030,7 +1001,7 @@ Promise.all([p1, p2]).then((res) =&gt; {
 res -&gt; ["1","2"]</pre>
 
 <p>##<br>    快速的Promise</p>
-<p>## </p>
+<p>##</p>
 <pre class="prettyprint lang-js">var p1 = Promise.resolve("1")
 var p2 = Promise.reject("2")
 
@@ -1043,7 +1014,7 @@ Promise.race([p1, p2]).then((res) =&gt; {
 
 <p>##<br>    快速失败</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">如果一个 promise 失败，all和race也将 reject(拒绝)。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">var p1 = new Promise((resolve, reject) =&gt; {
   setTimeout(() =&gt; resolve("1"), 1001)
 })
@@ -1091,9 +1062,9 @@ Reflect.has(y, "x") -&gt; false</pre>
 <p>##<br>    尾调用(Tail Call)优化</p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">尾调用的概念非常简单，一句话就能说清楚，就是指某个函数的最后一步是调用另一个函数。</span></p>
 <p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">ES6可以确保尾调用不会造成堆栈溢出。 （不是所有的实现工作）。</span></p>
-<p>#### </p>
+<p>####</p>
 <pre class="prettyprint lang-js">function factorial(n, acc = 1) {
-    if (n &lt;= 1) return acc; 
+    if (n &lt;= 1) return acc;
     return factorial(n - 1, n * acc);
 }
 console.log(factorial(10))
@@ -1109,7 +1080,8 @@ factorial(100) -&gt; 9.332621544394418e+157
 factorial(1000) -&gt; Infinity
 factorial(10000) -&gt; Infinity
 factorial(100000) -&gt; RangeError: Maximum call stack size exceeded
-factorial(1000000) -&gt; RangeError: Maximum call stack size exceeded</pre>]]></content>
+factorial(1000000) -&gt; RangeError: Maximum call stack size exceeded</pre>
+]]></content>
     
     <summary type="html">
     
@@ -1117,11 +1089,7 @@ factorial(1000000) -&gt; RangeError: Maximum call stack size exceeded</pre>]]></
     
     </summary>
     
-      <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
-    
-      <category term="JavaScript" scheme="http://yoursite.com/categories/ES6/JavaScript/"/>
-    
-      <category term="未分类" scheme="http://yoursite.com/categories/ES6/JavaScript/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
     
     
       <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
@@ -1133,7 +1101,7 @@ factorial(1000000) -&gt; RangeError: Maximum call stack size exceeded</pre>]]></
     <link href="http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/"/>
     <id>http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/</id>
     <published>2017-02-14T07:45:29.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:51:31.000Z</updated>
     
     <content type="html"><![CDATA[<p>JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。</p>
 <pre><code>一、
@@ -1209,6 +1177,12 @@ call 和 appl
       <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
     
     
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+      <category term="call" scheme="http://yoursite.com/tags/call/"/>
+    
+      <category term="apply" scheme="http://yoursite.com/tags/apply/"/>
+    
   </entry>
   
   <entry>
@@ -1216,69 +1190,69 @@ call 和 appl
     <link href="http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/"/>
     <id>http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/</id>
     <published>2017-01-08T10:48:00.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:42:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧</p>
-<pre><code>一、&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;宽高不定，上下左右垂直居中。&lt;/span&gt; 
+<pre><code>一、&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;宽高不定，上下左右垂直居中。&lt;/span&gt;
 
-(1).&lt;span&gt;绝对定位top left 各50%，然后&lt;/span&gt;&lt;span style=&quot;color:#000080;font-family:Menlo, Monaco, Consolas, &amp;quot;font-size:12.8px;background-color:#F8F8F8;&quot;&gt;transform&lt;/span&gt;&lt;span&gt;负数撑回来&lt;/span&gt; 
+(1).&lt;span&gt;绝对定位top left 各50%，然后&lt;/span&gt;&lt;span style=&quot;color:#000080;font-family:Menlo, Monaco, Consolas, &amp;quot;font-size:12.8px;background-color:#F8F8F8;&quot;&gt;transform&lt;/span&gt;&lt;span&gt;负数撑回来&lt;/span&gt;
 
-&lt;span&gt;代码如下：&lt;/span&gt; 
+&lt;span&gt;代码如下：&lt;/span&gt;
 
-&lt;span&gt;HTML代码&lt;/span&gt; 
+&lt;span&gt;HTML代码&lt;/span&gt;
 
-&lt;span&gt; &lt;/span&gt; 
+&lt;span&gt; &lt;/span&gt;
 </code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast”&gt;提交成功&lt;/div&gt;</pre><br>CSS代码</p>
-<pre><code>&lt;span&gt; &lt;/span&gt; 
+<pre><code>&lt;span&gt; &lt;/span&gt;
 </code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%, -50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>}</pre><br>效果图：</p>
-<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img01.png) 
+<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img01.png)
 
-&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;But !&lt;/span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;这时候产品突然需要增加一个需求，Toast 组件一行最多只能有 12 个中文字符，超过的时候折行&lt;/span&gt;&lt;/span&gt; 
+&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;But !&lt;/span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;这时候产品突然需要增加一个需求，Toast 组件一行最多只能有 12 个中文字符，超过的时候折行&lt;/span&gt;&lt;/span&gt;
 
 看起来这个要求也不高 ~ 我们修改一下代码
 
 CSS
 </code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%, -50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>  // 新增代码如下<br>  width: auto;<br>  max-width: 12em;<br>}</pre><br>效果如下图</p>
-<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img02.png) 
+<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img02.png)
 
-&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;可以看到，最终实现效果在第 9 个字的时候便折行了。&lt;/span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;这是为什么呢？我们把&lt;/span&gt; 
-</code></pre><p><pre class="prettyprint lang-js">transform: translate(-50%, -50%)<br></pre><br><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">去掉看一下</span> </p>
-<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img03.png) 
-</code></pre><p><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">可以看到容器宽度在到达屏幕边界的时候就被截断折行了。</span><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">现在我们设定&nbsp;</span>left: 90%<span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">&nbsp;看一下</span> </p>
+&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;可以看到，最终实现效果在第 9 个字的时候便折行了。&lt;/span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;这是为什么呢？我们把&lt;/span&gt;
+</code></pre><p><pre class="prettyprint lang-js">transform: translate(-50%, -50%)<br></pre><br><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">去掉看一下</span></p>
+<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img03.png)
+</code></pre><p><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">可以看到容器宽度在到达屏幕边界的时候就被截断折行了。</span><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">现在我们设定&nbsp;</span>left: 90%<span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">&nbsp;看一下</span></p>
 <pre><code>&lt;span&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img04.png '' '' %}
-</code></pre><p> </p>
-<pre><code>&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;可以明显的看到容器被截断的更加严重。&lt;/span&gt;&lt;/span&gt; 
+</code></pre><p></p>
+<pre><code>&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;可以明显的看到容器被截断的更加严重。&lt;/span&gt;&lt;/span&gt;
 
-&lt;span&gt;&lt;span style=&quot;font-weight:700;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;至此我们分析得知，设置为&amp;nbsp;position: fixed的元素不仅位置是相对于屏幕边界定位，如果不指定元素宽高的话，宽高同样也会相对于屏幕边界被截断。&lt;/span&gt;&lt;/span&gt; 
+&lt;span&gt;&lt;span style=&quot;font-weight:700;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;至此我们分析得知，设置为&amp;nbsp;position: fixed的元素不仅位置是相对于屏幕边界定位，如果不指定元素宽高的话，宽高同样也会相对于屏幕边界被截断。&lt;/span&gt;&lt;/span&gt;
 
-&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;那么如何解决这个问题呢 ~&lt;/span&gt;&lt;/span&gt; 
+&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;那么如何解决这个问题呢 ~&lt;/span&gt;&lt;/span&gt;
 
-&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;代码如下 ~&lt;/span&gt;&lt;/span&gt; 
+&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;代码如下 ~&lt;/span&gt;&lt;/span&gt;
 
-&lt;span&gt;HTML：&lt;/span&gt; 
+&lt;span&gt;HTML：&lt;/span&gt;
 
-&lt;span&gt; &lt;/span&gt; 
+&lt;span&gt; &lt;/span&gt;
 </code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast-container”&gt;<br>  &lt;div class=”toast”&gt;测试十二个字提交成功状态&lt;/div&gt;<br>&lt;/div&gt;<br></pre><br>CSS</p>
-<pre><code>&lt;span&gt; &lt;/span&gt; 
-</code></pre><p><pre class="prettyprint lang-js">.toast-container {<br>  position: fixed;<br>  width: 100%;<br>  height: 100%;<br>  left: 100%;<br>  top: 100%;<br>}<br>.toast {<br>  position: absolute;<br>  top: -50%;<br>  left: -50%;<br>  transform: translate(-50%, -50%);<br>  width: auto;<br>  max-width: 12em;<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>}</pre><br><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">在 .toast 外加一个和屏幕宽高相同 .container 容器，将 .container 容器 fixed 定位到窗口外层，再将 .toast 通过 absolute 定位翻转过来即可。</span> </p>
-<pre><code>&lt;span&gt;效果如下：&lt;/span&gt; 
+<pre><code>&lt;span&gt; &lt;/span&gt;
+</code></pre><p><pre class="prettyprint lang-js">.toast-container {<br>  position: fixed;<br>  width: 100%;<br>  height: 100%;<br>  left: 100%;<br>  top: 100%;<br>}<br>.toast {<br>  position: absolute;<br>  top: -50%;<br>  left: -50%;<br>  transform: translate(-50%, -50%);<br>  width: auto;<br>  max-width: 12em;<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>}</pre><br><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">在 .toast 外加一个和屏幕宽高相同 .container 容器，将 .container 容器 fixed 定位到窗口外层，再将 .toast 通过 absolute 定位翻转过来即可。</span></p>
+<pre><code>&lt;span&gt;效果如下：&lt;/span&gt;
 
 &lt;span&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img05.png '' '' %}
-</code></pre><p> </p>
-<pre><code>（2）用&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;white-space:nowrap&lt;/span&gt; 
+</code></pre><p></p>
+<pre><code>（2）用&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;white-space:nowrap&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;代码：&lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;代码：&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;HTML&lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;HTML&lt;/span&gt;
 
-&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
 </code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast”&gt;提交成功提交成功提交成功&lt;/div&gt;</pre><br>CSS</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+<pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
 </code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%,-50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>  width: auto;<br>  max-width: 12em;<br>  white-space:nowrap ;<br>}</pre><br>效果</p>
 <pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img05.png '' '' %}
-</code></pre><p> </p>
+</code></pre><p></p>
 <pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;
-</code></pre><p> </p>
+</code></pre><p></p>
 ]]></content>
     
     <summary type="html">
@@ -1288,12 +1262,14 @@ CSS
     
     </summary>
     
-      <category term="css" scheme="http://yoursite.com/categories/css/"/>
+      <category term="垂直水平居中" scheme="http://yoursite.com/categories/%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/"/>
     
-      <category term="未分类" scheme="http://yoursite.com/categories/css/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
     
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
     
       <category term="垂直水平居中" scheme="http://yoursite.com/tags/%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/"/>
+    
+      <category term="flex" scheme="http://yoursite.com/tags/flex/"/>
     
   </entry>
   
@@ -1302,25 +1278,25 @@ CSS
     <link href="http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/"/>
     <id>http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/</id>
     <published>2017-01-08T08:09:18.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:41:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>好久没写东西了，既然定了每周一篇文章的计划，就要确保认真完成，这就当做是新年的第一篇文章吧！</p>
 <pre><code>最近在做微信小程序，微信小程序中的wxss中的布局用的flex布局，今天来总结一下flex布局。
-</code></pre><p>##<br>    <span class="md-expand">一、Flex布局是什么？</span> </p>
-<pre><code>&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span class=&quot;md-expand&quot;&gt;Flex是Flexible Box的缩写，意为&quot;弹性布局&quot;，用来为盒状模型提供最大的灵活性。&lt;/span&gt;&lt;/span&gt; 
+</code></pre><p>##<br>    <span class="md-expand">一、Flex布局是什么？</span></p>
+<pre><code>&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span class=&quot;md-expand&quot;&gt;Flex是Flexible Box的缩写，意为&quot;弹性布局&quot;，用来为盒状模型提供最大的灵活性。&lt;/span&gt;&lt;/span&gt;
 
-&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span&gt;任何一个容器都可以指定为Flex布局。&lt;/span&gt;&lt;/span&gt; 
+&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span&gt;任何一个容器都可以指定为Flex布局。&lt;/span&gt;&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-css">.box{
   display: flex;
 }</pre>
-<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">行内元素也可以使用Flex布局。</span> 
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">行内元素也可以使用Flex布局。</span>
 
 <pre class="prettyprint lang-css">.box{
   display: inline-flex;
 }</pre>
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">Webkit内核的浏览器，必须加上</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">-webkit</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">前缀。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">Webkit内核的浏览器，必须加上</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">-webkit</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">前缀。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span>
 
 <pre class="prettyprint lang-js">.box{
   display: -webkit-flex; /* Safari */
@@ -1328,12 +1304,12 @@ CSS
 }</pre>
 <span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">注意，设为Flex布局以后，子元素的</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">float</span><span style="color:#333333;font-family:&quot;font-size:16px;">、</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">clear</span><span style="color:#333333;font-family:&quot;font-size:16px;">和</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">vertical-align</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性将失效。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span>
 
-## 
-    <span class="md-expand">二、基本概念</span> 
+##
+    <span class="md-expand">二、基本概念</span>
 
-<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">采用Flex布局的元素，称为Flex容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称"项目"。</span> 
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">采用Flex布局的元素，称为Flex容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称"项目"。</span>
 
     <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -1343,22 +1319,22 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-</span> 
+</span>
 
     <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">main start</span><span style="color:#333333;font-family:&quot;font-size:16px;">，结束位置叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">main end</span><span style="color:#333333;font-family:&quot;font-size:16px;">；交叉轴的开始位置叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">cross start</span><span style="color:#333333;font-family:&quot;font-size:16px;">，结束位置叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">cross end</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span>
 
-</span> 
+</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">项目默认沿主轴排列。单个项目占据的主轴空间叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;">main size</span><span style="color:#333333;font-family:&quot;font-size:16px;">，占据的交叉轴空间叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;">cross size</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">项目默认沿主轴排列。单个项目占据的主轴空间叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;">main size</span><span style="color:#333333;font-family:&quot;font-size:16px;">，占据的交叉轴空间叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;">cross size</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span>
 
-## 
-    <span class="md-expand">三、容器的属性</span> 
+##
+    <span class="md-expand">三、容器的属性</span>
 
-<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">以下6个属性设置在容器上。</span> 
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">以下6个属性设置在容器上。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 *   flex-direction
 *   flex-wrap
@@ -1367,12 +1343,12 @@ CSS
 *   align-items
 *   align-content
 
-### 
-    <span class="md-expand">3.1 flex-direction属性</span> 
+###
+    <span class="md-expand">3.1 flex-direction属性</span>
 
 <span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">flex-direction</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性决定主轴的方向（即项目的排列方向）。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.box {
   flex-direction: row | row-reverse | column | column-reverse;
@@ -1385,19 +1361,19 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能有4个值。</span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能有4个值。</span></span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span></span>
 
 *   row（默认值）：主轴为水平方向，起点在左端。
 *   row-reverse：主轴为水平方向，起点在右端。
 *   column：主轴为垂直方向，起点在上沿。
 *   column-reverse：主轴为垂直方向，起点在下沿。
 
-### 
-    <span class="md-expand">3.2 flex-wrap属性</span> 
+###
+    <span class="md-expand">3.2 flex-wrap属性</span>
 
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">默认情况下，项目都排在一条线（又称"轴线"）上。</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-wrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性定义，如果一条轴线排不下，如何换行。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">默认情况下，项目都排在一条线（又称"轴线"）上。</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-wrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性定义，如果一条轴线排不下，如何换行。</span>
 
     <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -1407,16 +1383,16 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-</span></span></span> 
+</span></span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.box{
   flex-wrap: nowrap | wrap | wrap-reverse;
 }</pre>
-<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取三个值。</span> 
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取三个值。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（1）</span><span style="color:#333333;font-family:&quot;font-size:16px;">nowrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">（默认）：不换行。</span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（1）</span><span style="color:#333333;font-family:&quot;font-size:16px;">nowrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">（默认）：不换行。</span></span></span>
 
     <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;"><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -1426,9 +1402,9 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-</span></span></span> 
+</span></span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（2）</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">wrap</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">：换行，第一行在上方。</span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（2）</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">wrap</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">：换行，第一行在上方。</span></span></span>
 
     <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -1438,9 +1414,9 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-</span></span> 
+</span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（3）</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">wrap-reverse</span><span style="color:#333333;font-family:&quot;font-size:16px;">：换行，第一行在下方。</span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（3）</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">wrap-reverse</span><span style="color:#333333;font-family:&quot;font-size:16px;">：换行，第一行在下方。</span></span></span>
 
     <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -1450,24 +1426,24 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-</span></span> 
+</span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
-### 
-    <span class="md-expand">3.3 flex-flow</span> 
+###
+    <span class="md-expand">3.3 flex-flow</span>
 
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-flow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性是</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-direction</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性和</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-wrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性的简写形式，默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">row nowrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-flow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性是</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-direction</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性和</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-wrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性的简写形式，默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">row nowrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.box {
   flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
 }</pre>
 
-<p>###<br>    <span class="md-expand">3.4 justify-content属性</span> </p>
-<p><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">justify-content</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了项目在主轴上的对齐方式。</span> </p>
-<pre><code>&lt;span class=&quot;&quot; style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt; 
+<p>###<br>    <span class="md-expand">3.4 justify-content属性</span></p>
+<p><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">justify-content</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了项目在主轴上的对齐方式。</span></p>
+<pre><code>&lt;span class=&quot;&quot; style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">.box {
   justify-content: flex-start | flex-end | center | space-between | space-around;
 }</pre>
@@ -1479,9 +1455,9 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</span></span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 *   flex-start（默认值）：左对齐
 *   flex-end：右对齐
@@ -1489,16 +1465,16 @@ CSS
 *   space-between：两端对齐，项目之间的间隔都相等。
 *   space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
 
-### 
-    <span class="md-expand"> 
+###
+    <span class="md-expand">
     <h3 class="md-end-block md-heading md-focus" style="font-size:1.5em;color:#333333;font-family:&quot;background-color:#FFFFFF;">
-        <span class="md-expand">3.5 align-items属性</span> 
+        <span class="md-expand">3.5 align-items属性</span>
 
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目在交叉轴上如何对齐。</span></h3></span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目在交叉轴上如何对齐。</span></h3></span>
 
 
-### 
-    <span class="md-expand"> 
+###
+    <span class="md-expand">
 <pre class="prettyprint lang-js">.box {
   align-items: flex-start | flex-end | center | baseline | stretch;
 }</pre>
@@ -1510,11 +1486,11 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-</span> 
+</span>
 
-    <span class="md-expand"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</span></span> 
+    <span class="md-expand"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</span></span>
 
-    <span class="md-expand"> </span> 
+    <span class="md-expand"> </span>
 
 *   flex-start：交叉轴的起点对齐。
 *   flex-end：交叉轴的终点对齐。
@@ -1522,12 +1498,12 @@ CSS
 *   baseline: 项目的第一行文字的基线对齐。
 *   stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
 
-### 
-    <span class="md-expand">3.6 align-content属性</span> 
+###
+    <span class="md-expand">3.6 align-content属性</span>
 
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-content</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-content</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.box {
   align-content: flex-start | flex-end | center | space-between | space-around | stretch;
@@ -1540,9 +1516,9 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">该属性可能取6个值。</span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">该属性可能取6个值。</span></span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span></span>
 
 *   flex-start：与交叉轴的起点对齐。
 *   flex-end：与交叉轴的终点对齐。
@@ -1551,14 +1527,14 @@ CSS
 *   space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
 *   stretch（默认值）：轴线占满整个交叉轴。
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
-### 
-    <span class="md-expand">四、项目的属性</span> 
+###
+    <span class="md-expand">四、项目的属性</span>
 
-<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">以下6个属性设置在项目上。</span> 
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">以下6个属性设置在项目上。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 *   order
 *   flex-grow
@@ -1567,12 +1543,12 @@ CSS
 *   flex
 *   align-self
 
-### 
-    <span class="md-expand">4.1 order属性</span> 
+###
+    <span class="md-expand">4.1 order属性</span>
 
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">order</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">order</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.item {
   order: &lt;integer&gt;;
@@ -1585,14 +1561,14 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
-### 
-    <span class="md-expand">4.2 flex-grow属性</span> 
+###
+    <span class="md-expand">4.2 flex-grow属性</span>
 
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目的放大比例，默认为</span><span style="color:#333333;font-family:&quot;font-size:16px;">0</span><span style="color:#333333;font-family:&quot;font-size:16px;">，即如果存在剩余空间，也不放大。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目的放大比例，默认为</span><span style="color:#333333;font-family:&quot;font-size:16px;">0</span><span style="color:#333333;font-family:&quot;font-size:16px;">，即如果存在剩余空间，也不放大。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.item {
   flex-grow: &lt;number&gt;; /* default 0 */
@@ -1603,16 +1579,16 @@ CSS
                     <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">如果所有项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</span> 
+            </figure><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">如果所有项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
-### 
-    <span class="md-expand">4.3 flex-shrink属性</span> 
+###
+    <span class="md-expand">4.3 flex-shrink属性</span>
 
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.item {
   flex-shrink: &lt;number&gt;; /* default 1 */
@@ -1625,45 +1601,45 @@ CSS
                 <div class="image-caption"></div>
             </figure>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">如果所有项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性都为1，当空间不足时，都将等比例缩小。如果一个项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性为0，其他项目都为1，则空间不足时，前者不缩小。</span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">如果所有项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性都为1，当空间不足时，都将等比例缩小。如果一个项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性为0，其他项目都为1，则空间不足时，前者不缩小。</span></span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">负值对该属性无效。</span></span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">负值对该属性无效。</span></span></span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
-### 
-    <span class="md-expand">4.4 flex-basis属性</span> 
+###
+    <span class="md-expand">4.4 flex-basis属性</span>
 
 <span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-basis</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">auto</span><span style="color:#333333;font-family:&quot;font-size:16px;">，即项目的本来大小。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.item {
   flex-basis: &lt;length&gt; | auto; /* default auto */
 }</pre>
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">它可以设为跟</span><span style="color:#333333;font-family:&quot;font-size:16px;">width</span><span style="color:#333333;font-family:&quot;font-size:16px;">或</span><span style="color:#333333;font-family:&quot;font-size:16px;">height</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性一样的值（比如350px），则项目将占据固定空间。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">它可以设为跟</span><span style="color:#333333;font-family:&quot;font-size:16px;">width</span><span style="color:#333333;font-family:&quot;font-size:16px;">或</span><span style="color:#333333;font-family:&quot;font-size:16px;">height</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性一样的值（比如350px），则项目将占据固定空间。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
-### 
-    <span class="md-expand">4.5 flex属性</span> 
+###
+    <span class="md-expand">4.5 flex属性</span>
 
-<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性是</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">,&nbsp;</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">&nbsp;和&nbsp;</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-basis</span><span style="color:#333333;font-family:&quot;font-size:16px;">的简写，默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">0 1 auto</span><span style="color:#333333;font-family:&quot;font-size:16px;">。后两个属性可选。</span> 
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性是</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">,&nbsp;</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">&nbsp;和&nbsp;</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-basis</span><span style="color:#333333;font-family:&quot;font-size:16px;">的简写，默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">0 1 auto</span><span style="color:#333333;font-family:&quot;font-size:16px;">。后两个属性可选。</span>
 
-    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span>
 
 <pre class="prettyprint lang-js">.item {
   flex: none | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt;? || &lt;'flex-basis'&gt; ]
 }</pre>
 
-<pre><code>&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span class=&quot;md-expand&quot;&gt;该属性有两个快捷值：&lt;/span&gt;&lt;span&gt;auto&lt;/span&gt;&lt;span&gt;&amp;nbsp;(&lt;/span&gt;&lt;span&gt;1 1 auto&lt;/span&gt;&lt;span&gt;) 和 none (&lt;/span&gt;&lt;span&gt;0 0 auto&lt;/span&gt;&lt;span&gt;)。&lt;/span&gt;&lt;/span&gt; 
+<pre><code>&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span class=&quot;md-expand&quot;&gt;该属性有两个快捷值：&lt;/span&gt;&lt;span&gt;auto&lt;/span&gt;&lt;span&gt;&amp;nbsp;(&lt;/span&gt;&lt;span&gt;1 1 auto&lt;/span&gt;&lt;span&gt;) 和 none (&lt;/span&gt;&lt;span&gt;0 0 auto&lt;/span&gt;&lt;span&gt;)。&lt;/span&gt;&lt;/span&gt;
 
-&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span&gt;建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。&lt;/span&gt;&lt;/span&gt; 
-</code></pre><p>###<br>    <span class="md-expand">4.6 align-self属性</span> </p>
-<p><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-self</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性允许单个项目有与其他项目不一样的对齐方式，可覆盖</span><span style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性。默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">auto</span><span style="color:#333333;font-family:&quot;font-size:16px;">，表示继承父元素的</span><span style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性，如果没有父元素，则等同于</span><span style="color:#333333;font-family:&quot;font-size:16px;">stretch</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span> </p>
+&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span&gt;建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。&lt;/span&gt;&lt;/span&gt;
+</code></pre><p>###<br>    <span class="md-expand">4.6 align-self属性</span></p>
+<p><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-self</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性允许单个项目有与其他项目不一样的对齐方式，可覆盖</span><span style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性。默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">auto</span><span style="color:#333333;font-family:&quot;font-size:16px;">，表示继承父元素的</span><span style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性，如果没有父元素，则等同于</span><span style="color:#333333;font-family:&quot;font-size:16px;">stretch</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span></p>
 <pre><code>&lt;span class=&quot;&quot; style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;&quot;&gt;{% image http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071016.png '' '' %}
 </code></pre><p> <span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</span></p>
-<p> </p>
+<p></p>
 ]]></content>
     
     <summary type="html">
@@ -1676,8 +1652,8 @@ CSS
     
       <category term="css" scheme="http://yoursite.com/categories/css/"/>
     
-      <category term="css" scheme="http://yoursite.com/categories/css/css/"/>
     
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
     
       <category term="flex" scheme="http://yoursite.com/tags/flex/"/>
     
@@ -1688,7 +1664,7 @@ CSS
     <link href="http://yoursite.com/2017/01/01/e5-9b-9e-e9-a6-962016-ef-bc-8c-e5-b1-95-e6-9c-9b2017/"/>
     <id>http://yoursite.com/2017/01/01/e5-9b-9e-e9-a6-962016-ef-bc-8c-e5-b1-95-e6-9c-9b2017/</id>
     <published>2016-12-31T17:58:18.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:44:22.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本来是打算在年末写年度总结，结果就一直拖，一下拖到现在。一直说没时间，其实就是懒。在去年年末的时候在知乎上看到好多人写的年度总结以及新的一年的展望，自己当时没有写，现在2016年结束了，总感觉少了点什么，大概就是当时年初没有定目标造成的空落感，所以今年加班也一定要把年度总结写完。本文分两部分，一部分回首2016年的种种，另一部分展望2017年，并制定年度计划。</p>
 <p>####<br>    <strong><span style="color:#009900;">一、回首过去</span></strong></p>
@@ -1698,7 +1674,7 @@ CSS
 
 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 对于过去一年技术的总结刚开始还能每周一篇技术文章，到了后面就没有怎么写了，写博客当初的初衷是记录成长的点滴，所以初心不能忘，新的一年每一周或者每月四篇技术文章的总结，也算是对自己技术提升的一个总结。2016年自己在github工作了122天，相对于那些大神，差的太远了，即便是不能天天工作，也要多完成一些项目，争取多写代码，多提交代码。在知乎，掘金和segmentfault上面的技术回答也寥寥无几，所以在新的一年要突破自己，多回答问题，多逛技术论坛。
 </code></pre><p>####<br>    <span style="color:#009900;">二、展望未来</span></p>
-<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span&gt;1.完成webpack构建工具的使用以及微信小程序的开发&lt;/span&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt; 
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span&gt;1.完成webpack构建工具的使用以及微信小程序的开发&lt;/span&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;
 
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; 2.完成对Vue2框架的整体学习，从打包构建工具到模块化以及到模板整体尝试，必须要完成一整个Vue2项目
 
@@ -1726,8 +1702,12 @@ CSS
     
     </summary>
     
-      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+      <category term="生活感悟" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
     
+    
+      <category term="生活感悟" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
+    
+      <category term="新年总结" scheme="http://yoursite.com/tags/%E6%96%B0%E5%B9%B4%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
@@ -1736,15 +1716,15 @@ CSS
     <link href="http://yoursite.com/2016/12/19/mac-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-ae-89-e8-a3-85-e9-9c-80-e8-a6-81-e7-ae-a1-e7-90-86-e5-91-98-e6-9d-83-e9-99-90please-try-running-this-command-again-as-rootadministrator/"/>
     <id>http://yoursite.com/2016/12/19/mac-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-ae-89-e8-a3-85-e9-9c-80-e8-a6-81-e7-ae-a1-e7-90-86-e5-91-98-e6-9d-83-e9-99-90please-try-running-this-command-again-as-rootadministrator/</id>
     <published>2016-12-19T02:47:17.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:48:39.000Z</updated>
     
-    <content type="html"><![CDATA[<p><span style="font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;"><span style="line-height:19.5px;"><span style="font-size:14px;">我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：</span></span></span><span style="font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:19.5px;">Please try running this command again as root/Administrator.</span> </p>
-<pre><code>&lt;span style=&quot;font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:19.5px;&quot;&gt;如图：&lt;/span&gt; 
+    <content type="html"><![CDATA[<p><span style="font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;"><span style="line-height:19.5px;"><span style="font-size:14px;">我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：</span></span></span><span style="font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:19.5px;">Please try running this command again as root/Administrator.</span></p>
+<pre><code>&lt;span style=&quot;font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:19.5px;&quot;&gt;如图：&lt;/span&gt;
 
 ![1](http://www.chenqiangyi.com/wp-content/uploads/2016/12/1-300x48.png)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
 
-&lt;span style=&quot;color:#555555;font-size:15px;background-color:#FFFFFF;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;&quot;&gt;&lt;span style=&quot;line-height:19.5px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;解决办法是&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#555555;background-color:#FFFFFF;line-height:19.5px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;font-size:14px;&quot;&gt;在终端输入：&lt;/span&gt; 
-</code></pre><p><pre class="prettyprint lang-js">sudo chown -R $USER /usr/local</pre><br><span style="color:#555555;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">然后输入安装的密码，在执行相关安装命令就行了</span> </p>
+&lt;span style=&quot;color:#555555;font-size:15px;background-color:#FFFFFF;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;&quot;&gt;&lt;span style=&quot;line-height:19.5px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;解决办法是&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#555555;background-color:#FFFFFF;line-height:19.5px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;font-size:14px;&quot;&gt;在终端输入：&lt;/span&gt;
+</code></pre><p><pre class="prettyprint lang-js">sudo chown -R $USER /usr/local</pre><br><span style="color:#555555;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">然后输入安装的密码，在执行相关安装命令就行了</span></p>
 ]]></content>
     
     <summary type="html">
@@ -1753,7 +1733,7 @@ CSS
     
     </summary>
     
-      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+      <category term="mac命令" scheme="http://yoursite.com/categories/mac%E5%91%BD%E4%BB%A4/"/>
     
     
       <category term="mac命令" scheme="http://yoursite.com/tags/mac%E5%91%BD%E4%BB%A4/"/>
@@ -3433,7 +3413,7 @@ checkParams(2, 4, 6);</pre>
     <link href="http://yoursite.com/2016/06/13/javascript-e5-92-8cjquery-e8-af-bb-e5-8f-96-e5-92-8c-e4-bf-ae-e6-94-b9http-headers/"/>
     <id>http://yoursite.com/2016/06/13/javascript-e5-92-8cjquery-e8-af-bb-e5-8f-96-e5-92-8c-e4-bf-ae-e6-94-b9http-headers/</id>
     <published>2016-06-12T16:40:03.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:48:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下：</p>
 <pre class="prettyprint lang-js">$(document).ready(function(){
@@ -3556,10 +3536,10 @@ checkParams(2, 4, 6);</pre>
     
     </summary>
     
-      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+      <category term="Ajax" scheme="http://yoursite.com/categories/Ajax/"/>
     
     
-      <category term="ajax" scheme="http://yoursite.com/tags/ajax/"/>
+      <category term="Ajax" scheme="http://yoursite.com/tags/Ajax/"/>
     
       <category term="HTTP headers" scheme="http://yoursite.com/tags/HTTP-headers/"/>
     
@@ -3570,7 +3550,7 @@ checkParams(2, 4, 6);</pre>
     <link href="http://yoursite.com/2016/06/13/restful-api/"/>
     <id>http://yoursite.com/2016/06/13/restful-api/</id>
     <published>2016-06-12T16:25:01.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:49:27.000Z</updated>
     
     <content type="html"><![CDATA[<p>好久没有写博客了，最近刚好在弄公司的一个项目需要调用别人的API，其中遇到好多坑，今天将其记录下来，方便以后的学习。主要参考阮一峰的文章<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a>和博客园的一篇文章<a href="http://www.cnblogs.com/princeoicq/articles/2217808.html" target="_blank" rel="external">http://www.cnblogs.com/princeoicq/articles/2217808.html</a>，接下来就来介绍RESTful API的设计与应用。</p>
 <pre><code>一、协议
@@ -3722,8 +3702,10 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
     
     </summary>
     
-      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+      <category term="API" scheme="http://yoursite.com/categories/API/"/>
     
+    
+      <category term="API" scheme="http://yoursite.com/tags/API/"/>
     
   </entry>
   
@@ -3732,49 +3714,49 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
     <link href="http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/"/>
     <id>http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/</id>
     <published>2016-05-11T16:59:22.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:51:16.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：</p>
-<pre><code>![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox2.png) 
+<pre><code>![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox2.png)
 
-&lt;span style=&quot;font-size:14px;&quot;&gt;两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的&lt;/span&gt; 
+&lt;span style=&quot;font-size:14px;&quot;&gt;两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的&lt;/span&gt;
 
 &lt;span style=&quot;font-size:14px;&quot;&gt;通过键盘控制3D盒子旋转，demo链接：[http://chenqiangyi.com/example/3Dbox1.html](http://chenqiangyi.com/example/3Dbox1.html)&lt;/span&gt;
 
 &lt;span style=&quot;font-size:14px;&quot;&gt;通过鼠标控制3D盒子旋转，demo链接：[http://chenqiangyi.com/example/3Dbox1.html](http://chenqiangyi.com/example/3Dbox1.html)&lt;/span&gt;
 
-&lt;span style=&quot;color:#E53333;font-size:16px;&quot;&gt;1.页面布局&lt;/span&gt; 
+&lt;span style=&quot;color:#E53333;font-size:16px;&quot;&gt;1.页面布局&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;&quot;&gt;需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：&lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;&quot;&gt;需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt;
 </code></pre><pre class="prettyprint lang-css">#div1 .right{ transform:rotateY(90deg) translateZ(100px);}</pre>
 然后就是左边的面，和右边的相似，只是旋转角度相反而已：
 
-    <span style="font-size:16px;"> </span> 
+    <span style="font-size:16px;"> </span>
 
 <pre class="prettyprint lang-css">#div1 .left{ transform:rotateY(-90deg) translateZ(100px);}</pre>
 前后面就是直接沿Z轴平移100px和-100px即可
 
-    <span style="font-size:16px;"> </span> 
+    <span style="font-size:16px;"> </span>
 
 <pre class="prettyprint lang-css">#div1 .front{ transform:translateZ(100px);}
 #div1 .back{ transform:translateZ(-100px);}</pre>
 上边的面就是沿Z轴平移100px然后再按照X轴旋转90度，相反下边的面沿y轴旋转-90度
 
-    <span style="font-size:16px;"> </span> 
+    <span style="font-size:16px;"> </span>
 
 <pre class="prettyprint lang-css">#div1 .top{ transform:rotateX(90deg) translateZ(100px);}
 #div1 .bottom{ transform:rotateX(-90deg) translateZ(100px);}</pre>
 然后就是为了看到3D效果，需要在其父级添加3D模型 &nbsp;transform-style: preserve-3d;
 
-    <span style="font-size:16px;">这样基本的布局就完成了</span> 
+    <span style="font-size:16px;">这样基本的布局就完成了</span>
 
-    <span style="font-size:16px;color:#E53333;">2.js控制</span> 
+    <span style="font-size:16px;color:#E53333;">2.js控制</span>
 
-<span style="font-size:14px;">首先介绍键盘的控制，我们知道键盘的按下去与松开都对应一个onkeydown事件和onkeyup事件，我们可以用事件对象获取其中的动作当按上键的时候我们可以得到他的ev.keycode=37,同理可以得到其他键的值，我们可以先定义bTop=bBotton=bLeft=bRight=false，当按下去的时候，判定哪个键对应的方向为true，然后当松开的 时候再令<span style="font-size:14px;line-height:21px;">bTop=bBotton=bLeft=bRight=false</span>这样在就可控制他的停止与运动了，然后我们开一个定时器，让他在某个方向上每隔30ms加10，这样就把X，y的值获取到了。</span> 
+<span style="font-size:14px;">首先介绍键盘的控制，我们知道键盘的按下去与松开都对应一个onkeydown事件和onkeyup事件，我们可以用事件对象获取其中的动作当按上键的时候我们可以得到他的ev.keycode=37,同理可以得到其他键的值，我们可以先定义bTop=bBotton=bLeft=bRight=false，当按下去的时候，判定哪个键对应的方向为true，然后当松开的 时候再令<span style="font-size:14px;line-height:21px;">bTop=bBotton=bLeft=bRight=false</span>这样在就可控制他的停止与运动了，然后我们开一个定时器，让他在某个方向上每隔30ms加10，这样就把X，y的值获取到了。</span>
 
-    <span style="font-size:14px;"> </span> 
+    <span style="font-size:14px;"> </span>
 
 <pre class="prettyprint lang-js">document.onkeydown=function(ev){
         if(ev.keyCode==37){
@@ -3805,7 +3787,7 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
         }
     }</pre>
 
-<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;然后就是改变他的X，y的变化，进行相应的运动变换&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;然后就是改变他的X，y的变化，进行相应的运动变换&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">//左右 y
     var y=0;
     //上下
@@ -3827,11 +3809,11 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
         console.log(1)
         oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
     },30)</pre>
-<span style="font-size:14px;">这样键盘的控制就结束了，接下来就是鼠标的控制了</span> 
+<span style="font-size:14px;">这样键盘的控制就结束了，接下来就是鼠标的控制了</span>
 
-    <span style="font-size:16px;color:#E53333;">3.鼠标的控制</span> 
+    <span style="font-size:16px;color:#E53333;">3.鼠标的控制</span>
 
-    <span style="font-size:14px;">主要运用鼠标的事件，当鼠标在网页上移动时会有相应的X和Y值得变化，这样我们就很容易得到鼠标的按下的位置和移动时的位置，我们可以根据在鼠标X轴移动的距离看做是他沿Y轴转动的角度，同时Y轴也是这样。</span> 
+    <span style="font-size:14px;">主要运用鼠标的事件，当鼠标在网页上移动时会有相应的X和Y值得变化，这样我们就很容易得到鼠标的按下的位置和移动时的位置，我们可以根据在鼠标X轴移动的距离看做是他沿Y轴转动的角度，同时Y轴也是这样。</span>
 
 <pre class="prettyprint lang-js">document.onmousedown=function(ev){
         var disX=ev.clientX-y;
@@ -3848,15 +3830,15 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
         }
         return false;
     }    </pre>
-<span style="font-size:14px;">这样两个效果就基本完成了。</span> 
+<span style="font-size:14px;">这样两个效果就基本完成了。</span>
 
-    <span style="font-size:16px;color:#E53333;">4.总结</span> 
+    <span style="font-size:16px;color:#E53333;">4.总结</span>
 
-    <span style="font-size:14px;">这个效果主要运用到了键盘的控制事件，以及盒子的拖拽模型，还有就是布局的知识，在以后会加上在移动端的控制。</span> 
+    <span style="font-size:14px;">这个效果主要运用到了键盘的控制事件，以及盒子的拖拽模型，还有就是布局的知识，在以后会加上在移动端的控制。</span>
 
-    <span style="font-size:14px;">最后附上两个模型的源代码：</span> 
+    <span style="font-size:14px;">最后附上两个模型的源代码：</span>
 
-    <span style="font-size:14px;">键盘控制3D盒子旋转：</span> 
+    <span style="font-size:14px;">键盘控制3D盒子旋转：</span>
 
 <pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -3951,7 +3933,7 @@ window.onload=function(){
 &lt;/html&gt;
 </pre>
 
-<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;鼠标控制3D盒子旋转：&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;鼠标控制3D盒子旋转：&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -3996,7 +3978,7 @@ window.onload=function(){
             document.onmousemove=document.onmouseup=null;
         }
         return false;
-    }    
+    }
 }
 &lt;/script&gt;
 &lt;/head&gt;
@@ -4013,7 +3995,7 @@ window.onload=function(){
 &lt;/html&gt;
 </pre>
 
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;over&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;over&lt;/span&gt;
 </code></pre>]]></content>
     
     <summary type="html">
@@ -4023,9 +4005,7 @@ window.onload=function(){
     
     </summary>
     
-      <category term="css" scheme="http://yoursite.com/categories/css/"/>
-    
-      <category term="HTML5" scheme="http://yoursite.com/categories/css/HTML5/"/>
+      <category term="HTML5" scheme="http://yoursite.com/categories/HTML5/"/>
     
     
       <category term="CSS3" scheme="http://yoursite.com/tags/CSS3/"/>
@@ -4039,54 +4019,60 @@ window.onload=function(){
     <link href="http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/"/>
     <id>http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/</id>
     <published>2016-05-11T14:19:10.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:45:49.000Z</updated>
     
-    <content type="html"><![CDATA[<p><span style="font-size:14px;">今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：</span><span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;"><a href="http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。" target="_blank" rel="external">http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。</a></span> </p>
-<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;原型链理解起来有点绕了，网上资料也是很多，每次晚上睡不着的时候总喜欢在网上找点原型链和闭包的文章看，效果极好。&lt;/span&gt;&lt;/span&gt; 
+    <content type="html"><![CDATA[<p><span style="font-size:14px;">今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：</span><span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;"><a href="http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。" target="_blank" rel="external">http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。</a></span></p>
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;原型链理解起来有点绕了，网上资料也是很多，每次晚上睡不着的时候总喜欢在网上找点原型链和闭包的文章看，效果极好。&lt;/span&gt;&lt;/span&gt;
 
 &lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;不要纠结于那一堆术语了，那除了让你脑筋拧成麻花，真的不能帮你什么。简单粗暴点看原型链吧，想点与代码无关的事，比如人、妖以及人妖。&lt;/span&gt;
-</code></pre><p> </p>
+</code></pre><p></p>
 <pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;font-size:16px;line-height:24px;font-family:&apos;Microsoft YaHei&apos;;background-color:#F5F5F5;&quot;&gt;1）人是人他妈生的，妖是妖他妈生的。人和妖都是对象实例，而&lt;/span&gt;&lt;span style=&quot;font-size:16px;line-height:24px;font-family:&apos;Microsoft YaHei&apos;;background-color:#F5F5F5;&quot;&gt;人他妈和妖他妈就是原型。原型也是对象，叫原型对象。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
 
 ![](/wp-content/uploads/2016/05/20160521224834_96368.png)
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;2）人他妈和人他爸啪啪啪能生出一堆人宝宝、妖他妈和妖他爸啪啪啪能生出一堆妖宝宝，啪啪啪就是构造函数，俗称造人。&lt;/span&gt; 
-</code></pre><p><img src="/wp-content/uploads/2016/05/20160521224811_76474.png" alt=""></p>
-<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;3）人他妈会记录啪啪啪的信息，所以可以通过人他妈找到啪啪啪的信息，也就是说能通过原型对象找到构造函数。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;2）人他妈和人他爸啪啪啪能生出一堆人宝宝、妖他妈和妖他爸啪啪啪能生出一堆妖宝宝，啪啪啪就是构造函数，俗称造人。&lt;/span&gt;
+</code></pre><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/wp-content/uploads/2016/05/20160521224811_76474.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;3）人他妈会记录啪啪啪的信息，所以可以通过人他妈找到啪啪啪的信息，也就是说能通过原型对象找到构造函数。&lt;/span&gt;
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;4）人他妈可以生很多宝宝，但这些宝宝只有一个妈妈，这就是原型的唯一性。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;4）人他妈可以生很多宝宝，但这些宝宝只有一个妈妈，这就是原型的唯一性。&lt;/span&gt;
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;5）人他妈也是由人他妈他妈生的，通过人他妈找到人他妈他妈，再通过人他妈他妈找到人他妈他妈……，这个关系叫做原型链。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;5）人他妈也是由人他妈他妈生的，通过人他妈找到人他妈他妈，再通过人他妈他妈找到人他妈他妈……，这个关系叫做原型链。&lt;/span&gt;
 
-![5](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/5.png) 
+![5](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/5.png)
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;6）原型链并不是无限的，当你通过人他妈一直往上找，最后发现你会发现人他妈他妈他妈……的他妈都不是人，也就是原型链最终指向null。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;6）原型链并不是无限的，当你通过人他妈一直往上找，最后发现你会发现人他妈他妈他妈……的他妈都不是人，也就是原型链最终指向null。&lt;/span&gt;
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;7）人他妈生的人会有人的样子，妖他妈生的妖会有妖的丑陋，这叫继承。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;7）人他妈生的人会有人的样子，妖他妈生的妖会有妖的丑陋，这叫继承。&lt;/span&gt;
 
 ![](/wp-content/uploads/2016/05/20160521224901_19458.png)
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;8）你继承了你妈的肤色，你妈继承了你妈他妈的肤色，你妈他妈……，这就是原型链的继承。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;8）你继承了你妈的肤色，你妈继承了你妈他妈的肤色，你妈他妈……，这就是原型链的继承。&lt;/span&gt;
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;9）你谈对象了，她妈让你带上房产证去提货，你若没有，那她妈会问你妈有没有，你妈没有那她妈会问你妈她妈有没有……这就是原型链的向上搜索。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;9）你谈对象了，她妈让你带上房产证去提货，你若没有，那她妈会问你妈有没有，你妈没有那她妈会问你妈她妈有没有……这就是原型链的向上搜索。&lt;/span&gt;
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;10）你会继承你妈的样子，但是你也可以去染发洗剪吹，就是说对象的属性可以自定义，会覆盖继承得到的属性。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;10）你会继承你妈的样子，但是你也可以去染发洗剪吹，就是说对象的属性可以自定义，会覆盖继承得到的属性。&lt;/span&gt;
 
-![11](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/11.png) 
+![11](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/11.png)
 
 11）虽然你洗剪吹了染成黄毛了，但你不能改变你妈的样子，你妈生的弟弟妹妹跟你的黄毛洗剪吹没一点关系，就是说对象实例不能改动原型的属性。
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;12）但是你家被你玩火烧了的话，那就是说你家你妈家你弟们家都被烧了，这就是原型属性的共享。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;12）但是你家被你玩火烧了的话，那就是说你家你妈家你弟们家都被烧了，这就是原型属性的共享。&lt;/span&gt;
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;13）你妈外号阿珍，邻居大娘都叫你阿珍儿，但你妈头发从飘柔做成了金毛狮王后，隔壁大婶都改口叫你包租仔，这叫原型的动态性。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;13）你妈外号阿珍，邻居大娘都叫你阿珍儿，但你妈头发从飘柔做成了金毛狮王后，隔壁大婶都改口叫你包租仔，这叫原型的动态性。&lt;/span&gt;
 
 ![](/wp-content/uploads/2016/05/20160521224954_46031.png)
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;14）你妈爱美，又跑到韩国整形，整到你妈他妈都认不出来，即使你妈头发换回飘柔了，但隔壁邻居还是叫你金毛狮王子。因为没人认出你妈，整形后的你妈已经回炉再造了，这就是原型的整体重写。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;14）你妈爱美，又跑到韩国整形，整到你妈他妈都认不出来，即使你妈头发换回飘柔了，但隔壁邻居还是叫你金毛狮王子。因为没人认出你妈，整形后的你妈已经回炉再造了，这就是原型的整体重写。&lt;/span&gt;
 
-![4](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/4.png) 
+![4](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/4.png)
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;尼玛！你特么也是够了！ Don’t BB！ Show me the code！&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;尼玛！你特么也是够了！ Don’t BB！ Show me the code！&lt;/span&gt;
 </code></pre><pre class="prettyprint lang-js">function Person (name) { this.name = name; }
 function Mother () { }
 Mother.prototype = {    //Mother的原型
@@ -4106,14 +4092,14 @@ p1.age = 20;
  * p2：只有属性name，__proto__跟 Mother.prototype一样
  */
 
-p1.home[0] = 'Shenzhen'; 
+p1.home[0] = 'Shenzhen';
 /* 原型中引用类型属性的共享，正如你烧了你家，就是烧了你全家的家
  * 这个先过，下文再仔细唠叨一下可好？
  * p1：'Jack',20; __proto__:{__proto__:18,['Shenzhen','Shanghai']}
  * p2：'Mark';    __proto__:{__proto__:18,['Shenzhen','Shanghai']}
  */
 
-p1.home = ['Hangzhou', 'Guangzhou']; 
+p1.home = ['Hangzhou', 'Guangzhou'];
 /* 其实跟p1.age=20一样的操作。换成这个理解: var o={}; o.home=['big','house']
  * p1：'Jack',20,['Hangzhou','Guangzhou']; __proto__:{__proto__:18,['Shenzhen','Shanghai']}
  * p2：'Mark';                             __proto__:{__proto__:18,['Shenzhen','Shanghai']}
@@ -4126,7 +4112,7 @@ delete p1.age;
  * p2：'Mark';                          __proto__:{__proto__:18,['Shenzhen','Shanghai']}
  */
 
-Person.prototype.lastName = 'Jin'; 
+Person.prototype.lastName = 'Jin';
 /* 改写原型，动态反应到实例中。正如你妈变新潮了，邻居提起你都说你妈真潮。
  * 注意，这里我们改写的是Person的原型，就是往Mother里加一个lastName属性，等同于Mother.lastName='Jin'
  * 这里并不是改Mother.prototype，改动不同的层次，效果往往会有很大的差异。
@@ -4134,11 +4120,11 @@ Person.prototype.lastName = 'Jin';
  * p2：'Mark';                          __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai']}
  */
 
-Person.prototype = { 
-    age: 28, 
+Person.prototype = {
+    age: 28,
     address: { country: 'USA', city: 'Washington' }
 };
-var p3 = new Person('Obama'); 
+var p3 = new Person('Obama');
 /* 重写原型！这个时候Person的原型已经完全变成一个新的对象了，也就是说Person换了个妈，叫后妈。
  * 换成这样理解：var a=10; b=a; a=20; c=a。所以b不变，变得是c，所以p3跟着后妈变化，与亲妈无关。
  * p1：'Jack',['Hangzhou','Guangzhou']; __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai']}
@@ -4154,8 +4140,8 @@ Mother.prototype.no = 9527;
  * p3:'Obama';__proto__: 28 {country: 'USA', city: 'Washington'}
  */
 
-Mother.prototype = { 
-    car: 2, 
+Mother.prototype = {
+    car: 2,
     hobby: ['run','walk']
 };
 var p4 = new Person('Tony');
@@ -4173,45 +4159,45 @@ p1.__proto__.__proto__.__proto__.__proto__ //null，你说原型链的终点不�
 Mother.__proto__.__proto__.__proto__    //null，你说原型链的终点不是null？</pre>
 <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">看完基本能理解了吧？</span>
 
-    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">现在再来说说 p1.age = 20、p1.home = [‘Hangzhou’, ‘Guangzhou’] 和 &nbsp;p1.home[0] = ‘Shenzhen’ 的区别。 p1.home[0] = ‘Shenzhen’; &nbsp;总结一下是 p1.object.method，p1.object.property 这样的形式。</span> 
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">现在再来说说 p1.age = 20、p1.home = [‘Hangzhou’, ‘Guangzhou’] 和 &nbsp;p1.home[0] = ‘Shenzhen’ 的区别。 p1.home[0] = ‘Shenzhen’; &nbsp;总结一下是 p1.object.method，p1.object.property 这样的形式。</span>
 
-    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">p1.age = 20; &nbsp;p1.home = [‘Hangzhou’, ‘Guangzhou’];这两句还是比较好理解的，先忘掉原型吧，想想我们是怎么为一个普通对象增加属性的：</span> 
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">p1.age = 20; &nbsp;p1.home = [‘Hangzhou’, ‘Guangzhou’];这两句还是比较好理解的，先忘掉原型吧，想想我们是怎么为一个普通对象增加属性的：</span>
 
 <pre class="prettyprint lang-js">var obj = new Object();
-obj.name='xxx'; 
+obj.name='xxx';
 obj.num = [100, 200];</pre>
-<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这样是不是就理解了呢？一样一样的呀。</span> 
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这样是不是就理解了呢？一样一样的呀。</span>
 
-    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">那为什么 p1.home[0] = ‘Shenzhen’ 不会在 p1 下创建一个 home 数组属性，然后将其首位设为 ‘Shenzhen’呢？ 我们还是先忘了这个，想想上面的obj对象，如果写成这样： var obj.name = ‘xxx’, obj.num = [100, 200]，能得到你要的结果吗？ 显然，除了报错你什么都得不到。因为obj还未定义，又怎么能往里面加入东西呢？同理，p1.home[0]中的 home 在 p1 下并未被定义，所以也不能直接一步定义 home[0] 了。如果要在p1下创建一个 home 数组，当然是这么写了：</span> 
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">那为什么 p1.home[0] = ‘Shenzhen’ 不会在 p1 下创建一个 home 数组属性，然后将其首位设为 ‘Shenzhen’呢？ 我们还是先忘了这个，想想上面的obj对象，如果写成这样： var obj.name = ‘xxx’, obj.num = [100, 200]，能得到你要的结果吗？ 显然，除了报错你什么都得不到。因为obj还未定义，又怎么能往里面加入东西呢？同理，p1.home[0]中的 home 在 p1 下并未被定义，所以也不能直接一步定义 home[0] 了。如果要在p1下创建一个 home 数组，当然是这么写了：</span>
 
-<pre class="prettyprint lang-js">p1.home = []; 
+<pre class="prettyprint lang-js">p1.home = [];
 p1.home[0] = 'Shenzhen';</pre>
-<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这不就是我们最常用的办法吗？</span> 
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这不就是我们最常用的办法吗？</span>
 
     而之所以 p1.home[0] = ‘Shenzhen’ 不直接报错，是因为在原型链中有一个搜索机制。当我们输入 p1.object 的时候，原型链的搜索机制是先在实例中搜索相应的值，找不到就在原型中找，还找不到就再往上一级原型中搜索……一直到了原型链的终点，就是到null还没找到的话，就返回一个 undefined。当我们输入 p1.home[0] 的时候，也是同样的搜索机制，先搜索 p1 看有没有名为 home 的属性和方法，然后逐级向上查找。最后我们在Mother的原型里面找到了，所以修改他就相当于修改了 Mother 的原型啊。
 
 <div>
 
 </div>
-<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">一句话概括：p1.home[0] = ‘Shenzhen’ &nbsp;等同于 &nbsp;Mother.prototype.home[0] = ‘Shenzhen’。</span> 
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">一句话概括：p1.home[0] = ‘Shenzhen’ &nbsp;等同于 &nbsp;Mother.prototype.home[0] = ‘Shenzhen’。</span>
 
-    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">由上面的分析可以知道，原型链继承的主要问题在于属性的共享，很多时候我们只想共享方法而并不想要共享属性，理想中每个实例应该有独立的属性。因此，原型继承就有了下面的两种改良方式：</span> 
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">由上面的分析可以知道，原型链继承的主要问题在于属性的共享，很多时候我们只想共享方法而并不想要共享属性，理想中每个实例应该有独立的属性。因此，原型继承就有了下面的两种改良方式：</span>
 
-    **<span style="color:#E53333;font-size:16px;">1）组合继承</span>**<span style="color:#E53333;font-size:16px;"></span><span style="color:#E53333;font-size:16px;"></span> 
+    **<span style="color:#E53333;font-size:16px;">1）组合继承</span>**<span style="color:#E53333;font-size:16px;"></span><span style="color:#E53333;font-size:16px;"></span>
 
-    <span style="color:#E53333;font-size:16px;"><span style="color:;"><span style="color:;"></span></span></span> 
+    <span style="color:#E53333;font-size:16px;"><span style="color:;"><span style="color:;"></span></span></span>
 
 <pre class="prettyprint lang-js">function Mother (age) {
     this.age = age;
     this.hobby = ['running','football']
 }
 Mother.prototype.showAge = function () {
-    console.log(this.age); 
+    console.log(this.age);
 };
 
-function Person (name, age) { 
+function Person (name, age) {
     Mother.call(this, age);　　//第二次执行
-    this.name = name; 
+    this.name = name;
 }
 Person.prototype = new Mother(); 　//第一次执行
 Person.prototype.constructor = Person;
@@ -4219,7 +4205,7 @@ Person.prototype.showName = function () {
     console.log(this.name);
 }
 
-var p1 = new Person('Jack', 20); 
+var p1 = new Person('Jack', 20);
 p1.hobby.push('basketball');  //p1:'Jack'; __proto__:20,['running','football']
 var p2 = new Person('Mark', 18);  //p2:'Mark'; __proto__:18,['running','football']</pre>
 
@@ -4229,7 +4215,7 @@ var p2 = new Person('Mark', 18);  //p2:'Mark'; __proto__:18,['running','football
 
 这里第一次执行的时候，得到 Person.prototype.age = undefined, Person.prototype.hobby = [‘running’,’football’]，第二次执行也就是 var p1 = new Person(‘Jack’, 20) 的时候，得到 p1.age =20, p1.hobby = [‘running’,’football’]，push后就变成了 p1.hobby = [‘running’,’football’, ‘basketball’]。其实分辨好 this 的变化，理解起来也是比较简单的，把 this 简单替换一下就能得到这个结果了。 如果感觉理解起来比较绕的话，试着把脑子里面的概念扔掉吧，把自己当浏览器从上到下执行一遍代码，结果是不是就出来了呢？
 
-&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;通过第二次执行原型的构造函数 Mother()，我们在对象实例中复制了一份原型的属性，这样就做到了与原型属性的分离独立。细心的你会发现，我们第一次调用 Mother()，好像什么用都没有呢，能不调用他吗？可以，就有了下面的寄生组合式继承。&lt;/span&gt; 
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;通过第二次执行原型的构造函数 Mother()，我们在对象实例中复制了一份原型的属性，这样就做到了与原型属性的分离独立。细心的你会发现，我们第一次调用 Mother()，好像什么用都没有呢，能不调用他吗？可以，就有了下面的寄生组合式继承。&lt;/span&gt;
 </code></pre><div>
 
 <p></p></div><br><span style="font-size:16px;color:#E53333;"></span><span style="font-size:16px;color:#E53333;"></span><span style="font-size:16px;color:#E53333;"></span><strong><span style="font-size:16px;color:#E53333;">2）寄生组合式继承</span></strong><span style="font-size:16px;color:#E53333;"></span><p></p>
@@ -4240,7 +4226,7 @@ var p2 = new Person('Mark', 18);  //p2:'Mark'; __proto__:18,['running','football
 }
 
 function inheritPrototype(Person, Mother){
-    var prototype = object(Mother.prototype); 
+    var prototype = object(Mother.prototype);
     prototype.constructor = Person;    
     Person.prototype = prototype;    
 }
@@ -4250,12 +4236,12 @@ function Mother (age) {
     this.hobby = ['running','football']
 }
 Mother.prototype.showAge = function () {
-    console.log(this.age); 
+    console.log(this.age);
 };
 
-function Person (name, age) { 
+function Person (name, age) {
     Mother.call(this, age);
-    this.name = name; 
+    this.name = name;
 }
 
 inheritPrototype(Person, Mother);
@@ -4264,22 +4250,22 @@ Person.prototype.showName = function () {
     console.log(this.name);
 }
 
-var p1 = new Person('Jack', 20); 
+var p1 = new Person('Jack', 20);
 p1.hobby.push('basketball');//p1:'Jack'; __proto__:20,['running','football']
 var p2 = new Person('Mark', 18); //p2:'Mark'; __proto__:18,['running','football']</pre>
 <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">结果是酱紫的：</span>
 
     ![](/wp-content/uploads/2016/05/20160521225810_65716.png)![](/wp-content/uploads/2016/05/20160521225841_19299.png)
 
-    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">原型中不再有 age 和 hobby 属性了，只有两个方法，正是我们想要的结果！</span> 
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">原型中不再有 age 和 hobby 属性了，只有两个方法，正是我们想要的结果！</span>
 
     <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">
 
-</span> 
+</span>
 
     关键点在于 object(o) 里面，这里借用了一个临时对象来巧妙避免了调用new Mother()，然后将原型为 o 的新对象实例返回，从而完成了原型链的设置。很绕，对吧，那是因为我们不能直接设置 Person.prototype = Mother.prototype 啊。
 
-    **<span style="font-size:16px;color:#E53333;">小结</span>**<span style="font-size:16px;color:#E53333;"></span> 
+    **<span style="font-size:16px;color:#E53333;">小结</span>**<span style="font-size:16px;color:#E53333;"></span>
 
 <div>
 
@@ -4291,7 +4277,7 @@ var p2 = new Person('Mark', 18); //p2:'Mark'; __proto__:18,['running','football'
 
 </div>
 <pre class="prettyprint lang-js">//1.原始模式，对象字面量方式
-var person = { 
+var person = {
     name: 'Jack',
     age: 18,
     sayName: function () { alert(this.name); }
@@ -4303,24 +4289,24 @@ person.age = 18;
 person.sayName = function () {
     alert(this.name);
 };</pre>
-<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> 
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">
 
-    <span style="color:#E53333;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">**2）工厂模式**</span> 
+    <span style="color:#E53333;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">**2）工厂模式**</span>
 
-    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> </span> 
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> </span>
 
 <pre class="prettyprint lang-js">//2.工厂模式，定义一个函数创建对象
 function creatPerson (name, age) {
-    var person = new Object(); 
+    var person = new Object();
     person.name = name;
     person.age = age;
     person.sayName = function () {
         alert(this.name);
     };
-    return person; 
+    return person;
 }</pre>
 
-<p></p></span> <p></p>
+<p></p></span><p></p>
 <p>工厂模式就是批量化生产，简单调用就可以进入造人模式（<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -4328,7 +4314,7 @@ function creatPerson (name, age) {
                 </div>
                 <div class="image-caption"></div>
             </figure>啪啪啪……）。指定姓名年龄就可以造一堆小宝宝啦，解放双手。但是由于是工厂暗箱操作的，所以你不能识别这个对象到底是什么类型、是人还是狗傻傻分不清（instanceof 测试为 Object），另外每次造人时都要创建一个独立的temp对象，代码臃肿，雅蠛蝶啊。</p>
-<pre><code>&lt;span style=&quot;font-size:16px;color:#E53333;&quot;&gt;&lt;/span&gt;**&lt;span style=&quot;font-size:16px;color:#E53333;&quot;&gt;3）构造函数&lt;/span&gt;** 
+<pre><code>&lt;span style=&quot;font-size:16px;color:#E53333;&quot;&gt;&lt;/span&gt;**&lt;span style=&quot;font-size:16px;color:#E53333;&quot;&gt;3）构造函数&lt;/span&gt;**
 </code></pre><pre class="prettyprint lang-js">//3.构造函数模式，为对象定义一个构造函数
 function Person (name, age) {
     this.name = name;
@@ -4339,9 +4325,9 @@ function Person (name, age) {
 }
 var p1 = new Person('Jack', 18); //创建一个p1对象
 Person('Jack', 18);    //属性方法都给window对象，window.name='Jack'，window.sayName()会输出Jack</pre>
-<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">构造函数与C++、JAVA中类的构造函数类似，易于理解，另外Person可以作为类型识别（instanceof 测试为 Person 、Object）。但是所有实例依然是独立的，不同实例的方法其实是不同的函数。这里把函数两个字忘了吧，把sayName当做一个对象就好理解了，就是说张三的 sayName 和李四的 sayName是不同的存在，但显然我们期望的是共用一个 sayName 以节省内存。</span> 
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">构造函数与C++、JAVA中类的构造函数类似，易于理解，另外Person可以作为类型识别（instanceof 测试为 Person 、Object）。但是所有实例依然是独立的，不同实例的方法其实是不同的函数。这里把函数两个字忘了吧，把sayName当做一个对象就好理解了，就是说张三的 sayName 和李四的 sayName是不同的存在，但显然我们期望的是共用一个 sayName 以节省内存。</span>
 
-    **<span style="font-size:16px;color:#E53333;">4）原型模式</span>**<span style="font-size:16px;color:#E53333;"></span> 
+    **<span style="font-size:16px;color:#E53333;">4）原型模式</span>**<span style="font-size:16px;color:#E53333;"></span>
 
 <pre class="prettyprint lang-js">//4.原型模式，直接定义prototype属性
 function Person () {}
@@ -4357,9 +4343,9 @@ Person.prototype = {
 };
 var p1 = new Person(); //name='Jack'
 var p2 = new Person(); //name='Jack'</pre>
-<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这里需要注意的是原型属性和方法的共享，即所有实例中都只是引用原型中的属性方法，任何一个地方产生的改动会引起其他实例的变化。</span> 
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这里需要注意的是原型属性和方法的共享，即所有实例中都只是引用原型中的属性方法，任何一个地方产生的改动会引起其他实例的变化。</span>
 
-    **<span style="color:#E53333;">5）混合模式（构造+原型）</span>** 
+    **<span style="color:#E53333;">5）混合模式（构造+原型）</span>**
 
 <pre class="prettyprint lang-js">//5\. 原型构造组合模式，
 function Person (name, age) {
@@ -4371,9 +4357,9 @@ Person.prototype = {
     sayName: function () { alert(this.name); },
     sayAge: function () { alert(this.age); }
 };
-var p1 = new Person('Jack', 20); 
+var p1 = new Person('Jack', 20);
 //p1:'Jack',20; __proto__: ['running','football'],sayName,sayAge
-var p2 = new Person('Mark', 18); 
+var p2 = new Person('Mark', 18);
 //p1:'Mark',18;__proto__: ['running','football'],sayName,sayAge</pre>
 
 <pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;做法是将需要独立的属性方法放入构造函数中，而可以共享的部分则放入原型中，这样做可以最大限度节省内存而又保留对象实例的独立性。&lt;/span&gt;
@@ -4388,7 +4374,7 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="blog" scheme="http://yoursite.com/categories/blog/"/>
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
     
     
       <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
@@ -4402,7 +4388,7 @@ var p2 = new Person('Mark', 18);
     <link href="http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/"/>
     <id>http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/</id>
     <published>2016-05-10T16:58:16.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:47:55.000Z</updated>
     
     <content type="html"><![CDATA[<p><span style="font-size:14px;">HTML5配合上CSS3可以做出很炫的效果，这也是为什么越来越多的人学习H5的原因，话不多说，先放图</span>：<figure class="image-bubble">
                 <div class="img-lightbox">
@@ -4413,56 +4399,56 @@ var p2 = new Person('Mark', 18);
             </figure></p>
 <pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;从图中就可以看出大概的效果，当点击next或prev按钮是，图片向前或向后旋转切换拨动，并且是以立体的效果切换的，链接：[http://www.chenqiangyi.com/demo/switch/](http://www.chenqiangyi.com/demo/switch/)&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 接下来就来分享一下制作的方法&lt;/span&gt;：
 
-**&lt;span style=&quot;font-size:16px;&quot;&gt;1.&lt;/span&gt;**&lt;span style=&quot;font-size:16px;&quot;&gt;**页面布局**&lt;/span&gt; 
+**&lt;span style=&quot;font-size:16px;&quot;&gt;1.&lt;/span&gt;**&lt;span style=&quot;font-size:16px;&quot;&gt;**页面布局**&lt;/span&gt;
 
-&lt;span style=&quot;font-size:14px;&quot;&gt;1.1首先需要有一个大盒子包裹着所有的元素，并且需要其为绝对定位relative，方便对其子元素的位置的控制;&lt;/span&gt; 
+&lt;span style=&quot;font-size:14px;&quot;&gt;1.1首先需要有一个大盒子包裹着所有的元素，并且需要其为绝对定位relative，方便对其子元素的位置的控制;&lt;/span&gt;
 
-&lt;span style=&quot;font-size:14px;&quot;&gt;1.2需要增加一个ul包含这一堆li，在&lt;/span&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;每个li中包含一张图片，并且是撑满li的，而且需要对li进行绝对定位absolute;&lt;/span&gt; 
+&lt;span style=&quot;font-size:14px;&quot;&gt;1.2需要增加一个ul包含这一堆li，在&lt;/span&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;每个li中包含一张图片，并且是撑满li的，而且需要对li进行绝对定位absolute;&lt;/span&gt;
 
-&lt;span style=&quot;font-size:14px;&quot;&gt;1.3在图中可以看到每次显示三张图片，哦~不对，应该是五张图片，还有两张图片在盒子的最边缘，在切换的时候就会隐掉，从左到右暂时规定图片的class为l2,l1,cur,r1,r2,当我们切换的时候只需改变每一张图片的class即可;&lt;/span&gt; 
+&lt;span style=&quot;font-size:14px;&quot;&gt;1.3在图中可以看到每次显示三张图片，哦~不对，应该是五张图片，还有两张图片在盒子的最边缘，在切换的时候就会隐掉，从左到右暂时规定图片的class为l2,l1,cur,r1,r2,当我们切换的时候只需改变每一张图片的class即可;&lt;/span&gt;
 
-&lt;span style=&quot;font-size:14px;&quot;&gt;**2.**&lt;/span&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;**cssd的**&lt;/span&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;**transition和transform控制**&lt;/span&gt; 
+&lt;span style=&quot;font-size:14px;&quot;&gt;**2.**&lt;/span&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;**cssd的**&lt;/span&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;**transition和transform控制**&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;当页面刚开始加载的时候我们需要布局呈先如图的样式，这句需要运用transform的知识了，首先在刚开始的时候所有图片都平铺在最中间，对于最中间的图片的位置没有变，我们暂时不考虑，只需考虑两边的图片，右一图片r1可以看做是原来的图片向右移动了一段距离，然后沿着Y轴旋转一定角度得到的，那么问题来了，是如何旋转的，需要旋转多少度呢？这里有一个方法，就是人站在朝向y轴的正方向，如果顺时针旋转就为正角度，逆时针旋转就为负角度。就如图中的图片，如果要按照y轴旋转，你需要站在图片的正下方看图片，此时你看到的只是图片的一条棱，那么就可以看到图片逆时针旋转得到了图中的样式。如此一来，右二图l2就可以知道他是先向右移动一定距离，然后逆时针旋转了一个更大的角度。如此轮推就可以知道前面的两张图片是按照向左平移一定距离，然后顺时针旋转了一定的角度得到的，只是角度大小不同而已。五张图片的初始样式的css代码：&lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;当页面刚开始加载的时候我们需要布局呈先如图的样式，这句需要运用transform的知识了，首先在刚开始的时候所有图片都平铺在最中间，对于最中间的图片的位置没有变，我们暂时不考虑，只需考虑两边的图片，右一图片r1可以看做是原来的图片向右移动了一段距离，然后沿着Y轴旋转一定角度得到的，那么问题来了，是如何旋转的，需要旋转多少度呢？这里有一个方法，就是人站在朝向y轴的正方向，如果顺时针旋转就为正角度，逆时针旋转就为负角度。就如图中的图片，如果要按照y轴旋转，你需要站在图片的正下方看图片，此时你看到的只是图片的一条棱，那么就可以看到图片逆时针旋转得到了图中的样式。如此一来，右二图l2就可以知道他是先向右移动一定距离，然后逆时针旋转了一个更大的角度。如此轮推就可以知道前面的两张图片是按照向左平移一定距离，然后顺时针旋转了一定的角度得到的，只是角度大小不同而已。五张图片的初始样式的css代码：&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt; &lt;/span&gt;
 </code></pre><pre class="prettyprint lang-css">#ul1 li.l2{opacity: 0;z-index: 1;transform: perspective(800px) translateX(-300px) rotateY(45deg);}
 #ul1 li.l1{opacity: 1;z-index: 3;transform: perspective(800px) translateX(-200px) rotateY(60deg);}
 #ul1 li.cur{opacity: 1;z-index: 5;}
 #ul1 li.r1{opacity: 1;z-index: 3;transform: perspective(800px) translateX(200px) rotateY(-60deg);}
 #ul1 li.r2{opacity: 0;z-index: 1;transform: perspective(800px) translateX(300px) rotateY(-45deg);}</pre>
 
-<pre><code>&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;**3.transform的初始化&amp;nbsp;transform: perspective(800px) rotateY(0);**&lt;/span&gt; 
+<pre><code>&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;**3.transform的初始化&amp;nbsp;transform: perspective(800px) rotateY(0);**&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;在添加css的3D效果的时候要想看到立体的效果，需要添加一个视距的属性，这个属性的值越大类似站在比较远的地方看东西，可能会比较小，如果太近的话，就会看到物体特别大，所以合适的视距值很重要，一般perspective的值为800px的时候看到的物体的效果最佳。此时我们还需要初始化transform，否则的话在运动的时候会出现晃动的现象，初始化只需要在要添加运动的元素添加初始值transform: perspective(800px) rotateY(0);初始化代码：&lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;在添加css的3D效果的时候要想看到立体的效果，需要添加一个视距的属性，这个属性的值越大类似站在比较远的地方看东西，可能会比较小，如果太近的话，就会看到物体特别大，所以合适的视距值很重要，一般perspective的值为800px的时候看到的物体的效果最佳。此时我们还需要初始化transform，否则的话在运动的时候会出现晃动的现象，初始化只需要在要添加运动的元素添加初始值transform: perspective(800px) rotateY(0);初始化代码：&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt; &lt;/span&gt;
 </code></pre><pre class="prettyprint lang-css">#ul1 li{position: absolute;left: 0;top: 0;width: 100%;height: 100%;opacity: 0;transform: perspective(800px) rotateY(0);transition: 1s all ease;}</pre>
-**<span style="font-size:16px;">4.js控制图片的切换</span>** 
+**<span style="font-size:16px;">4.js控制图片的切换</span>**
 
-    <span style="font-size:16px;line-height:24px;">一般的思路就是对每一张图片的class挨个更换，这样可以达到效果，就是代码太冗余了，这里提供一个比较简便的用法：</span> 
+    <span style="font-size:16px;line-height:24px;">一般的思路就是对每一张图片的class挨个更换，这样可以达到效果，就是代码太冗余了，这里提供一个比较简便的用法：</span>
 
-    <span style="font-size:16px;line-height:24px;">当点击next的按钮时，原本前一张图片往后退一步，加上class即可;因为同样是给下一张图片添加class，我们可以把所有的图片的存成一个数组，当切换下一张的时候，我们只需把第一张图片拿出来，添加到图片集合的尾部，这样图片他们原有的class就添加到了下一张图片上，这样下一张图片就有了图片原先的样式，再加上运动时间，这样运动的效果就做出来了，点击prev同样的方法，只是把最后一张添加到图片集的头部，这样同样实现了图片的切换。</span> 
+    <span style="font-size:16px;line-height:24px;">当点击next的按钮时，原本前一张图片往后退一步，加上class即可;因为同样是给下一张图片添加class，我们可以把所有的图片的存成一个数组，当切换下一张的时候，我们只需把第一张图片拿出来，添加到图片集合的尾部，这样图片他们原有的class就添加到了下一张图片上，这样下一张图片就有了图片原先的样式，再加上运动时间，这样运动的效果就做出来了，点击prev同样的方法，只是把最后一张添加到图片集的头部，这样同样实现了图片的切换。</span>
 
-    <span style="font-size:16px;line-height:24px;">**5.解决next和prev连续点击出现的bug**</span> 
+    <span style="font-size:16px;line-height:24px;">**5.解决next和prev连续点击出现的bug**</span>
 
-    <span style="font-size:14px;">出现这样的bug是因为当图片本次的运动还没有完成时，继续点击按钮，出现了运动的凌乱，要解决这个bug，此时js刚好有一个叫transformend的事件，真是要风得风，要雨得雨，不禁感叹js的功能的强大，从字面上就可以看出这个事件的意思，就是当运动完成的时候出现的这个事件。因为每五张图片都是同时完成的，此时我们只需监听一张图片的运动结果即可。我们可以先定义一个变量aReady=true;当他的值为false时，不执行切换的函数，此时直接返回即可，然后设置aReady=false，当每一个的运动完成时再令aReady=true,这样就可以在一次运动完成之后再点击按钮才会执行下一次运动，这样这个H5的效果就基本完成了。</span> 
+    <span style="font-size:14px;">出现这样的bug是因为当图片本次的运动还没有完成时，继续点击按钮，出现了运动的凌乱，要解决这个bug，此时js刚好有一个叫transformend的事件，真是要风得风，要雨得雨，不禁感叹js的功能的强大，从字面上就可以看出这个事件的意思，就是当运动完成的时候出现的这个事件。因为每五张图片都是同时完成的，此时我们只需监听一张图片的运动结果即可。我们可以先定义一个变量aReady=true;当他的值为false时，不执行切换的函数，此时直接返回即可，然后设置aReady=false，当每一个的运动完成时再令aReady=true,这样就可以在一次运动完成之后再点击按钮才会执行下一次运动，这样这个H5的效果就基本完成了。</span>
 
-    <span style="font-size:16px;line-height:24px;">**6.总结**</span> 
+    <span style="font-size:16px;line-height:24px;">**6.总结**</span>
 
-    <span style="font-size:14px;">6.1先运用css对几行图片进项初始化布局</span> 
+    <span style="font-size:14px;">6.1先运用css对几行图片进项初始化布局</span>
 
-    <span style="font-size:14px;">6.2.transform的初始化</span> 
+    <span style="font-size:14px;">6.2.transform的初始化</span>
 
-    <span style="font-size:14px;">6.3js的控制，每一次删除数组中最后一个，添加到最前面或者删除最前面的一个，添加到数组的最后面，然后更换图片的class</span> 
+    <span style="font-size:14px;">6.3js的控制，每一次删除数组中最后一个，添加到最前面或者删除最前面的一个，添加到数组的最后面，然后更换图片的class</span>
 
-    <span style="font-size:14px;">6.4解决bug，运用transformend函数。</span> 
+    <span style="font-size:14px;">6.4解决bug，运用transformend函数。</span>
 
-    <span style="font-size:14px;">6.5反思运用H5和css3做出更多比较炫的东西</span> 
+    <span style="font-size:14px;">6.5反思运用H5和css3做出更多比较炫的东西</span>
 
-    <span style="font-size:16px;line-height:24px;">**7.源代码**</span> 
+    <span style="font-size:16px;line-height:24px;">**7.源代码**</span>
 
-    <span style="font-size:16px;line-height:24px;"> </span> 
+    <span style="font-size:16px;line-height:24px;"> </span>
 
 <pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -4558,14 +4544,14 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="css" scheme="http://yoursite.com/categories/css/"/>
+      <category term="HTML5" scheme="http://yoursite.com/categories/HTML5/"/>
     
     
       <category term="CSS3" scheme="http://yoursite.com/tags/CSS3/"/>
     
-      <category term="3D切换" scheme="http://yoursite.com/tags/3D%E5%88%87%E6%8D%A2/"/>
-    
       <category term="HTML5" scheme="http://yoursite.com/tags/HTML5/"/>
+    
+      <category term="3D切换" scheme="http://yoursite.com/tags/3D%E5%88%87%E6%8D%A2/"/>
     
   </entry>
   
@@ -4574,7 +4560,7 @@ var p2 = new Person('Mark', 18);
     <link href="http://yoursite.com/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/"/>
     <id>http://yoursite.com/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/</id>
     <published>2016-05-08T15:42:54.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:45:10.000Z</updated>
     
     <content type="html"><![CDATA[<p>HTML5以及CSS3能做出许多特别炫的东西，这也是为什么越来越多人喜欢学习H5和CSS3了，今天来分享一个通过CSS3和原生js写出的时钟，先放链接：<a href="http://chenqiangyi.com/demo/cssClock.html" target="_blank" rel="external">http://chenqiangyi.com/demo/cssClock.html</a>,上面的时钟刻度以及指针的旋转都用了CSS3的tranform的rotate属性，接下来将主要方法吧。<figure class="image-bubble">
                 <div class="img-lightbox">
@@ -4670,7 +4656,8 @@ var p2 = new Person('Mark', 18);
 &lt;!--    &lt;span&gt;&lt;strong&gt;12&lt;/strong&gt;&lt;/span&gt;--&gt;
 &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</pre>]]></content>
+&lt;/html&gt;</pre>
+]]></content>
     
     <summary type="html">
     
@@ -4678,10 +4665,12 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="css" scheme="http://yoursite.com/categories/css/"/>
+      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
     
     
       <category term="CSS3" scheme="http://yoursite.com/tags/CSS3/"/>
+    
+      <category term="HTML5" scheme="http://yoursite.com/tags/HTML5/"/>
     
   </entry>
   
@@ -4690,7 +4679,7 @@ var p2 = new Person('Mark', 18);
     <link href="http://yoursite.com/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/"/>
     <id>http://yoursite.com/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/</id>
     <published>2016-05-05T15:43:03.000Z</published>
-    <updated>2017-06-08T08:48:40.000Z</updated>
+    <updated>2017-06-08T09:47:29.000Z</updated>
     
     <content type="html"><![CDATA[<div class="excerpt">
 
@@ -4708,7 +4697,8 @@ var p2 = new Person('Mark', 18);
                     <img src="http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/gulp-less-2-300x161.png" alt="gulp-less-2" title="">
                 </div>
                 <div class="image-caption">gulp-less-2</div>
-            </figure><br><br>7.3、将会安装在node_modules的gulp-less目录下，该目录下有一个gulp-less的使用帮助文档README.md；<br><br>7.4、为了能正常使用，我们还得本地安装gulp：<strong><code>cnpm install gulp --save-dev</code></strong>；<br><br>PS：细心的你可能会发现，我们全局安装了gulp，项目也安装了gulp，全局安装gulp是为了执行gulp任务，本地安装gulp则是为了调用gulp插件的功能。<br><br>### 8、新建gulpfile.js文件（重要）<br><br>8.1、说明：gulpfile.js是gulp项目的配置文件，是位于项目根目录的普通js文件（其实将gulpfile.js放入其他文件夹下亦可）。<br><br>8.2、它大概是这样一个js文件：<br><br><div class="code-box"><br><div id="crayon-572b558d91f01919571102" class="crayon-syntax crayon-theme-raygun crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover"><br><div class="crayon-toolbar" data-settings=" show"><br><div class="crayon-tools"><br><div id="crayon-572b558d91f01919571102-1" class="crayon-line"><span class="crayon-c">//导入工具包 require(‘node_modules里对应模块’)</span></div><br><div id="crayon-572b558d91f01919571102-2" class="crayon-line crayon-striped-line"><span class="crayon-t">var</span> <span class="crayon-v">gulp</span> <span class="crayon-o">=</span> <span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">‘gulp’</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span> <span class="crayon-c">//本地安装gulp所用到的地方</span></div><br><div id="crayon-572b558d91f01919571102-3" class="crayon-line"><span class="crayon-h">    </span><span class="crayon-v">less</span> <span class="crayon-o">=</span> <span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">‘gulp-less’</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><br><div id="crayon-572b558d91f01919571102-4" class="crayon-line crayon-striped-line"></div><br><div id="crayon-572b558d91f01919571102-5" class="crayon-line"><span class="crayon-c">//定义一个testLess任务（自定义任务名称）</span></div><br><div id="crayon-572b558d91f01919571102-6" class="crayon-line crayon-striped-line"><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">task</span><span class="crayon-sy">(</span><span class="crayon-s">‘testLess’</span><span class="crayon-sy">,</span> <span class="crayon-t">function</span> <span class="crayon-sy">(</span><span class="crayon-sy">)</span> <span class="crayon-sy">{</span></div><br><div id="crayon-572b558d91f01919571102-7" class="crayon-line"><span class="crayon-h">    </span><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">src</span><span class="crayon-sy">(</span><span class="crayon-s">‘src/less/index.less’</span><span class="crayon-sy">)</span> <span class="crayon-c">//该任务针对的文件</span></div><br><div id="crayon-572b558d91f01919571102-8" class="crayon-line crayon-striped-line"><span class="crayon-h">        </span><span class="crayon-sy">.</span><span class="crayon-e">pipe</span><span class="crayon-sy">(</span><span class="crayon-e">less</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span> <span class="crayon-c">//该任务调用的模块</span></div><br><div id="crayon-572b558d91f01919571102-9" class="crayon-line"><span class="crayon-h">        </span><span class="crayon-sy">.</span><span class="crayon-e">pipe</span><span class="crayon-sy">(</span><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">dest</span><span class="crayon-sy">(</span><span class="crayon-s">‘src/css’</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span> <span class="crayon-c">//将会在src/css下生成index.css</span></div><br><div id="crayon-572b558d91f01919571102-10" class="crayon-line crayon-striped-line"><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><br><div id="crayon-572b558d91f01919571102-11" class="crayon-line"></div><br><div id="crayon-572b558d91f01919571102-12" class="crayon-line crayon-striped-line"><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">task</span><span class="crayon-sy">(</span><span class="crayon-s">‘default’</span><span class="crayon-sy">,</span><span class="crayon-sy">[</span><span class="crayon-s">‘testLess’</span><span class="crayon-sy">,</span> <span class="crayon-s">‘elseTask’</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span> <span class="crayon-c">//定义默认任务</span></div><br><div id="crayon-572b558d91f01919571102-13" class="crayon-line"></div><br><div id="crayon-572b558d91f01919571102-14" class="crayon-line crayon-striped-line"><span class="crayon-c">//gulp.task(name[, deps], fn) 定义任务  name：任务名称 deps：依赖任务名称 fn：回调函数</span></div><br><div id="crayon-572b558d91f01919571102-15" class="crayon-line"><span class="crayon-c">//gulp.src(globs[, options]) 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组) </span></div><br><div id="crayon-572b558d91f01919571102-16" class="crayon-line crayon-striped-line"><span class="crayon-c">//gulp.dest(path[, options]) 处理完后文件生成路径</span></div><br></div><br></div><br><div class="crayon-plain-wrap"><br><br>### 9、运行gulp<br><br>9.1、说明：命令提示符执行<strong>gulp 任务名称</strong>；<br><br>9.2、编译less：命令提示符执行<strong>gulp testLess</strong>；<br><br>9.3、当执行<strong>gulp default</strong>或<strong>gulp</strong>将会调用default任务里的所有任务[‘testLess’,’elseTask’]<br><br><strong>10、</strong>其中gulp的安装顺序应该为：<br><br>10.1      运行环境   npm install gulp-cli -g<br>10.2    初始化   package.json文件      npm init<br><br>10.3    执行环境    npm install gulp –save-dev        然后在你创建项目的目录里出现node_modules文件夹，并且里面需要有gulp文件夹，否则后面的操作不能用<br><br>10.4    安装插件    npm install –save-dev gulp-uglify      可以在github上面找到相应的插件功能介绍<br><br>10.5    创建gulpfile.js文件，并且一个项目中只有一个gulpfile.js文件，而且系统只认这个文件，如果要进行不同的工程操作就需要修改里面的配置文件了<br><br><strong>10.5.1</strong>压缩文件的配置：<br><br>//1 请求一个模块<br>var gulp = require(“gulp”);<br>var uglify = require(“gulp-uglify”);<br><br>//2 配置任务<br>gulp.task(“yasjs”,function(){<br>return gulp.src(“src/<em>.js”)<br>.pipe(uglify())<br>.pipe(gulp.dest(“dest”));<br>//.pipe(gulp.dest(“dest/all.min.js”));//不能写文件名 只能是目录<br>});<br><br>//3 注册任务<br>gulp.task(“defalut”,[“yasjs”]);<br><br> 其中请求模块和注册任务基本是不变的，只需要修改配置任务即可，例子中的</em>.js代表的是src目录下的所有js文件，后面的.pipe(gulp.dest(“dest”));只能是目录，dest中不能包含文件名。<br><br><strong>10.5.2压缩合并</strong><br><br>//1 请求一个模块<br>var gulp = require(“gulp”);<br>var uglify = require(“gulp-uglify”);<br>var rename = require(“gulp-rename”);<br>//concat 使用的时候必有文件名称<br>var concat = require(“gulp-concat”);<br>var cssmin = require(“gulp-cssmin”);<br><br>//2 配置任务<br>gulp.task(“cssmin”,function(){<br>return gulp.src(“src/*.css”)<br>.pipe(concat(“all.css”))<br>.pipe(cssmin())//不要重名 没有参数<br>.pipe(rename(“all.min.css”))<br>.pipe(gulp.dest(“dest”));<br><br>});<br><br>//3 注册任务<br>gulp.task(“default”,[“cssmin”]);<br><br> 请求模块和注册模块基本不变，配置部分的cssmin()中没有参数，不要重名，他们的顺序是先合并，再压缩<br><br>### 11、总结<br><br>11.1、安装nodejs；<br><br>11.2、新建package.json文件；<br><br>11.3、全局和本地安装gulp；<br><br>11.4、安装gulp插件；<br><br>11.5、新建gulpfile.js文件；<br><br>11.6、通过命令提示符运行gulp任务。<br><br></div><br></div><br></div><br></article>]]></content>
+            </figure><br><br>7.3、将会安装在node_modules的gulp-less目录下，该目录下有一个gulp-less的使用帮助文档README.md；<br><br>7.4、为了能正常使用，我们还得本地安装gulp：<strong><code>cnpm install gulp --save-dev</code></strong>；<br><br>PS：细心的你可能会发现，我们全局安装了gulp，项目也安装了gulp，全局安装gulp是为了执行gulp任务，本地安装gulp则是为了调用gulp插件的功能。<br><br>### 8、新建gulpfile.js文件（重要）<br><br>8.1、说明：gulpfile.js是gulp项目的配置文件，是位于项目根目录的普通js文件（其实将gulpfile.js放入其他文件夹下亦可）。<br><br>8.2、它大概是这样一个js文件：<br><br><div class="code-box"><br><div id="crayon-572b558d91f01919571102" class="crayon-syntax crayon-theme-raygun crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover"><br><div class="crayon-toolbar" data-settings=" show"><br><div class="crayon-tools"><br><div id="crayon-572b558d91f01919571102-1" class="crayon-line"><span class="crayon-c">//导入工具包 require(‘node_modules里对应模块’)</span></div><br><div id="crayon-572b558d91f01919571102-2" class="crayon-line crayon-striped-line"><span class="crayon-t">var</span> <span class="crayon-v">gulp</span> <span class="crayon-o">=</span> <span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">‘gulp’</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span> <span class="crayon-c">//本地安装gulp所用到的地方</span></div><br><div id="crayon-572b558d91f01919571102-3" class="crayon-line"><span class="crayon-h">    </span><span class="crayon-v">less</span> <span class="crayon-o">=</span> <span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">‘gulp-less’</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><br><div id="crayon-572b558d91f01919571102-4" class="crayon-line crayon-striped-line"></div><br><div id="crayon-572b558d91f01919571102-5" class="crayon-line"><span class="crayon-c">//定义一个testLess任务（自定义任务名称）</span></div><br><div id="crayon-572b558d91f01919571102-6" class="crayon-line crayon-striped-line"><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">task</span><span class="crayon-sy">(</span><span class="crayon-s">‘testLess’</span><span class="crayon-sy">,</span> <span class="crayon-t">function</span> <span class="crayon-sy">(</span><span class="crayon-sy">)</span> <span class="crayon-sy">{</span></div><br><div id="crayon-572b558d91f01919571102-7" class="crayon-line"><span class="crayon-h">    </span><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">src</span><span class="crayon-sy">(</span><span class="crayon-s">‘src/less/index.less’</span><span class="crayon-sy">)</span> <span class="crayon-c">//该任务针对的文件</span></div><br><div id="crayon-572b558d91f01919571102-8" class="crayon-line crayon-striped-line"><span class="crayon-h">        </span><span class="crayon-sy">.</span><span class="crayon-e">pipe</span><span class="crayon-sy">(</span><span class="crayon-e">less</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span> <span class="crayon-c">//该任务调用的模块</span></div><br><div id="crayon-572b558d91f01919571102-9" class="crayon-line"><span class="crayon-h">        </span><span class="crayon-sy">.</span><span class="crayon-e">pipe</span><span class="crayon-sy">(</span><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">dest</span><span class="crayon-sy">(</span><span class="crayon-s">‘src/css’</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span> <span class="crayon-c">//将会在src/css下生成index.css</span></div><br><div id="crayon-572b558d91f01919571102-10" class="crayon-line crayon-striped-line"><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><br><div id="crayon-572b558d91f01919571102-11" class="crayon-line"></div><br><div id="crayon-572b558d91f01919571102-12" class="crayon-line crayon-striped-line"><span class="crayon-v">gulp</span><span class="crayon-sy">.</span><span class="crayon-e">task</span><span class="crayon-sy">(</span><span class="crayon-s">‘default’</span><span class="crayon-sy">,</span><span class="crayon-sy">[</span><span class="crayon-s">‘testLess’</span><span class="crayon-sy">,</span> <span class="crayon-s">‘elseTask’</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span> <span class="crayon-c">//定义默认任务</span></div><br><div id="crayon-572b558d91f01919571102-13" class="crayon-line"></div><br><div id="crayon-572b558d91f01919571102-14" class="crayon-line crayon-striped-line"><span class="crayon-c">//gulp.task(name[, deps], fn) 定义任务  name：任务名称 deps：依赖任务名称 fn：回调函数</span></div><br><div id="crayon-572b558d91f01919571102-15" class="crayon-line"><span class="crayon-c">//gulp.src(globs[, options]) 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组) </span></div><br><div id="crayon-572b558d91f01919571102-16" class="crayon-line crayon-striped-line"><span class="crayon-c">//gulp.dest(path[, options]) 处理完后文件生成路径</span></div><br></div><br></div><br><div class="crayon-plain-wrap"><br><br>### 9、运行gulp<br><br>9.1、说明：命令提示符执行<strong>gulp 任务名称</strong>；<br><br>9.2、编译less：命令提示符执行<strong>gulp testLess</strong>；<br><br>9.3、当执行<strong>gulp default</strong>或<strong>gulp</strong>将会调用default任务里的所有任务[‘testLess’,’elseTask’]<br><br><strong>10、</strong>其中gulp的安装顺序应该为：<br><br>10.1      运行环境   npm install gulp-cli -g<br>10.2    初始化   package.json文件      npm init<br><br>10.3    执行环境    npm install gulp –save-dev        然后在你创建项目的目录里出现node_modules文件夹，并且里面需要有gulp文件夹，否则后面的操作不能用<br><br>10.4    安装插件    npm install –save-dev gulp-uglify      可以在github上面找到相应的插件功能介绍<br><br>10.5    创建gulpfile.js文件，并且一个项目中只有一个gulpfile.js文件，而且系统只认这个文件，如果要进行不同的工程操作就需要修改里面的配置文件了<br><br><strong>10.5.1</strong>压缩文件的配置：<br><br>//1 请求一个模块<br>var gulp = require(“gulp”);<br>var uglify = require(“gulp-uglify”);<br><br>//2 配置任务<br>gulp.task(“yasjs”,function(){<br>return gulp.src(“src/<em>.js”)<br>.pipe(uglify())<br>.pipe(gulp.dest(“dest”));<br>//.pipe(gulp.dest(“dest/all.min.js”));//不能写文件名 只能是目录<br>});<br><br>//3 注册任务<br>gulp.task(“defalut”,[“yasjs”]);<br><br> 其中请求模块和注册任务基本是不变的，只需要修改配置任务即可，例子中的</em>.js代表的是src目录下的所有js文件，后面的.pipe(gulp.dest(“dest”));只能是目录，dest中不能包含文件名。<br><br><strong>10.5.2压缩合并</strong><br><br>//1 请求一个模块<br>var gulp = require(“gulp”);<br>var uglify = require(“gulp-uglify”);<br>var rename = require(“gulp-rename”);<br>//concat 使用的时候必有文件名称<br>var concat = require(“gulp-concat”);<br>var cssmin = require(“gulp-cssmin”);<br><br>//2 配置任务<br>gulp.task(“cssmin”,function(){<br>return gulp.src(“src/*.css”)<br>.pipe(concat(“all.css”))<br>.pipe(cssmin())//不要重名 没有参数<br>.pipe(rename(“all.min.css”))<br>.pipe(gulp.dest(“dest”));<br><br>});<br><br>//3 注册任务<br>gulp.task(“default”,[“cssmin”]);<br><br> 请求模块和注册模块基本不变，配置部分的cssmin()中没有参数，不要重名，他们的顺序是先合并，再压缩<br><br>### 11、总结<br><br>11.1、安装nodejs；<br><br>11.2、新建package.json文件；<br><br>11.3、全局和本地安装gulp；<br><br>11.4、安装gulp插件；<br><br>11.5、新建gulpfile.js文件；<br><br>11.6、通过命令提示符运行gulp任务。<br><br></div><br></div><br></div><br></article>
+]]></content>
     
     <summary type="html">
     
@@ -4718,7 +4708,7 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="构建工具gulp" scheme="http://yoursite.com/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7gulp/"/>
+      <category term="构建工具" scheme="http://yoursite.com/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="gulp" scheme="http://yoursite.com/tags/gulp/"/>

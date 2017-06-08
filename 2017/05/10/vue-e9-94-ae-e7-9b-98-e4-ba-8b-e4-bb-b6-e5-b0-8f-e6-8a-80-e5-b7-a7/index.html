@@ -27,7 +27,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
 <meta property="og:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
-<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta property="og:updated_time" content="2017-06-08T09:50:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue键盘事件小技巧">
 <meta name="twitter:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
@@ -79,13 +79,6 @@
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -151,7 +144,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/vue/">vue</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
 
             
         </h5>
@@ -174,7 +167,7 @@
             <time class="post-time" title="2017-05-10 22:04:01" datetime="2017-05-10T14:04:01.000Z"  itemprop="datePublished">2017-05-10</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/vue/">vue</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
 
 
 
@@ -228,30 +221,30 @@ methods: {
 &lt;/head&gt;
 &lt;body&gt;
     &lt;div id="box"&gt;
-        &lt;input type="text" placeholder="请输入" @keyup="show($event)"&gt; 
+        &lt;input type="text" placeholder="请输入" @keyup="show($event)"&gt;
 
         &lt;input type="text" placeholder="请输入" @keyup.13="show($event)"&gt;
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
 
-<pre><code>&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.13 回车&lt;/span&gt; 
+<pre><code>&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.13 回车&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.enter 回车&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.enter 回车&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.left 左键&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.left 左键&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.right 右键&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.right 右键&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.up 上键&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.up 上键&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.down 下键&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.down 下键&lt;/span&gt;
 
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;@keyup.&lt;span class=&quot;hljs-keyword&quot;&gt;delete 删除键&lt;span style=&quot;color:#4C33E5;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;@keyup.&lt;span class=&quot;hljs-keyword&quot;&gt;delete 删除键&lt;span style=&quot;color:#4C33E5;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;&quot;&gt;其他按键别名：&lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;&quot;&gt;其他按键别名：&lt;/span&gt;
 
-&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt; 
+&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt;
 </code></pre><ul>
 <li>.enter</li>
 <li>.tab</li>
@@ -261,8 +254,8 @@ methods: {
 <li>.up</li>
 <li>.down</li>
 <li>.left</li>
-<li><p>.right<br><span style="color:#34495E;font-family:&quot;font-size:15px;background-color:#FFFFFF;">可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应：</span> </p>
-<p><span style="font-size:16px;"> </span> </p>
+<li><p>.right<br><span style="color:#34495E;font-family:&quot;font-size:15px;background-color:#FFFFFF;">可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应：</span></p>
+<p><span style="font-size:16px;"> </span></p>
 </li>
 <li><p>.ctrl</p>
 </li>
@@ -270,16 +263,16 @@ methods: {
 <li>.shift</li>
 <li>.meta<br><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">注意：在Mac系统键盘上，meta对应命令键 (⌘)。在Windows系统键盘meta对应windows徽标键(⊞)。在Sun操作系统键盘上，meta对应实心宝石键 (◆)。在其他特定键盘上，尤其在MIT和Lisp键盘及其后续，比如Knight键盘，space-cadet键盘，meta被标记为“META”。在Symbolics键盘上，meta被标记为“META” 或者 “Meta”。</span></li>
 </ul>
-<p><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">例如:</span> </p>
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt; 
+<p><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">例如:</span></p>
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt;
 </code></pre><pre>        
 
 <div class="line">
-    <span class="comment" style="color:#B3B3B3;">&lt;!-- Alt + C --&gt;</span> 
+    <span class="comment" style="color:#B3B3B3;">&lt;!-- Alt + C --&gt;</span>
 </div>
 
 <div class="line">
-    <span class="tag" style="color:#2973B7;">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string" style="color:#42B983;">"clear"</span>&gt;</span> 
+    <span class="tag" style="color:#2973B7;">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string" style="color:#42B983;">"clear"</span>&gt;</span>
 </div>
 
 <div class="line">
@@ -287,17 +280,17 @@ methods: {
 </div>
 
 <div class="line">
-    <span class="comment" style="color:#B3B3B3;">&lt;!-- Ctrl + Click --&gt;</span> 
+    <span class="comment" style="color:#B3B3B3;">&lt;!-- Ctrl + Click --&gt;</span>
 </div>
 
 <div class="line">
-    <span class="tag" style="color:#2973B7;">&lt;<span class="name">div</span> @<span class="attr">click.ctrl</span>=<span class="string" style="color:#42B983;">"doSomething"</span>&gt;</span>Do something<span class="tag" style="color:#2973B7;">&lt;/<span class="name">div</span>&gt;</span> 
+    <span class="tag" style="color:#2973B7;">&lt;<span class="name">div</span> @<span class="attr">click.ctrl</span>=<span class="string" style="color:#42B983;">"doSomething"</span>&gt;</span>Do something<span class="tag" style="color:#2973B7;">&lt;/<span class="name">div</span>&gt;</span>
 </div>
 </pre>
 
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt; 
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt;
 </code></pre><p></p>
-<p> </p>
+<p></p>
 
         </div>
 
@@ -305,7 +298,7 @@ methods: {
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+    Last updated: <time datetime="2017-06-08T09:50:06.000Z" itemprop="dateUpdated">2017-06-08 17:50:06</time>
 </span><br>
 
 
@@ -385,14 +378,7 @@ methods: {
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/06/08/hello-world/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Hello World</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
