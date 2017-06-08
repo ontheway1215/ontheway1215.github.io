@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>垂直水平居中总结 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="垂直水平居中">
+    <meta name="description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 一、&amp;lt;span style=&amp;quot;color:#333333;font-family:-apple-system, &amp;amp;quot;font-size:medium;background-color:#FFFFFF;&amp;quot;&amp;gt;宽高不定，上下左右垂直居中。&amp;lt;/span&amp;gt;   (1).&amp;lt;span&amp;">
+<meta name="keywords" content="垂直水平居中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="垂直水平居中总结">
+<meta property="og:url" content="http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 一、&amp;lt;span style=&amp;quot;color:#333333;font-family:-apple-system, &amp;amp;quot;font-size:medium;background-color:#FFFFFF;&amp;quot;&amp;gt;宽高不定，上下左右垂直居中。&amp;lt;/span&amp;gt;   (1).&amp;lt;span&amp;">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="垂直水平居中总结">
+<meta name="twitter:description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 一、&amp;lt;span style=&amp;quot;color:#333333;font-family:-apple-system, &amp;amp;quot;font-size:medium;background-color:#FFFFFF;&amp;quot;&amp;gt;宽高不定，上下左右垂直居中。&amp;lt;/span&amp;gt;   (1).&amp;lt;span&amp;">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">垂直水平居中总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">垂直水平居中总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-08T10:48:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/未分类/">未分类</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">垂直水平居中总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-01-08 18:48:00" datetime="2017-01-08T10:48:00.000Z"  itemprop="datePublished">2017-01-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/未分类/">未分类</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧</p>
+<pre><code>一、&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;宽高不定，上下左右垂直居中。&lt;/span&gt; 
+
+(1).&lt;span&gt;绝对定位top left 各50%，然后&lt;/span&gt;&lt;span style=&quot;color:#000080;font-family:Menlo, Monaco, Consolas, &amp;quot;font-size:12.8px;background-color:#F8F8F8;&quot;&gt;transform&lt;/span&gt;&lt;span&gt;负数撑回来&lt;/span&gt; 
+
+&lt;span&gt;代码如下：&lt;/span&gt; 
+
+&lt;span&gt;HTML代码&lt;/span&gt; 
+
+&lt;span&gt; &lt;/span&gt; 
+</code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast”&gt;提交成功&lt;/div&gt;</pre><br>CSS代码</p>
+<pre><code>&lt;span&gt; &lt;/span&gt; 
+</code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%, -50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>}</pre><br>效果图：</p>
+<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img01.png) 
+
+&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;But !&lt;/span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;这时候产品突然需要增加一个需求，Toast 组件一行最多只能有 12 个中文字符，超过的时候折行&lt;/span&gt;&lt;/span&gt; 
+
+看起来这个要求也不高 ~ 我们修改一下代码
+
+CSS
+</code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%, -50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>  // 新增代码如下<br>  width: auto;<br>  max-width: 12em;<br>}</pre><br>效果如下图</p>
+<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img02.png) 
+
+&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;可以看到，最终实现效果在第 9 个字的时候便折行了。&lt;/span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;这是为什么呢？我们把&lt;/span&gt; 
+</code></pre><p><pre class="prettyprint lang-js">transform: translate(-50%, -50%)<br></pre><br><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">去掉看一下</span> </p>
+<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img03.png) 
+</code></pre><p><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">可以看到容器宽度在到达屏幕边界的时候就被截断折行了。</span><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">现在我们设定&nbsp;</span>left: 90%<span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">&nbsp;看一下</span> </p>
+<pre><code>&lt;span&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img04.png '' '' %}
+</code></pre><p> </p>
+<pre><code>&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;可以明显的看到容器被截断的更加严重。&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span&gt;&lt;span style=&quot;font-weight:700;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;至此我们分析得知，设置为&amp;nbsp;position: fixed的元素不仅位置是相对于屏幕边界定位，如果不指定元素宽高的话，宽高同样也会相对于屏幕边界被截断。&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;那么如何解决这个问题呢 ~&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;代码如下 ~&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span&gt;HTML：&lt;/span&gt; 
+
+&lt;span&gt; &lt;/span&gt; 
+</code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast-container”&gt;<br>  &lt;div class=”toast”&gt;测试十二个字提交成功状态&lt;/div&gt;<br>&lt;/div&gt;<br></pre><br>CSS</p>
+<pre><code>&lt;span&gt; &lt;/span&gt; 
+</code></pre><p><pre class="prettyprint lang-js">.toast-container {<br>  position: fixed;<br>  width: 100%;<br>  height: 100%;<br>  left: 100%;<br>  top: 100%;<br>}<br>.toast {<br>  position: absolute;<br>  top: -50%;<br>  left: -50%;<br>  transform: translate(-50%, -50%);<br>  width: auto;<br>  max-width: 12em;<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>}</pre><br><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">在 .toast 外加一个和屏幕宽高相同 .container 容器，将 .container 容器 fixed 定位到窗口外层，再将 .toast 通过 absolute 定位翻转过来即可。</span> </p>
+<pre><code>&lt;span&gt;效果如下：&lt;/span&gt; 
+
+&lt;span&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img05.png '' '' %}
+</code></pre><p> </p>
+<pre><code>（2）用&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;white-space:nowrap&lt;/span&gt; 
+
+&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;代码：&lt;/span&gt; 
+
+&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;HTML&lt;/span&gt; 
+
+&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+</code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast”&gt;提交成功提交成功提交成功&lt;/div&gt;</pre><br>CSS</p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+</code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%,-50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>  width: auto;<br>  max-width: 12em;<br>  white-space:nowrap ;<br>}</pre><br>效果</p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img05.png '' '' %}
+</code></pre><p> </p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;
+</code></pre><p> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" target="_blank" rel="external">http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/垂直水平居中/">垂直水平居中</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/&title=《垂直水平居中总结》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/&title=《垂直水平居中总结》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《垂直水平居中总结》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">call与apply详解</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">flex布局</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/&title=《垂直水平居中总结》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/&title=《垂直水平居中总结》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《垂直水平居中总结》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADMklEQVR42u3aS27DMAwFwNz/0um6SOs8kg5gM+NV0KqyRlmw/Dwe8fN8eV5/nqw8/vzfG19/frzmtAcbGxv7Juzn4ZOzq0dM3pvs1twTGxsbex07ec0xII8ax4EqOc/8b7GxsbGxk0RlEvyShAQbGxsbu8dOqjR54On9tnpObGxs7G9gJ0WlaoqSXEr1ipOznVxLw8bGxr48u1oMuvLnj/S3sbGxsS/MfhafPGDkqcWkkNR7sLGxsTexJwWjs1KOfH01+XlzKmxsbOxF7MmgTB7Yeq3fHrKQomBjY2PfnN1LG3qN1bx5UF2Th9JfGRg2Njb2Cna1WDNPAHrN4HnZCxsbG3s3OynW5MlDtcf6iZWF1i82Njb2zdn5ptXA0GsM9wJec/4IGxsbeym7etzR0ExcqMoLSVGpCxsbG3sRu1oAOi76jPrM8VjPJI3BxsbG3seeFNkTfN6yzd9eTZPexG1sbGzsm7Or4SdpxI4SgyCA5cHvMVmKjY2NfVt2Epyq4zuTUNRrOUQ7Y2NjY69gJ8WaXpP1rCCUJyr54CY2Njb2VnZvKKc3lFm97t5Y5797YmNjYy9l9wZ3eu3b5Cqr11coKmFjY2MvYve2mDQJzkonRqkINjY29iJ2skVvTZ4eVEPm8XmiLwkbGxt7HXvy//kkXZlcRLWo9EcAw8bGxl7Ezl+fl4TyQtWkbVBtYzzybwYbGxv7JuxeOalayn8Wn14zI0lRojwMGxsb+4bs3r/1vV5qsltyZb2U5uSDYmNjY1+AfUKpfdDKzVOOakB9sx4bGxt7EXvSWM0btL2hn/w68ot+VOMkNjY29gp2ftxJoOqtydnlAIaNjY19W3av9jIPgdXWwqQIhY2Njf1t7GbTtHUdvS+j2qjAxsbG3sSeDNNUW7aTolI1aL1Jq7CxsbEXsedjN71ifTJSma9J2hW9YSNsbGzsu7CrZaBJqlCFVa+73B7AxsbGXsROSkKTxnCvbXCJWho2Njb2Onb++moYmw9iFspJ2NjY2F/MzsvueVIxSWCq14eNjY29lV0t3EyCyucaD/l5sLGxsTexq+WYSfhJLuI4RM3HerCxsbEXsX8AopTPq4pJ+G0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

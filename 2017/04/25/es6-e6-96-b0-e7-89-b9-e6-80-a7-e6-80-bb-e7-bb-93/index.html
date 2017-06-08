@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>es6新特性总结 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ES6">
+    <meta name="description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 ##    箭头函数 &amp;lt;span style=&amp;quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#F">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6新特性总结">
+<meta property="og:url" content="http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 ##    箭头函数 &amp;lt;span style=&amp;quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#F">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="es6新特性总结">
+<meta name="twitter:description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 ##    箭头函数 &amp;lt;span style=&amp;quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#F">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">es6新特性总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">es6新特性总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-25T04:28:31.000Z" itemprop="datePublished" class="page-time">
+  2017-04-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/JavaScript/未分类/">未分类</a></li></ul></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">
+            Rest 
+
+    
+
+
+#### 
+    我们可以使用 rest 操作符来允许无限参数。 
+
+#### 
+     
+function demo(part1, ...part2) {
+    return {part1, part2}
+}
+
+console.log(demo(1,2,3,4,5,6))
+ 
+
+### 
+    结果： 
+
+demo(1,2,3,4,5,6) -> {"part1":1,"part2":[2,3,4,5,6]}
+
+##    Let
+####    let是新的var。 因为它有块级作用域。 
+{
+   var globalVar = "from demo1"
+}
+
+{
+   let globalLet = "from demo2";
+}
+
+console.log(globalVar)
+console.log(globalLet)
+
+###    结果：
+globalVar -> from demo1
+globalLet -> ReferenceError: globalLet is not defined
+
+####    但是，它不会向window分配任何内容： 
+let me = "go";  // 全局作用域
+var i = "able"; // 全局作用域
+
+console.log(window.me); 
+console.log(window.i);
+
+###    结果：
+window.me -> undefined
+window.i -> able
+
+####    不能使用let重新声明一个变量： 
+#### 
+let me = "foo";
+let me = "bar"; 
+console.log(me);
+
+###    结果：
+SyntaxError: Identifier 'me' has already been declared
+var me = "foo";
+var me = "bar"; 
+console.log(me)
+
+###    结果：
+me -> bar
+
+## 
+##    Const
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**const 是只读变量。**</span> 
+
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">** **</span> 
+**const a = "b"
+a = "a"**
+** ** 
+
+### 
+    **结果：** 
+
+TypeError: Assignment to constant variable.
+
+#### 
+####    应该注意，const 对象仍然可以被改变的。
+const a = { a: "a" }
+a.a = "b"
+console.log(a)
+
+###    结果：
+a -> {"a":"b"}
+
+## 
+##    For..of 
+####    迭代器的新类型，可以替代for..in。它返回的是值而不是keys 
+#### 
+let list = [4, 5, 6];
+console.log(list)
+for (let i in list) {
+   console.log(i);
+}
+
+###    结果：
+list -> [4,5,6]
+i -> 0
+i -> 1
+i -> 2
+let list = [4, 5, 6];
+console.log(list)
+for (let i of list) {
+   console.log(i); 
+}
+
+###    结果：
+list -> [4,5,6]
+i -> 4
+i -> 5
+i -> 6
+
+## 
+##    迭代器（Iterators）
+####    迭代器是一个比数组更动态的类型。 
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;"> </span> 
+let infinite = {
+  [Symbol.iterator]() {
+    let c = 0;
+    return {
+      next() {
+        c++;
+        return { done: false, value: c }
+      }
+    }
+  }
+}
+
+console.log("start");
+
+for (var n of infinite) {
+  // truncate the sequence at 1000
+  if (n > 10)
+    break;
+  console.log(n);
+}
+
+###    结果：
+"start" -> start
+n -> 1
+n -> 2
+n -> 3
+n -> 4
+n -> 5
+n -> 6
+n -> 7
+n -> 8
+n -> 9
+n -> 10
+
+####    使用Typescript，我们可以看到它接口的样子： 
+#### 
+Typescript 代码:
+interface IteratorResult {
+  done: boolean;
+  value: any;
+}
+interface Iterator {
+  next(): IteratorResult;
+}
+interface Iterable {
+  [Symbol.iterator](): Iterator
+}
+
+## 
+###    生成器（Generators）
+####    生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。 
+var infinity = {
+  [Symbol.iterator]: function*() {
+    var c = 1;
+    for (;;) {   
+      yield c++;
+    }
+  }
+}
+
+console.log("start")
+for (var n of infinity) {
+  // truncate the sequence at 1000
+  if (n > 10)
+    break;
+  console.log(n);
+}
+
+###    结果：
+"start" -> start
+n -> 1
+n -> 2
+n -> 3
+n -> 4
+n -> 5
+n -> 6
+n -> 7
+n -> 8
+n -> 9
+n -> 10
+
+####    使用Typescript 再次显示接口： 
+####    Typescript 代码: 
+interface Generator extends Iterator {
+    next(value?: any): IteratorResult;
+    throw(exception: any);
+}
+
+## 
+###    function* Iterators and generator
+####    一个产量的例子* 
+function* anotherGenerator(i) {
+  yield i + 1;
+  yield i + 2;
+  yield i + 3;
+}
+
+function* generator(i) {
+  yield i;
+  yield* anotherGenerator(i);
+  yield i + 10;
+}
+
+var gen = generator(10);
+
+console.log(gen.next().value); 
+console.log(gen.next().value); 
+console.log(gen.next().value); 
+console.log(gen.next().value); 
+console.log(gen.next().value);
+
+###    结果：
+gen.next().value -> 10
+gen.next().value -> 11
+gen.next().value -> 12
+gen.next().value -> 13
+gen.next().value -> 20
+
+## 
+###    Unicode
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">ES6 为Unicode 提供了更好的支持。</span> 
+var regex = new RegExp('\u{61}', 'u');
+
+console.log(regex.unicode)
+console.log("\uD842\uDFD7")
+console.log("\uD842\uDFD7".codePointAt())
+
+###    结果：
+regex.unicode -> true
+"" -> 
+"".codePointAt() -> 134103
+
+## 
+###    模块和模块加载器
+####    原生支持模块。
+import defaultMember from "module-name";
+import * as name from "module-name";
+import { member } from "module-name";
+import { member as alias } from "module-name";
+import { member1 , member2 } from "module-name";
+import { member1 , member2 as alias2 , [...] } from "module-name";
+import defaultMember, { member [ , [...] ] } from "module-name";
+import defaultMember, * as name from "module-name";
+import "module-name";
+export { name1, name2, …, nameN };
+export { variable1 as name1, variable2 as name2, …, nameN };
+export let name1, name2, …, nameN; // also var
+export let name1 = …, name2 = …, …, nameN; // also var, const
+
+export expression;
+export default expression;
+export default function (…) { … } // also class, function*
+export default function name1(…) { … } // also class, function*
+export { name1 as default, … };
+
+export * from …;
+export { name1, name2, …, nameN } from …;
+export { import1 as name1, import2 as name2, …, nameN } from …;
+Import Export
+
+##    Set
+####    Set 为数学对应，其中所有项目都是唯一的。对于知道SQL的人来说，这相当于distinct。
+#### 
+var set = new Set();
+set.add("Potato").add("Tomato").add("Tomato");
+console.log(set.size)
+console.log(set.has("Tomato"))
+
+for(var item of set) {
+   console.log(item)
+}
+
+###    结果
+** **
+**set.size -> 2
+set.has("Tomato") -> true
+item -> Potato
+item -> Tomato**
+** **
+
+## 
+    **
+    
+        WeakSet
+
+**
+</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#weakset"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">
+        WeakSet
+
+**
+</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">es6新特性总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-04-25 12:28:31" datetime="2017-04-25T04:28:31.000Z"  itemprop="datePublished">2017-04-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/JavaScript/未分类/">未分类</a></li></ul></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章<a href="http://es6.ruanyifeng.com/。" target="_blank" rel="external">http://es6.ruanyifeng.com/。</a></p>
+<p>##<br>    箭头函数</p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;function() 函数的简写表示法，但它不绑定 this。&lt;/span&gt; 
+
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">var odds = evens.map(v =&gt; v + 1);  // no parentes and no brackets
+var nums = evens.map((v, i) =&gt; v + i);
+var pairs = evens.map(v =&gt; ({even: v, odd: v + 1}));
+
+// Statement bodies
+nums.forEach(v =&gt; {
+  if (v % 5 === 0)
+    fives.push(v);
+});</pre>
+
+<p>##<br>    this是如何工作的</p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">var object = {
+    name: "Name", 
+    arrowGetName: () =&gt; this.name,
+    regularGetName: function() { return this.name },
+    arrowGetThis: () =&gt; this,
+    regularGetThis: function() { return this }
+}
+console.log(object);
+console.log(object.name)
+console.log(object.arrowGetName());
+console.log(object.arrowGetThis());
+console.log(this);
+console.log(object.regularGetName());
+console.log(object.regularGetThis());</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">console.log(object);  =&gt;
+Object {
+    name: "Name",
+    arrowGetName: function,
+    regularGetName: function,
+    arrowGetThis: function,
+    regularGetThis: function
+}
+
+console.log(object.name) =&gt; 
+Name
+
+console.log(object.arrowGetName());  =&gt;
+undefined
+
+console.log(object.arrowGetThis());  =&gt;  [object Window] 
+Window {
+    stop: function,
+    open: function,
+    alert: function,
+    confirm: function,
+    prompt: function,
+    ...
+}
+
+console.log(this);  =&gt; 同上
+
+console.log(object.regularGetName());   =&gt;
+Name
+
+console.log(object.regularGetThis());  =&gt;
+Object {
+    name: "Name",
+    arrowGetName: function,
+    regularGetName: function,
+    arrowGetThis: function,
+    regularGetThis: function
+}</pre>
+
+<p>## </p>
+<p>##<br>    我们知道“真正”语言中的类(Classes)。在 ES6 中类(Classes)其实是原型继承的语法糖。</p>
+<pre><code>ES6代码
+</code></pre><pre class="prettyprint lang-js">class SkinnedMesh extends THREE.Mesh {
+  constructor(geometry, materials) {
+    super(geometry, materials);
+
+    this.idMatrix = SkinnedMesh.defaultMatrix();
+    this.bones = [];
+    this.boneMatrices = [];
+    //...
+  }
+  update(camera) {
+    //...
+    super.update();
+  }
+  get boneCount() {
+    return this.bones.length;
+  }
+  set matrixType(matrixType) {
+    this.idMatrix = SkinnedMesh[matrixType]();
+  }
+  static defaultMatrix() {
+    return new THREE.Matrix4();
+  }
+}</pre>
+
+<p>##<br>    增强的对象字面量</p>
+<pre><code>ES6代码
+</code></pre><pre class="prettyprint lang-js">var theProtoObj = {
+  toString: function() {
+    return "The ProtoOBject To string"
+  }
+}
+var handler = () =&gt; "handler"
+var obj = {
+    // __proto__
+    __proto__: theProtoObj,
+    // Shorthand for ‘handler: handler’
+    handler,
+    // Methods
+    toString() {
+     // Super calls
+     return "d " + super.toString();
+    },
+    // Computed (dynamic) property names
+    [ "prop_" + (() =&gt; 42)() ]: 42
+};
+
+console.log(obj.handler)
+console.log(obj.handler())
+console.log(obj.toString())
+console.log(obj.prop_42)</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">obj.handler -&gt; () =&gt; "handler"
+obj.handler() -&gt; handler
+obj.toString() -&gt; d The ProtoOBject To string
+obj.prop_42 -&gt; 
+(() =&gt; 42)()  是一个立即执行函数 (() =&gt; 42)() 相当于
+(function() {
+    return 42;
+})()
+42</pre>
+
+<p>##<br>    字符串插值</p>
+<pre class="prettyprint lang-js">var name = "Bob", time = "today";
+
+var multiLine = `This Line Spans Multiple Lines`；
+
+console.log(`Hello ${name},how are you ${time}?`)
+console.log(multiLine)</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">a -&gt; 1
+b -&gt; 3</pre>
+
+<p>####<br>    对象也能很好的解构</p>
+<pre class="prettyprint lang-js">nodes = () =&gt; { return {op: "a", lhs: "b", rhs: "c"}}
+var { op: a, lhs: b , rhs: c } = nodes()
+console.log(a)
+console.log(b)
+console.log(c)</pre>
+
+<p>###<br>    结果：</p>
+<p>### </p>
+<pre class="prettyprint lang-js">a -&gt; a
+b -&gt; b
+c -&gt; c</pre>
+
+<p>##<br>    使用速记表示法</p>
+<p>## </p>
+<pre class="prettyprint lang-js">nodes = () =&gt; { return {lhs: "a", op: "b", rhs: "c"}}
+
+// binds `op`, `lhs` and `rhs` in scope
+var {op, lhs, rhs} = nodes()
+
+console.log(op)
+console.log(lhs)
+console.log(rhs)</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">op -&gt; b
+lhs -&gt; a
+rhs -&gt; c</pre>
+
+<p>##<br>    可在参数位置使用</p>
+<pre class="prettyprint lang-js">function g({name: x}) {
+  return x
+}
+
+function m({name}) {
+  return name
+}
+
+console.log(g({name: 5}))
+console.log(m({name: 5}))
+</pre>
+
+<p>###<br>    结果：</p>
+<pre><code>** ** 
+</code></pre><pre class="prettyprint lang-js">**g({name: 5}) -&gt; 5
+m({name: 5}) -&gt; 5**</pre>
+** ** 
+
+## 
+    **故障弱化解构** 
+
+    ** ** 
+
+<pre class="prettyprint lang-js">**var [a] = []
+var [b = 1] = []
+var c = [];
+console.log(a)
+console.log(b);
+console.log(c);**</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">a -&gt; undefined
+b -&gt; 1
+c -&gt; []</pre>
+
+<p>##<br>    参数默认值（Default）</p>
+<pre class="prettyprint lang-js">function f(x, y=12) {
+  return x + y;
+}
+
+console.log(f(3))
+console.log(f(3,2))</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">f(3) -&gt; 15
+f(3,2) -&gt; 5</pre>
+
+<p>##<br>    扩展（Spread）</p>
+<pre><code>在函数中
+</code></pre><pre class="prettyprint lang-js">function f(x, y, z) {
+  return x + y + z;
+}
+// 传递数组的每个元素作为参数
+console.log(f(...[1,2,3]))</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">f(...[1,2,3]) -&gt; 6</pre>
+
+<p>##<br>    在数组中</p>
+<pre class="prettyprint lang-js">var parts = ["shoulders", "knees"];
+var lyrics = ["head", ...parts, "and", "toes"]; 
+
+console.log(lyrics)</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">var parts = ["shoulders", "knees"];
+var lyrics = ["head", ...parts, "and", "toes"]; 
+
+console.log(lyrics)</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">lyrics -&gt; ["head","shoulders","knees","and","toes"]</pre>
+
+<p>##<br>    扩展 + 对象字面量</p>
+<p>#### </p>
+<pre><code>    我们可以使用这个创造很酷的对象。
+
+&lt;div&gt;
+    &lt;span style=&quot;font-weight:normal;&quot;&gt; 
+</code></pre><pre class="prettyprint lang-js">let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+console.log(x); // 1
+console.log(y); // 2
+console.log(z); // { a: 3, b: 4 }
+
+// Spread properties
+let n = { x, y, ...z };
+console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
+console.log(obj)
+可惜的是它还不支持：
+
+npm install --save-dev babel-plugin-transform-object-rest-spread</pre>
+ 
+        <h2>
+            <span style="font-weight:normal;">Rest</span> 
+
+    
+
+
+#### 
+    <span style="font-weight:normal;"><span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">我们可以使用 rest 操作符来允许无限参数。</span></span> 
+
+#### 
+    <span style="font-weight:normal;"> 
+<pre class="prettyprint lang-js">function demo(part1, ...part2) {
+    return {part1, part2}
+}
+
+console.log(demo(1,2,3,4,5,6))</pre>
+</span> 
+
+### 
+    <span style="font-weight:normal;">结果：</span> 
+
+<pre class="prettyprint lang-js">demo(1,2,3,4,5,6) -&gt; {"part1":1,"part2":[2,3,4,5,6]}</pre>
+
+<p>##<br>    Let</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">let是新的var。 因为它有块级作用域。</span> </p>
+<pre class="prettyprint lang-js">{
+   var globalVar = "from demo1"
+}
+
+{
+   let globalLet = "from demo2";
+}
+
+console.log(globalVar)
+console.log(globalLet)</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">globalVar -&gt; from demo1
+globalLet -&gt; ReferenceError: globalLet is not defined</pre>
+
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">但是，它不会向window分配任何内容：</span> </p>
+<pre class="prettyprint lang-js">let me = "go";  // 全局作用域
+var i = "able"; // 全局作用域
+
+console.log(window.me); 
+console.log(window.i);</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">window.me -&gt; undefined
+window.i -&gt; able</pre>
+
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">不能使用let重新声明一个变量：</span> </p>
+<p>#### </p>
+<pre class="prettyprint lang-js">let me = "foo";
+let me = "bar"; 
+console.log(me);</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">SyntaxError: Identifier 'me' has already been declared</pre>
+<pre class="prettyprint lang-js">var me = "foo";
+var me = "bar"; 
+console.log(me)</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">me -&gt; bar</pre>
+
+<p>## </p>
+<p>##<br>    Const</p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;**const 是只读变量。**&lt;/span&gt; 
+
+&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;** **&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">**const a = "b"
+a = "a"**</pre>
+** ** 
+
+### 
+    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**结果：**</span> 
+
+<pre class="prettyprint lang-js">TypeError: Assignment to constant variable.</pre>
+
+<p>#### </p>
+<p>####<br>    <strong>应该注意</strong>，const 对象仍然可以被改变的。</p>
+<pre class="prettyprint lang-js">const a = { a: "a" }
+a.a = "b"
+console.log(a)</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">a -&gt; {"a":"b"}</pre>
+
+<p>## </p>
+<p>##<br>    <strong>For..of</strong> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器的新类型，可以替代for..in。它返回的是值而不是keys</span> </p>
+<p>#### </p>
+<pre class="prettyprint lang-js">let list = [4, 5, 6];
+console.log(list)
+for (let i in list) {
+   console.log(i);
+}</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">list -&gt; [4,5,6]
+i -&gt; 0
+i -&gt; 1
+i -&gt; 2</pre>
+<pre class="prettyprint lang-js">let list = [4, 5, 6];
+console.log(list)
+for (let i of list) {
+   console.log(i); 
+}</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">list -&gt; [4,5,6]
+i -&gt; 4
+i -&gt; 5
+i -&gt; 6</pre>
+
+<p>## </p>
+<p>##<br>    迭代器（Iterators）</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器是一个比数组更动态的类型。</span> </p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">let infinite = {
+  [Symbol.iterator]() {
+    let c = 0;
+    return {
+      next() {
+        c++;
+        return { done: false, value: c }
+      }
+    }
+  }
+}
+
+console.log("start");
+
+for (var n of infinite) {
+  // truncate the sequence at 1000
+  if (n &gt; 10)
+    break;
+  console.log(n);
+}</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">"start" -&gt; start
+n -&gt; 1
+n -&gt; 2
+n -&gt; 3
+n -&gt; 4
+n -&gt; 5
+n -&gt; 6
+n -&gt; 7
+n -&gt; 8
+n -&gt; 9
+n -&gt; 10</pre>
+
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript，我们可以看到它接口的样子：</span> </p>
+<p>#### </p>
+<pre class="prettyprint lang-js">Typescript 代码:
+interface IteratorResult {
+  done: boolean;
+  value: any;
+}
+interface Iterator {
+  next(): IteratorResult;
+}
+interface Iterable {
+  [Symbol.iterator](): Iterator
+}</pre>
+
+<p>## </p>
+<p>###<br>    生成器（Generators）</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。</span> </p>
+<pre class="prettyprint lang-js">var infinity = {
+  [Symbol.iterator]: function*() {
+    var c = 1;
+    for (;;) {   
+      yield c++;
+    }
+  }
+}
+
+console.log("start")
+for (var n of infinity) {
+  // truncate the sequence at 1000
+  if (n &gt; 10)
+    break;
+  console.log(n);
+}</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">"start" -&gt; start
+n -&gt; 1
+n -&gt; 2
+n -&gt; 3
+n -&gt; 4
+n -&gt; 5
+n -&gt; 6
+n -&gt; 7
+n -&gt; 8
+n -&gt; 9
+n -&gt; 10</pre>
+
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript 再次显示接口：</span> </p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Typescript 代码:</span> </p>
+<pre class="prettyprint lang-js">interface Generator extends Iterator {
+    next(value?: any): IteratorResult;
+    throw(exception: any);
+}</pre>
+
+<p>## </p>
+<p>###<br>    function* Iterators and generator</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">一个产量的例子*</span> </p>
+<pre class="prettyprint lang-js">function* anotherGenerator(i) {
+  yield i + 1;
+  yield i + 2;
+  yield i + 3;
+}
+
+function* generator(i) {
+  yield i;
+  yield* anotherGenerator(i);
+  yield i + 10;
+}
+
+var gen = generator(10);
+
+console.log(gen.next().value); 
+console.log(gen.next().value); 
+console.log(gen.next().value); 
+console.log(gen.next().value); 
+console.log(gen.next().value);</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">gen.next().value -&gt; 10
+gen.next().value -&gt; 11
+gen.next().value -&gt; 12
+gen.next().value -&gt; 13
+gen.next().value -&gt; 20</pre>
+
+<p>## </p>
+<p>###<br>    Unicode</p>
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 为Unicode 提供了更好的支持。&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">var regex = new RegExp('\u{61}', 'u');
+
+console.log(regex.unicode)
+console.log("\uD842\uDFD7")
+console.log("\uD842\uDFD7".codePointAt())</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">regex.unicode -&gt; true
+"" -&gt; 
+"".codePointAt() -&gt; 134103</pre>
+
+<p>## </p>
+<p>###<br>    模块和模块加载器</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">原生支持模块。</span></p>
+<pre class="prettyprint lang-js">import defaultMember from "module-name";
+import * as name from "module-name";
+import { member } from "module-name";
+import { member as alias } from "module-name";
+import { member1 , member2 } from "module-name";
+import { member1 , member2 as alias2 , [...] } from "module-name";
+import defaultMember, { member [ , [...] ] } from "module-name";
+import defaultMember, * as name from "module-name";
+import "module-name";
+export { name1, name2, …, nameN };
+export { variable1 as name1, variable2 as name2, …, nameN };
+export let name1, name2, …, nameN; // also var
+export let name1 = …, name2 = …, …, nameN; // also var, const
+
+export expression;
+export default expression;
+export default function (…) { … } // also class, function*
+export default function name1(…) { … } // also class, function*
+export { name1 as default, … };
+
+export * from …;
+export { name1, name2, …, nameN } from …;
+export { import1 as name1, import2 as name2, …, nameN } from …;
+Import Export</pre>
+
+<p>##<br>    Set</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Set 为数学对应，其中所有项目都是唯一的。对于知道SQL的人来说，这相当于distinct。</span></p>
+<p>#### </p>
+<pre class="prettyprint lang-js">var set = new Set();
+set.add("Potato").add("Tomato").add("Tomato");
+console.log(set.size)
+console.log(set.has("Tomato"))
+
+for(var item of set) {
+   console.log(item)
+}</pre>
+
+<p>###<br>    结果</p>
+<pre><code>** **
+</code></pre><pre class="prettyprint lang-js">**set.size -&gt; 2
+set.has("Tomato") -&gt; true
+item -&gt; Potato
+item -&gt; Tomato**</pre>
+** **
+
+## 
+    **
+    <h3 id="weakset" style="font-size:16px;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;background-color:#FFFFFF;">
+        WeakSet
+
+**
+</h3></h2>
+
+#### 
+    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">WeakSet对象允许您在集合中存储弱持有的对象。没有引用的对象将被垃圾回收。</span>
+
+<pre class="prettyprint lang-js">var item = { a:"Potato"}
+var set = new WeakSet();
+set.add({ a:"Potato"}).add(item).add({ a:"Tomato"}).add({ a:"Tomato"});
+console.log(set.size)
+console.log(set.has({a:"Tomato"}))
+console.log(set.has(item))
+
+for(let item of set) {
+   console.log(item)
+}</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">set.size -&gt; undefined
+set.has({a:"Tomato"}) -&gt; false
+set.has(item) -&gt; true
+TypeError: set[Symbol.iterator] is not a function</pre>
+
+<p>##<br>    Map</p>
+<pre><code>Map也称词典
+</code></pre><pre class="prettyprint lang-js">var map = new Map();
+map.set("Potato", 12);
+map.set("Tomato", 34);
+
+console.log(map.get("Potato"))
+
+for(let item of map) {
+   console.log(item)
+}
+
+for(let item in map) {
+   console.log(item)
+}</pre>
+
+<p>####<br>    结果：</p>
+<pre class="prettyprint lang-js">map.get("Potato") -&gt; 12
+item -&gt; ["Potato",12]
+item -&gt; ["Tomato",34]</pre>
+<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">可以使用除字符串之外的其他类型。</span>
+
+<pre class="prettyprint lang-js">var map = new Map();
+var key = {a: "a"}
+map.set(key, 12);
+
+console.log(map.get(key))
+console.log(map.get({a: "a"}))</pre>
+
+<p>###<br>    结果</p>
+<pre class="prettyprint lang-js">map.get(key) -&gt; 12
+map.get({a: "a"}) -&gt; undefined</pre>
+
+<p>##<br>    WeakMap</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用键的对象，并且只保留对键的弱引用。</span></p>
+<p>#### </p>
+<pre class="prettyprint lang-js">var wm = new WeakMap();
+
+var o1  = {}
+var o2  = {}
+var o3  = {}
+wm.set(o1, 1);
+wm.set(o2, 2);
+wm.set(o3, {a: "a"});
+wm.set({}, 4);
+
+console.log(wm.get(o2));
+console.log(wm.has({}))
+
+delete o2;
+
+console.log(wm.get(o3));
+
+for(let item in wm) {
+   console.log(item)
+}
+
+for(let item of wm) {
+   console.log(item)
+}</pre>
+
+<p>###<br>    <strong>结果</strong></p>
+<pre class="prettyprint lang-js">wm.get(o2) -&gt; 2
+wm.has({}) -&gt; false
+wm.get(o3) -&gt; {"a":"a"}
+TypeError: wm[Symbol.iterator] is not a function</pre>
+
+<p>##<br>    代理（Proxy）</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">代理可以用来改变对象的行为。 它们允许我们定义 trap 。</span></p>
+<p>#### </p>
+<pre class="prettyprint lang-js">var obj = function ProfanityGenerator() {
+    return {
+       words: "Horrible words"    
+    }
+}()
+
+var handler = function CensoringHandler() {
+        return {
+        get: function (target, key) {
+            return target[key].replace("Horrible", "Nice");
+        },
+    }
+
+}()
+
+var proxy = new Proxy(obj, handler);
+
+console.log(proxy.words);</pre>
+
+<p>###<br>    结果</p>
+<pre class="prettyprint lang-js">proxy.words -&gt; Nice words</pre>
+
+<p>## </p>
+<p>###<br>    提供以下 trap ：</p>
+<pre class="prettyprint lang-js">var handler =
+{
+  get:...,
+  set:...,
+  has:...,
+  deleteProperty:...,
+  apply:...,
+  construct:...,
+  getOwnPropertyDescriptor:...,
+  defineProperty:...,
+  getPrototypeOf:...,
+  setPrototypeOf:...,
+  enumerate:...,
+  ownKeys:...,
+  preventExtensions:...,
+  isExtensible:...
+}</pre>
+
+<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;Symbols 是一个新类型。 可用于创建匿名属性。&lt;/span&gt;
+</code></pre><pre class="prettyprint lang-js">var typeSymbol = Symbol("type");
+
+class Pet {
+
+  constructor(type) {
+
+    this[typeSymbol] = type;
+
+  }
+  getType() {
+     return this[typeSymbol];
+  }
+
+}
+
+var a = new Pet("dog");
+console.log(a.getType());
+console.log(Object.getOwnPropertyNames(a))
+
+console.log(Symbol("a") === Symbol("a"))</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">a.getType() -&gt; dog
+Object.getOwnPropertyNames(a) -&gt; []
+Symbol("a") === Symbol("a") -&gt; false</pre>
+
+<p>##<br>    可继承内置函数</p>
+<p>####<br>    我们现在可以继承原生类</p>
+<p>#### </p>
+<pre class="prettyprint lang-js">class CustomArray extends Array {
+
+}
+
+var a = new CustomArray();
+
+a[0] = 2
+console.log(a[0])</pre>
+结果：
+
+<pre class="prettyprint lang-js">a[0] -&gt; 2</pre>
+
+<p>## </p>
+<p>###<br>    不能使用数组的代理(Proxy)来覆盖getter函数。</p>
+<p>###<br>    新类库</p>
+<p>###<br>    各种新的方法和常量</p>
+<pre><code>** **
+</code></pre><pre class="prettyprint lang-js">**console.log(Number.EPSILON)
+console.log(Number.isInteger(Infinity))
+console.log(Number.isNaN("NaN"))
+
+console.log(Math.acosh(3))
+console.log(Math.hypot(3, 4))
+console.log(Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2))
+
+console.log("abcde".includes("cd") )
+console.log("abc".repeat(3) )
+
+console.log(Array.of(1, 2, 3) )
+console.log([0, 0, 0].fill(7, 1) )
+console.log([1, 2, 3].find(x =&gt; x == 3) )
+console.log([1, 2, 3].findIndex(x =&gt; x == 2)) 
+console.log([1, 2, 3, 4, 5].copyWithin(3, 0)) 
+console.log(["a", "b", "c"].entries() )
+console.log(["a", "b", "c"].keys() )
+console.log(["a", "b", "c"].values() )
+
+console.log(Object.assign({}, { origin: new Point(0,0) }))**</pre>
+** **
+
+### 
+    **结果：**
+
+<pre class="prettyprint lang-js">Number.EPSILON -&gt; 2.220446049250313e-16
+Number.isInteger(Infinity) -&gt; false
+Number.isNaN("NaN") -&gt; false
+Math.acosh(3) -&gt; 1.7627471740390859
+Math.hypot(3, 4) -&gt; 5
+Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) -&gt; 2
+"abcde".includes("cd") -&gt; true
+"abc".repeat(3) -&gt; abcabcabc
+Array.of(1, 2, 3) -&gt; [1,2,3]
+[0, 0, 0].fill(7, 1) -&gt; [0,7,7]
+[1, 2, 3].find(x =&gt; x == 3) -&gt; 3
+[1, 2, 3].findIndex(x =&gt; x == 2) -&gt; 1
+[1, 2, 3, 4, 5].copyWithin(3, 0) -&gt; [1,2,3,1,2]
+["a", "b", "c"].entries() -&gt; {}
+["a", "b", "c"].keys() -&gt; {}
+["a", "b", "c"].values() -&gt; TypeError: ["a","b","c"].values is not a function
+Object.assign({}, { origin: new Point(0,0) }) -&gt; ReferenceError: Point is not defined
+文档: Number, Math, Array.from, Array.of, Array.prototype.copyWithin, Object.assign</pre>
+
+<p>## </p>
+<p>###<br>    二进制和八进制</p>
+<p>####<br>    <span style="color:#777777;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">二进制和八进制数字的字面量。</span></p>
+<pre class="prettyprint lang-js">console.log(0b11111)
+console.log(0o2342)
+
+console.log(0xff); // also in es5</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">ES6 代码:
+0b11111 -&gt; 31
+0o2342 -&gt; 1250
+0xff -&gt; 255</pre>
+
+<p>## </p>
+<p>###<br>    Promises</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">异步编程。</span></p>
+<p>#### </p>
+<pre class="prettyprint lang-js">var p1 = new Promise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; resolve("1"), 101)
+})
+var p2 = new Promise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; resolve("2"), 100)
+})
+
+Promise.race([p1, p2]).then((res) =&gt; {
+   console.log(res)
+})
+
+Promise.all([p1, p2]).then((res) =&gt; {
+   console.log(res)
+})</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">res -&gt; 2
+res -&gt; ["1","2"]</pre>
+
+<p>##<br>    快速的Promise</p>
+<p>## </p>
+<pre class="prettyprint lang-js">var p1 = Promise.resolve("1")
+var p2 = Promise.reject("2")
+
+Promise.race([p1, p2]).then((res) =&gt; {
+   console.log(res)
+})</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">res -&gt; 1</pre>
+
+<p>##<br>    快速失败</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">如果一个 promise 失败，all和race也将 reject(拒绝)。</span></p>
+<p>#### </p>
+<pre class="prettyprint lang-js">var p1 = new Promise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; resolve("1"), 1001)
+})
+var p2 = new Promise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; reject("2"), 1)
+})
+
+Promise.race([p1, p2]).then((res) =&gt; {
+   console.log("success" + res)
+}, res =&gt; {
+   console.log("error " + res)
+})
+
+Promise.all([p1, p2]).then((res) =&gt; {
+   console.log("success" + res)
+}, res =&gt; {
+   console.log("error " + res)
+})</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">"error " + res -&gt; error 2
+"error " + res -&gt; error 2</pre>
+
+<p>##<br>    反射（Reflect）</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">新类型的元编程与新的API现有的还有一些新的方法。</span></p>
+<pre class="prettyprint lang-js">var z = {w: "Super Hello"}
+var y = {x: "hello", __proto__: z};
+
+console.log(Reflect.getOwnPropertyDescriptor(y, "x"));
+console.log(Reflect.has(y, "w"));
+console.log(Reflect.ownKeys(y, "w"));
+
+console.log(Reflect.has(y, "x"));
+console.log(Reflect.deleteProperty(y,"x"))
+console.log(Reflect.has(y, "x"));</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">Reflect.getOwnPropertyDescriptor(y, "x") -&gt; {"value":"hello","writable":true,"enumerable":true,"configurable":true}
+Reflect.has(y, "w") -&gt; true
+Reflect.ownKeys(y, "w") -&gt; ["x"]
+Reflect.has(y, "x") -&gt; true
+Reflect.deleteProperty(y,"x") -&gt; true
+Reflect.has(y, "x") -&gt; false</pre>
+
+<p>##<br>    尾调用(Tail Call)优化</p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">尾调用的概念非常简单，一句话就能说清楚，就是指某个函数的最后一步是调用另一个函数。</span></p>
+<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">ES6可以确保尾调用不会造成堆栈溢出。 （不是所有的实现工作）。</span></p>
+<p>#### </p>
+<pre class="prettyprint lang-js">function factorial(n, acc = 1) {
+    if (n &lt;= 1) return acc; 
+    return factorial(n - 1, n * acc);
+}
+console.log(factorial(10))
+console.log(factorial(100))
+console.log(factorial(1000))
+console.log(factorial(10000))
+console.log(factorial(100000))
+console.log(factorial(1000000))</pre>
+
+<p>###<br>    结果：</p>
+<pre class="prettyprint lang-js">factorial(10) -&gt; 3628800
+factorial(100) -&gt; 9.332621544394418e+157
+factorial(1000) -&gt; Infinity
+factorial(10000) -&gt; Infinity
+factorial(100000) -&gt; RangeError: Maximum call stack size exceeded
+factorial(1000000) -&gt; RangeError: Maximum call stack size exceeded</pre>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" target="_blank" rel="external">http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/&title=《es6新特性总结》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/&title=《es6新特性总结》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《es6新特性总结》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vue键盘事件小技巧</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">call与apply详解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/&title=《es6新特性总结》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/&title=《es6新特性总结》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《es6新特性总结》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACmElEQVR42u3aQW7jMBAEQP//09nLHhYI1umeIQ0FKJ2C2JJYPJDjHr5e8fX19vr3O/+79/3T8je+blx4eHh414Z+lpQ85/u9+Zjx8PDwbvPeDzF59PvB5f95j2mnFQ8PD+8JvNmAkmlqNwY8PDy838XbRAYtCQ8PD++ZvPxxX8G1D22T6T6cteDh4eHFvLyL9Jy/r/T38PDw8NZd9bwZlm8keYF+YLR4eHh4F3j5gpsMcRYxtPfWMQceHh7eUd5+KEmLqw1ej21LeHh4eNd4Z5v3s1ZWO03RpoKHh4d3gZdvA/kr8/+3xfqqKMfDw8M7xJttDJvFfQbLt40D+x4eHh5ewLux6G9OMbRhxw/9PTw8PLwP8jbHBdpYoY1uo+0BDw8P7wIvxyQF7v7T9ohAnbLg4eHhHeIlD81fP6POwtzkm3h4eHhnebOWfFIWJ1HsbLKKUhsPDw/vMi85Qtou8Ql+E/5GvxXw8PDwLvNa2OaYVL61DKl4eHh413h5e6ktcJNtoE5NciQeHh7eBd6ssXSjmN4cukruwsPDwzvLmxXWs1ZZPd9lgBJ19vDw8PAWvH20mrTz27fMJhcPDw/vM7z80EASVcwig7Zwz6cVDw8P7zZvEze0i/Us6m2jZDw8PLzP8PKwdV/y5ov7Zprw8PDw7vFmYUG9TK+nIKHi4eHhfZLXbhIbQH7ka9Nyw8PDwzvLm/3gz4vsU6219qjB30/x8PDwLvBmLauzkW57BGETmuDh4eGd4rUFbg5rpyAh1ZEuHh4e3jXeqcZYO02zUKMopvHw8PAewKtbUIuJO/DLAA8PD+/BvFkCkJfms3YdHh4e3j3ebCibAbUleBs04+Hh4d3jtXVpPtz2OW27a9XTw8PDw5vw/gBwNeQprE9NNQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

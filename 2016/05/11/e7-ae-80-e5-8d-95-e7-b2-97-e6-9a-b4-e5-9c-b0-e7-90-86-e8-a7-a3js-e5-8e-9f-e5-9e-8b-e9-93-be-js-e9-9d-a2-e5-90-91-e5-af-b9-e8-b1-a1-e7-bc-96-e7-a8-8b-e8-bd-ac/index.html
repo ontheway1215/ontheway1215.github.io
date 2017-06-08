@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>简单粗暴地理解js原型链–js面向对象编程(转) | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript,原型与原型链">
+    <meta name="description" content="今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。  &amp;lt;span style=&amp;quot;color:#3E3E3E;">
+<meta name="keywords" content="JavaScript,原型与原型链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单粗暴地理解js原型链–js面向对象编程(转)">
+<meta property="og:url" content="http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。  &amp;lt;span style=&amp;quot;color:#3E3E3E;">
+<meta property="og:image" content="http://yoursite.com/wp-content/uploads/2016/05/20160521224811_76474.png">
+<meta property="og:image" content="http://yoursite.com/wp-content/uploads/2016/05/20160521225303_94229.gif">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单粗暴地理解js原型链–js面向对象编程(转)">
+<meta name="twitter:description" content="今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。  &amp;lt;span style=&amp;quot;color:#3E3E3E;">
+<meta name="twitter:image" content="http://yoursite.com/wp-content/uploads/2016/05/20160521224811_76474.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">简单粗暴地理解js原型链–js面向对象编程(转)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">简单粗暴地理解js原型链–js面向对象编程(转)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-11T14:19:10.000Z" itemprop="datePublished" class="page-time">
+  2016-05-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">简单粗暴地理解js原型链–js面向对象编程(转)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-11 22:19:10" datetime="2016-05-11T14:19:10.000Z"  itemprop="datePublished">2016-05-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><span style="font-size:14px;">今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：</span><span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;"><a href="http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。" target="_blank" rel="external">http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。</a></span> </p>
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;原型链理解起来有点绕了，网上资料也是很多，每次晚上睡不着的时候总喜欢在网上找点原型链和闭包的文章看，效果极好。&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;不要纠结于那一堆术语了，那除了让你脑筋拧成麻花，真的不能帮你什么。简单粗暴点看原型链吧，想点与代码无关的事，比如人、妖以及人妖。&lt;/span&gt;
+</code></pre><p> </p>
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:14px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;font-size:16px;line-height:24px;font-family:&apos;Microsoft YaHei&apos;;background-color:#F5F5F5;&quot;&gt;1）人是人他妈生的，妖是妖他妈生的。人和妖都是对象实例，而&lt;/span&gt;&lt;span style=&quot;font-size:16px;line-height:24px;font-family:&apos;Microsoft YaHei&apos;;background-color:#F5F5F5;&quot;&gt;人他妈和妖他妈就是原型。原型也是对象，叫原型对象。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+
+![](/wp-content/uploads/2016/05/20160521224834_96368.png)
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;2）人他妈和人他爸啪啪啪能生出一堆人宝宝、妖他妈和妖他爸啪啪啪能生出一堆妖宝宝，啪啪啪就是构造函数，俗称造人。&lt;/span&gt; 
+</code></pre><p><img src="/wp-content/uploads/2016/05/20160521224811_76474.png" alt=""></p>
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;3）人他妈会记录啪啪啪的信息，所以可以通过人他妈找到啪啪啪的信息，也就是说能通过原型对象找到构造函数。&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;4）人他妈可以生很多宝宝，但这些宝宝只有一个妈妈，这就是原型的唯一性。&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;5）人他妈也是由人他妈他妈生的，通过人他妈找到人他妈他妈，再通过人他妈他妈找到人他妈他妈……，这个关系叫做原型链。&lt;/span&gt; 
+
+![5](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/5.png) 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;6）原型链并不是无限的，当你通过人他妈一直往上找，最后发现你会发现人他妈他妈他妈……的他妈都不是人，也就是原型链最终指向null。&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;7）人他妈生的人会有人的样子，妖他妈生的妖会有妖的丑陋，这叫继承。&lt;/span&gt; 
+
+![](/wp-content/uploads/2016/05/20160521224901_19458.png)
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;8）你继承了你妈的肤色，你妈继承了你妈他妈的肤色，你妈他妈……，这就是原型链的继承。&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;9）你谈对象了，她妈让你带上房产证去提货，你若没有，那她妈会问你妈有没有，你妈没有那她妈会问你妈她妈有没有……这就是原型链的向上搜索。&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;10）你会继承你妈的样子，但是你也可以去染发洗剪吹，就是说对象的属性可以自定义，会覆盖继承得到的属性。&lt;/span&gt; 
+
+![11](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/11.png) 
+
+11）虽然你洗剪吹了染成黄毛了，但你不能改变你妈的样子，你妈生的弟弟妹妹跟你的黄毛洗剪吹没一点关系，就是说对象实例不能改动原型的属性。
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;12）但是你家被你玩火烧了的话，那就是说你家你妈家你弟们家都被烧了，这就是原型属性的共享。&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;13）你妈外号阿珍，邻居大娘都叫你阿珍儿，但你妈头发从飘柔做成了金毛狮王后，隔壁大婶都改口叫你包租仔，这叫原型的动态性。&lt;/span&gt; 
+
+![](/wp-content/uploads/2016/05/20160521224954_46031.png)
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;14）你妈爱美，又跑到韩国整形，整到你妈他妈都认不出来，即使你妈头发换回飘柔了，但隔壁邻居还是叫你金毛狮王子。因为没人认出你妈，整形后的你妈已经回炉再造了，这就是原型的整体重写。&lt;/span&gt; 
+
+![4](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/4.png) 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;尼玛！你特么也是够了！ Don’t BB！ Show me the code！&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">function Person (name) { this.name = name; }
+function Mother () { }
+Mother.prototype = {    //Mother的原型
+    age: 18,
+    home: ['Beijing', 'Shanghai']
+};
+Person.prototype = new Mother(); //Person的原型为Mother
+
+//用chrome调试工具查看，提供了__proto__接口查看原型，这里有两层原型，各位还是直接看chrome好一点。
+var p1 = new Person('Jack'); //p1:'Jack'; __proto__:{__proto__:18,['Beijing','Shanghai']}
+var p2 = new Person('Mark'); //p2:'Mark'; __proto__:{__proto__:18,['Beijing','Shanghai']}
+
+p1.age = 20;  
+/* 实例不能改变原型的基本值属性，正如你洗剪吹染黄毛跟你妈无关
+ * 在p1实例下增加一个age属性的普通操作，与原型无关。跟var o={}; o.age=20一样。
+ * p1：下面多了个属性age，而__proto__跟 Mother.prototype一样，age=18。
+ * p2：只有属性name，__proto__跟 Mother.prototype一样
+ */
+
+p1.home[0] = 'Shenzhen'; 
+/* 原型中引用类型属性的共享，正如你烧了你家，就是烧了你全家的家
+ * 这个先过，下文再仔细唠叨一下可好？
+ * p1：'Jack',20; __proto__:{__proto__:18,['Shenzhen','Shanghai']}
+ * p2：'Mark';    __proto__:{__proto__:18,['Shenzhen','Shanghai']}
+ */
+
+p1.home = ['Hangzhou', 'Guangzhou']; 
+/* 其实跟p1.age=20一样的操作。换成这个理解: var o={}; o.home=['big','house']
+ * p1：'Jack',20,['Hangzhou','Guangzhou']; __proto__:{__proto__:18,['Shenzhen','Shanghai']}
+ * p2：'Mark';                             __proto__:{__proto__:18,['Shenzhen','Shanghai']}
+ */
+
+delete p1.age;    
+/* 删除实例的属性之后，原本被覆盖的原型值就重见天日了。正如你剃了光头，遗传的迷人小卷发就长出来了。
+ * 这就是向上搜索机制，先搜你，然后你妈，再你妈他妈，所以你妈的改动会动态影响你。
+ * p1：'Jack',['Hangzhou','Guangzhou']; __proto__:{__proto__:18,['Shenzhen','Shanghai']}
+ * p2：'Mark';                          __proto__:{__proto__:18,['Shenzhen','Shanghai']}
+ */
+
+Person.prototype.lastName = 'Jin'; 
+/* 改写原型，动态反应到实例中。正如你妈变新潮了，邻居提起你都说你妈真潮。
+ * 注意，这里我们改写的是Person的原型，就是往Mother里加一个lastName属性，等同于Mother.lastName='Jin'
+ * 这里并不是改Mother.prototype，改动不同的层次，效果往往会有很大的差异。
+ * p1：'Jack',['Hangzhou','Guangzhou']; __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai']}
+ * p2：'Mark';                          __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai']}
+ */
+
+Person.prototype = { 
+    age: 28, 
+    address: { country: 'USA', city: 'Washington' }
+};
+var p3 = new Person('Obama'); 
+/* 重写原型！这个时候Person的原型已经完全变成一个新的对象了，也就是说Person换了个妈，叫后妈。
+ * 换成这样理解：var a=10; b=a; a=20; c=a。所以b不变，变得是c，所以p3跟着后妈变化，与亲妈无关。
+ * p1：'Jack',['Hangzhou','Guangzhou']; __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai']}
+ * p2：'Mark';                          __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai']}
+ * p3:'Obama';__proto__: 28 {country: 'USA', city: 'Washington'}
+ */
+
+Mother.prototype.no = 9527;
+/* 改写原型的原型，动态反应到实例中。正如你妈他妈变新潮了，邻居提起你都说你丫外婆真潮。
+ * 注意，这里我们改写的是Mother.prototype，p1p2会变，但上面p3跟亲妈已经了无瓜葛了，不影响他。
+ * p1：'Jack',['Hangzhou','Guangzhou']; __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai'],9527}
+ * p2：'Mark';                          __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai'],9527}
+ * p3:'Obama';__proto__: 28 {country: 'USA', city: 'Washington'}
+ */
+
+Mother.prototype = { 
+    car: 2, 
+    hobby: ['run','walk']
+};
+var p4 = new Person('Tony');
+/* 重写原型的原型！这个时候Mother的原型已经完全变成一个新的对象了！人他妈换了个后妈！
+ * 由于上面Person与Mother已经断开联系了，这时候Mother怎么变已经不影响Person了。
+ * p4:'Tony';__proto__: 28 {country: 'USA', city: 'Washington'}
+ */
+
+Person.prototype = new Mother(); //再次绑定
+var p5 = new Person('Luffy');
+// 这个时候如果需要应用这些改动的话，那就要重新将Person的原型绑到mother上了
+// p5:'Luffy';__proto__:{__proto__: 2, ['run','walk']}
+
+p1.__proto__.__proto__.__proto__.__proto__ //null，你说原型链的终点不是null？
+Mother.__proto__.__proto__.__proto__    //null，你说原型链的终点不是null？</pre>
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">看完基本能理解了吧？</span>
+
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">现在再来说说 p1.age = 20、p1.home = [‘Hangzhou’, ‘Guangzhou’] 和 &nbsp;p1.home[0] = ‘Shenzhen’ 的区别。 p1.home[0] = ‘Shenzhen’; &nbsp;总结一下是 p1.object.method，p1.object.property 这样的形式。</span> 
+
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">p1.age = 20; &nbsp;p1.home = [‘Hangzhou’, ‘Guangzhou’];这两句还是比较好理解的，先忘掉原型吧，想想我们是怎么为一个普通对象增加属性的：</span> 
+
+<pre class="prettyprint lang-js">var obj = new Object();
+obj.name='xxx'; 
+obj.num = [100, 200];</pre>
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这样是不是就理解了呢？一样一样的呀。</span> 
+
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">那为什么 p1.home[0] = ‘Shenzhen’ 不会在 p1 下创建一个 home 数组属性，然后将其首位设为 ‘Shenzhen’呢？ 我们还是先忘了这个，想想上面的obj对象，如果写成这样： var obj.name = ‘xxx’, obj.num = [100, 200]，能得到你要的结果吗？ 显然，除了报错你什么都得不到。因为obj还未定义，又怎么能往里面加入东西呢？同理，p1.home[0]中的 home 在 p1 下并未被定义，所以也不能直接一步定义 home[0] 了。如果要在p1下创建一个 home 数组，当然是这么写了：</span> 
+
+<pre class="prettyprint lang-js">p1.home = []; 
+p1.home[0] = 'Shenzhen';</pre>
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这不就是我们最常用的办法吗？</span> 
+
+    而之所以 p1.home[0] = ‘Shenzhen’ 不直接报错，是因为在原型链中有一个搜索机制。当我们输入 p1.object 的时候，原型链的搜索机制是先在实例中搜索相应的值，找不到就在原型中找，还找不到就再往上一级原型中搜索……一直到了原型链的终点，就是到null还没找到的话，就返回一个 undefined。当我们输入 p1.home[0] 的时候，也是同样的搜索机制，先搜索 p1 看有没有名为 home 的属性和方法，然后逐级向上查找。最后我们在Mother的原型里面找到了，所以修改他就相当于修改了 Mother 的原型啊。
+
+<div>
+
+</div>
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">一句话概括：p1.home[0] = ‘Shenzhen’ &nbsp;等同于 &nbsp;Mother.prototype.home[0] = ‘Shenzhen’。</span> 
+
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">由上面的分析可以知道，原型链继承的主要问题在于属性的共享，很多时候我们只想共享方法而并不想要共享属性，理想中每个实例应该有独立的属性。因此，原型继承就有了下面的两种改良方式：</span> 
+
+    **<span style="color:#E53333;font-size:16px;">1）组合继承</span>**<span style="color:#E53333;font-size:16px;"></span><span style="color:#E53333;font-size:16px;"></span> 
+
+    <span style="color:#E53333;font-size:16px;"><span style="color:;"><span style="color:;"></span></span></span> 
+
+<pre class="prettyprint lang-js">function Mother (age) {
+    this.age = age;
+    this.hobby = ['running','football']
+}
+Mother.prototype.showAge = function () {
+    console.log(this.age); 
+};
+
+function Person (name, age) { 
+    Mother.call(this, age);　　//第二次执行
+    this.name = name; 
+}
+Person.prototype = new Mother(); 　//第一次执行
+Person.prototype.constructor = Person;
+Person.prototype.showName = function () {
+    console.log(this.name);
+}
+
+var p1 = new Person('Jack', 20); 
+p1.hobby.push('basketball');  //p1:'Jack'; __proto__:20,['running','football']
+var p2 = new Person('Mark', 18);  //p2:'Mark'; __proto__:18,['running','football']</pre>
+
+<pre><code>&lt;span style=&quot;background-color:;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;结果是酱紫的：&lt;/span&gt;&lt;/span&gt;
+
+![](/wp-content/uploads/2016/05/20160521225635_50823.png)![](/wp-content/uploads/2016/05/20160521225712_44768.png)
+
+这里第一次执行的时候，得到 Person.prototype.age = undefined, Person.prototype.hobby = [‘running’,’football’]，第二次执行也就是 var p1 = new Person(‘Jack’, 20) 的时候，得到 p1.age =20, p1.hobby = [‘running’,’football’]，push后就变成了 p1.hobby = [‘running’,’football’, ‘basketball’]。其实分辨好 this 的变化，理解起来也是比较简单的，把 this 简单替换一下就能得到这个结果了。 如果感觉理解起来比较绕的话，试着把脑子里面的概念扔掉吧，把自己当浏览器从上到下执行一遍代码，结果是不是就出来了呢？
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;通过第二次执行原型的构造函数 Mother()，我们在对象实例中复制了一份原型的属性，这样就做到了与原型属性的分离独立。细心的你会发现，我们第一次调用 Mother()，好像什么用都没有呢，能不调用他吗？可以，就有了下面的寄生组合式继承。&lt;/span&gt; 
+</code></pre><div>
+
+<p></p></div><br><span style="font-size:16px;color:#E53333;"></span><span style="font-size:16px;color:#E53333;"></span><span style="font-size:16px;color:#E53333;"></span><strong><span style="font-size:16px;color:#E53333;">2）寄生组合式继承</span></strong><span style="font-size:16px;color:#E53333;"></span><p></p>
+<pre class="prettyprint lang-js">function object(o){
+    function F(){}
+    F.prototype = o;
+    return new F();
+}
+
+function inheritPrototype(Person, Mother){
+    var prototype = object(Mother.prototype); 
+    prototype.constructor = Person;    
+    Person.prototype = prototype;    
+}
+
+function Mother (age) {
+    this.age = age;
+    this.hobby = ['running','football']
+}
+Mother.prototype.showAge = function () {
+    console.log(this.age); 
+};
+
+function Person (name, age) { 
+    Mother.call(this, age);
+    this.name = name; 
+}
+
+inheritPrototype(Person, Mother);
+
+Person.prototype.showName = function () {
+    console.log(this.name);
+}
+
+var p1 = new Person('Jack', 20); 
+p1.hobby.push('basketball');//p1:'Jack'; __proto__:20,['running','football']
+var p2 = new Person('Mark', 18); //p2:'Mark'; __proto__:18,['running','football']</pre>
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">结果是酱紫的：</span>
+
+    ![](/wp-content/uploads/2016/05/20160521225810_65716.png)![](/wp-content/uploads/2016/05/20160521225841_19299.png)
+
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">原型中不再有 age 和 hobby 属性了，只有两个方法，正是我们想要的结果！</span> 
+
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">
+
+</span> 
+
+    关键点在于 object(o) 里面，这里借用了一个临时对象来巧妙避免了调用new Mother()，然后将原型为 o 的新对象实例返回，从而完成了原型链的设置。很绕，对吧，那是因为我们不能直接设置 Person.prototype = Mother.prototype 啊。
+
+    **<span style="font-size:16px;color:#E53333;">小结</span>**<span style="font-size:16px;color:#E53333;"></span> 
+
+<div>
+
+        说了这么多，其实核心只有一个：属性共享和独立的控制，当你的对象实例需要独立的属性，所有做法的本质都是在对象实例里面创建属性。若不考虑太多，你大可以在Person里面直接定义你所需要独立的属性来覆盖掉原型的属性。总之，使用原型继承的时候，要对于原型中的属性要特别注意，因为他们都是牵一发而动全身的存在。
+
+        下面简单罗列下js中创建对象的各种方法，现在最常用的方法是组合模式，熟悉的同学可以跳过到文章末尾点赞了。
+
+**<span style="font-size:16px;color:#E53333;">1）原始模式</span>**<span style="font-size:16px;color:#E53333;"></span>
+
+</div>
+<pre class="prettyprint lang-js">//1.原始模式，对象字面量方式
+var person = { 
+    name: 'Jack',
+    age: 18,
+    sayName: function () { alert(this.name); }
+};
+//1.原始模式，Object构造函数方式
+var person = new Object();
+person.name = 'Jack';
+person.age = 18;
+person.sayName = function () {
+    alert(this.name);
+};</pre>
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> 
+
+    <span style="color:#E53333;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">**2）工厂模式**</span> 
+
+    <span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> </span> 
+
+<pre class="prettyprint lang-js">//2.工厂模式，定义一个函数创建对象
+function creatPerson (name, age) {
+    var person = new Object(); 
+    person.name = name;
+    person.age = age;
+    person.sayName = function () {
+        alert(this.name);
+    };
+    return person; 
+}</pre>
+
+<p></p></span> <p></p>
+<p>工厂模式就是批量化生产，简单调用就可以进入造人模式（<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/wp-content/uploads/2016/05/20160521225303_94229.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>啪啪啪……）。指定姓名年龄就可以造一堆小宝宝啦，解放双手。但是由于是工厂暗箱操作的，所以你不能识别这个对象到底是什么类型、是人还是狗傻傻分不清（instanceof 测试为 Object），另外每次造人时都要创建一个独立的temp对象，代码臃肿，雅蠛蝶啊。</p>
+<pre><code>&lt;span style=&quot;font-size:16px;color:#E53333;&quot;&gt;&lt;/span&gt;**&lt;span style=&quot;font-size:16px;color:#E53333;&quot;&gt;3）构造函数&lt;/span&gt;** 
+</code></pre><pre class="prettyprint lang-js">//3.构造函数模式，为对象定义一个构造函数
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+    this.sayName = function () {
+        alert(this.name);
+    };    
+}
+var p1 = new Person('Jack', 18); //创建一个p1对象
+Person('Jack', 18);    //属性方法都给window对象，window.name='Jack'，window.sayName()会输出Jack</pre>
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">构造函数与C++、JAVA中类的构造函数类似，易于理解，另外Person可以作为类型识别（instanceof 测试为 Person 、Object）。但是所有实例依然是独立的，不同实例的方法其实是不同的函数。这里把函数两个字忘了吧，把sayName当做一个对象就好理解了，就是说张三的 sayName 和李四的 sayName是不同的存在，但显然我们期望的是共用一个 sayName 以节省内存。</span> 
+
+    **<span style="font-size:16px;color:#E53333;">4）原型模式</span>**<span style="font-size:16px;color:#E53333;"></span> 
+
+<pre class="prettyprint lang-js">//4.原型模式，直接定义prototype属性
+function Person () {}
+Person.prototype.name = 'Jack';
+Person.prototype.age = 18;
+Person.prototype.sayName = function () { alert(this.name); };
+//4.原型模式，字面量定义方式
+function Person () {}
+Person.prototype = {
+    name: 'Jack',
+    age: 18,
+    sayName: function () { alert(this.name); }
+};
+var p1 = new Person(); //name='Jack'
+var p2 = new Person(); //name='Jack'</pre>
+<span style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这里需要注意的是原型属性和方法的共享，即所有实例中都只是引用原型中的属性方法，任何一个地方产生的改动会引起其他实例的变化。</span> 
+
+    **<span style="color:#E53333;">5）混合模式（构造+原型）</span>** 
+
+<pre class="prettyprint lang-js">//5\. 原型构造组合模式，
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype = {
+    hobby: ['running','football'];
+    sayName: function () { alert(this.name); },
+    sayAge: function () { alert(this.age); }
+};
+var p1 = new Person('Jack', 20); 
+//p1:'Jack',20; __proto__: ['running','football'],sayName,sayAge
+var p2 = new Person('Mark', 18); 
+//p1:'Mark',18;__proto__: ['running','football'],sayName,sayAge</pre>
+
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;做法是将需要独立的属性方法放入构造函数中，而可以共享的部分则放入原型中，这样做可以最大限度节省内存而又保留对象实例的独立性。&lt;/span&gt;
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;
+</code></pre><p></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" target="_blank" rel="external">http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原型与原型链/">原型与原型链</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">鼠标或键盘控制3D盒子旋转</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">HTML5头图切换效果</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVYAAAFWCAAAAAAXxOpfAAAF7UlEQVR42u3aQXLjMAwEQP//09kHZGPPAHJZTFqnlCNTVNMH1ACPR3x9Bdf3O7+vMHtW/q18z+1OHu+4sGLFihUr1huw7rG+35n//RwoQXn+yfPV8s/ro8KKFStWrFiPYk1eryXIC6B2heRHsC/g8pWxYsWKFSvWv8n6voNpC6znTLMVsGLFihUrVqzJy+f35OvPWixJhJTfgxUrVqxYsf4d1ja8yFGSNWeF0VWDHbOS67JeFlasWLFixfpR1nxD/r74wooVK1asWD/K+lVebewyK302JdFsjKMNa14oYcWKFStWrIewtk2OtvWSf3cWW+yHM/JIpf5ZYMWKFStWrLdnzYOG97Ul8nZLWyrlxeLsngtyKaxYsWLFivWjrPm44axIajna42/31haLyX5e1K1YsWLFihXrjVk3hcsszpgFHJs2T17YzUrA/3yCFStWrFixHsW6GXfIw5R26CEPYtrYJX+L/JiL+gsrVqxYsWI9hLUNYmatnf1gRzs0mTR4NuUjVqxYsWLFegrrfiCjbV3k7ZY2uGmPeQY9GyXBihUrVqxY78l6VREza5lcFXAkqz3iK1+tbrpgxYoVK1asN2PdvEbeepmFKW3rpf2JzAZBijIRK1asWLFiPYQ1Dzs2owxJ0dauNhsQyYvI2U6wYsWKFSvWU1g3BUfbYmnv2UQnedzTrhO9C1asWLFixforWPNYZFOozaKT5DDa4Y92HKTuZWHFihUrVqw3Y50NXszyhP1IR3tUs7bNpgUV1Y9YsWLFihXrbVi/RtcsRtkXTG1B1k5EJD+XqA2DFStWrFixHsvaBhZ5obYfg2jbIXkDKTnaorzDihUrVqxYD2GdhR05XM6avPbmCNvm0KzVhBUrVqxYsZ7Iuh+nmIUp+abzEmdfrs2aLj/qYcWKFStWrMeytiHFJkyZlUqzsm92AHk7CitWrFixYj2LdR9MzP7bllmz9fPj3AyXRAkWVqxYsWLFejPWtsR5X4slL5JWwUc7QjFrAmHFihUrVqy/iLUdO8gHON7R6pi9xcXtFqxYsWLFivUQ1raQ2jdO8oNp18/HMmYRTP45VqxYsWLF+jtY86hi9vJto+WqQcx6MmVUVmLFihUrVqynsLahw6YQaVHaO2cHUMyqlEEPVqxYsWLFemfWTSulfYGc9TnQrLybAQ0LR6xYsWLFivUQ1ny7SXWWF1iz0Y0N2WwPbYk5XBQrVqxYsWL9KOs74o/8ANpCJ49F8vKuHQEZZldYsWLFihXrzVgTpk3zYzbS0RZbsydu3ujFalixYsWKFevhrFc1OfIiqW1+tPvZXHUogxUrVqxYsR7Fmhc9s1GJtvWSP2UW6+TtorbB89hsFytWrFixYv0o66xMmd1zVbxyVRwzK8t+fCJWrFixYsV6FGtSWNTTHOt1kkGKHKLd7aphgxUrVqxYsR7F2sYTs+GMtpxqv5uPdMwKqaJQw4oVK1asWA9hTUqZd8clG76WrN1/3iIqzhMrVqxYsWK9DesmjGiZ9oeRH/m1P4629YIVK1asWLGewtoukcPl7ZlZtJEPQ8zipFmlhBUrVqxYsZ7F2jLl0UOywuYI80hlE+4Mx0SwYsWKFSvWw1nzxsa1pVI7JJGzJgeWt6BecGPFihUrVqyHsLYjF3lcMoNrWzX5lR9Gzh01XbBixYoVK9bbs+Zb2QQxz3Hb5scmLpkNYeTvghUrVqxYsZ7Cum97JN9qj6c98vzY2kbOrGjDihUrVqxYfxNrvt18mGPf6mjDmvzg21Dmx3YLVqxYsWLFenvWWdNidgyztkfOXbQ94pAlj4Tap2PFihUrVqz3Yd0MTCRY7XhHW2C1YU3+XqsWDlasWLFixXoU6+zxeeGyKYZmAyKzEGfzdKxYsWLFivUvsLbl1KxEa+OStsWSl1N5aYUVK1asWLH+Bdb89dr/tkd11ShGHtAUERJWrFixYsV6FGv7taRd0f43D0TycqcNiWZREVasWLFixXou6ybUaGOUWeTRxiJXRSqzmAYrVqxYsWI9hPUfXAlRXsbAzk8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

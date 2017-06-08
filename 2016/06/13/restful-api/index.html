@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>RESTful API | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="好久没有写博客了，最近刚好在弄公司的一个项目需要调用别人的API，其中遇到好多坑，今天将其记录下来，方便以后的学习。主要参考阮一峰的文章http://www.ruanyifeng.com/blog/2014/05/restful_api.html和博客园的一篇文章http://www.cnblogs.com/princeoicq/articles/2217808.html，接下来就来介绍RESTf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RESTful API">
+<meta property="og:url" content="http://yoursite.com/2016/06/13/restful-api/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="好久没有写博客了，最近刚好在弄公司的一个项目需要调用别人的API，其中遇到好多坑，今天将其记录下来，方便以后的学习。主要参考阮一峰的文章http://www.ruanyifeng.com/blog/2014/05/restful_api.html和博客园的一篇文章http://www.cnblogs.com/princeoicq/articles/2217808.html，接下来就来介绍RESTf">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RESTful API">
+<meta name="twitter:description" content="好久没有写博客了，最近刚好在弄公司的一个项目需要调用别人的API，其中遇到好多坑，今天将其记录下来，方便以后的学习。主要参考阮一峰的文章http://www.ruanyifeng.com/blog/2014/05/restful_api.html和博客园的一篇文章http://www.cnblogs.com/princeoicq/articles/2217808.html，接下来就来介绍RESTf">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">RESTful API</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">RESTful API</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-06-12T16:25:01.000Z" itemprop="datePublished" class="page-time">
+  2016-06-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/未分类/">未分类</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-restful-api"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">RESTful API</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-06-13 00:25:01" datetime="2016-06-12T16:25:01.000Z"  itemprop="datePublished">2016-06-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/未分类/">未分类</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>好久没有写博客了，最近刚好在弄公司的一个项目需要调用别人的API，其中遇到好多坑，今天将其记录下来，方便以后的学习。主要参考阮一峰的文章<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a>和博客园的一篇文章<a href="http://www.cnblogs.com/princeoicq/articles/2217808.html" target="_blank" rel="external">http://www.cnblogs.com/princeoicq/articles/2217808.html</a>，接下来就来介绍RESTful API的设计与应用。</p>
+<pre><code>一、协议
+</code></pre><hr>
+<p>API与用户的通信协议，总是使用HTTP协议</p>
+<pre><code>二、域名
+</code></pre><hr>
+<p>应该尽量将API部署到专用域名下</p>
+<pre class="prettyprint lang-js">https://api.example.com</pre>
+
+<pre><code>如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。
+</code></pre><pre class="prettyprint lang-js">https://example.org/api/</pre>
+三、版本
+
+* * *
+
+将API的版本放入URL
+
+<pre class="prettyprint lang-js">https://api.example.com/v1/</pre>
+
+<pre><code>另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。Github采用这种做法。
+</code></pre><p>四、路径</p>
+<hr>
+<pre><code>路径又称&quot;终点&quot;（endpoint），表示API的具体网址。
+
+在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的&quot;集合&quot;（collection），所以API中的名词也应该使用复数。
+
+举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。
+</code></pre><pre class="prettyprint lang-js">https://api.example.com/v1/zoos
+https://api.example.com/v1/animals
+https://api.example.com/v1/employees</pre>
+
+<pre><code>五、HTTP动词
+
+对于资源的具体操作类型，由HTTP动词表示。
+
+常用的HTTP动词有下面五个（括号里是对应的SQL命令）。
+</code></pre><hr>
+<pre class="prettyprint lang-js">GET（SELECT）：从服务器取出资源（一项或多项）。
+POST（CREATE）：在服务器新建一个资源。
+PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
+PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。
+DELETE（DELETE）：从服务器删除资源。</pre>
+还有两个不常用的HTTP动词
+
+<pre class="prettyprint lang-js">HEAD：获取资源的元数据。
+OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。</pre>
+
+<pre><code>下面是一些例子。
+</code></pre><pre class="prettyprint lang-js">GET /zoos：列出所有动物园
+POST /zoos：新建一个动物园
+GET /zoos/ID：获取某个指定动物园的信息
+PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）
+PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）
+DELETE /zoos/ID：删除某个动物园
+GET /zoos/ID/animals：列出某个指定动物园的所有动物
+DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物</pre>
+
+<pre><code>六、过滤信息（&lt;span style=&quot;line-height:1.5;&quot;&gt;Filtering&lt;/span&gt;）
+
+如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。
+
+下面是一些常见的参数。
+</code></pre><hr>
+<pre class="prettyprint lang-js">?limit=10：指定返回记录的数量
+?offset=10：指定返回记录的开始位置。
+?page=2&amp;per_page=100：指定第几页，以及每页的记录数。
+?sortby=name&amp;order=asc：指定返回结果按照哪个属性排序，以及排序顺序。
+?animal_type_id=1：指定筛选条件</pre>
+
+<pre><code>参数的设计允许存在冗余，即允许API路径和URL参数偶尔有重复。比如，GET /zoo/ID/animals 与 GET /animals?zoo_id=ID 的含义是相同的。
+
+七、状态码（Status Code）
+</code></pre><hr>
+<pre><code>服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）。
+</code></pre><pre class="prettyprint lang-js">200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
+201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。
+202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）
+204 NO CONTENT - [DELETE]：用户删除数据成功。
+400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。
+401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。
+403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。
+404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。
+406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
+410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。
+422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。
+500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</pre>
+
+<pre><code>状态码的完全列表参见这里[http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)。
+
+八、错误处理（Error Handling）
+</code></pre><hr>
+<pre><code>如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。
+</code></pre><pre class="prettyprint lang-js">{
+    error: "Invalid API key"
+}</pre>
+
+<pre><code>九、返回结果
+</code></pre><hr>
+<pre><code>针对不同操作，服务器向用户返回的结果应该符合以下规范。
+</code></pre><pre class="prettyprint lang-js">GET /collection：返回资源对象的列表（数组）
+GET /collection/resource：返回单个资源对象
+POST /collection：返回新生成的资源对象
+PUT /collection/resource：返回完整的资源对象
+PATCH /collection/resource：返回完整的资源对象
+DELETE /collection/resource：返回一个空文档</pre>
+
+<pre><code>十、Hypermedia API
+</code></pre><hr>
+<pre><code>RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。
+
+比如，当用户向api.example.com的根目录发出请求，会得到这样一个文档。
+</code></pre><pre class="prettyprint lang-js">{"link": {
+  "rel":   "collection https://www.example.com/zoos",
+  "href":  "https://api.example.com/zoos",
+  "title": "List of zoos",
+  "type":  "application/vnd.yourformat+json"
+}}</pre>
+
+<pre><code>上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。
+
+Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访问api.github.com会得到一个所有可用API的网址列表。
+</code></pre><pre class="prettyprint lang-js">{
+  "current_user_url": "https://api.github.com/user",
+  "authorizations_url": "https://api.github.com/authorizations",
+  // ...
+}</pre>
+
+<pre><code>从上面可以看到，如果想获取当前用户的信息，应该去访问[http://api.github.com/user](http://api.github.com/user)，然后就得到了下面结果。
+</code></pre><pre class="prettyprint lang-js">{
+  "message": "Requires authentication",
+  "documentation_url": "https://developer.github.com/v3"
+}</pre>
+
+<pre><code>上面代码表示，服务器给出了提示信息，以及文档的网址。
+
+十一、其他
+</code></pre><hr>
+<pre><code>（1）API的身份认证应该使用OAuth 2.0框架。
+
+（2）服务器返回的数据格式，应该尽量使用JSON，避免使用XML。
+
+（完）
+</code></pre>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/06/13/restful-api/" target="_blank" rel="external">http://yoursite.com/2016/06/13/restful-api/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/06/13/restful-api/&title=《RESTful API》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/06/13/restful-api/&title=《RESTful API》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/06/13/restful-api/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《RESTful API》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/06/13/restful-api/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/06/13/restful-api/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/06/13/javascript-e5-92-8cjquery-e8-af-bb-e5-8f-96-e5-92-8c-e4-bf-ae-e6-94-b9http-headers/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">javascript和jquery读取和修改HTTP headers</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">鼠标或键盘控制3D盒子旋转</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/06/13/restful-api/&title=《RESTful API》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/06/13/restful-api/&title=《RESTful API》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/06/13/restful-api/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《RESTful API》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/06/13/restful-api/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/06/13/restful-api/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aS2rDQBAFQN//0g5kFQiW3+tRAp4prYyYIJUWnf49HvH1/L6S+88fV3v/1ZnbLgwMjI9lPC+v36+bPOzV386eG1ExMDAOYOSv0gbH/EXbT4CBgYGRPCwP0LNXxMDAwFgJuG0J2p7BwMDAWCkmZw9uk8U/rMUxMDA+kNEOBv7z9x/ONzAwMD6E8RxdbcBtS9/6fTAwMLZm5CPJds3imp08t046MTAwNmW0BefKIld7pjiPgYGxNaNdpGgTwbZl1i6fRRNXDAyMD2dcH2rHAyuvMiNF/zcwMDC2YKwvWyRLFcnAclgeY2BgHMNYadYnU8X2TLH8gYGBcRhjlpytpIazth0GBsZpjLYQTU6296/7Zm/SRwwMjAMYK8XqbPw5G4VG220YGBjbMWYts/XFiFkz7s0TMTAwNmXkRWybzK2viOVDUwwMjBMYbTs+R7ZLGzMkBgbGCYw24WuHmsWC16x7hoGBsTWjTc7yAJ1TZ2E3H3liYGDswVhJ8lpMPphslzAwMDDOYeRDgjaNWylWo/MYGBhbM9pSc1bo3hBS23ksBgbGFoxZ2Tlbj8g/RPsJMDAw9masp2VJaTorlZPfGBgY5zDa9v318kTynfKmfxKaMTAwzmHkVW/b7l9aksjTSgwMDIxR8M0/QT4WjfqFGBgYBzPuCs0rrbSXwRoDA+MARhLgZoPJvK2WJ5oYGBinMW7Y1BgNCe4N4hgYGJsyvgDs0LJQdssh8AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

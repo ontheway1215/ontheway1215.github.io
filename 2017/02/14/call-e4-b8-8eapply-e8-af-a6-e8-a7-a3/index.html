@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>call与apply详解 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。 一、  call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="call与apply详解">
+<meta property="og:url" content="http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。 一、  call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="call与apply详解">
+<meta name="twitter:description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。 一、  call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">call与apply详解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">call与apply详解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-14T07:45:29.000Z" itemprop="datePublished" class="page-time">
+  2017-02-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-call-e4-b8-8eapply-e8-af-a6-e8-a7-a3"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">call与apply详解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-02-14 15:45:29" datetime="2017-02-14T07:45:29.000Z"  itemprop="datePublished">2017-02-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。</p>
+<pre><code>一、
+
+call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。二者的作用完全一样，只是接受参数的方式不太一样。例如，有一个函数 func1 定义如下：
+</code></pre><pre class="prettyprint lang-js">var func1 = function(arg1, arg2) {};</pre>
+
+<pre><code>就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, &lt;span class=&quot;s1&quot;&gt;[arg1, arg2]&lt;/span&gt;); 来调用。其中 this 是你想指定的上下文，他可以任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
+
+JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。
+
+二、
+
+在javascript OOP中，我们经常会这样定义：
+</code></pre><pre class="prettyprint lang-js">function cat(){ } cat.prototype={  food:"fish",  say: function(){  alert("I love "+this.food);  } } var blackCat = new cat;
+blackCat.say();</pre>
+
+<pre><code>但是如果我们有一个对象whiteDog = {food:&lt;span class=&quot;s1&quot;&gt;&quot;bone&quot;&lt;/span&gt;},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：blackCat.say.call(whiteDog);
+
+所以，可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法，但是其他的有，我们可以借助call或apply用其它对象的方法来操作。
+
+用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：
+</code></pre><pre class="prettyprint lang-js">var domNodes = Array.prototype.slice.call(document.getElementsByTagName("*"));</pre>
+
+<pre><code>这样domNodes就可以应用Array下的所有方法了。
+
+三、
+</code></pre><pre class="prettyprint lang-js">obj.call(thisObj, arg1, arg2, ...);
+obj.apply(thisObj, [arg1, arg2, ...]);</pre>
+
+<pre><code>两者作用一致，都是把obj(即this)绑定到thisObj，这时候thisObj具备了obj的属性和方法。或者说thisObj『继承』了obj的属性和方法。
+
+唯一区别是apply接受的是数组参数，call接受的是连续参数。
+</code></pre><pre class="prettyprint lang-js">function add(j, k){
+    return j+k;
+}
+
+function sub(j, k){
+    return j-k;
+}</pre>
+
+<pre><code>我们在控制台运行：
+</code></pre><pre class="prettyprint lang-js">add(5,3); //8
+add.call(sub, 5, 3); //8
+add.apply(sub, [5, 3]); //8
+
+sub(5, 3); //2
+sub.call(add, 5, 3); //2
+sub.apply(add, [5, 3]); //2</pre>
+
+<pre><code>通过call和apply，我们可以实现对象继承。示例：
+</code></pre><pre class="prettyprint lang-js">var Parent = function(){
+    this.name = "yjc";
+    this.age = 22;
+}
+var child = {};
+console.log(child);//Object {} ,空对象
+Parent.call(child);
+console.log(child); //Object {name: "yjc", age: 22}</pre>
+
+<pre><code>以上实现了对象的继承。&amp;nbsp;
+</code></pre>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" target="_blank" rel="external">http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《call与apply详解》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">es6新特性总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">垂直水平居中总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《call与apply详解》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3aQW4bMRAEQP//0wpg5JZ43T1Dyj4UT4KwlqZogBw1+fERj9fnaJ98/TOen8xfHx54eHh4o9K/GnnRz4znQl/xyGvGw8PDu81Llvjnj35+MvnkBJzXjIeHh/cbeO2C/rw9PNeQTBweHh7e7+e1jfKpv33rvoeHh4cX8/If/7NWOG+v2+DjWNaCh4eHF/Nmx1o/+/ri+R4eHh7e4lQ9X3ZnC/R+k/imTjw8PLwLvCRgzQOCzfHVvu2OysXDw8M7xEsW4tnB/2Zq2jqLMBcPDw9vzUti0zxUzRvoNm5oq8LDw8O7x8u3gU0Re/CwmcbDw8M7ykuW2k1x7YFWHklE8TEeHh7eBV7eLrdBQxtwzO4D1L8b8PDw8A7x8iP/2SXRUxcOhpdT8fDw8I7ykgB3fwDWTkEyiXh4eHg/xdtEqLMjsVlZ7ffi4eHh3eO1F09n07Ff6Nsjsb/v4OHh4V3j5RcC2pa3bbJzfHT8hoeHh3eBl5feXhGYHVm1W0X0PB4eHt4F3uzLZot7G1UkF7CifwkeHh7eId7z12+C2tnFqTZc/mbi8PDw8C7wkkW5DVXbS1qb1nzYUuPh4eGteZtQdRitrpvyYivCw8PDu8ybxQT5FpI33LONJ7p6hYeHh7fmrQ6W4mg1X8pzRntoh4eHh3eWF+nLiXiNRjt9SRCMh4eHd5bXxqN5C9624/n7xZaDh4eHd5k3K7oNatsjt3zg4eHh3eZtmt086k1eb4LjL6vFw8PDu8Db7CfJ4VMSLsy2jTYaxsPDwzvLSzaDUwt3PgXthOLh4eG9nze7/NQ21vnkbrau/0QSeHh4eL+Gly/im9C23ZaObQx4eHh4a94maGjDi9llBTw8PLx38pJFfB+t7i9sDRNoPDw8vKO8WVN7NrCYXT44FWTg4eHhxbw/z3LkKUAr2q4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

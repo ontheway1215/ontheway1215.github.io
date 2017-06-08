@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>flex布局 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="flex">
+    <meta name="description" content="好久没写东西了，既然定了每周一篇文章的计划，就要确保认真完成，这就当做是新年的第一篇文章吧！ 最近在做微信小程序，微信小程序中的wxss中的布局用的flex布局，今天来总结一下flex布局。 ##    一、Flex布局是什么？  &amp;lt;span class=&amp;quot;md-line md-end-block md-focus&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;md-">
+<meta name="keywords" content="flex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex布局">
+<meta property="og:url" content="http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="好久没写东西了，既然定了每周一篇文章的计划，就要确保认真完成，这就当做是新年的第一篇文章吧！ 最近在做微信小程序，微信小程序中的wxss中的布局用的flex布局，今天来总结一下flex布局。 ##    一、Flex布局是什么？  &amp;lt;span class=&amp;quot;md-line md-end-block md-focus&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;md-">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071006.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071007.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071008.jpg">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071009.jpg">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071011.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071012.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flex布局">
+<meta name="twitter:description" content="好久没写东西了，既然定了每周一篇文章的计划，就要确保认真完成，这就当做是新年的第一篇文章吧！ 最近在做微信小程序，微信小程序中的wxss中的布局用的flex布局，今天来总结一下flex布局。 ##    一、Flex布局是什么？  &amp;lt;span class=&amp;quot;md-line md-end-block md-focus&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;md-">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">flex布局</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">flex布局</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-08T08:09:18.000Z" itemprop="datePublished" class="page-time">
+  2017-01-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/css/">css</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">
+        3.5 align-items属性 
+
+align-items属性定义项目在交叉轴上如何对齐。</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">flex布局</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-01-08 16:09:18" datetime="2017-01-08T08:09:18.000Z"  itemprop="datePublished">2017-01-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/css/">css</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>好久没写东西了，既然定了每周一篇文章的计划，就要确保认真完成，这就当做是新年的第一篇文章吧！</p>
+<pre><code>最近在做微信小程序，微信小程序中的wxss中的布局用的flex布局，今天来总结一下flex布局。
+</code></pre><p>##<br>    <span class="md-expand">一、Flex布局是什么？</span> </p>
+<pre><code>&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span class=&quot;md-expand&quot;&gt;Flex是Flexible Box的缩写，意为&quot;弹性布局&quot;，用来为盒状模型提供最大的灵活性。&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span&gt;任何一个容器都可以指定为Flex布局。&lt;/span&gt;&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-css">.box{
+  display: flex;
+}</pre>
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">行内元素也可以使用Flex布局。</span> 
+
+<pre class="prettyprint lang-css">.box{
+  display: inline-flex;
+}</pre>
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">Webkit内核的浏览器，必须加上</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">-webkit</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">前缀。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span> 
+
+<pre class="prettyprint lang-js">.box{
+  display: -webkit-flex; /* Safari */
+  display: flex;
+}</pre>
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">注意，设为Flex布局以后，子元素的</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">float</span><span style="color:#333333;font-family:&quot;font-size:16px;">、</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">clear</span><span style="color:#333333;font-family:&quot;font-size:16px;">和</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">vertical-align</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性将失效。</span>
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span> 
+
+## 
+    <span class="md-expand">二、基本概念</span> 
+
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">采用Flex布局的元素，称为Flex容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称"项目"。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">main start</span><span style="color:#333333;font-family:&quot;font-size:16px;">，结束位置叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">main end</span><span style="color:#333333;font-family:&quot;font-size:16px;">；交叉轴的开始位置叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">cross start</span><span style="color:#333333;font-family:&quot;font-size:16px;">，结束位置叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">cross end</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span>
+
+</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">项目默认沿主轴排列。单个项目占据的主轴空间叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;">main size</span><span style="color:#333333;font-family:&quot;font-size:16px;">，占据的交叉轴空间叫做</span><span style="color:#333333;font-family:&quot;font-size:16px;">cross size</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"> </span> 
+
+## 
+    <span class="md-expand">三、容器的属性</span> 
+
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">以下6个属性设置在容器上。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+*   flex-direction
+*   flex-wrap
+*   flex-flow
+*   justify-content
+*   align-items
+*   align-content
+
+### 
+    <span class="md-expand">3.1 flex-direction属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;background-color:#60D978;">flex-direction</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性决定主轴的方向（即项目的排列方向）。</span>
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.box {
+  flex-direction: row | row-reverse | column | column-reverse;
+}</pre>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能有4个值。</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span></span> 
+
+*   row（默认值）：主轴为水平方向，起点在左端。
+*   row-reverse：主轴为水平方向，起点在右端。
+*   column：主轴为垂直方向，起点在上沿。
+*   column-reverse：主轴为垂直方向，起点在下沿。
+
+### 
+    <span class="md-expand">3.2 flex-wrap属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">默认情况下，项目都排在一条线（又称"轴线"）上。</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-wrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性定义，如果一条轴线排不下，如何换行。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071006.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.box{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}</pre>
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取三个值。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（1）</span><span style="color:#333333;font-family:&quot;font-size:16px;">nowrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">（默认）：不换行。</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;"><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071007.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（2）</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">wrap</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">：换行，第一行在上方。</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071008.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+</span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">（3）</span><span class="" style="color:#333333;font-family:&quot;font-size:16px;">wrap-reverse</span><span style="color:#333333;font-family:&quot;font-size:16px;">：换行，第一行在下方。</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071009.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+</span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+### 
+    <span class="md-expand">3.3 flex-flow</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-flow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性是</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-direction</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性和</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-wrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性的简写形式，默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">row nowrap</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.box {
+  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+}</pre>
+
+<p>###<br>    <span class="md-expand">3.4 justify-content属性</span> </p>
+<p><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">justify-content</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了项目在主轴上的对齐方式。</span> </p>
+<pre><code>&lt;span class=&quot;&quot; style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">.box {
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+}</pre>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+*   flex-start（默认值）：左对齐
+*   flex-end：右对齐
+*   center： 居中
+*   space-between：两端对齐，项目之间的间隔都相等。
+*   space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+
+### 
+    <span class="md-expand"> 
+    <h3 class="md-end-block md-heading md-focus" style="font-size:1.5em;color:#333333;font-family:&quot;background-color:#FFFFFF;">
+        <span class="md-expand">3.5 align-items属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目在交叉轴上如何对齐。</span></h3></span> 
+
+
+### 
+    <span class="md-expand"> 
+<pre class="prettyprint lang-js">.box {
+  align-items: flex-start | flex-end | center | baseline | stretch;
+}</pre>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071011.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+</span> 
+
+    <span class="md-expand"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</span></span> 
+
+    <span class="md-expand"> </span> 
+
+*   flex-start：交叉轴的起点对齐。
+*   flex-end：交叉轴的终点对齐。
+*   center：交叉轴的中点对齐。
+*   baseline: 项目的第一行文字的基线对齐。
+*   stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+
+### 
+    <span class="md-expand">3.6 align-content属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-content</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.box {
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}</pre>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071012.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">该属性可能取6个值。</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span></span> 
+
+*   flex-start：与交叉轴的起点对齐。
+*   flex-end：与交叉轴的终点对齐。
+*   center：与交叉轴的中点对齐。
+*   space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
+*   space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+*   stretch（默认值）：轴线占满整个交叉轴。
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+### 
+    <span class="md-expand">四、项目的属性</span> 
+
+<span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">以下6个属性设置在项目上。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+*   order
+*   flex-grow
+*   flex-shrink
+*   flex-basis
+*   flex
+*   align-self
+
+### 
+    <span class="md-expand">4.1 order属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">order</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.item {
+  order: &lt;integer&gt;;
+}</pre>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+### 
+    <span class="md-expand">4.2 flex-grow属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性定义项目的放大比例，默认为</span><span style="color:#333333;font-family:&quot;font-size:16px;">0</span><span style="color:#333333;font-family:&quot;font-size:16px;">，即如果存在剩余空间，也不放大。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.item {
+  flex-grow: &lt;number&gt;; /* default 0 */
+}</pre>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">如果所有项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+### 
+    <span class="md-expand">4.3 flex-shrink属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.item {
+  flex-shrink: &lt;number&gt;; /* default 1 */
+}</pre>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">如果所有项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性都为1，当空间不足时，都将等比例缩小。如果一个项目的</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性为0，其他项目都为1，则空间不足时，前者不缩小。</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">负值对该属性无效。</span></span></span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+### 
+    <span class="md-expand">4.4 flex-basis属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex-basis</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">auto</span><span style="color:#333333;font-family:&quot;font-size:16px;">，即项目的本来大小。</span>
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.item {
+  flex-basis: &lt;length&gt; | auto; /* default auto */
+}</pre>
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">它可以设为跟</span><span style="color:#333333;font-family:&quot;font-size:16px;">width</span><span style="color:#333333;font-family:&quot;font-size:16px;">或</span><span style="color:#333333;font-family:&quot;font-size:16px;">height</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性一样的值（比如350px），则项目将占据固定空间。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+### 
+    <span class="md-expand">4.5 flex属性</span> 
+
+<span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">flex</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性是</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-grow</span><span style="color:#333333;font-family:&quot;font-size:16px;">,&nbsp;</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-shrink</span><span style="color:#333333;font-family:&quot;font-size:16px;">&nbsp;和&nbsp;</span><span style="color:#333333;font-family:&quot;font-size:16px;">flex-basis</span><span style="color:#333333;font-family:&quot;font-size:16px;">的简写，默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">0 1 auto</span><span style="color:#333333;font-family:&quot;font-size:16px;">。后两个属性可选。</span> 
+
+    <span class="" style="color:#333333;font-family:&quot;font-size:16px;"><span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;"> </span></span> 
+
+<pre class="prettyprint lang-js">.item {
+  flex: none | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt;? || &lt;'flex-basis'&gt; ]
+}</pre>
+
+<pre><code>&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span class=&quot;md-expand&quot;&gt;该属性有两个快捷值：&lt;/span&gt;&lt;span&gt;auto&lt;/span&gt;&lt;span&gt;&amp;nbsp;(&lt;/span&gt;&lt;span&gt;1 1 auto&lt;/span&gt;&lt;span&gt;) 和 none (&lt;/span&gt;&lt;span&gt;0 0 auto&lt;/span&gt;&lt;span&gt;)。&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span class=&quot;md-line md-end-block md-focus&quot;&gt;&lt;span&gt;建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。&lt;/span&gt;&lt;/span&gt; 
+</code></pre><p>###<br>    <span class="md-expand">4.6 align-self属性</span> </p>
+<p><span class="md-expand" style="color:#333333;font-family:&quot;font-size:16px;">align-self</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性允许单个项目有与其他项目不一样的对齐方式，可覆盖</span><span style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性。默认值为</span><span style="color:#333333;font-family:&quot;font-size:16px;">auto</span><span style="color:#333333;font-family:&quot;font-size:16px;">，表示继承父元素的</span><span style="color:#333333;font-family:&quot;font-size:16px;">align-items</span><span style="color:#333333;font-family:&quot;font-size:16px;">属性，如果没有父元素，则等同于</span><span style="color:#333333;font-family:&quot;font-size:16px;">stretch</span><span style="color:#333333;font-family:&quot;font-size:16px;">。</span> </p>
+<pre><code>&lt;span class=&quot;&quot; style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:&amp;quot;font-size:16px;&quot;&gt;{% image http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071016.png '' '' %}
+</code></pre><p> <span style="color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;">该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</span></p>
+<p> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/" target="_blank" rel="external">http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/&title=《flex布局》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/&title=《flex布局》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《flex布局》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">垂直水平居中总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/01/e5-9b-9e-e9-a6-962016-ef-bc-8c-e5-b1-95-e6-9c-9b2017/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">回首2016，展望2017</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/&title=《flex布局》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/&title=《flex布局》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《flex布局》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJElEQVR42u3a3W7CMAwGUN7/pbvbSVPLZztMND29Qqw0OUGa8c/rFV/Hr+v6/ePP9fv969f5k693tezCxsbGvgn7uLyqvL9Pzg/uGpAf7rUFGxsbe1d2sszZ/XkISda6fif5MqJ1sbGxsR/MzhOVJEQlSUsv4cHGxsbGztlJsrH2mKr7xMbGxn4COykq5YGnF+R6z/l4LQ0bGxv769nVYtA3v/5IfxsbGxv7i9lH8co/1WvlVlvCvQsbGxt7J3avYDQf0Ok9M18lOkpsbGzsjdi9AZ3J4GP1CVVkIUXBxsbG3oJdLdbk9+SbzoNZdUzn9E5sbGzsLdh58lBNIeb4ajmpEJuwsbGxt2NXAcnR5CWh3ohPr0T1mnxv2NjY2F/Jzpf/n8JT7/hGgzvY2NjYW7DXbneSuuTFrOqdb44GGxsb+7bsfNO9EZnqE6qN4V48wsbGxt6JXW2yVhuueaF/bcs5CmzY2NjYj2HnzeB5ajEJmeXSEjY2Nvam7N6GqsFvbbrSG9/BxsbG3oPdSyd67eF8EHNyT1SQwsbGxt6UXV1+0tydr5UkVKerYGNjYz+APWnuVgduJuA8iSr3gbGxsbFvwp5Uy6sL5Ifbaw83x32wsbGxb84+ile1SbCqhZCvEgVpbGxs7O3Yk9/neZoxSV2qYfXN0WBjY2Nvx05CVL5M8pwFJf5kFunscLGxsbEfxu4lDPkBJYlK70s6vRMbGxt7O3bvZ/1kODIJOdWyVJ4mYWNjY+/Erg7orPrrJI2Z7x8bGxt7P3ZvIHJSNqqmEHlCkidI2NjY2Dux5wGsWmyaD/2MikrY2NjYW7MnwSz/VD4e1DuCKGJjY2NjP4A9H8fsBa0kWFabBIUAho2NjX0rdm+Ypteyrb7fazZHRSVsbGzsjdjVf/2rhm+Scn+1hZy0KMp4bGxs7Juwe6R8+XkBaxJQ37QHsLGxsTdirxqvmbdpq/tZXEvDxsbGfgy7Or4z6bFOhnXeVNSwsbGxH8nOG67V1GLSTsiPDxsbG3tXdrVw0wtgSXugWh5q7gcbGxt7I3a5HPOB7a5dt7cWNjY29g3ZP4VHsLxsgkL+AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

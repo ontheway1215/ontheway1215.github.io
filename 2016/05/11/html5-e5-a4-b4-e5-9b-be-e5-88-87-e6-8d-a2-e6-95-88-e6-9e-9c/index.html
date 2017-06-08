@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>HTML5头图切换效果 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CSS3,3D切换,HTML5">
+    <meta name="description" content="HTML5配合上CSS3可以做出很炫的效果，这也是为什么越来越多的人学习H5的原因，话不多说，先放图：                                                                                                           &amp;lt;span style=&amp;quot;font-size:14px;&amp;quot;">
+<meta name="keywords" content="CSS3,3D切换,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5头图切换效果">
+<meta property="og:url" content="http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="HTML5配合上CSS3可以做出很炫的效果，这也是为什么越来越多的人学习H5的原因，话不多说，先放图：                                                                                                           &amp;lt;span style=&amp;quot;font-size:14px;&amp;quot;">
+<meta property="og:image" content="http://yoursite.com/wp-content/uploads/2016/05/20160522185643_14355.png">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5头图切换效果">
+<meta name="twitter:description" content="HTML5配合上CSS3可以做出很炫的效果，这也是为什么越来越多的人学习H5的原因，话不多说，先放图：                                                                                                           &amp;lt;span style=&amp;quot;font-size:14px;&amp;quot;">
+<meta name="twitter:image" content="http://yoursite.com/wp-content/uploads/2016/05/20160522185643_14355.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HTML5头图切换效果</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">HTML5头图切换效果</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-10T16:58:16.000Z" itemprop="datePublished" class="page-time">
+  2016-05-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">HTML5头图切换效果</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-11 00:58:16" datetime="2016-05-10T16:58:16.000Z"  itemprop="datePublished">2016-05-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><span style="font-size:14px;">HTML5配合上CSS3可以做出很炫的效果，这也是为什么越来越多的人学习H5的原因，话不多说，先放图</span>：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/wp-content/uploads/2016/05/20160522185643_14355.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;从图中就可以看出大概的效果，当点击next或prev按钮是，图片向前或向后旋转切换拨动，并且是以立体的效果切换的，链接：[http://www.chenqiangyi.com/demo/switch/](http://www.chenqiangyi.com/demo/switch/)&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 接下来就来分享一下制作的方法&lt;/span&gt;：
+
+**&lt;span style=&quot;font-size:16px;&quot;&gt;1.&lt;/span&gt;**&lt;span style=&quot;font-size:16px;&quot;&gt;**页面布局**&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:14px;&quot;&gt;1.1首先需要有一个大盒子包裹着所有的元素，并且需要其为绝对定位relative，方便对其子元素的位置的控制;&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:14px;&quot;&gt;1.2需要增加一个ul包含这一堆li，在&lt;/span&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;每个li中包含一张图片，并且是撑满li的，而且需要对li进行绝对定位absolute;&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:14px;&quot;&gt;1.3在图中可以看到每次显示三张图片，哦~不对，应该是五张图片，还有两张图片在盒子的最边缘，在切换的时候就会隐掉，从左到右暂时规定图片的class为l2,l1,cur,r1,r2,当我们切换的时候只需改变每一张图片的class即可;&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:14px;&quot;&gt;**2.**&lt;/span&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;**cssd的**&lt;/span&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;**transition和transform控制**&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;当页面刚开始加载的时候我们需要布局呈先如图的样式，这句需要运用transform的知识了，首先在刚开始的时候所有图片都平铺在最中间，对于最中间的图片的位置没有变，我们暂时不考虑，只需考虑两边的图片，右一图片r1可以看做是原来的图片向右移动了一段距离，然后沿着Y轴旋转一定角度得到的，那么问题来了，是如何旋转的，需要旋转多少度呢？这里有一个方法，就是人站在朝向y轴的正方向，如果顺时针旋转就为正角度，逆时针旋转就为负角度。就如图中的图片，如果要按照y轴旋转，你需要站在图片的正下方看图片，此时你看到的只是图片的一条棱，那么就可以看到图片逆时针旋转得到了图中的样式。如此一来，右二图l2就可以知道他是先向右移动一定距离，然后逆时针旋转了一个更大的角度。如此轮推就可以知道前面的两张图片是按照向左平移一定距离，然后顺时针旋转了一定的角度得到的，只是角度大小不同而已。五张图片的初始样式的css代码：&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt; &lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-css">#ul1 li.l2{opacity: 0;z-index: 1;transform: perspective(800px) translateX(-300px) rotateY(45deg);}
+#ul1 li.l1{opacity: 1;z-index: 3;transform: perspective(800px) translateX(-200px) rotateY(60deg);}
+#ul1 li.cur{opacity: 1;z-index: 5;}
+#ul1 li.r1{opacity: 1;z-index: 3;transform: perspective(800px) translateX(200px) rotateY(-60deg);}
+#ul1 li.r2{opacity: 0;z-index: 1;transform: perspective(800px) translateX(300px) rotateY(-45deg);}</pre>
+
+<pre><code>&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;**3.transform的初始化&amp;nbsp;transform: perspective(800px) rotateY(0);**&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt;在添加css的3D效果的时候要想看到立体的效果，需要添加一个视距的属性，这个属性的值越大类似站在比较远的地方看东西，可能会比较小，如果太近的话，就会看到物体特别大，所以合适的视距值很重要，一般perspective的值为800px的时候看到的物体的效果最佳。此时我们还需要初始化transform，否则的话在运动的时候会出现晃动的现象，初始化只需要在要添加运动的元素添加初始值transform: perspective(800px) rotateY(0);初始化代码：&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:16px;line-height:24px;&quot;&gt; &lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-css">#ul1 li{position: absolute;left: 0;top: 0;width: 100%;height: 100%;opacity: 0;transform: perspective(800px) rotateY(0);transition: 1s all ease;}</pre>
+**<span style="font-size:16px;">4.js控制图片的切换</span>** 
+
+    <span style="font-size:16px;line-height:24px;">一般的思路就是对每一张图片的class挨个更换，这样可以达到效果，就是代码太冗余了，这里提供一个比较简便的用法：</span> 
+
+    <span style="font-size:16px;line-height:24px;">当点击next的按钮时，原本前一张图片往后退一步，加上class即可;因为同样是给下一张图片添加class，我们可以把所有的图片的存成一个数组，当切换下一张的时候，我们只需把第一张图片拿出来，添加到图片集合的尾部，这样图片他们原有的class就添加到了下一张图片上，这样下一张图片就有了图片原先的样式，再加上运动时间，这样运动的效果就做出来了，点击prev同样的方法，只是把最后一张添加到图片集的头部，这样同样实现了图片的切换。</span> 
+
+    <span style="font-size:16px;line-height:24px;">**5.解决next和prev连续点击出现的bug**</span> 
+
+    <span style="font-size:14px;">出现这样的bug是因为当图片本次的运动还没有完成时，继续点击按钮，出现了运动的凌乱，要解决这个bug，此时js刚好有一个叫transformend的事件，真是要风得风，要雨得雨，不禁感叹js的功能的强大，从字面上就可以看出这个事件的意思，就是当运动完成的时候出现的这个事件。因为每五张图片都是同时完成的，此时我们只需监听一张图片的运动结果即可。我们可以先定义一个变量aReady=true;当他的值为false时，不执行切换的函数，此时直接返回即可，然后设置aReady=false，当每一个的运动完成时再令aReady=true,这样就可以在一次运动完成之后再点击按钮才会执行下一次运动，这样这个H5的效果就基本完成了。</span> 
+
+    <span style="font-size:16px;line-height:24px;">**6.总结**</span> 
+
+    <span style="font-size:14px;">6.1先运用css对几行图片进项初始化布局</span> 
+
+    <span style="font-size:14px;">6.2.transform的初始化</span> 
+
+    <span style="font-size:14px;">6.3js的控制，每一次删除数组中最后一个，添加到最前面或者删除最前面的一个，添加到数组的最后面，然后更换图片的class</span> 
+
+    <span style="font-size:14px;">6.4解决bug，运用transformend函数。</span> 
+
+    <span style="font-size:14px;">6.5反思运用H5和css3做出更多比较炫的东西</span> 
+
+    <span style="font-size:16px;line-height:24px;">**7.源代码**</span> 
+
+    <span style="font-size:16px;line-height:24px;"> </span> 
+
+<pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;style type="text/css"&gt;
+*{margin: 0;padding: 0;list-style: none;}
+.container{background: #aee2d9;width: 800px;margin: 100px auto;overflow: hidden;}
+#ul1{position: relative;width: 400px;height: 200px;background: #ccc;margin: 100px auto;}
+#ul1 li{position: absolute;left: 0;top: 0;width: 100%;height: 100%;opacity: 0;transform: perspective(800px) rotateY(0);transition: 1s all ease;}
+#ul1 li img{width: 400px;}
+#ul1 li.l2{opacity: 0;z-index: 1;transform: perspective(800px) translateX(-300px) rotateY(45deg);}
+#ul1 li.l1{opacity: 1;z-index: 3;transform: perspective(800px) translateX(-200px) rotateY(60deg);}
+#ul1 li.cur{opacity: 1;z-index: 5;}
+#ul1 li.r1{opacity: 1;z-index: 3;transform: perspective(800px) translateX(200px) rotateY(-60deg);}
+#ul1 li.r2{opacity: 0;z-index: 1;transform: perspective(800px) translateX(300px) rotateY(-45deg);}
+&lt;/style&gt;
+&lt;script type="text/javascript"&gt;
+    window.onload=function(){
+        var oUl=document.getElementById("ul1");
+        var oPrev=document.getElementById("prev");
+        var oNext=document.getElementById("next");
+        var aLi=oUl.children;
+        var bReady=true;
+        var aClass=[];
+        for(var i=0;i&lt;aLi.length;i++){
+            aClass.push(aLi[i].className)
+        }
+        //下一张
+        oNext.onclick=function(){
+
+            if(!bReady) return;
+            bReady=false;
+
+            aClass.unshift(aClass.pop());
+
+            tab()
+        };
+        //上一张
+        oPrev.onclick=function(){
+
+            if(!bReady) return;
+            bReady=false;
+
+            aClass.push(aClass.shift());
+
+            tab()
+        };
+
+        function tab(){
+            for(var i=0;i&lt;aLi.length;i++){
+                aLi[i].className=aClass[i];
+            }
+
+            var oCur=oUl.querySelector(".cur");
+            oCur.addEventListener("transitionend",function(){
+                bReady=true;
+            },false)
+        }
+    }
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;input type="button" name="btn1" id="prev" value="上一张" /&gt;
+        &lt;input type="button" name="btn1" id="next" value="下一张" /&gt;
+        &lt;ul id="ul1"&gt;
+            &lt;li class="l2"&gt;&lt;img src="images/1.jpg"/&gt;&lt;/li&gt;
+            &lt;li class="l1"&gt;&lt;img src="images/2.jpg"/&gt;&lt;/li&gt;
+            &lt;li class="cur"&gt;&lt;img src="images/3.jpg"/&gt;&lt;/li&gt;
+            &lt;li class="r1"&gt;&lt;img src="images/4.jpg"/&gt;&lt;/li&gt;
+            &lt;li class="r2"&gt;&lt;img src="images/5.jpg"/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src="images/6.jpg"/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src="images/7.jpg"/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src="images/8.jpg"/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src="images/9.jpg"/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src="images/10.jpg"/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src="images/11.jpg"/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src="images/12.jpg"/&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<pre><code>over
+</code></pre>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/" target="_blank" rel="external">http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/3D切换/">3D切换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/&title=《HTML5头图切换效果》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/&title=《HTML5头图切换效果》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTML5头图切换效果》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">简单粗暴地理解js原型链–js面向对象编程(转)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">用css写一个时钟</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/&title=《HTML5头图切换效果》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/&title=《HTML5头图切换效果》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTML5头图切换效果》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADL0lEQVR42u3awXLiQAwE0Pz/T7PXrUqguiXY2LPPJyqBsd9wEGrN11d8Pb5dr9/z91/y17M1X6+wurCxsbFvwn68vJLb54/7/VP5oz9b7fXfn66PjY2NfRw7uU1b0pLtSJDt15Osho2Njf0/s9vbf+6/eWODjY2NjZ3crGgDgvsmpe7X6jY2Njb2JdntT/y2kORbkFP/UZaGjY2NfXl2HgZd//VH5tvY2NjYF2Y/yqstJ/khm3ydtmj98ClsbGzsg9h5Acjx+UB3Fjy1d3n6TmxsbOwj2I/1lY+EN6UoWa1oUbCxsbGPYyflJF86KVqblqYd7v7wTmxsbOzj2LOYZjb0bVuattBGXxI2Njb2QexZJJQ3D+86mjOb3hYfwMbGxr4tuy0Am9ZiVhrzwrY6soONjY19NHs2ZG1hm6Fy+2VgY2Njn8TexPRtjWgL1b7hKT6FjY2NfRy7LV3vCpXqwlOujI2NjX02e3Z8px0n5OvvB8xFwISNjY19W3Y+4t1ETvlhmjzkarf4aZaGjY2NfQQ7/1mfB0OzqGhz97wcYmNjY5/Ezse3m4fejBPag0HJFmNjY2OfxM4fehYkbVaelcxVqISNjY19Q3YxAS6HqUnlTF7nQ4XhEBobGxv75uy8tXjvlY+c2/FwVKGwsbGxD2InhSdpEmYtQduQzAKmYY6FjY2NfRP2rGjlK8wO/bSFKm+QsLGxsc9jJ0HMu9qA2fa178lHFNjY2NinstuC0Ubz+RBitmXFSAMbGxv7CHbyiHnEs8fM7jhM0bCxsbGPYM/OJQ5DnKD45YeH8oCp3gJsbGzsG7Lr3mVUCPPN2q8WRVHY2NjYx7FnUVF+lGezcflQuS5g2NjY2Iey9w1DO7LNW5pNbBTNt7GxsbFvxX6U1yyZyRub2SGhevuwsbGxD2LvRwX5b/u2wdiMBGbRGDY2NvZ92ZtAv4jjy23djBCiNbGxsbGPY7eD3ncdjmw3dFiBsbGxsbFHsc4miko2a7b12NjY2NibyD6HtdFS0uRgY2Njn81uC0YS2SdtRj5a3gweVlkaNjY29uXZbcHIm428gH3uSVYHd7CxsbGvzv4DGysCXUyQDZ8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

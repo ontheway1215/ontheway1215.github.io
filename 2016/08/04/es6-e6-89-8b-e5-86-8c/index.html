@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>ES6——手册 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript,ES6">
+    <meta name="description" content="这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。  &amp;lt;span style=&amp;quot;color:#3E3E3E;font-family:&amp;amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;f">
+<meta name="keywords" content="JavaScript,ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6——手册">
+<meta property="og:url" content="http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。  &amp;lt;span style=&amp;quot;color:#3E3E3E;font-family:&amp;amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;f">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6——手册">
+<meta name="twitter:description" content="这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。  &amp;lt;span style=&amp;quot;color:#3E3E3E;font-family:&amp;amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;f">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ES6——手册</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ES6——手册</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-08-04T01:05:52.000Z" itemprop="datePublished" class="page-time">
+  2016-08-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-es6-e6-89-8b-e5-86-8c"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ES6——手册</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-08-04 09:05:52" datetime="2016-08-04T01:05:52.000Z"  itemprop="datePublished">2016-08-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。</span> </p>
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#009900;&quot;&gt;&lt;/span&gt;**&lt;span style=&quot;color:#009900;&quot;&gt;var 和 let/const 的比较&lt;/span&gt;**&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#888888;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;除了 var ，我们现在还可以使用两个新的标示符来定义一个变量 —— let 和 const。和 var 不一样的是，let 和 const 不存在变量提升。&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;使用 var 的栗子：&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">var snack = 'Meow Mix';
+function getFood(food) {
+  if(food) {
+    var snack = 'Friskies';
+    return snack;
+  }
+  return snack;
+}
+getFood(false);    //  undefined</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">当我们用 let 代替 var 的时候，观察会发生什么：</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> </span> 
+
+<pre class="prettyprint lang-js">let snack = 'Meow Mix' ;
+function getFood(food) {
+  if(food) {
+    let snack = 'Friskies';
+    return snack;
+  }
+  return snack;
+} 
+getFood(false);     //  'Meow Mix'</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">当我们重构使用 var 的老代码的时候应该注意上面的变化。盲目地使用 let 替换 var 可能会出现出乎意料的情况。</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"><span style="color:#888888;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">注意： let 和 const 是块级作用域，因此在变量未被定义之前使用它会产生一个 ReferenceError。</span></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> </span> 
+
+<pre class="prettyprint lang-js">console.log(x);       //    Uncaught ReferenceError: x is not defined
+let x = 'hi';</pre>
+
+<pre><code>&lt;span style=&quot;color:#888888;&quot;&gt;最佳实践： 在遗留代码中放弃使用 var 声明意味着需要很小心地重构；在新的项目代码中，使用 let 声明一个可以改变的变量，用 const 声明一个不能被重新赋值的变量。&lt;/span&gt; 
+
+**&lt;span style=&quot;font-size:16px;color:#009900;&quot;&gt;用块级作用域代替 IIFES&lt;/span&gt;**&lt;span style=&quot;font-size:16px;color:#009900;&quot;&gt;&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;函数立即执行表达式 的通常用途是创造一个内部的作用域，在 ES6 中，我们能够创造一个块级作用域而不仅限于函数作用域：&lt;/span&gt; 
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;IIFES：&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">(function(){
+  var food = 'Meow Mix';
+})();
+console.log(food);      //ReferenceError: food is not defined</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">使用 ES6 的块级作用域：</span> 
+
+<pre class="prettyprint lang-js">{
+  let food = 'Meow Mix';
+}
+console.log(food);     // ReferenceError: food is not defined</pre>
+<span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">箭头函数</span>**<span style="font-size:16px;color:#009900;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们经常需要给回调函数维护一个词法作用域的上下文 this。</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">看看这个栗子：</span> 
+
+<pre class="prettyprint lang-js">function Person(name) {
+  this.name = name;
+}
+Person.prototype.prefixName = function (arr) {
+  return arr.map(function (character) {
+    return this.name + character;
+});
+};
+
+//    Cannot read property 'name' of undefined</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">一个常用的解决办法是把 this 存在一个变量中：</span> 
+
+<pre class="prettyprint lang-js">function Person(name) {
+  this.name = name;
+}
+Person.prototype.prefixName = function (arr) {
+  var that = this;      // Store the context of this
+  return arr.map(function (character) {
+    return this.name + character;
+});
+};</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们也可以传递一个合适的 this 上下文：</span> 
+
+<pre class="prettyprint lang-js">function Person(name) {
+  this.name = name;
+}
+Person.prototype.prefixName = function (arr) {
+  return arr.map(function (character) {
+    return this.name + character;
+},this);
+};
+(arr) {
+  return arr.map(function (character) {
+    return this.name + character;
+},this);
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们还可以绑定上下文：</span> 
+
+<pre class="prettyprint lang-js">function Person(name) {
+  this.name = name;
+}
+Person.prototype.prefixName = function (arr) {
+  return arr.map(function (character) {
+    return this.name + character;
+}.bind(this));
+};</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">使用 箭头函数，this 将不会受到影响，并且我们可以重写上面的函数：</span> 
+
+<pre class="prettyprint lang-js">function Person(name) {
+  this.name = name;
+}
+Person.prototype.prefixName = funciton (arr) {
+  return arr.map(character =&gt; this.name + character)
+};</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">最佳实践：当你需要维护一个 this 上下文的时候使用 箭头函数。</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在我们写一个函数的时候，箭头函数更加简洁并且可以很简单地返回一个值：</span> 
+
+<pre class="prettyprint lang-js">var Squares = arr.map(function (x) { return x * X});  //ReferenceError: arr is not defined</pre>
+<pre class="prettyprint lang-js">onst arr = [1, 2, 3, 4, 5];
+const squares = arr.map(x =&gt; x * x);
+//Arrow Function for terser implementation</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">最佳实践：尽可能使用箭头函数代替原来的写法。</span> 
+
+    <span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">字符串</span>**<span style="font-size:16px;color:#009900;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 中，标准库升级了很多，在这些变化中有许多新的对于字符串的函数，比如 .includes() 和 .repeat()。</span> 
+
+    <span style="font-size:14px;"></span><span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">.includes( )</span><span style="font-size:14px;"></span> 
+
+<pre class="prettyprint lang-js">var string = 'food';
+var substring = 'foo';
+console.log(string.indexOf(substring) &gt; -1);     //true</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">之前我们使用 indexOf() 函数的返回值是否 &gt;-1 来判断字符串是否包含某些字符串，现在我们更简单地使用 .includes() 来返回一个布尔值来判断：</span> 
+
+<pre class="prettyprint lang-js">var string = 'food';
+var substring = 'foo';
+console.log(string.includes(substring));     // true</pre>
+<span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">.repeat( )</span><span style="font-size:14px;"></span> 
+
+<pre class="prettyprint lang-js">function repeat(string, count) {
+  var strings = [];
+  while(strings.length &lt; count) {
+    strings.push(string);
+  }
+  return strings.join('');
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 中，可以更简便地实现：</span> 
+
+<pre class="prettyprint lang-js">// String.repeat(numberOfRepetitions)
+'meow'.repeat(3)      //"meowmeowmeow"</pre>
+<span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">模版字符串</span>**<span style="font-size:16px;color:#009900;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">使用 模版字符串 我们就可以不用对某些特殊自符进行转义处理了：</span> 
+
+<pre class="prettyprint lang-js">var text = "This string contains \"double quotes\"  which are escaped."
+alert(text);
+//This string contains "double quotes" which are escaped.</pre>
+<pre class="prettyprint lang-js">let text = `This string contains "double quotes"  which are escaped.`;</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">模版字符串 还支持插入，可以把变量值和字符串连接起来.</span> 
+
+<pre class="prettyprint lang-js">var name = 'Tiger';
+var age = 13;
+console.log('My cat is named' + name + 'and is' +age + 'years old.');
+//My cat is namedTigerand is13years old.</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">更简单：</span> 
+
+<pre class="prettyprint lang-js">const name = 'Tiger';
+const age = 13;
+console.log(`My cat is named ${name} and is ${age} years old.`);</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES5 中，需要换行时，需要这样：</span> 
+
+<pre class="prettyprint lang-js">var text = (
+  'cat\n' +
+  'dog\n' +
+  'nickelodeon'
+);
+console.log(text);
+
+//
+cat
+dog
+nickelodeon</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">或者这样：</span> 
+
+<pre class="prettyprint lang-js">var text = [
+  'cat'
+  'dog'
+  'nickelodeon'
+].join('\n');</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">模版字符串 可以支持换行并且不需要额外的处理：</span> 
+
+<pre class="prettyprint lang-js">let text = ( `cat
+dog
+nicklodeon`</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">模版字符串 还支持表达式：</span> 
+
+<pre class="prettyprint lang-js">let today = new Date();
+let text = `The time and date is
+${today.toLocaleString()}`;</pre>
+<span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">解构</span>**<span style="font-size:16px;color:#009900;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">结构可以让我们用一个更简便的语法从一个数组或者对象（即使是深层的）中分离出来值，并存储他们。</span> 
+
+    <span style="font-size:14px;"></span><span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">结构数组</span><span style="font-size:14px;"></span> 
+
+<pre class="prettyprint lang-js">var arr = [1, 2, 3, 4];
+var a = arr[0];
+var b = arr[1];
+var c = arr[2];
+var d = arr[3];</pre>
+<pre class="prettyprint lang-js">let [a, b, c, d] = [1, 2, 3, 4];
+console.log(a);    // 1
+console.log(b);    //  2</pre>
+<span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">结构对象</span><span style="font-size:14px;"></span> 
+
+<pre class="prettyprint lang-js">var luke = { occupation: 'jedi', father: 'anakin' };
+var occupation = luke.occupation;    //  'jedi'
+var father = luke.father;    //  'anakin'</pre>
+<pre class="prettyprint lang-js">let luke = { occupation: 'jedi', father: 'anakin' };
+let {occupation, father} = luke;
+console.log(occupation);    //  'jedu'
+console.log(father);    //  'anakin'</pre>
+**<span style="font-size:16px;color:#009900;">模块</span>**<span style="font-size:16px;color:#009900;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 之前，我们使用 Browserify 这样的库来创建客户端的模块化，在 node.js 中使用 require。</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 中，我们可以直接使用所有类型的模块化（AMD 和 CommonJS）。</span> 
+
+    <span style="font-size:14px;"></span><span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">使用 CommonJS 的出口</span><span style="font-size:14px;"></span> 
+
+<pre class="prettyprint lang-js">module.exports = 1;
+module.exports = { foo: 'bar'};
+module.export = ['foo', 'bar'];
+module.exports = function bar(){};</pre>
+<span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">使用 ES6 的出口</span><span style="font-size:14px;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 中我们可以暴漏多个值，使用 Exports：</span> 
+
+<pre class="prettyprint lang-js">export let name = 'David';
+export let age = 25;</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">或者暴露一个对象列表：</span> 
+
+<pre class="prettyprint lang-js">function sumTwo(a, b) {
+ return a + b;
+}
+function sumThree(a, b, c) {
+  return a + b + c;
+}
+export { sumTwo, sumThree };</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们还可以暴露函数、对象和其他的值，通过简单地使用 export 这个关键字：</span> 
+
+<pre class="prettyprint lang-js">export function sumTwo(a, b) {
+  return a + b;
+}
+export function sumThree(a, b, c) {
+  return a + b + c;
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">最后，我们还可以绑定一个默认的输出：</span> 
+
+<pre class="prettyprint lang-js">function sumTwo(a, b) {
+  return a + b;
+}
+function sumThree(a, b, c) {
+  return a + b + c;
+}
+let api = {
+  sumTwo,
+  sumThree
+};
+export default api;</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">最佳实践：总是在模块的最后面使用 export default 方法，这可以让暴露的东西更加清晰并且可以节省时间去找出暴漏出来值的名字。尤其如此，在 CommonJS 中通常的实践就是暴露一个简单的值或者对象。坚持这种模式，可以让我们的代码更加可读，并且在 ES6 和 CommonJS 模块之间更好地兼容。</span> 
+
+    <span style="font-size:14px;"></span><span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">ES6 中的导入</span><span style="font-size:14px;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 中同样提供了多样的导入方式，我们可以这么导入一个整个文件：</span> 
+
+<pre class="prettyprint lang-js">import 'underscore';</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">需要着重注意的一点是简单的导入整个文件会在那个文件的顶部执行所有的代码</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">和 Python 中类似，我们可以命名导入的值：</span> 
+
+<pre class="prettyprint lang-js">import { sumTwo, sumThree } from 'math/addition';</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们还可以重命名导入：</span> 
+
+<pre class="prettyprint lang-js">import {
+  sumTwo as addTwoNumbers,
+  sumThree as sumThreeNumbers
+} from 'math/addition';</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">另外，我们可以导入所有的东西（整体加载）：</span> 
+
+<pre class="prettyprint lang-js">import * asutil from 'math/addition';</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">最后，我们可以从一个模块中导入一个值的列表：</span> 
+
+<pre class="prettyprint lang-js">import * as additionUtil from 'math/addition';
+const { sumTwo, sumThree } = additionUtil;</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">可以像这样导入默认绑定的输出：</span> 
+
+<pre class="prettyprint lang-js">import api from 'math/addition';
+//  same as :import {default as api } from 'math/addition';</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">虽然最好保持出口的简单，但如果需要的话我们有时可以混合默认的进口和混合进口。当我们这样出口的时候：</span> 
+
+<pre class="prettyprint lang-js">// foos.js
+export { foo as default, foo1, foo2 };</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们可以这样导入它们：</span> 
+
+<pre class="prettyprint lang-js">import foo, { foo1, foo2 } from 'foos';</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">当我们用 commonjs 的语法导入一个模块的出口时（比如 React），我们可以这样做：</span> 
+
+<pre class="prettyprint lang-js">import React from 'react';
+const { Component, PropTypes } = React;</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">还有更精简的写法：</span> 
+
+<pre class="prettyprint lang-js">import React, { Component, PropTypes } from 'react';</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">注意：导出的值是动态引用的，而不是拷贝。因此，在一个模块中改变一个变量的绑定将影响输出模块中的值。应该避免改变这些导出值的公共接口。（原文这里我觉得有误）</span> 
+
+    **<span style="font-size:16px;color:#009900;">参数</span>**<span style="font-size:16px;color:#009900;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES5 中，在函数中我们需要各种操作去处理 默认参数、不定参数 和 重命名参数 等需求，在 ES6 中我们可以使用更简洁的语法完成这些需求：</span> 
+
+<pre class="prettyprint lang-js">function addTwoNumbers(x, y) {
+  x = x || 0;
+  y = y || 0;
+  return x + y;
+}
+addTwoNumbers(3);    // 3
+addTwoNumbers(3,2);  // 5
+addTwoNumbers();    //0</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">ES</span><span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:1.5;background-color:#FFFFFF;">6 中，函数的参数可以支持设置默认值：</span><span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> 
+
+<pre class="prettyprint lang-js">function addTwoNumbers( x = 0, y = 0) {
+  return x + y;
+}
+addTwoNumbers(2, 4);    //6
+addTwoNumbers(2);    //2
+addTwoNumbers();    //0</pre>
+</span> 
+
+    <span style="color:#007AAA;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">rest 参数</span><span style="font-size:16px;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES5 中，我们需要这么处理不定参数：</span> 
+
+<pre class="prettyprint lang-js">function logArguments() {
+  for (var i = 0; i&lt; arguments.length; i++) {
+    console.log(arguments[i]);
+  }
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">使用 rest ，我们就可以处理不确定数目的参数：</span> 
+
+<pre class="prettyprint lang-js">function logArguments(...args) {
+  for (let arg of args) {
+    console.log(arguments[i]);
+  }
+}</pre>
+<span style="font-size:14px;"></span><span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">命名参数</span><span style="font-size:14px;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES5 中是使用配置对象的模式来处理命名参数，jQuery 中的使用：</span> 
+
+<pre class="prettyprint lang-js">function initializeCanvas(options) {
+  var height = options.height || 600;
+  var width = options.width || 400;
+  var lineStroke = options.lineStroke || 'black';
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们可以利用解构的一个函数的形参实现相同的功能：</span> 
+
+<pre class="prettyprint lang-js">function initializeCanvas(
+  { height = 600, width = 400, lineStroke = 'black'}) {
+     // Use variables height, width, lineStroke here
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">如果我们想使整个值可选择，我们可以结构将一个空的对象：</span> 
+
+<pre class="prettyprint lang-js">function initializeCanvas (
+ { height = 600, width = 400, lineStroke = 'black' } = {}) {
+    //  ...
+}</pre>
+<span style="font-size:14px;"></span><span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">展开操作</span><span style="font-size:14px;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES5 中，我们可以 apply Math.max 方法来获得一个数组中的最大值：</span> 
+
+<pre class="prettyprint lang-js">Math.max.apply(null, [-1, 100, 9001, -32]);    //  9001</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 中，我们可以通过展开操作把一个数组的值作为参数传递给一个函数：</span> 
+
+<pre class="prettyprint lang-js">Math.max(...[-1, 100, 9001, -32]);</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们可以更简洁地使用这个语法来合并数组：</span> 
+
+<pre class="prettyprint lang-js">let cities = [ 'San Francisco', 'Los Angeles'];
+let places = [ 'Miami', ...cities, 'Chicago'];   //['Miami', 'San Francisco', 'Los Angeles', 'Chicago' ]
+</pre>
+<span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">类 Classes</span>**<span style="font-size:16px;color:#009900;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 之前，我们通过构造函数来创造一个类，并且通过原型来扩展属性：</span> 
+
+<pre class="prettyprint lang-js">function Person (name, age, gender) {
+  this.name = name;
+  this.age = age;
+  this.gender = gender;
+}
+Person.prototype.incrementAge = function () {
+  return this.age +=1;
+};</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">然后可以这样继承类：</span> 
+
+<pre class="prettyprint lang-js">function Personal(name, age, gender, occupation,hobby)
+{
+  Person.call(this, name, age, gender);
+  this.occupation = occupation;
+  this.hobby = hobby;
+}
+Personal.prototype = Object.create(Person.prototype);
+Person.prototype.constructor = Personal;
+Personal.prototype.incrementAge = function () {
+  Person.prototype.incrementAge.call(this);
+  this.age += 20;
+  console.log(this.age);
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 中，提供了更多的语法糖，可以直接创造一个类：</span> 
+
+<pre class="prettyprint lang-js">class Person {
+  constructor(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+  incrementAge() {
+    this.age += 1;
+  }
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">使用 extends 关键字来继承一个类：</span> 
+
+<pre class="prettyprint lang-js">class Personal extends Person {
+  constructor(name, age, gender, occupation, hobby) {
+    super(name, age, gender);
+    this.occupation = occupation;
+    this.hobby = hobby;
+  }
+  incrementAge() {
+    super.incrementAge();
+    this.age +=20;
+    console.log(this.age);
+  }
+}</pre>
+
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;最佳实践：虽然使用 ES6 的语法创造类的时候，js引擎是如何实现类以及如何操作原型是令人费解的，但是未来对初学者来说这是一个好的开始，同时也可以让我们写更简洁的代码。&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:16px;color:#009900;&quot;&gt;&lt;/span&gt;**&lt;span style=&quot;font-size:16px;color:#009900;&quot;&gt;Symbols&lt;/span&gt;**&lt;span style=&quot;font-size:16px;color:#009900;&quot;&gt;&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:12px;color:#009900;&quot;&gt;&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:12px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;Symbols 在 ES6 之前就已经存在，但是我们现在可以直接使用一个开发的接口了。Symbols 是不可改变并且是第一无二的，可以在任意哈希中作一个key。&lt;/span&gt;&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:16px;color:#009900;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;color:#007AAA;font-family:&amp;quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;Symbol()&lt;/span&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;/span&gt;
+</code></pre><p> </p>
+<pre><code>&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;调用 Symbol() 或者 Symbol(description) 可以创造一个第一无二的符号，但是在全局是看不到的。Symbol() 的一个使用情况是给一个类或者命名空间打上补丁，但是可以确定的是你不会去更新它。比如，你想给 React.Component 类添加一个 refreshComponent 方法，但是可以确定的是你不会在之后更新这个方法：&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">const refreshComponent = Symbol();
+React.Component.prototype[refreshComponent] = () =&gt; {
+  //do something
+}</pre>
+<span style="color:#007AAA;font-family:&quot;font-size:14px;line-height:25.6px;background-color:#FFFFFF;">Symbol.for(key)</span><span style="font-size:14px;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">Symbol.for(key) 同样会创造一个独一无二并且不可改变的 Symbol，但是它可以全局看到，两个相同的调用 Symbol.for(key) 会返回同一个 Symbol 类：</span> 
+
+<pre class="prettyprint lang-js">Symbol('foo') === Symbol('foo')    // false
+Symbol.for('foo') === Symbol('foo');  //false
+Symbol.for('foo') === Symbol.for('foo');  //true</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">对于 Symbols 的普遍用法（尤其是Symbol.for(key)）是为了协同性。它可以通过在一个第三方插件中已知的接口中对象中的参数中寻找用 Symbol 成员来实现，比如：</span> 
+
+<pre class="prettyprint lang-js">function reader(obj) {
+  const specialRead = Symbol.for('specialRead');
+  if (obj[specialRead]) {
+    const reader = obj[specialRead]();
+    // do something with reader
+  } else{
+    throw new TypeError('object cannot be read');
+  }
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在另一个库中：</span> 
+
+<pre class="prettyprint lang-js">const specialRead = Symbol.for('specialRead');
+class SomeReadableType {
+  [specialRead]() {
+    const reader = createSomeReaderForm(this);
+    return reader;
+  }
+}</pre>
+<span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">Maps</span>**<span style="font-size:16px;color:#009900;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">Maps 在 JavaScript 中是一个非常必须的数据结构，在 ES6 之前，我们通过对象来实现哈希表：</span> 
+
+<pre class="prettyprint lang-js">var map = new Object();
+map[key1] = 'value1';
+map[key2] = 'value2';</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">但是它并不能防止我们偶然地用一些特殊的属性名重写函数：</span> 
+
+<pre class="prettyprint lang-js">getOwnProperty({ hasOwnProperty: 'Hah, overwritten'}, 'Pwned');</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">实际上 Maps 允许我们对值进行 set、get 和 search 操作：</span> 
+
+<pre class="prettyprint lang-js">let map = new Map();
+map.set('name','david');
+map.get('name');    //  david
+map.has('name');   //true</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">Maps 更令人惊奇的部分就是它不仅限于使用字符串作为 key，还可以用其他任何类型的数据作为 key：</span> 
+
+<pre class="prettyprint lang-js">let map = new Map([
+  ['name', 'david'],
+  [true, 'false'],
+  [1, 'one'],
+  [{}, 'object'],
+  [function () {}, 'function']
+]);
+for (let key of map.keys()) {
+  console.log(typeof key);
+  //  string, boolean, number, object, function
+}</pre>
+
+<pre><code>注意：但我们使用 map.get() 方法去测试相等时，如果在 Maps 中使用 函数 或者 对象 等非原始类型值的时候测试将不起作用，所以我们应该使用 Strings, Booleans 和 Numbers 这样的原始类型的值。
+
+&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;我们还可以使用 .entries() 来遍历迭代：&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">for (let [key, value] of map.entries()) {
+  console.log(key, value);
+}</pre>
+<span style="color:#009900;font-size:16px;"></span>**<span style="color:#009900;font-size:16px;">WeakMaps</span>**<span style="color:#009900;font-size:16px;"></span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 之前，为了存储私有变量，我们有各种各样的方法去实现，其中一种方法就是用命名约定：</span> 
+
+<pre class="prettyprint lang-js">class Person {
+  constructor(age) {
+    this._age = age;
+  }
+  _incrementAge() {
+    this._age += 1;
+  }
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">但是命名约定在代码中仍然会令人混淆并且并不会真正的保持私有变量不被访问。现在，我们可以使用 WeakMaps 来存储变量：
+<pre class="prettyprint lang-js">let _age = new WeakMap();
+class Person {
+  constructor(age) {
+    _age.set(this, age);
+  }
+  incrementAge() {
+    let age = _age.get(this) + 1;
+    _age.set(this, age);
+    if (age &gt; 50) {
+      console.log("Midlife crisis");
+    }
+  }
+}</pre>
+</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 WeakMaps 存储变量很酷的一件事是它的 key 他不需要属性名称，可以使用 Reflect.ownKeys() 来查看这一点：
+
+</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> </span>
+
+<pre class="prettyprint lang-js">const person = new Person(50);
+person.incrementAge();     //  'Midlife crisis'
+Reflect.ownKeys(person);    //  []</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">一个更实际的实践就是可以 WeakMaps 储存 DOM 元素，而不会污染元素本身：</span>
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"> </span>
+
+<pre class="prettyprint lang-js">let map = new WeakMap();
+let el = document.getElementById('someElement');
+// Store a weak reference to the element with a key
+map.set(el, 'reference');
+//  Access the value of element
+let value = map.get(el);     //  'reference'
+//  Remove the reference
+el.parentNode.removeChild(el);
+el = null;
+
+// map is empty, since the element is destroyed</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">如上所示，当一个对象被垃圾回收机制销毁的时候， WeakMap 将会自动地一处关于这个对象地键值对。</span>
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"><span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">注意：为了进一步说明这个例子的实用性，可以考虑 jQuery 是如何实现缓存一个对象相关于对引用地 DOM 元素对象。使用 jQuery ，当一个特定地元素一旦在 document 中移除的时候，jQuery 会自动地释放内存。总体来说，jQuery 在任何 dom 库中都是很有用的。</span></span>
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;"><span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">Promises</span>**<span style="font-size:16px;color:#009900;"></span>
+
+</span> 
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">Promises 可以让我们远离平行的代码（回调地狱）：</span>
+
+<pre class="prettyprint lang-js">func1(function (value1) {
+  func2(value1, function (value2) {
+    func3(value2, function (value3) {
+      func4(value3, function (value4) {
+        func5(value4, funciton (value5) {
+          //  Do something with value 5
+        });
+      });
+    });
+  });
+});</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">转变成垂直代码：</span>
+
+<pre class="prettyprint lang-js">func1(value1)
+  .then(func2)
+  .then(func3)
+  .then(func4)
+  .then(func5, value5 =&gt; {
+    //  Do something with value 5
+});</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 ES6 之前，我们使用 bluebird 或者 q，现在我们可以使用原生的 Promise 了。</span>
+
+<pre class="prettyprint lang-js">new Promise ((resolve, reject) =&gt; 
+  reject(new Error('Failed to fulfill Promise')))
+    .catch(reason =&gt; console.log(reason));</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们有两个处理器，resolve（当Promise是 fulfilled 时的回调）和 reject（当Promise是 rejected 时的回调）：。</span>
+
+    Promises的好处：对错误的处理使用一些列回调会使代码很混乱，使用 Promise ，我看可以清晰的让错误冒泡并且在合适的时候处理它，甚至，在 Promise 确定了 resolved/rejected 之后，他的值是不可改变的－－它从来不会变化。
+
+    这是使用 Promise 的一个实际的栗子：
+
+<pre class="prettyprint lang-js">var request = require('request');
+return new Promise((resove, reject) =&gt; {
+  request.get(url,(error, response, body) =&gt; {
+    if (body) {
+      resove(JSON.parse(body));
+    } else {
+      resove({});
+    }
+  })
+})</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">我们还可以使用 Promise.all() 来 并行 处理多个异步函数：</span>
+
+<pre class="prettyprint lang-js">let urls = [
+  '/api/commits',
+  '/api/issues/opened',
+  '/api/issues/assigned',
+  '/api/issues/completed',
+  '/api/issues/comments',
+  '/api/pullrequests'
+];
+let promises = urls.map((url) =&gt; {
+  return new Promise((resolve, reject) =&gt; {
+    $.ajax({ url: url})
+      .done((data) =&gt; {
+        resolve(data);
+    });
+  });
+});
+Promise.all(promises)
+  .then((results) =&gt; {
+    // Do something with result of all our promise
+});</pre>
+<span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">Generators 生成器</span>**<span style="font-size:16px;color:#009900;"></span>
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">就像 Promises 可以帮我们避免回调地狱，Generators 可以帮助我们让代码风格更整洁－－用同步的代码风格来写异步代码，它本质上是一个可以暂停计算并且可以随后返回表达式的值的函数。</span>
+
+<pre class="prettyprint lang-js">function* sillyGenerator() {
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+}
+var generator = sillyGenerator();
+console.log(generator.next());  //  { value: 1, done: false }
+console.log(generator.next());  //  { value: 2, done: false }
+console.log(generator.next());  //  { value: 3, done: false }
+console.log(generator.next());  //  { value: 4, done: false }</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">next 可以回去到下一个 yield 返回的值，当然上面的代码是非常不自然的，我们可以利用 Generators 来用同步的方式来写异步操作：</span>
+
+<pre class="prettyprint lang-js">function request(url) {
+  getJSON(url, function(response) {
+    generator.next(response);
+  });
+}</pre>
+<pre class="prettyprint lang-js">function* getData() {
+  var entry1 = yield request('http://some_api/item1');
+  var data1 = JSON.parse(entry1);
+  var entry2 = yield request('http://some_api/item2');
+  var data2 = JSON.parse(entry2);
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">通过 yield，我们可以保证 entry1 有 data1 中我们需要解析并储存的数据。</span>
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">虽然我们可以利用 Generators 来用同步的方式来写异步操作，但是确认错误的传播变得不再清晰，我们可以在 Generators 中加上 Promise：</span>
+
+<pre class="prettyprint lang-js">function request(url) {
+  return new Promise((resolve, reject) =&gt; {
+    getJSON(url, resolve);
+  });
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">然后我们写一个函数逐步调用 next 并且利用 request 方法产生一个 Promise：</span> 
+<pre class="prettyprint lang-js">function iterateGenerator(gen) {
+  var generator = gen();
+  (function iterate(val) {
+    var ret = generator.next();
+    if(!ret.done) {
+      ret.value.then(iterate);
+    }
+  })();
+}</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 Generators 中加上 Promise 之后我们可以更清晰的使用 Promise 中的 .catch 和 reject来捕捉错误，让我们使用新的 Generator，和之前的还是蛮相似的：</span>
+
+<pre class="prettyprint lang-js">iterateGenerator(function* getData() {
+  var entry1 = yield request('http://some_api/item1');
+  var data1 = JSPN.parse(entry);
+  var entry2 = yidld request('http://some_api/item2');
+  var data2 = JSON.parse(entry2);
+});</pre>
+**<span style="font-size:16px;color:#009900;">Async Await</span>**<span style="font-size:16px;color:#009900;"></span>
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">当 ES6 真正到来的时候，async await 可以用更少的处理实现 Promise 和 Generators 所实现的异步处理：</span>
+
+<pre class="prettyprint lang-js">var request = require('request');
+funciton getJSON(url) {
+  return new Promise(function(resolve, reject) {
+    request(url, function(error, response, body) {
+      resolve(body);
+    });
+  });
+}
+async function main() {
+  var data = await getJSON();
+  console.log(data);
+}
+main();</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">在 js 引擎中，它所实现的和 Generators 其实是一样的，我更推荐在 Generators + Promises 之上使用 async await，更多的资源和使用 ES7 和 用 babel 转化可以看这里。</span>
+
+    <span style="font-size:16px;color:#009900;"></span>**<span style="font-size:16px;color:#009900;">Getter/Setter 函数</span>**<span style="font-size:16px;color:#009900;"></span>
+
+    <span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">ES6 已经开始实现了 getter 和 setter 函数，比如虾面这个栗子：</span>
+
+<pre class="prettyprint lang-js">class Employee {
+  construstor(name) {
+    this._name = name;
+  }
+  get name() {
+    if (this._name) {
+      return 'Mr. ' + this._name.toUpperCase();
+    } else {
+      return undefined;
+    }
+  }
+  set name(newName) {
+    if (newName == this._name) {
+      console.log('I already have this name.');
+    } else if (newName) {
+      this._name = newName;
+    } else {
+      return false;
+    }
+  }
+}
+var emp = new Employee("James Bond");
+if (emp.name) {
+  console.log(emp.name);    //  Mr.  JAMES  BOND
+ }
+emp.name = "Bond 007";
+console.log(emp.name);    //  Mr.  Bond  007</pre>
+<span style="color:#3E3E3E;font-family:&quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;">最新版本的浏览器也在对象中实现了 getter 和 setter 函数，我们可以使用它们来实现 计算属性，在设置和获取一个属性之前加上监听器和处理。</span>
+
+<pre class="prettyprint lang-js">var person = {
+  firstName: 'James',
+  lastName: 'Bond',
+  get fullName() {
+    console.log('Getting FullName');
+    return this.firstName + ' ' + this.lastName;
+  },
+  set fullName (name) {
+    console.log('Setting FullName');
+    var words = name.toString().split(' ');
+    this.firstName = words[0] || '';
+    this.lastName = words[1] || '';
+  }
+}
+person.fullName;    //  James Bond
+person.fullName = 'Bond 007';
+person.fullName;    //  Bond 007</pre>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/08/04/es6-e6-89-8b-e5-86-8c/" target="_blank" rel="external">http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/&title=《ES6——手册》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/&title=《ES6——手册》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6——手册》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ES6新特性(2)——深刻而易懂的ES6解构教程</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/08/02/es6-e6-96-b0-e7-89-b9-e6-80-a71-arguments-e5-92-8cparameters/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ES6新特性(1)——Arguments和Parameters</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/&title=《ES6——手册》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/&title=《ES6——手册》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6——手册》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3awYrDMAxF0fz/T2e2hZLkPqkZsHy9GpjU8XFBlWUdBx7n7fh85vv5q//ev+V4Y8iQIWNZBl/i9wtqMDIPX5sMGTL2YVxFsKtnakg+G1+bDBkyZPBkjoRpEjplyJAho8/giSMJr/eHWBkyZMioldJSWC1wv3gWlyFDxoIMXnX//79fud+QIUPGUowzHOk8abCuDRkyZMxm8ABXS/I6Jbx0PTJkyJjN6F9kpsdXnhTGR1YZMmRswEgvF/kLSCBO8UHtUIYMGYszeDvXKyESk+JfDBkyZIxg1MpktYSPN4eRTURVQxkyZIxg8MWlKSD/LC+uxbmnDBkyRjP6KWMKI5v48JMgQ4aM0QxyHrxP4NIUsH9p+jCPDBkyhjLSsho/rKabVQv3MmTI2I3BrzN5yYw3ZPCkU4YMGTsw0uMrAfP0js//sCoZMmRswEiDb6dt4ldtZDJkyNiTQV6WHjLJbDxBvFyDDBkyRjP614210MlTyWLzhwwZMsYxSGhLF8cvOGtbc9kzIkOGjC0ZvIjWKZmla5AhQ8aeDFLi77RKpKU0HuJlyJAxm3GGgxTL0rI+nzn+HmTIkDGC0b+MTBPEfmNHp/AnQ4aMdRlpqkcKbXy3agG3tdMyZMhYllFra+ABlF8hpGwZMmTISNO1fv9DK3uVIUOGjDapFmpROU+GDBkbMNJSGj92dpZLrlFlyJCxAyPNu/rFNfLZztFahgwZgxh/Wl8sugTNuVYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

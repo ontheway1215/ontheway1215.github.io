@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>鼠标或键盘控制3D盒子旋转 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CSS3,HTML5">
+    <meta name="description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图： ![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox">
+<meta name="keywords" content="CSS3,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鼠标或键盘控制3D盒子旋转">
+<meta property="og:url" content="http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图： ![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox">
+<meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鼠标或键盘控制3D盒子旋转">
+<meta name="twitter:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图： ![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">鼠标或键盘控制3D盒子旋转</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">鼠标或键盘控制3D盒子旋转</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-11T16:59:22.000Z" itemprop="datePublished" class="page-time">
+  2016-05-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/HTML5/">HTML5</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">鼠标或键盘控制3D盒子旋转</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-12 00:59:22" datetime="2016-05-11T16:59:22.000Z"  itemprop="datePublished">2016-05-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/HTML5/">HTML5</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：</p>
+<pre><code>![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox2.png) 
+
+&lt;span style=&quot;font-size:14px;&quot;&gt;两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:14px;&quot;&gt;通过键盘控制3D盒子旋转，demo链接：[http://chenqiangyi.com/example/3Dbox1.html](http://chenqiangyi.com/example/3Dbox1.html)&lt;/span&gt;
+
+&lt;span style=&quot;font-size:14px;&quot;&gt;通过鼠标控制3D盒子旋转，demo链接：[http://chenqiangyi.com/example/3Dbox1.html](http://chenqiangyi.com/example/3Dbox1.html)&lt;/span&gt;
+
+&lt;span style=&quot;color:#E53333;font-size:16px;&quot;&gt;1.页面布局&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:16px;&quot;&gt;需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：&lt;/span&gt; 
+
+&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-css">#div1 .right{ transform:rotateY(90deg) translateZ(100px);}</pre>
+然后就是左边的面，和右边的相似，只是旋转角度相反而已：
+
+    <span style="font-size:16px;"> </span> 
+
+<pre class="prettyprint lang-css">#div1 .left{ transform:rotateY(-90deg) translateZ(100px);}</pre>
+前后面就是直接沿Z轴平移100px和-100px即可
+
+    <span style="font-size:16px;"> </span> 
+
+<pre class="prettyprint lang-css">#div1 .front{ transform:translateZ(100px);}
+#div1 .back{ transform:translateZ(-100px);}</pre>
+上边的面就是沿Z轴平移100px然后再按照X轴旋转90度，相反下边的面沿y轴旋转-90度
+
+    <span style="font-size:16px;"> </span> 
+
+<pre class="prettyprint lang-css">#div1 .top{ transform:rotateX(90deg) translateZ(100px);}
+#div1 .bottom{ transform:rotateX(-90deg) translateZ(100px);}</pre>
+然后就是为了看到3D效果，需要在其父级添加3D模型 &nbsp;transform-style: preserve-3d;
+
+    <span style="font-size:16px;">这样基本的布局就完成了</span> 
+
+    <span style="font-size:16px;color:#E53333;">2.js控制</span> 
+
+<span style="font-size:14px;">首先介绍键盘的控制，我们知道键盘的按下去与松开都对应一个onkeydown事件和onkeyup事件，我们可以用事件对象获取其中的动作当按上键的时候我们可以得到他的ev.keycode=37,同理可以得到其他键的值，我们可以先定义bTop=bBotton=bLeft=bRight=false，当按下去的时候，判定哪个键对应的方向为true，然后当松开的 时候再令<span style="font-size:14px;line-height:21px;">bTop=bBotton=bLeft=bRight=false</span>这样在就可控制他的停止与运动了，然后我们开一个定时器，让他在某个方向上每隔30ms加10，这样就把X，y的值获取到了。</span> 
+
+    <span style="font-size:14px;"> </span> 
+
+<pre class="prettyprint lang-js">document.onkeydown=function(ev){
+        if(ev.keyCode==37){
+            bLeft=true;
+        }
+        if(ev.keyCode==38){
+            bTop=true;
+        }
+        if(ev.keyCode==39){
+            bRight=true;
+        }
+        if(ev.keyCode==40){
+            bBotton=true;
+        }
+    }
+    document.onkeyup=function(ev){
+        if(ev.keyCode==37){
+            bLeft=false;
+        }
+        if(ev.keyCode==38){
+            bTop=false;
+        }
+        if(ev.keyCode==39){
+            bRight=false;
+        }
+        if(ev.keyCode==40){
+            bBotton=false;
+        }
+    }</pre>
+
+<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;然后就是改变他的X，y的变化，进行相应的运动变换&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-js">//左右 y
+    var y=0;
+    //上下
+    var x=0;
+
+    setInterval(function(){
+        if(bLeft){
+            y-=10;
+        }
+        if(bRight){
+            y+=10;
+        }
+        if(bTop){
+            x-=10;
+        }
+        if(bBotton){
+            x+=10;
+        }
+        console.log(1)
+        oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
+    },30)</pre>
+<span style="font-size:14px;">这样键盘的控制就结束了，接下来就是鼠标的控制了</span> 
+
+    <span style="font-size:16px;color:#E53333;">3.鼠标的控制</span> 
+
+    <span style="font-size:14px;">主要运用鼠标的事件，当鼠标在网页上移动时会有相应的X和Y值得变化，这样我们就很容易得到鼠标的按下的位置和移动时的位置，我们可以根据在鼠标X轴移动的距离看做是他沿Y轴转动的角度，同时Y轴也是这样。</span> 
+
+<pre class="prettyprint lang-js">document.onmousedown=function(ev){
+        var disX=ev.clientX-y;
+        var disY=ev.clientY-x;
+
+        document.onmousemove=function(ev){
+            y=ev.clientX-disX;
+            x=ev.clientY-disY;
+            oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
+
+        }
+        document.onmouseup=function(){
+            document.onmousemove=document.onmouseup=null;
+        }
+        return false;
+    }    </pre>
+<span style="font-size:14px;">这样两个效果就基本完成了。</span> 
+
+    <span style="font-size:16px;color:#E53333;">4.总结</span> 
+
+    <span style="font-size:14px;">这个效果主要运用到了键盘的控制事件，以及盒子的拖拽模型，还有就是布局的知识，在以后会加上在移动端的控制。</span> 
+
+    <span style="font-size:14px;">最后附上两个模型的源代码：</span> 
+
+    <span style="font-size:14px;">键盘控制3D盒子旋转：</span> 
+
+<pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;style type="text/css"&gt;
+*{margin: 0;padding: 0;}
+#div1{position: relative;width: 200px;height: 200px;margin: 100px auto;line-height: 200px;text-align: center;font-size: 30px;
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    /*transition: 3s all ease;*/
+}
+#div1 div{position: absolute;left: 0;top: 0;width: 198px;height: 198px;border: 1px solid #000;background: yellow;}
+
+#div1 .front{transform: translateZ(100px);background: green;}
+#div1 .back{transform: translateZ(-100px);background: blue;}
+#div1 .left{transform: rotateY(-90deg) translateZ(100px);background: pink;}
+#div1 .right{transform: rotateY(90deg) translateZ(100px);background: red;}
+#div1 .top{transform: rotateX(90deg) translateZ(100px);background: yellow;}
+#div1 .bottom{transform: rotateX(-90deg) translateZ(100px);background:orange;}
+
+/*#div1:hover{transform: perspective(800px) rotateX(-15deg) rotateY(360deg)}*/
+&lt;/style&gt;
+&lt;script type="text/javascript"&gt;
+window.onload=function(){
+    var oDiv=document.querySelector("#div1")
+    var bTop=bBotton=bLeft=bRight=false;
+    //左右 y
+    var y=0;
+    //上下
+    var x=0;
+
+    setInterval(function(){
+        if(bLeft){
+            y-=10;
+        }
+        if(bRight){
+            y+=10;
+        }
+        if(bTop){
+            x-=10;
+        }
+        if(bBotton){
+            x+=10;
+        }
+        console.log(1)
+        oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
+    },30)
+
+    document.onkeydown=function(ev){
+        if(ev.keyCode==37){
+            bLeft=true;
+        }
+        if(ev.keyCode==38){
+            bTop=true;
+        }
+        if(ev.keyCode==39){
+            bRight=true;
+        }
+        if(ev.keyCode==40){
+            bBotton=true;
+        }
+    }
+    document.onkeyup=function(ev){
+        if(ev.keyCode==37){
+            bLeft=false;
+        }
+        if(ev.keyCode==38){
+            bTop=false;
+        }
+        if(ev.keyCode==39){
+            bRight=false;
+        }
+        if(ev.keyCode==40){
+            bBotton=false;
+        }
+    }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="div1"&gt;
+    &lt;div class="front"&gt;前面&lt;/div&gt;
+    &lt;div class="back"&gt;后面&lt;/div&gt;
+    &lt;div class="left"&gt;左面&lt;/div&gt;
+    &lt;div class="right"&gt;右面&lt;/div&gt;
+    &lt;div class="top"&gt;上面&lt;/div&gt;
+    &lt;div class="bottom"&gt;下面&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;鼠标控制3D盒子旋转：&lt;/span&gt; 
+</code></pre><pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;style type="text/css"&gt;
+*{margin: 0;padding: 0;}
+#div1{position: relative;width: 200px;height: 200px;margin: 100px auto;line-height: 200px;text-align: center;font-size: 30px;
+    transform: perspective(800px) rotateX(45deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    /*transition: 3s all ease;*/
+}
+#div1 div{position: absolute;left: 0;top: 0;width: 198px;height: 198px;border: 1px solid #000;background: yellow;}
+
+#div1 .front{transform: translateZ(100px);background: green;}
+#div1 .back{transform: translateZ(-100px);background: blue;}
+#div1 .left{transform: rotateY(-90deg) translateZ(100px);background: pink;}
+#div1 .right{transform: rotateY(90deg) translateZ(100px);background: red;}
+#div1 .top{transform: rotateX(90deg) translateZ(100px);background: yellow;}
+#div1 .bottom{transform: rotateX(-90deg) translateZ(100px);background:orange;}
+
+/*#div1:hover{transform: perspective(800px) rotateX(-15deg) rotateY(360deg)}*/
+&lt;/style&gt;
+&lt;script type="text/javascript"&gt;
+window.onload=function(){
+    var oDiv=document.querySelector("#div1")
+    //左右 y
+    var y=0;
+    //上下
+    var x=0;
+    document.onmousedown=function(ev){
+        var disX=ev.clientX-y;
+        var disY=ev.clientY-x;
+
+        document.onmousemove=function(ev){
+            y=ev.clientX-disX;
+            x=ev.clientY-disY;
+            oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
+
+        }
+        document.onmouseup=function(){
+            document.onmousemove=document.onmouseup=null;
+        }
+        return false;
+    }    
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="div1"&gt;
+    &lt;div class="front"&gt;前面&lt;/div&gt;
+    &lt;div class="back"&gt;后面&lt;/div&gt;
+    &lt;div class="left"&gt;左面&lt;/div&gt;
+    &lt;div class="right"&gt;右面&lt;/div&gt;
+    &lt;div class="top"&gt;上面&lt;/div&gt;
+    &lt;div class="bottom"&gt;下面&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;over&lt;/span&gt; 
+</code></pre>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-06-08T08:48:40.000Z" itemprop="dateUpdated">2017-06-08 16:48:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" target="_blank" rel="external">http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/&title=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/&title=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/06/13/restful-api/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">RESTful API</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">简单粗暴地理解js原型链–js面向对象编程(转)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/&title=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/&title=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEf0lEQVR42u3aQXLbMBAEwPz/08o1qUTOzC5cJTDNk0umILB5AHYWP37E1+uX69dP/rzn1Djvrq/vTP6bzHN4YcKECROmj2RKppX8993f76b19XRzytmral8JJkyYMGG6nSmf6Cu42vFnWPncNmNiwoQJE6b/k2nGmj9MUjBvln9MmDBhwoQpL25nGen+W8mYedGOCRMmTJiezdQOl8fBySTazUH7kG14jQkTJkyYnsSUL8zP+/vwhQkTJkyYPozpVV6bDUF7MCiJettgd3ZhwoQJE6Z7mdoDNO2hnFnAmv9u3uA88LuYMGHChOlCplOh5/ct/MmmJIfLNzeYMGHChOlJTMkymS/JeUOxfQ2nmqx1SxUTJkyYMF3LlLT98iI2byWeKoxPhc5RlIwJEyZMmC5kaqPbtnzdhMU5dD5OskH5y7cwYcKECdPlTLNodd8+PNsKraPbvLTGhAkTJkzXMs0eaT/ppIjNS+V8zFWZjQkTJkyYLmfKF9RZ+3B/3KcNc/PQucjCMWHChAnTVUyzx8g/aduQebw7K6GHx5IwYcKECdMjmGZl4Wbh3zRKZ8X2t2ThmDBhwoTpg5nysrA9WDObVjuHWR47O1qECRMmTJiex7Q5drOPiTfh7Gxj8Y/NDSZMmDBhehBTXgBvWqFt5LoPiDdBMCZMmDBhupEpX7DzySXlaL7JaDcTZzccv2XhmDBhwoTpQqbZgZu8wdketdlsDmaHe4rWLCZMmDBhupApWSBPxa/5AtxC5JuYpLzHhAkTJkzPZhqWhcE9edG7OdLaFuqRACZMmDBhupxpFo/ONhDJYrzflCRMyYvEhAkTJky3M+2D12S53Qevs0/yJyqCbEyYMGHC9Aim15dXPqFknOR3c5R8mR++PEyYMGHCdBXTLORNONqYtS1B8yV/X9JjwoQJE6ZnMLULdtu2nEXGOUo7kyLwxYQJEyZMj2DaLOFtOJuUo/lRm7bVmkNHP4AJEyZMmD6eaXY4ZvbYM4K2qJ4FwW9HwIQJEyZM1zLNjsK0xe2s3J0Fte12IQ+yMWHChAnTjUyzIrZtZya/uHkx+VZgeFAJEyZMmDBdztQun7NH2mwC2sNAsxf89luYMGHChOkRTLMDN/lEZ23IGXQeLtfxLiZMmDBhupBpg5U8Un7l25HNfOojQZgwYcKE6RFMbSvx1MLctlTPjhy9AEyYMGHCdDnTrMTdB7uz+9sXk4/w9lkwYcKECdMjmPL2ZB6bziLdWUs1z2NzLEyYMGHCdDtTPpXZ0KdC4bNF9YEtCyZMmDBhuoTpVV7JEptPvS28N4HypgzGhAkTJkz3MrVLcvK1PLrNW6RnH+YwDSZMmDBh+nimfBGd8bVFct1uDI4Q5WExJkyYMGF6KlO7cLZFbH7EZxbyfsdWpuj9YsKECROmBzHNotW8tJ4RJNFw3uD8yz2YMGHChOm/YZqVjqdamJvlf9MExYQJEyZMtzO1h3XyRTeZeh4xt4dy2rm9nS0mTJgwYbqWaXPYpb2zhd48QA504GQTJkyYMGH6RKafyDbJKkf2vQYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
