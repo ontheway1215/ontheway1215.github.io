@@ -24,20 +24,20 @@
 <meta name="keywords" content="JavaScript,原型与原型链">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简单粗暴地理解js原型链–js面向对象编程(转)">
-<meta property="og:url" content="http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/index.html">
+<meta property="og:url" content="http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
 <meta property="og:description" content="今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。 &amp;lt;span style=&amp;quot;color:#3E3E3E;f">
-<meta property="og:image" content="http://yoursite.com/wp-content/uploads/2016/05/20160521224811_76474.png">
-<meta property="og:image" content="http://yoursite.com/wp-content/uploads/2016/05/20160521225303_94229.gif">
+<meta property="og:image" content="http://www.chenqiangyi.cn/wp-content/uploads/2016/05/20160521224811_76474.png">
+<meta property="og:image" content="http://www.chenqiangyi.cn/wp-content/uploads/2016/05/20160521225303_94229.gif">
 <meta property="og:updated_time" content="2017-06-08T09:45:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单粗暴地理解js原型链–js面向对象编程(转)">
 <meta name="twitter:description" content="今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。接下来就是逗逼的文章了。 &amp;lt;span style=&amp;quot;color:#3E3E3E;f">
-<meta name="twitter:image" content="http://yoursite.com/wp-content/uploads/2016/05/20160521224811_76474.png">
+<meta name="twitter:image" content="http://www.chenqiangyi.cn/wp-content/uploads/2016/05/20160521224811_76474.png">
     
-        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/public/atom.xml">
     
-    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="shortcut icon" href="/public/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -50,10 +50,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/public/img/brand.jpg)">
       <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+        <a href="/public/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/public/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">ontheway1215</h5>
@@ -65,21 +65,21 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/public/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/public/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 文章
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/public/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
@@ -161,7 +161,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/JavaScript/">JavaScript</a></li></ul>
 
             
         </h5>
@@ -184,7 +184,7 @@
             <time class="post-time" title="2016-05-11 22:19:10" datetime="2016-05-11T14:19:10.000Z"  itemprop="datePublished">2016-05-11</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/JavaScript/">JavaScript</a></li></ul>
 
 
 
@@ -555,12 +555,12 @@ var p2 = new Person('Mark', 18);
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" target="_blank" rel="external">http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" target="_blank" rel="external">http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/</a>
         
     </div>
     <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="ontheway1215">
+        <a href="http://www.chenqiangyi.cn/public">
+            <img src="/public/img/avatar.jpg" alt="ontheway1215">
             ontheway1215
         </a>
     </footer>
@@ -575,7 +575,7 @@ var p2 = new Person('Mark', 18);
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原型与原型链/">原型与原型链</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/原型与原型链/">原型与原型链</a></li></ul>
 
 
             
@@ -585,7 +585,7 @@ var p2 = new Person('Mark', 18);
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -595,22 +595,22 @@ var p2 = new Person('Mark', 18);
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -633,7 +633,7 @@ var p2 = new Person('Mark', 18);
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" id="post-prev" class="post-nav-link">
+      <a href="/public/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">鼠标或键盘控制3D盒子旋转</h4>
       </a>
@@ -642,7 +642,7 @@ var p2 = new Person('Mark', 18);
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/" id="post-next" class="post-nav-link">
+      <a href="/public/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">HTML5头图切换效果</h4>
       </a>
@@ -681,14 +681,14 @@ var p2 = new Person('Mark', 18);
     <ul class="reward-items">
         
         <li>
-            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <img src="/public/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
             <p>微信</p>
         </li>
         
 
         
         <li>
-            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <img src="/public/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
             <p>支付宝</p>
         </li>
         
@@ -729,7 +729,7 @@ var p2 = new Person('Mark', 18);
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -739,22 +739,22 @@ var p2 = new Person('Mark', 18);
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&title=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简单粗暴地理解js原型链–js面向对象编程(转)》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -765,7 +765,7 @@ var p2 = new Person('Mark', 18);
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,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" alt="微信分享二维码">
+    <img src="data:image/png;base64,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" alt="微信分享二维码">
 </div>
 
 
@@ -773,7 +773,7 @@ var p2 = new Person('Mark', 18);
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/public/', SHARE: true, REWARD: true };
 
 
 

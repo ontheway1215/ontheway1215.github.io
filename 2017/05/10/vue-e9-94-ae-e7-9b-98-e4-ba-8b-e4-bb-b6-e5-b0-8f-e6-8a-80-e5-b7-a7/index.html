@@ -24,7 +24,7 @@
 <meta name="keywords" content="JavaScript,vue,键盘事件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue键盘事件小技巧">
-<meta property="og:url" content="http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/index.html">
+<meta property="og:url" content="http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
 <meta property="og:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
 <meta property="og:updated_time" content="2017-06-08T09:50:06.000Z">
@@ -32,9 +32,9 @@
 <meta name="twitter:title" content="vue键盘事件小技巧">
 <meta name="twitter:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
     
-        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/public/atom.xml">
     
-    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="shortcut icon" href="/public/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -47,10 +47,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/public/img/brand.jpg)">
       <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+        <a href="/public/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/public/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">ontheway1215</h5>
@@ -62,21 +62,21 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/public/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/public/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 文章
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/public/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/JavaScript/">JavaScript</a></li></ul>
 
             
         </h5>
@@ -181,7 +181,7 @@
             <time class="post-time" title="2017-05-10 22:04:01" datetime="2017-05-10T14:04:01.000Z"  itemprop="datePublished">2017-05-10</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/JavaScript/">JavaScript</a></li></ul>
 
 
 
@@ -317,12 +317,12 @@ methods: {
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" target="_blank" rel="external">http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" target="_blank" rel="external">http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/</a>
         
     </div>
     <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="ontheway1215">
+        <a href="http://www.chenqiangyi.cn/public">
+            <img src="/public/img/avatar.jpg" alt="ontheway1215">
             ontheway1215
         </a>
     </footer>
@@ -337,7 +337,7 @@ methods: {
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键盘事件/">键盘事件</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/键盘事件/">键盘事件</a></li></ul>
 
 
             
@@ -347,7 +347,7 @@ methods: {
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -357,22 +357,22 @@ methods: {
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -397,7 +397,7 @@ methods: {
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" id="post-next" class="post-nav-link">
+      <a href="/public/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">es6新特性总结</h4>
       </a>
@@ -436,14 +436,14 @@ methods: {
     <ul class="reward-items">
         
         <li>
-            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <img src="/public/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
             <p>微信</p>
         </li>
         
 
         
         <li>
-            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <img src="/public/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
             <p>支付宝</p>
         </li>
         
@@ -484,7 +484,7 @@ methods: {
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -494,22 +494,22 @@ methods: {
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -520,7 +520,7 @@ methods: {
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADMElEQVR42u3ay27CQBAEQP7/p8k1UmLTPWskvJRPKPixZQ6T7ZnHIz6ef46jb5Orjs4/uurozN/nP95xYGNjY9+E/Tw9EtjR56P7nJ/fvojz5x7eGRsbG3s79nlhSD4nD26XmJ+TW7CxsbGxk81Ju1VoS11yFTY2NjZ2fru8/LQRVftasbGxsb+ZvRLctK9g1n7IS93FWRo2Njb2x7Pzrujnf35LfxsbGxv7g9nP8sgLT77xyLcfsxbCP1dhY2Njb8Reie9nAdCswZBvS4r1Y2NjY2/KbktX0gZe2di0yGK7go2Njb0Fu43y8ybBbBDnqhbCi6djY2Njb8duo6KrQp/1Dc8wisLGxsbeiD2LeGZDOeuDlSv7LWxsbOxvYOeBURsb5cUpL1rtsE50JjY2NvYN2e1NZ22DNgCavYLkt30xqYSNjY19W/ZsRCYvSLMhnjxOyjc82NjY2HuzZzfKYW1bd9jETc7HxsbG3oidX3BtuN8O8eSlMfkLNjY29n7sPAxauWploGc2shMVWmxsbOybs5P4fjbK054zeynDcouNjY39BezZpM/7Aqm2AfCimGFjY2Nvx26HY2bhzqyMtSuJfgxsbGzs7dgr5aQtgfmWo42limYDNjY29qbs5GGz4Zi84LWFLS97j/xh2NjY2Ddkr9x6FgZd1RjOX80/jV5sbGzsjdhJu7QteDNwsfQywCoyLWxsbOwbste3HPlCrwLnP8zhyA42Njb2FuyVCGklkMpLTv46Zt9iY2Nj78GeDcck3+bFrN5OxCFUtA/DxsbGvjk7j+PzRV9V9mZN5WKcCBsbG3sLdh6+5M3dZIk5oC20S1sRbGxs7Nuy3x3orIzp5IWwWD82Njb21uzZJiGJclYayY+F4zBLw8bGxr45+1kes03CrOytjOlgY2Njfw+7LQDJv/75VqSN9dvXlHyLjY2NvQd7VrTWo/+VyGm9HGJjY2Pvxz7/971tG7TtgVljeNZsxsbGxsZeKTMtIC919U4LGxsb++vZszIzK4QrcX80soONjY29BTsJldrgfhYwzRrAbZHDxsbG3ondFowE2TZuryqBswYGNjY29m3ZP6igpuLQZ8V7AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD8UlEQVR42u3aSW7cQBAEQP3/0/LVxphkZlWPFiDmRFBcuoMGyrV8fMS/z5ff3+dfj+/vfb0rP//65Nfr79dz4IcDBw4cOMqtbhZ9tYGrM/dX5htOrkzWiQMHDhw4TnEkYex+G8lW87A9i49t0MWBAwcOHD+Bo91eu6z7kJxT4sCBAweO38KRlO2iF5eVus1WceDAgQPH13O0YaxN2HLWTfq3L2LiwIEDB449x6z09ruO3zLfgQMHDhw4gqA1G27Yh+dkACJpMrXr/OcuHDhw4MCx5sgDUp5o5QNtm+JgsqrZvnDgwIEDxymOfBwhh2hzpftAmww6tC2rA9MZOHDgwIGjXFa+lBloPu6WnMkD7X/eiwMHDhw41hxJijWDyBc3+xiz/yjc8+HAgQMHjj3HZmN5WN00k5LjpBxZNJxw4MCBA8eCY7OUKIbHraNZgtc2xpLV4sCBAweOsxyz4uDsfJu8tSW/dmwCBw4cOHDsOfLhgzYk54izwLwZX7g8gwMHDhw4jnLMinqbNk+7gTxUt9cc+M44cODAgSMOfmeHEvKNzUqB+RuLXBYHDhw4cMQc7bbbpC4v6uVp5H6Fl2vDgQMHDhxfwpEnb3ly2AbI9u1tglcEWhw4cODAEdy7CYHJsMKp4DpLHZM1X/4bwYEDBw4ca4489OZJ1KxptC9KtgEbBw4cOHDsOWZjcPnxLM27R2k/Q5Fw4sCBAweON3DkxbW86LZ5zjsC+eXTcODAgQPHmmNWHMyLce0mk0C7p3zYBQ4cOHDgWHO0N7Rn2iXmHO1qV40xHDhw4MCx4NgPELQtpbaB1K6hLRfiwIEDB44ZRz6Otg+x7eZnm0yC7uXzceDAgQPHIY46tytD5mygrR132KedOHDgwIFjz3Fqe/vlJgXBJNyeej4OHDhw4Jg9fzYW0KZewwrl0WJilOzhwIEDB46jHJsy3KmUb1N2TJpnDzvCgQMHDhyHODY0m5QpgZg9f/YWHDhw4MBxiiMfQWiDaD6KlxMkz2xDbzFbhwMHDhw4Yo62lNb+NW9HJU/eX/8QaHHgwIEDx4IjD5+zRlTb1pqF1eTMQ7jFgQMHDhxrjlmRLk/5ZolZXtprU8foM+PAgQMHjgXHZ/lrRw3e0bjK35s/HwcOHDhwnOJoU6ZNcyjfTB6q860WKRwOHDhw4FhztMG1PW5TqbYQOQvSl6A4cODAgeMQRxuoZuW5NjC/JQG7vxcHDhw4cHwTR06WN5OS9lXe4hqWMnHgwIEDxzdxJBXHNvRuWlD5J3lIAnHgwIEDxyGOzaDbrDnU3tUmh8PGFQ4cOHDgWHO0pbQWrt1qPpw3+3izJhkOHDhw4Ah29AeMGypcEQlE2gAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -528,7 +528,7 @@ methods: {
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/public/', SHARE: true, REWARD: true };
 
 
 

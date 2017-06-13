@@ -24,7 +24,7 @@
 <meta name="keywords" content="JavaScript,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6新特性(2)——深刻而易懂的ES6解构教程">
-<meta property="og:url" content="http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/index.html">
+<meta property="og:url" content="http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
 <meta property="og:description" content="解构是ES6的新特性，用于从JavaScript对象和数组中提取数据，语法上比ES5所提供的更加简洁、紧凑、清晰。它不仅能减少你的代码量，还能从根本上改变你的编码方式。用的越多，你就会发现越多塑造数据和函数的方式，这些实现方式在过去几乎是不可能的。本文将深入探讨解构赋值，为你介绍该新特性中你所需要知悉的一切。  &amp;lt;span style=&amp;quot;color:#3E3E3E;font-fam">
 <meta property="og:updated_time" content="2017-06-08T08:48:40.000Z">
@@ -32,9 +32,9 @@
 <meta name="twitter:title" content="ES6新特性(2)——深刻而易懂的ES6解构教程">
 <meta name="twitter:description" content="解构是ES6的新特性，用于从JavaScript对象和数组中提取数据，语法上比ES5所提供的更加简洁、紧凑、清晰。它不仅能减少你的代码量，还能从根本上改变你的编码方式。用的越多，你就会发现越多塑造数据和函数的方式，这些实现方式在过去几乎是不可能的。本文将深入探讨解构赋值，为你介绍该新特性中你所需要知悉的一切。  &amp;lt;span style=&amp;quot;color:#3E3E3E;font-fam">
     
-        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/public/atom.xml">
     
-    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="shortcut icon" href="/public/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -47,10 +47,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/public/img/brand.jpg)">
       <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+        <a href="/public/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/public/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">ontheway1215</h5>
@@ -62,21 +62,21 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/public/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/public/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 文章
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/public/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/ES6/">ES6</a></li></ul>
 
             
         </h5>
@@ -181,7 +181,7 @@
             <time class="post-time" title="2016-08-09 18:49:50" datetime="2016-08-09T10:49:50.000Z"  itemprop="datePublished">2016-08-09</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/ES6/">ES6</a></li></ul>
 
 
 
@@ -316,12 +316,12 @@ warMachine;</pre>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" target="_blank" rel="external">http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" target="_blank" rel="external">http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/</a>
         
     </div>
     <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="ontheway1215">
+        <a href="http://www.chenqiangyi.cn/public">
+            <img src="/public/img/avatar.jpg" alt="ontheway1215">
             ontheway1215
         </a>
     </footer>
@@ -336,7 +336,7 @@ warMachine;</pre>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/JavaScript/">JavaScript</a></li></ul>
 
 
             
@@ -346,7 +346,7 @@ warMachine;</pre>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&title=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&title=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -356,22 +356,22 @@ warMachine;</pre>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&title=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&title=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -394,7 +394,7 @@ warMachine;</pre>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2016/12/19/mac-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-ae-89-e8-a3-85-e9-9c-80-e8-a6-81-e7-ae-a1-e7-90-86-e5-91-98-e6-9d-83-e9-99-90please-try-running-this-command-again-as-rootadministrator/" id="post-prev" class="post-nav-link">
+      <a href="/public/2016/12/19/mac-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-ae-89-e8-a3-85-e9-9c-80-e8-a6-81-e7-ae-a1-e7-90-86-e5-91-98-e6-9d-83-e9-99-90please-try-running-this-command-again-as-rootadministrator/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">mac 命令行 安装 需要管理员 权限“Please try running this command again as root/Administrator”的解决办法</h4>
       </a>
@@ -403,7 +403,7 @@ warMachine;</pre>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/08/04/es6-e6-89-8b-e5-86-8c/" id="post-next" class="post-nav-link">
+      <a href="/public/2016/08/04/es6-e6-89-8b-e5-86-8c/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">ES6——手册</h4>
       </a>
@@ -442,14 +442,14 @@ warMachine;</pre>
     <ul class="reward-items">
         
         <li>
-            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <img src="/public/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
             <p>微信</p>
         </li>
         
 
         
         <li>
-            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <img src="/public/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
             <p>支付宝</p>
         </li>
         
@@ -490,7 +490,7 @@ warMachine;</pre>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&title=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&title=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -500,22 +500,22 @@ warMachine;</pre>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&title=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&title=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&url=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6新特性(2)——深刻而易懂的ES6解构教程》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -526,7 +526,7 @@ warMachine;</pre>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFSElEQVR42u3a0W7cRhQD0Pz/T6foW4vYa5JX6xbw2adgLSujowDh8M6vX/Hn9z8+f37/559fX/PZb7X3T3762eeza36944MPHz58+PA99Ne8fqTX909++voF5C8secHJqj64Az58+PDhwzfxbYtIHiO5/z36vKbP75CvBB8+fPjw4fseviRMtEEnigjli2mZ8OHDhw8fvv8nXwuXUCZFefsa2liDDx8+fPjwfSff9qh5yd6+nvtgPqk22hECPnz48OHDd+fLT2H9nD+/5XwfPnz48OH78XzbVj8feF8K/e2wWh6h2rHBB/fHhw8fPnz4Jo28KE+qhHxzftmE5/dJVrs54MOHDx8+fC1fPnjOj4W1xfr2qrYjZfk10bPjw4cPHz58B77tUFo+Dt82/+2VyWu+H1z7ILjgw4cPHz58j8aXexDZIsLlqFleSWxrwIcPHz58+Fq+rSh/iqmtLdpB/lY6FLEMHz58+PDhK/ku2+mnFroVDfcDZ5eqAh8+fPjw4dv4toF3Qpxvy9vq/PJ9e80XAQsfPnz48OFbdvTjg7WL3kbRbVnfBqmt+seHDx8+fPg2vjw65HvkfPudP3aC276GPKIVWQYfPnz48OGbZrv54a129J6Pn9vqPA8f26q+YMWHDx8+fPiC58oX1B7buly51QF5BNnqj6IywIcPHz58+F52Ar+nTxtiornBVF48FarGNePDhw8fPnzxmp/lyEv5vC5vQ8ylCKjHFfjw4cOHD9+B7xIFNr78znmVsI26x3IEHz58+PDhW3r1esjdkrV1Q37/y4D8sbIeHz58+PDhm/iSX8gH0tthsnx4sB2J2+JadNANHz58+PDhi9fQbrC30fK2y84jVD50b+uAL67Hhw8fPnz4Jr6xYzhEk8sAvt32t09RjBbw4cOHDx++A1/xH3b8/aVQuASRvA7Ir/9gVfjw4cOHD1+8wqeG4pfKoH28y2f7ez/9KT58+PDhwzfxbY+aR4o2mjw7NsjH+e2QAB8+fPjw4Wv52k37doTrUjds39yH6AUrPnz48OHDF/NtYWUDTciS392CTv4CikMD+PDhw4cPX8m3/VqLmISkdiSwHS/LcfNghw8fPnz48OV8ebBIlthW5+3wuw1SW+VRxB18+PDhw4fvMBfOw8f22G0h/izNJTZF4QkfPnz48OEL+PJCvB2Qt4V7Hp7uB862eqKoDPDhw4cPH75ghe9+4Hsp8DpC3Ufp7T8XfPjw4cOH78J3KREuZUEbiVqmbWy/DTPw4cOHDx++13zbY18K9OThkztsB9fyoiEqI/Dhw4cPH76Jrz1Mdjnslb+GnONSuG8r+desAx8+fPjw4Sv52o36VuK3ZfcWmC5D+tf/aIrchw8fPnz48AVrTmLHVg1ctvHtcP19YatuX/Dhw4cPH76JbysCLoX+Vve/YzBfn2jDhw8fPnz4Sr522HyPEfkdLq8q+X4b3uPDhw8fPnw531Mb9TzutJGiqMvbIXeZRj5YMz58+PDhwzfxtf+Fb9v7+8PkB8vagqPlxocPHz58+J7i28rrLQoUESEu69tRweWgAD58+PDhw9fybXHh2W38VhzcK4xteP/AGQR8+PDhw/fj+drx81bxJ3BJgNhG4E8FF3z48OHDh+8pvmQbv8WOd2zF2xDTvpgihOHDhw8fPnz/EV9+TTseaDf5yavNx+FfrAQfPnz48OH7Fr58W/7UuP1ebVxqjk/vhg8fPnz48E18eXRoy/ctIiQvI39V7VC8CED48OHDhw/fde88RopLEMnHAPlLzRHzsDIW/fjw4cOHD9/fn78AsQNpaEgv10QAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFNUlEQVR42u3awU7jQBAE0Pz/T7MXDqxQTFX32LsSLydEgj3zHInu6nm94tfHl9f333z9/bvPX1/z3ZW/f/76CskrWcPhFz58+PDhwxcv4pov31673OuVJDvK303W+XbN+PDhw4cP34jv+jbXP19zJJ/Pl96WIC1WboIPHz58+PA9wzfrqZN396VS3tHnXxF8+PDhw4fv3/IlscL1Vp8JAtqhAj58+PDhw/ckX/4PPg8FkkZ983j+h3vhw4cPHz58LV/b9v+Gnw+/8OHDhw8fvnIgPTuOljfzeZO/j/j3Dp/XxIcPHz58+EYa7Q1yrM1nNpt8ZuiODx8+fPjwtQ5J0ZDE9Pni2q22gXu7l3zYH33v8OHDhw8fvrhCONWonxpOt4P8NojPWSNEfPjw4cOHb/H/dxPBJ3/b3jdv9dsNz4jx4cOHDx++zRraQfh9x91mW5qVMrNDeMV3BB8+fPjw4Su3kYfsbcQ/w83HBqfC+h/CBXz48OHDh2/BlzfY+fj8VDSwH2bnTPm7+PDhw4cPX8uXBwd5W76PBvJ4fTWXiAOIqCzDhw8fPnz4Ar68wZ4d8Dr7eOpvRFni1AUZPnz48OHDN+/lH2rC27A+H9vPVrhZJz58+PDhw9fytWF9srh2xD5r3XOOZOWzUAMfPnz48OE7xZcPxdsrbMbnCeIssp/dER8+fPjw4ZvxJdtr2/J2QZuDaPma24jhNfPGhw8fPnz4RsH9PhpoIWYD7NlwfXaQDh8+fPjw4TvF1/77nwXryeNpR9r5XfZh/dsHiQ8fPnz48AV8SZw9a9TzRSeH5GZlymxtReGFDx8+fPjwTXr2Ya7QxvqzOOCOaGN/l5oDHz58+PDhC8bkefPfNup5adIOuTfhezvCx4cPHz58+GZ8s3qnjRL2R8o2xcepB//Xu/jw4cOHD9+kuoia+STKb4fQyRXa67cBRL7fKKzHhw8fPnz4Lq+/D8rzQKEde+8HBm2UUN8XHz58+PDhW/C1h7w3t8/jgDyASEqNfJQe7Q4fPnz48OG7ge/AODmOv+87OD5D/+H6+PDhw4cPX8nXjsD3W2qLpFmr3w7a26IHHz58+PDhm/G1R9Cuy459mH5qMJD/7eowHD58+PDhw7fgu+OWm6A8eSR5DJE/gIISHz58+PDhG/HNRuCbQqcNJvKRdvuoVivBhw8fPnz4RivJC4W8yc8H57PyIh9jz+KMAhQfPnz48OGL79g2zJuIoQ0gZj+3B9fakXw0JseHDx8+fPgu+fbj8AT0VBjRDgZmZVn0xcKHDx8+fPhGfK/F69RweoM7C/fzou3tZ/Dhw4cPH74136l//3kZ1MYNScjePobZOAEfPnz48OFr+fJo4HoDm6AhX3qysajgKEOHYe2GDx8+fPjwjVrx2ch8Ft+3zXzOl9+xHRjgw4cPHz58Z/mShr+NvNvXvsDKy6n2YBw+fPjw4cOX883i6SRYv7vsaK+cFCt1CIIPHz58+PCN+Fqg2cG1swfO8iF6Hta3B93w4cOHDx++Pd/sWFh94zJW2Jc++ZghGcwP8w98+PDhw/fr+VqIJCbYt/052aYkyh9tHvTjw4cPHz58Cd9sexu+Ng7YBAp5WDCMHvDhw4cPH74RX7KgfZHRHmhrhwHJtlfNPz58+PDhw/c4XxIH5A18jj4bgc8OohXFGT58+PDhw3czX7vhU9fPS5xTA/joMeDDhw8fPnwjviSsz7exD/1nw4NNADEbXeDDhw8fPnwtXx1Plw15S7MprU6F9Unpgw8fPnz48JV8fwANT5DQod/yXgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -534,7 +534,7 @@ warMachine;</pre>
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/public/', SHARE: true, REWARD: true };
 
 
 

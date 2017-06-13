@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>ChenBlog-chenqiangyi.cn</title>
   <subtitle>IT技术分享</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/public/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.chenqiangyi.cn/public/"/>
   <updated>2017-06-08T09:50:06.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.chenqiangyi.cn/public/</id>
   
   <author>
     <name>ontheway1215</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>vue键盘事件小技巧</title>
-    <link href="http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/"/>
-    <id>http://yoursite.com/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/</id>
+    <link href="http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/"/>
+    <id>http://www.chenqiangyi.cn/public/2017/05/10/vue-e9-94-ae-e7-9b-98-e4-ba-8b-e4-bb-b6-e5-b0-8f-e6-8a-80-e5-b7-a7/</id>
     <published>2017-05-10T14:04:01.000Z</published>
     <updated>2017-06-08T09:50:06.000Z</updated>
     
@@ -140,21 +140,21 @@ methods: {
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/tags/JavaScript/"/>
     
-      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+      <category term="vue" scheme="http://www.chenqiangyi.cn/public/tags/vue/"/>
     
-      <category term="键盘事件" scheme="http://yoursite.com/tags/%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6/"/>
+      <category term="键盘事件" scheme="http://www.chenqiangyi.cn/public/tags/%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>es6新特性总结</title>
-    <link href="http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/"/>
-    <id>http://yoursite.com/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/</id>
+    <link href="http://www.chenqiangyi.cn/public/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/"/>
+    <id>http://www.chenqiangyi.cn/public/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/</id>
     <published>2017-04-25T04:28:31.000Z</published>
     <updated>2017-06-08T09:47:07.000Z</updated>
     
@@ -1089,53 +1089,36 @@ factorial(1000000) -&gt; RangeError: Maximum call stack size exceeded</pre>
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/categories/JavaScript/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
+      <category term="ES6" scheme="http://www.chenqiangyi.cn/public/tags/ES6/"/>
     
   </entry>
   
   <entry>
     <title>call与apply详解</title>
-    <link href="http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/"/>
-    <id>http://yoursite.com/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/</id>
+    <link href="http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/"/>
+    <id>http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/</id>
     <published>2017-02-14T07:45:29.000Z</published>
-    <updated>2017-06-08T09:51:31.000Z</updated>
+    <updated>2017-06-13T07:44:35.000Z</updated>
     
     <content type="html"><![CDATA[<p>JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。</p>
-<pre><code>一、
-
-call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。二者的作用完全一样，只是接受参数的方式不太一样。例如，有一个函数 func1 定义如下：
-</code></pre><pre class="prettyprint lang-js">var func1 = function(arg1, arg2) {};</pre>
-
-<pre><code>就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, &lt;span class=&quot;s1&quot;&gt;[arg1, arg2]&lt;/span&gt;); 来调用。其中 this 是你想指定的上下文，他可以任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
-
-JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。
-
-二、
-
-在javascript OOP中，我们经常会这样定义：
-</code></pre><pre class="prettyprint lang-js">function cat(){ } cat.prototype={  food:"fish",  say: function(){  alert("I love "+this.food);  } } var blackCat = new cat;
+<p>一、<br>    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。二者的作用完全一样，只是接受参数的方式不太一样。例如，有一个函数 func1 定义如下：</p>
+<pre><code>&lt;pre class=&quot;prettyprint lang-js&quot;&gt;var func1 = function(arg1, arg2) {};&lt;/pre&gt;
+</code></pre><p>就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, <span class="s1">[arg1, arg2]</span>); 来调用。其中 this 是你想指定的上下文，他可以任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。<br>JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。</p>
+<p>二、在javascript OOP中，我们经常会这样定义：</p>
+<pre class="prettyprint lang-js">function cat(){ } cat.prototype={  food:"fish",  say: function(){  alert("I love "+this.food);  } } var blackCat = new cat;
 blackCat.say();</pre>
 
-<pre><code>但是如果我们有一个对象whiteDog = {food:&lt;span class=&quot;s1&quot;&gt;&quot;bone&quot;&lt;/span&gt;},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：blackCat.say.call(whiteDog);
-
-所以，可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法，但是其他的有，我们可以借助call或apply用其它对象的方法来操作。
-
-用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：
-</code></pre><pre class="prettyprint lang-js">var domNodes = Array.prototype.slice.call(document.getElementsByTagName("*"));</pre>
-
-<pre><code>这样domNodes就可以应用Array下的所有方法了。
-
-三、
-</code></pre><pre class="prettyprint lang-js">obj.call(thisObj, arg1, arg2, ...);
-obj.apply(thisObj, [arg1, arg2, ...]);</pre>
-
-<pre><code>两者作用一致，都是把obj(即this)绑定到thisObj，这时候thisObj具备了obj的属性和方法。或者说thisObj『继承』了obj的属性和方法。
-
-唯一区别是apply接受的是数组参数，call接受的是连续参数。
-</code></pre><pre class="prettyprint lang-js">function add(j, k){
+<p>但是如果我们有一个对象whiteDog = {food:<span class="s1">“bone”</span>},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：blackCat.say.call(whiteDog);所以,可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法,但是其他的有，我们可以借助call或apply用其它对象的方法来操作。用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：</p>
+<pre><code>&lt;pre class=&quot;prettyprint lang-js&quot;&gt;var domNodes = Array.prototype.slice.call(document.getElementsByTagName(&quot;*&quot;));&lt;/pre&gt;
+</code></pre><p>这样domNodes就可以应用Array下的所有方法了。</p>
+<p>三、</p>
+<pre><code>&lt;pre class=&quot;prettyprint lang-js&quot;&gt;obj.call(thisObj, arg1, arg2, ...);
+obj.apply(thisObj, [arg1, arg2, ...]);&lt;/pre&gt;
+</code></pre><p>  两者作用一致，都是把obj(即this)绑定到thisObj，这时候thisObj具备了obj的属性和方法。或者说thisObj『继承』了obj的属性和方法。唯一区别是apply接受的是数组参数，call接受的是连续参数。</p>
+<pre class="prettyprint lang-js">function add(j, k){
     return j+k;
 }
 
@@ -1143,8 +1126,8 @@ function sub(j, k){
     return j-k;
 }</pre>
 
-<pre><code>我们在控制台运行：
-</code></pre><pre class="prettyprint lang-js">add(5,3); //8
+<p>我们在控制台运行：</p>
+<pre class="prettyprint lang-js">add(5,3); //8
 add.call(sub, 5, 3); //8
 add.apply(sub, [5, 3]); //8
 
@@ -1152,8 +1135,8 @@ sub(5, 3); //2
 sub.call(add, 5, 3); //2
 sub.apply(add, [5, 3]); //2</pre>
 
-<pre><code>通过call和apply，我们可以实现对象继承。示例：
-</code></pre><pre class="prettyprint lang-js">var Parent = function(){
+<p>通过call和apply，我们可以实现对象继承。示例：</p>
+<pre class="prettyprint lang-js">var Parent = function(){
     this.name = "yjc";
     this.age = 22;
 }
@@ -1162,33 +1145,31 @@ console.log(child);//Object {} ,空对象
 Parent.call(child);
 console.log(child); //Object {name: "yjc", age: 22}</pre>
 
-<pre><code>以上实现了对象的继承。&amp;nbsp;
-</code></pre>]]></content>
+<p>以上实现了对象的继承。</p>
+]]></content>
     
     <summary type="html">
     
       &lt;p&gt;JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;一、
-
-call 和 appl
+&lt;p&gt;一、&lt;br&gt;    call 和 apply 
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/tags/JavaScript/"/>
     
-      <category term="call" scheme="http://yoursite.com/tags/call/"/>
+      <category term="call" scheme="http://www.chenqiangyi.cn/public/tags/call/"/>
     
-      <category term="apply" scheme="http://yoursite.com/tags/apply/"/>
+      <category term="apply" scheme="http://www.chenqiangyi.cn/public/tags/apply/"/>
     
   </entry>
   
   <entry>
     <title>垂直水平居中总结</title>
-    <link href="http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/"/>
-    <id>http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/</id>
+    <link href="http://www.chenqiangyi.cn/public/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/"/>
+    <id>http://www.chenqiangyi.cn/public/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/</id>
     <published>2017-01-08T10:48:00.000Z</published>
     <updated>2017-06-08T09:42:18.000Z</updated>
     
@@ -1262,21 +1243,21 @@ CSS
     
     </summary>
     
-      <category term="垂直水平居中" scheme="http://yoursite.com/categories/%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/"/>
+      <category term="垂直水平居中" scheme="http://www.chenqiangyi.cn/public/categories/%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/"/>
     
     
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+      <category term="css" scheme="http://www.chenqiangyi.cn/public/tags/css/"/>
     
-      <category term="垂直水平居中" scheme="http://yoursite.com/tags/%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/"/>
+      <category term="垂直水平居中" scheme="http://www.chenqiangyi.cn/public/tags/%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/"/>
     
-      <category term="flex" scheme="http://yoursite.com/tags/flex/"/>
+      <category term="flex" scheme="http://www.chenqiangyi.cn/public/tags/flex/"/>
     
   </entry>
   
   <entry>
     <title>flex布局</title>
-    <link href="http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/"/>
-    <id>http://yoursite.com/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/</id>
+    <link href="http://www.chenqiangyi.cn/public/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/"/>
+    <id>http://www.chenqiangyi.cn/public/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad/</id>
     <published>2017-01-08T08:09:18.000Z</published>
     <updated>2017-06-08T09:41:24.000Z</updated>
     
@@ -1650,19 +1631,19 @@ CSS
     
     </summary>
     
-      <category term="css" scheme="http://yoursite.com/categories/css/"/>
+      <category term="css" scheme="http://www.chenqiangyi.cn/public/categories/css/"/>
     
     
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+      <category term="css" scheme="http://www.chenqiangyi.cn/public/tags/css/"/>
     
-      <category term="flex" scheme="http://yoursite.com/tags/flex/"/>
+      <category term="flex" scheme="http://www.chenqiangyi.cn/public/tags/flex/"/>
     
   </entry>
   
   <entry>
     <title>回首2016，展望2017</title>
-    <link href="http://yoursite.com/2017/01/01/e5-9b-9e-e9-a6-962016-ef-bc-8c-e5-b1-95-e6-9c-9b2017/"/>
-    <id>http://yoursite.com/2017/01/01/e5-9b-9e-e9-a6-962016-ef-bc-8c-e5-b1-95-e6-9c-9b2017/</id>
+    <link href="http://www.chenqiangyi.cn/public/2017/01/01/e5-9b-9e-e9-a6-962016-ef-bc-8c-e5-b1-95-e6-9c-9b2017/"/>
+    <id>http://www.chenqiangyi.cn/public/2017/01/01/e5-9b-9e-e9-a6-962016-ef-bc-8c-e5-b1-95-e6-9c-9b2017/</id>
     <published>2016-12-31T17:58:18.000Z</published>
     <updated>2017-06-08T09:44:22.000Z</updated>
     
@@ -1702,19 +1683,19 @@ CSS
     
     </summary>
     
-      <category term="生活感悟" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
+      <category term="生活感悟" scheme="http://www.chenqiangyi.cn/public/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
     
     
-      <category term="生活感悟" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
+      <category term="生活感悟" scheme="http://www.chenqiangyi.cn/public/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
     
-      <category term="新年总结" scheme="http://yoursite.com/tags/%E6%96%B0%E5%B9%B4%E6%80%BB%E7%BB%93/"/>
+      <category term="新年总结" scheme="http://www.chenqiangyi.cn/public/tags/%E6%96%B0%E5%B9%B4%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
   <entry>
     <title>mac 命令行 安装 需要管理员 权限“Please try running this command again as root/Administrator”的解决办法</title>
-    <link href="http://yoursite.com/2016/12/19/mac-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-ae-89-e8-a3-85-e9-9c-80-e8-a6-81-e7-ae-a1-e7-90-86-e5-91-98-e6-9d-83-e9-99-90please-try-running-this-command-again-as-rootadministrator/"/>
-    <id>http://yoursite.com/2016/12/19/mac-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-ae-89-e8-a3-85-e9-9c-80-e8-a6-81-e7-ae-a1-e7-90-86-e5-91-98-e6-9d-83-e9-99-90please-try-running-this-command-again-as-rootadministrator/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/12/19/mac-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-ae-89-e8-a3-85-e9-9c-80-e8-a6-81-e7-ae-a1-e7-90-86-e5-91-98-e6-9d-83-e9-99-90please-try-running-this-command-again-as-rootadministrator/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/12/19/mac-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-ae-89-e8-a3-85-e9-9c-80-e8-a6-81-e7-ae-a1-e7-90-86-e5-91-98-e6-9d-83-e9-99-90please-try-running-this-command-again-as-rootadministrator/</id>
     <published>2016-12-19T02:47:17.000Z</published>
     <updated>2017-06-08T09:48:39.000Z</updated>
     
@@ -1733,17 +1714,17 @@ CSS
     
     </summary>
     
-      <category term="mac命令" scheme="http://yoursite.com/categories/mac%E5%91%BD%E4%BB%A4/"/>
+      <category term="mac命令" scheme="http://www.chenqiangyi.cn/public/categories/mac%E5%91%BD%E4%BB%A4/"/>
     
     
-      <category term="mac命令" scheme="http://yoursite.com/tags/mac%E5%91%BD%E4%BB%A4/"/>
+      <category term="mac命令" scheme="http://www.chenqiangyi.cn/public/tags/mac%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
   <entry>
     <title>ES6新特性(2)——深刻而易懂的ES6解构教程</title>
-    <link href="http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/"/>
-    <id>http://yoursite.com/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/08/09/es6-e6-96-b0-e7-89-b9-e6-80-a72-e6-b7-b1-e5-88-bb-e8-80-8c-e6-98-93-e6-87-82-e7-9a-84es6-e8-a7-a3-e6-9e-84-e6-95-99-e7-a8-8b/</id>
     <published>2016-08-09T10:49:50.000Z</published>
     <updated>2017-06-08T08:48:40.000Z</updated>
     
@@ -1864,19 +1845,19 @@ warMachine;</pre>
     
     </summary>
     
-      <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
+      <category term="ES6" scheme="http://www.chenqiangyi.cn/public/categories/ES6/"/>
     
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/tags/JavaScript/"/>
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
+      <category term="ES6" scheme="http://www.chenqiangyi.cn/public/tags/ES6/"/>
     
   </entry>
   
   <entry>
     <title>ES6——手册</title>
-    <link href="http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/"/>
-    <id>http://yoursite.com/2016/08/04/es6-e6-89-8b-e5-86-8c/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/08/04/es6-e6-89-8b-e5-86-8c/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/08/04/es6-e6-89-8b-e5-86-8c/</id>
     <published>2016-08-04T01:05:52.000Z</published>
     <updated>2017-06-08T08:48:40.000Z</updated>
     
@@ -2656,19 +2637,19 @@ person.fullName;    //  Bond 007</pre>]]></content>
     
     </summary>
     
-      <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
+      <category term="ES6" scheme="http://www.chenqiangyi.cn/public/categories/ES6/"/>
     
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/tags/JavaScript/"/>
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
+      <category term="ES6" scheme="http://www.chenqiangyi.cn/public/tags/ES6/"/>
     
   </entry>
   
   <entry>
     <title>ES6新特性(1)——Arguments和Parameters</title>
-    <link href="http://yoursite.com/2016/08/02/es6-e6-96-b0-e7-89-b9-e6-80-a71-arguments-e5-92-8cparameters/"/>
-    <id>http://yoursite.com/2016/08/02/es6-e6-96-b0-e7-89-b9-e6-80-a71-arguments-e5-92-8cparameters/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/08/02/es6-e6-96-b0-e7-89-b9-e6-80-a71-arguments-e5-92-8cparameters/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/08/02/es6-e6-96-b0-e7-89-b9-e6-80-a71-arguments-e5-92-8cparameters/</id>
     <published>2016-08-02T01:05:29.000Z</published>
     <updated>2017-06-08T08:48:40.000Z</updated>
     
@@ -3401,17 +3382,17 @@ checkParams(2, 4, 6);</pre>
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/categories/JavaScript/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
+      <category term="ES6" scheme="http://www.chenqiangyi.cn/public/tags/ES6/"/>
     
   </entry>
   
   <entry>
     <title>javascript和jquery读取和修改HTTP headers</title>
-    <link href="http://yoursite.com/2016/06/13/javascript-e5-92-8cjquery-e8-af-bb-e5-8f-96-e5-92-8c-e4-bf-ae-e6-94-b9http-headers/"/>
-    <id>http://yoursite.com/2016/06/13/javascript-e5-92-8cjquery-e8-af-bb-e5-8f-96-e5-92-8c-e4-bf-ae-e6-94-b9http-headers/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/06/13/javascript-e5-92-8cjquery-e8-af-bb-e5-8f-96-e5-92-8c-e4-bf-ae-e6-94-b9http-headers/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/06/13/javascript-e5-92-8cjquery-e8-af-bb-e5-8f-96-e5-92-8c-e4-bf-ae-e6-94-b9http-headers/</id>
     <published>2016-06-12T16:40:03.000Z</published>
     <updated>2017-06-08T09:48:26.000Z</updated>
     
@@ -3536,19 +3517,19 @@ checkParams(2, 4, 6);</pre>
     
     </summary>
     
-      <category term="Ajax" scheme="http://yoursite.com/categories/Ajax/"/>
+      <category term="Ajax" scheme="http://www.chenqiangyi.cn/public/categories/Ajax/"/>
     
     
-      <category term="Ajax" scheme="http://yoursite.com/tags/Ajax/"/>
+      <category term="Ajax" scheme="http://www.chenqiangyi.cn/public/tags/Ajax/"/>
     
-      <category term="HTTP headers" scheme="http://yoursite.com/tags/HTTP-headers/"/>
+      <category term="HTTP headers" scheme="http://www.chenqiangyi.cn/public/tags/HTTP-headers/"/>
     
   </entry>
   
   <entry>
     <title>RESTful API</title>
-    <link href="http://yoursite.com/2016/06/13/restful-api/"/>
-    <id>http://yoursite.com/2016/06/13/restful-api/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/06/13/restful-api/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/06/13/restful-api/</id>
     <published>2016-06-12T16:25:01.000Z</published>
     <updated>2017-06-08T09:49:27.000Z</updated>
     
@@ -3702,17 +3683,17 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
     
     </summary>
     
-      <category term="API" scheme="http://yoursite.com/categories/API/"/>
+      <category term="API" scheme="http://www.chenqiangyi.cn/public/categories/API/"/>
     
     
-      <category term="API" scheme="http://yoursite.com/tags/API/"/>
+      <category term="API" scheme="http://www.chenqiangyi.cn/public/tags/API/"/>
     
   </entry>
   
   <entry>
     <title>鼠标或键盘控制3D盒子旋转</title>
-    <link href="http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/"/>
-    <id>http://yoursite.com/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/</id>
     <published>2016-05-11T16:59:22.000Z</published>
     <updated>2017-06-08T09:51:16.000Z</updated>
     
@@ -4005,19 +3986,19 @@ window.onload=function(){
     
     </summary>
     
-      <category term="HTML5" scheme="http://yoursite.com/categories/HTML5/"/>
+      <category term="HTML5" scheme="http://www.chenqiangyi.cn/public/categories/HTML5/"/>
     
     
-      <category term="CSS3" scheme="http://yoursite.com/tags/CSS3/"/>
+      <category term="CSS3" scheme="http://www.chenqiangyi.cn/public/tags/CSS3/"/>
     
-      <category term="HTML5" scheme="http://yoursite.com/tags/HTML5/"/>
+      <category term="HTML5" scheme="http://www.chenqiangyi.cn/public/tags/HTML5/"/>
     
   </entry>
   
   <entry>
     <title>简单粗暴地理解js原型链–js面向对象编程(转)</title>
-    <link href="http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/"/>
-    <id>http://yoursite.com/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/05/11/e7-ae-80-e5-8d-95-e7-b2-97-e6-9a-b4-e5-9c-b0-e7-90-86-e8-a7-a3js-e5-8e-9f-e5-9e-8b-e9-93-be-js-e9-9d-a2-e5-90-91-e5-af-b9-e8-b1-a1-e7-bc-96-e7-a8-8b-e8-bd-ac/</id>
     <published>2016-05-11T14:19:10.000Z</published>
     <updated>2017-06-08T09:45:49.000Z</updated>
     
@@ -4374,19 +4355,19 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/public/tags/JavaScript/"/>
     
-      <category term="原型与原型链" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+      <category term="原型与原型链" scheme="http://www.chenqiangyi.cn/public/tags/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     
   </entry>
   
   <entry>
     <title>HTML5头图切换效果</title>
-    <link href="http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/"/>
-    <id>http://yoursite.com/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/05/11/html5-e5-a4-b4-e5-9b-be-e5-88-87-e6-8d-a2-e6-95-88-e6-9e-9c/</id>
     <published>2016-05-10T16:58:16.000Z</published>
     <updated>2017-06-08T09:47:55.000Z</updated>
     
@@ -4544,21 +4525,21 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="HTML5" scheme="http://yoursite.com/categories/HTML5/"/>
+      <category term="HTML5" scheme="http://www.chenqiangyi.cn/public/categories/HTML5/"/>
     
     
-      <category term="CSS3" scheme="http://yoursite.com/tags/CSS3/"/>
+      <category term="CSS3" scheme="http://www.chenqiangyi.cn/public/tags/CSS3/"/>
     
-      <category term="HTML5" scheme="http://yoursite.com/tags/HTML5/"/>
+      <category term="HTML5" scheme="http://www.chenqiangyi.cn/public/tags/HTML5/"/>
     
-      <category term="3D切换" scheme="http://yoursite.com/tags/3D%E5%88%87%E6%8D%A2/"/>
+      <category term="3D切换" scheme="http://www.chenqiangyi.cn/public/tags/3D%E5%88%87%E6%8D%A2/"/>
     
   </entry>
   
   <entry>
     <title>用css写一个时钟</title>
-    <link href="http://yoursite.com/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/"/>
-    <id>http://yoursite.com/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/</id>
     <published>2016-05-08T15:42:54.000Z</published>
     <updated>2017-06-08T09:45:10.000Z</updated>
     
@@ -4665,19 +4646,19 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+      <category term="CSS" scheme="http://www.chenqiangyi.cn/public/categories/CSS/"/>
     
     
-      <category term="CSS3" scheme="http://yoursite.com/tags/CSS3/"/>
+      <category term="CSS3" scheme="http://www.chenqiangyi.cn/public/tags/CSS3/"/>
     
-      <category term="HTML5" scheme="http://yoursite.com/tags/HTML5/"/>
+      <category term="HTML5" scheme="http://www.chenqiangyi.cn/public/tags/HTML5/"/>
     
   </entry>
   
   <entry>
     <title>gulp学习笔记</title>
-    <link href="http://yoursite.com/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/"/>
-    <id>http://yoursite.com/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/</id>
     <published>2016-05-05T15:43:03.000Z</published>
     <updated>2017-06-08T09:47:29.000Z</updated>
     
@@ -4708,17 +4689,17 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="构建工具" scheme="http://yoursite.com/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+      <category term="构建工具" scheme="http://www.chenqiangyi.cn/public/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="gulp" scheme="http://yoursite.com/tags/gulp/"/>
+      <category term="gulp" scheme="http://www.chenqiangyi.cn/public/tags/gulp/"/>
     
   </entry>
   
   <entry>
     <title>第一篇blog</title>
-    <link href="http://yoursite.com/2016/04/29/e7-ac-ac-e4-b8-80-e7-af-87blog/"/>
-    <id>http://yoursite.com/2016/04/29/e7-ac-ac-e4-b8-80-e7-af-87blog/</id>
+    <link href="http://www.chenqiangyi.cn/public/2016/04/29/e7-ac-ac-e4-b8-80-e7-af-87blog/"/>
+    <id>http://www.chenqiangyi.cn/public/2016/04/29/e7-ac-ac-e4-b8-80-e7-af-87blog/</id>
     <published>2016-04-29T08:39:06.000Z</published>
     <updated>2017-06-08T08:48:40.000Z</updated>
     
@@ -4731,10 +4712,10 @@ var p2 = new Person('Mark', 18);
     
     </summary>
     
-      <category term="blog" scheme="http://yoursite.com/categories/blog/"/>
+      <category term="blog" scheme="http://www.chenqiangyi.cn/public/categories/blog/"/>
     
     
-      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
+      <category term="blog" scheme="http://www.chenqiangyi.cn/public/tags/blog/"/>
     
   </entry>
   
