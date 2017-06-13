@@ -24,7 +24,7 @@
 <meta name="keywords" content="JavaScript,call,apply">
 <meta property="og:type" content="article">
 <meta property="og:title" content="call与apply详解">
-<meta property="og:url" content="http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/index.html">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
 <meta property="og:description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。 一、    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函">
 <meta property="og:updated_time" content="2017-06-13T07:44:35.000Z">
@@ -32,9 +32,9 @@
 <meta name="twitter:title" content="call与apply详解">
 <meta name="twitter:description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。 一、    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函">
     
-        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/public/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/public/img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -47,10 +47,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/public/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/public/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/public/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">ontheway1215</h5>
@@ -62,21 +62,21 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/public/public"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/public/public/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 文章
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/public/public/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/JavaScript/">JavaScript</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
 
             
         </h5>
@@ -181,7 +181,7 @@
             <time class="post-time" title="2017-02-14 15:45:29" datetime="2017-02-14T07:45:29.000Z"  itemprop="datePublished">2017-02-14</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/JavaScript/">JavaScript</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
 
 
 
@@ -246,12 +246,12 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
         
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" target="_blank" rel="external">http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" target="_blank" rel="external">http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/</a>
         
     </div>
     <footer>
-        <a href="http://www.chenqiangyi.cn/public">
-            <img src="/public/img/avatar.jpg" alt="ontheway1215">
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
             ontheway1215
         </a>
     </footer>
@@ -266,7 +266,7 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/apply/">apply</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/call/">call</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apply/">apply</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/call/">call</a></li></ul>
 
 
             
@@ -276,7 +276,7 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -286,22 +286,22 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《call与apply详解》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《call与apply详解》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -324,7 +324,7 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/public/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" id="post-prev" class="post-nav-link">
+      <a href="/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">es6新特性总结</h4>
       </a>
@@ -333,7 +333,7 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/public/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" id="post-next" class="post-nav-link">
+      <a href="/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">垂直水平居中总结</h4>
       </a>
@@ -372,14 +372,14 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
     <ul class="reward-items">
         
         <li>
-            <img src="/public/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
             <p>微信</p>
         </li>
         
 
         
         <li>
-            <img src="/public/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
             <p>支付宝</p>
         </li>
         
@@ -420,7 +420,7 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -430,22 +430,22 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&title=《call与apply详解》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《call与apply详解》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《call与apply详解》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -456,7 +456,7 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3aUW7rIBQE0Ox/030L6AuZ4ULkSsdfVWJjDpXgZuD1iq+fN9fvb9fPvmttfefvvw9feHh4eIe63gLWXV93d/32/P7/9BAPDw/vGi/pdHtPPvXvtbPuDx4eHt7TeOvpe29yT2pjPDw8vL/I2wsRkoghKevx8PDwnsPLm977JB+CthA/lrXg4eHhxbx8F+k5f1/Z38PDw8Mb76onE24+oedFcN7ah97i4eHhXeDlE24Szu4dw2rvzPuJh4eHd4O3fiBptD0s1R4IGIW8eHh4eF/h5UFqvjDMt742Fww8PDy8C7x84s6n+70otoUVg4KHh4d3lNeGC214MSnW89Ze7Wvw8PDwxocGfrauvIX1hD6JNooNMDw8PLxDvHZqPtXpvFBus4XN9QQPDw+v+3x04D4PIM5GEvmg4+Hh4d3gtVFsHme05fIk2qgXPDw8PLwBb77RlcfBycAly1IRNOPh4eEd5eVxbbsw5EFD/kldguPh4eF949d9XVjnHc0DjnwhmZTpeHh4eHu8Nnjd28qaHLqaBLt4eHh4N3inGr2xIrVLSPEuPDw8vAEvP8CULBV7hwaSgcgjj7clNR4eHt4h3vyUQR495Nts+VDi4eHhfZ+3V/i2MWtbNLctv30LHh4e3gVeXkbvHclqjwK0zyaBBR4eHt4N3mR5aEOKU1tiX1r98PDw8Ja8JFBIGp1HCW2Y+2Fo8PDw8L7Oe5VXy2i34trMAQ8PD+8sb7JllXQr3/Jvl5yoTTw8PLwLvL3pPinB2y7OS/lNGB4eHt4Wr2263dRvI4a8tej/hoeHh3eNlxe7e51ri+NJFIKHh4f3NN7eNn8eRrT4D2/Bw8PDewBv7zVtkDEv+vHw8PBu85KHJ1FFEkbkyOJbPDw8vAu89kd+EqG2i0QbeRy+8PDw8NLrH3Kupkso3jCeAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3aQW7DQAgF0Nz/0qnUVaUo9geGNIvnVZS69rypNFDg8Yiv5+/19/Pr9frTd9+8e2by3sfGhYeHh9daerLo3hYkC73mXW/Zu3vw8PDwtnm9QzkPEj3eJJDg4eHhfQPv5ggeBIBJmMHDw8P7Zl71ZUkx4nrL8qQcDw8P7/O8anH2VOGgV8JYqbXg4eHhxbxegvu/n9f7e3h4eHitrvokVEzGBa4LGYV14uHh4S3w8nQ5T6B7jbHJCNfNyvHw8PCO8qpLzAcC8hLwJLm/CTl4eHh4C7zk/EwS3PlwQJ6mV89/PDw8vA1e8spq2yn/Jk+gD7S78PDw8Ma86uHe27kkHe+VgG+SdTw8PLxlXl50qCbBSfEiT8cLpRM8PDy8BV6vzV94dDG9roaBqGCBh4eHt8DLD9y87TQfC+hVVvDw8PC2efNHVEcE8pS9uhF4eHh4n+dNkule1TQPA73QgoeHh7fHS8oK1SJs9aDPG2+FgS08PDy8BV61rLA9tpVvQbVRh4eHh7fByxc6HybIm1jVwkcBiYeHhzfgPQdXL0Wu/tZoNAEPDw9vmddLZ/NlVZtevRASVTLw8PDwWrxCM6lYPJ0k36dGGfDw8PC2eYVIUgwJ1aAyDzx4eHh4e7xqMaJ3uM8HCJJSyM18BB4eHt5RXrX19Yivs2Gm+kw8PDy8PV5SWp0MP/UCQD4iUI57eHh4eId4+VGbp7O9gYNJKIpq1Xh4eHgD3mTEalII7oWT6p14eHh4G7xJeSL5f786LNVrmM0DCR4eHl6VNwkGSUJcfX7eBov+bnh4eHhrvF77qnpPdTDrQLMNDw8P78t4vTBT3Y5q++1YYMDDw8Mb8/Lx017JdVKkwMPDw/s8L19WrwE2CRi9AIOHh4e3xzvVAMuT3euF3hz0xc3Cw8PDO8r7AffUSt/h3R+nAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -464,7 +464,7 @@ console.log(child); //Object {name: "yjc", age: 22}</pre>
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/public/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 

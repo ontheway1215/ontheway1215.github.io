@@ -24,7 +24,7 @@
 <meta name="keywords" content="gulp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gulp学习笔记">
-<meta property="og:url" content="http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/index.html">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
 <meta property="og:description" content="最近学习了一下代码构建工具中的gulp和grunt,两者的操作基本相似，在整个流程中配置部分容易出错，稍有一点错误，则项目就无法构建，在学习中前前后后装了几遍才得到gulp的正确姿势，现在来回顾一下gulp学习中用到的知识，用以复习和加深印象简介：gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自">
 <meta property="og:image" content="http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/gulp-3-246x300.png">
@@ -35,9 +35,9 @@
 <meta name="twitter:description" content="最近学习了一下代码构建工具中的gulp和grunt,两者的操作基本相似，在整个流程中配置部分容易出错，稍有一点错误，则项目就无法构建，在学习中前前后后装了几遍才得到gulp的正确姿势，现在来回顾一下gulp学习中用到的知识，用以复习和加深印象简介：gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自">
 <meta name="twitter:image" content="http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/gulp-3-246x300.png">
     
-        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/public/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/public/img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -50,10 +50,10 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/public/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
-        <a href="/public/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/public/img/avatar.jpg">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">ontheway1215</h5>
@@ -65,21 +65,21 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/public/public"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/public/public/archives"  >
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 文章
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/public/public/tags"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
@@ -161,7 +161,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/构建工具/">构建工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
 
             
         </h5>
@@ -191,7 +191,7 @@
             <time class="post-time" title="2016-05-05 23:43:03" datetime="2016-05-05T15:43:03.000Z"  itemprop="datePublished">2016-05-05</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/public/categories/构建工具/">构建工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
 
 
 
@@ -230,12 +230,12 @@
         
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" target="_blank" rel="external">http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" target="_blank" rel="external">http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/</a>
         
     </div>
     <footer>
-        <a href="http://www.chenqiangyi.cn/public">
-            <img src="/public/img/avatar.jpg" alt="ontheway1215">
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
             ontheway1215
         </a>
     </footer>
@@ -250,7 +250,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/public/tags/gulp/">gulp</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
 
 
             
@@ -260,7 +260,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&title=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&title=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -270,22 +270,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&title=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&title=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -308,7 +308,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/public/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/" id="post-prev" class="post-nav-link">
+      <a href="/2016/05/08/e7-94-a8css-e5-86-99-e4-b8-80-e4-b8-aa-e6-97-b6-e9-92-9f/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">用css写一个时钟</h4>
       </a>
@@ -317,7 +317,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/public/2016/04/29/e7-ac-ac-e4-b8-80-e7-af-87blog/" id="post-next" class="post-nav-link">
+      <a href="/2016/04/29/e7-ac-ac-e4-b8-80-e7-af-87blog/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">第一篇blog</h4>
       </a>
@@ -356,14 +356,14 @@
     <ul class="reward-items">
         
         <li>
-            <img src="/public/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
             <p>微信</p>
         </li>
         
 
         
         <li>
-            <img src="/public/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
             <p>支付宝</p>
         </li>
         
@@ -404,7 +404,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&title=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/public/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&title=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -414,22 +414,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&title=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&title=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&via=http://www.chenqiangyi.cn/public" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《gulp学习笔记》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/public/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/05/05/gulp-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -440,7 +440,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLklEQVR42u3aQY7bQAwEQP//0851A8Ryk5wAErd0MgxZMyUfGkPy9Yqv948rubP3+XrF5JvDFzY2NvZD2O/L63rJ6+XzexLAp6ddf//xydjY2Njr2JMo6sVb9c7qn/FlXWxsbGzs4v15gOVB1dsbNjY2NnZ1E0kUJQeJWwQYNjY29o3ZyQK9Gvs85CaBd6CWho2NjX17drXEc+fP/6W/jY2NjX1j9rt49X6VFJWSEZz3oQsbGxt7EzsPgCqgd4SoDuv09o+NjY29iZ08rlqgr47pVJsQ+cHj453Y2NjYS9m9Fuz1Pb3fJqlbbV38dSc2Njb2UnbOyEs8vZDr7SQJZmxsbOzd7OpITVLcOUXNwykKSGxsbOyl7LOwSez1msHXO3nl+YaNjY29gl3uFccbyp+fV/Xzp0WNXmxsbOxHsecxVi36Vw8YySrNRgI2Njb2CnY+LtMr5VxvK3kFeaQVxn2wsbGxV7Pz3EuW6R0tegekwlrY2NjYS9lJPFTL+r0Xlx9+mscYbGxs7KXsSdG/Ssojs7fWga4INjY29kPYk5JNfhjoMfI/IC9XYWNjY+9jV4ds8kLSvMSfN5KrQzzY2NjYW9l5kagaKnkLofqcPLT+UVTCxsbGXsROWq3VI8fkGFMtP2FjY2P/Zna1oFMt7vRib1KoSl4QNjY29iZ29bCRHC3y8KvG56Qs9apWnrCxsbEfws5jozeIWR3QrN45LzlhY2Njb2KfahXkW0mCsPxfxQGMjY2NvY9dbdPmRahJ6SpvKlQbxtjY2Nib2L0ST17WOdsMzvf2JbSwsbGx17EngVQtEiXjOPmxJP886m9jY2NjP4Q9CadJQae69eRlfdkDNjY29jr2PMbygk6+9fIBIw9dbGxs7BXs3qhNXn6qdieq7eHriIqiCxsbG/vh7N6hIo+Ks5vrNSdGeGxsbOyHsHsl+Pl4Td64zcc3Cy8UGxsbex37VMl+0vQ9NRgUvW5sbGxs7ME1f029wIv629jY2Ni/jN0bmukN4kyOPdjY2Ni/gZ1vLi8G5dGVx1L17/n4BGxsbOxF7GpRpjdwk/OqDeMEM+pvY2NjY9+X/QfJtJHNCOUNKgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3aQW7CQAwFUO5/aSp1i0i+7TG00ssKAU3mzQJPv/14xNfz93p9nXzn+XJdv//66fVzD1x4eHh4raW/u5KHvVvc9bOutyZ54vWa8fDw8LZ51WLwDK4ElpSiXnHCw8PD+wu8pAAkJaFXYPDw8PD+Ly85fOcblGxfHkzg4eHhfZJXXXQV3NuI/J4HshY8PDy8mDdpgH3r9Yf6e3h4eHjFrnoezlaj3uumWn68vlknHh4e3gIvb9vngUJyn2Q7kjgjCinw8PDwPs7L/+FP7tM7rFebbXh4eHjbvOSr1eIxHyOoFowbBR4eHt4hXq9lNR812Ihuo6wFDw8Pb4FXjQ/mw1vz77zdejw8PLw1Xq/JdHiodPwdPDw8vM/wqkfY67KRt7Um5SRfCR4eHt4e72xTqpeg5tt9IMLAw8PDG/N6za1e2ahuQfUOB2bK8PDw8NKEtvBnyVLyA3E1wB3B8PDw8I7ykmNusqAeOD+gX79/M1OGh4eHN+blo1HV1lceH0zi2pt14uHh4S3wJi2rPJiY3D9fQxTj4uHh4S3wqg2nPBTIj9T5gTsKI/Dw8PCO8uZH4WqbajLdUG6S4eHh4a3xJvFBPoyVLzcpP9H24eHh4S3wqu3/yQDWpDzkowOFgzUeHh5ei3eqfTUZnKoOgRVaZXh4eHgLvGpIkSy3R90YU8DDw8Pb4CWPLzTpg6U8i1e+cYW6h4eHhzfg5e2lSbXJw9/y4bg6RoCHh4c35u39TBcaVIOiclOo8PDw8BZ41Z/dfHG9hyXbmkcheHh4eHu8ajHolY0cMwk4ytUPDw8Pb8CrJp9JYegVm17tusmq8fDw8L7Kq/40V+PavDxEn+Lh4eF9lddrd50aurqOId7eGQ8PD2+NVw0j5hFw9fXoSI2Hh4d3lHd2ifNxhLwB1otL8PDw8Aa8H/0lac6xQL43AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -448,7 +448,7 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/public/', SHARE: true, REWARD: true };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
