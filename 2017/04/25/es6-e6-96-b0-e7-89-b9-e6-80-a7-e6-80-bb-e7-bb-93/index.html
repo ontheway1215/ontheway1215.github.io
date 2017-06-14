@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="ES6">
-    <meta name="description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 ##    箭头函数 &amp;lt;span style=&amp;quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#F">
+    <meta name="description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 箭头函数function() 函数的简写表示法，但它不绑定 this。 ES6 代码: 123456789var odds = evens.map(v =&amp;amp;gt; v + 1);  // no parentes and no bracketsvar n">
 <meta name="keywords" content="ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6新特性总结">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 ##    箭头函数 &amp;lt;span style=&amp;quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#F">
-<meta property="og:updated_time" content="2017-06-08T09:47:07.000Z">
+<meta property="og:description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 箭头函数function() 函数的简写表示法，但它不绑定 this。 ES6 代码: 123456789var odds = evens.map(v =&amp;amp;gt; v + 1);  // no parentes and no bracketsvar n">
+<meta property="og:updated_time" content="2017-06-14T09:21:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6新特性总结">
-<meta name="twitter:description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 ##    箭头函数 &amp;lt;span style=&amp;quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#F">
+<meta name="twitter:description" content="ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。 箭头函数function() 函数的简写表示法，但它不绑定 this。 ES6 代码: 123456789var odds = evens.map(v =&amp;amp;gt; v + 1);  // no parentes and no bracketsvar n">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -175,317 +175,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">
-            Rest
-
-    
-
-
-####
-    我们可以使用 rest 操作符来允许无限参数。
-
-####
-    
-function demo(part1, ...part2) {
-    return {part1, part2}
-}
-
-console.log(demo(1,2,3,4,5,6))
-
-
-###
-    结果：
-
-demo(1,2,3,4,5,6) -> {"part1":1,"part2":[2,3,4,5,6]}
-
-##    Let
-####    let是新的var。 因为它有块级作用域。
-{
-   var globalVar = "from demo1"
-}
-
-{
-   let globalLet = "from demo2";
-}
-
-console.log(globalVar)
-console.log(globalLet)
-
-###    结果：
-globalVar -> from demo1
-globalLet -> ReferenceError: globalLet is not defined
-
-####    但是，它不会向window分配任何内容：
-let me = "go";  // 全局作用域
-var i = "able"; // 全局作用域
-
-console.log(window.me);
-console.log(window.i);
-
-###    结果：
-window.me -> undefined
-window.i -> able
-
-####    不能使用let重新声明一个变量：
-####
-let me = "foo";
-let me = "bar";
-console.log(me);
-
-###    结果：
-SyntaxError: Identifier 'me' has already been declared
-var me = "foo";
-var me = "bar";
-console.log(me)
-
-###    结果：
-me -> bar
-
-##
-##    Const
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**const 是只读变量。**</span>
-
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">** **</span>
-**const a = "b"
-a = "a"**
-** **
-
-###
-    **结果：**
-
-TypeError: Assignment to constant variable.
-
-####
-####    应该注意，const 对象仍然可以被改变的。
-const a = { a: "a" }
-a.a = "b"
-console.log(a)
-
-###    结果：
-a -> {"a":"b"}
-
-##
-##    For..of
-####    迭代器的新类型，可以替代for..in。它返回的是值而不是keys
-####
-let list = [4, 5, 6];
-console.log(list)
-for (let i in list) {
-   console.log(i);
-}
-
-###    结果：
-list -> [4,5,6]
-i -> 0
-i -> 1
-i -> 2
-let list = [4, 5, 6];
-console.log(list)
-for (let i of list) {
-   console.log(i);
-}
-
-###    结果：
-list -> [4,5,6]
-i -> 4
-i -> 5
-i -> 6
-
-##
-##    迭代器（Iterators）
-####    迭代器是一个比数组更动态的类型。
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;"> </span>
-let infinite = {
-  [Symbol.iterator]() {
-    let c = 0;
-    return {
-      next() {
-        c++;
-        return { done: false, value: c }
-      }
-    }
-  }
-}
-
-console.log("start");
-
-for (var n of infinite) {
-  // truncate the sequence at 1000
-  if (n > 10)
-    break;
-  console.log(n);
-}
-
-###    结果：
-"start" -> start
-n -> 1
-n -> 2
-n -> 3
-n -> 4
-n -> 5
-n -> 6
-n -> 7
-n -> 8
-n -> 9
-n -> 10
-
-####    使用Typescript，我们可以看到它接口的样子：
-####
-Typescript 代码:
-interface IteratorResult {
-  done: boolean;
-  value: any;
-}
-interface Iterator {
-  next(): IteratorResult;
-}
-interface Iterable {
-  [Symbol.iterator](): Iterator
-}
-
-##
-###    生成器（Generators）
-####    生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。
-var infinity = {
-  [Symbol.iterator]: function*() {
-    var c = 1;
-    for (;;) {   
-      yield c++;
-    }
-  }
-}
-
-console.log("start")
-for (var n of infinity) {
-  // truncate the sequence at 1000
-  if (n > 10)
-    break;
-  console.log(n);
-}
-
-###    结果：
-"start" -> start
-n -> 1
-n -> 2
-n -> 3
-n -> 4
-n -> 5
-n -> 6
-n -> 7
-n -> 8
-n -> 9
-n -> 10
-
-####    使用Typescript 再次显示接口：
-####    Typescript 代码:
-interface Generator extends Iterator {
-    next(value?: any): IteratorResult;
-    throw(exception: any);
-}
-
-##
-###    function* Iterators and generator
-####    一个产量的例子*
-function* anotherGenerator(i) {
-  yield i + 1;
-  yield i + 2;
-  yield i + 3;
-}
-
-function* generator(i) {
-  yield i;
-  yield* anotherGenerator(i);
-  yield i + 10;
-}
-
-var gen = generator(10);
-
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-
-###    结果：
-gen.next().value -> 10
-gen.next().value -> 11
-gen.next().value -> 12
-gen.next().value -> 13
-gen.next().value -> 20
-
-##
-###    Unicode
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">ES6 为Unicode 提供了更好的支持。</span>
-var regex = new RegExp('\u{61}', 'u');
-
-console.log(regex.unicode)
-console.log("\uD842\uDFD7")
-console.log("\uD842\uDFD7".codePointAt())
-
-###    结果：
-regex.unicode -> true
-"" ->
-"".codePointAt() -> 134103
-
-##
-###    模块和模块加载器
-####    原生支持模块。
-import defaultMember from "module-name";
-import * as name from "module-name";
-import { member } from "module-name";
-import { member as alias } from "module-name";
-import { member1 , member2 } from "module-name";
-import { member1 , member2 as alias2 , [...] } from "module-name";
-import defaultMember, { member [ , [...] ] } from "module-name";
-import defaultMember, * as name from "module-name";
-import "module-name";
-export { name1, name2, …, nameN };
-export { variable1 as name1, variable2 as name2, …, nameN };
-export let name1, name2, …, nameN; // also var
-export let name1 = …, name2 = …, …, nameN; // also var, const
-
-export expression;
-export default expression;
-export default function (…) { … } // also class, function*
-export default function name1(…) { … } // also class, function*
-export { name1 as default, … };
-
-export * from …;
-export { name1, name2, …, nameN } from …;
-export { import1 as name1, import2 as name2, …, nameN } from …;
-Import Export
-
-##    Set
-####    Set 为数学对应，其中所有项目都是唯一的。对于知道SQL的人来说，这相当于distinct。
-####
-var set = new Set();
-set.add("Potato").add("Tomato").add("Tomato");
-console.log(set.size)
-console.log(set.has("Tomato"))
-
-for(var item of set) {
-   console.log(item)
-}
-
-###    结果
-** **
-**set.size -> 2
-set.has("Tomato") -> true
-item -> Potato
-item -> Tomato**
-** **
-
-##
-    **
-    
-        WeakSet
-
-**
-</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#weakset"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">
-        WeakSet
-
-**
-</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#箭头函数"><span class="post-toc-number">1.</span> <span class="post-toc-text">箭头函数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#this是如何工作的"><span class="post-toc-number">2.</span> <span class="post-toc-text">this是如何工作的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#增强的对象字面量"><span class="post-toc-number">3.</span> <span class="post-toc-text">增强的对象字面量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#字符串插值"><span class="post-toc-number">4.</span> <span class="post-toc-text">字符串插值</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象也能很好的解构"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">对象也能很好的解构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用速记表示法"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">使用速记表示法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-3"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可在参数位置使用"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">可在参数位置使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-4"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#故障弱化解构"><span class="post-toc-number">5.</span> <span class="post-toc-text">故障弱化解构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-5"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参数默认值（Default）"><span class="post-toc-number">6.</span> <span class="post-toc-text">参数默认值（Default）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-6"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#扩展（Spread）"><span class="post-toc-number">7.</span> <span class="post-toc-text">扩展（Spread）</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在数组中"><span class="post-toc-number">8.</span> <span class="post-toc-text">在数组中</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-7"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-8"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扩展-对象字面量"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">扩展 + 对象字面量</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Rest"><span class="post-toc-number">9.</span> <span class="post-toc-text">Rest</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-9"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Let"><span class="post-toc-number">10.</span> <span class="post-toc-text">Let</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-10"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-11"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-12"><span class="post-toc-number">10.3.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Const"><span class="post-toc-number">11.</span> <span class="post-toc-text">Const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-13"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-14"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#For-of"><span class="post-toc-number">12.</span> <span class="post-toc-text">For..of</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-15"><span class="post-toc-number">12.1.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-16"><span class="post-toc-number">12.2.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#迭代器（Iterators）"><span class="post-toc-number">13.</span> <span class="post-toc-text">迭代器（Iterators）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-17"><span class="post-toc-number">13.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#生成器（Generators）"><span class="post-toc-number">14.</span> <span class="post-toc-text">生成器（Generators）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-18"><span class="post-toc-number">14.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#function-Iterators-and-generator"><span class="post-toc-number">15.</span> <span class="post-toc-text">function* Iterators and generator</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-19"><span class="post-toc-number">15.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Unicode"><span class="post-toc-number">16.</span> <span class="post-toc-text">Unicode</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-20"><span class="post-toc-number">16.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模块和模块加载器"><span class="post-toc-number">17.</span> <span class="post-toc-text">模块和模块加载器</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Set"><span class="post-toc-number">18.</span> <span class="post-toc-text">Set</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果"><span class="post-toc-number">18.1.</span> <span class="post-toc-text">结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#WeakSet"><span class="post-toc-number">19.</span> <span class="post-toc-text">WeakSet</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-21"><span class="post-toc-number">19.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Map"><span class="post-toc-number">20.</span> <span class="post-toc-text">Map</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-22"><span class="post-toc-number">20.1.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果-1"><span class="post-toc-number">20.2.</span> <span class="post-toc-text">结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#WeakMap"><span class="post-toc-number">21.</span> <span class="post-toc-text">WeakMap</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果-2"><span class="post-toc-number">21.1.</span> <span class="post-toc-text">结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代理（Proxy）"><span class="post-toc-number">22.</span> <span class="post-toc-text">代理（Proxy）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果-3"><span class="post-toc-number">22.1.</span> <span class="post-toc-text">结果</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-23"><span class="post-toc-number">22.2.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#可继承内置函数"><span class="post-toc-number">23.</span> <span class="post-toc-text">可继承内置函数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#新类库"><span class="post-toc-number">24.</span> <span class="post-toc-text">新类库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-24"><span class="post-toc-number">24.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#二进制和八进制"><span class="post-toc-number">25.</span> <span class="post-toc-text">二进制和八进制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-25"><span class="post-toc-number">25.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Promises"><span class="post-toc-number">26.</span> <span class="post-toc-text">Promises</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-26"><span class="post-toc-number">26.1.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#快速的Promise"><span class="post-toc-number">26.2.</span> <span class="post-toc-text">快速的Promise</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-27"><span class="post-toc-number">26.3.</span> <span class="post-toc-text">结果：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#快速失败"><span class="post-toc-number">26.4.</span> <span class="post-toc-text">快速失败</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-28"><span class="post-toc-number">26.5.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#反射（Reflect）"><span class="post-toc-number">27.</span> <span class="post-toc-text">反射（Reflect）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-29"><span class="post-toc-number">27.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#尾调用-Tail-Call-优化"><span class="post-toc-number">28.</span> <span class="post-toc-text">尾调用(Tail Call)优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果：-30"><span class="post-toc-number">28.1.</span> <span class="post-toc-text">结果：</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -513,928 +203,131 @@ item -> Tomato**
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章<a href="http://es6.ruanyifeng.com/。" target="_blank" rel="external">http://es6.ruanyifeng.com/。</a></p>
-<p>##<br>    箭头函数</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;function() 函数的简写表示法，但它不绑定 this。&lt;/span&gt;
-
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;&lt;/span&gt;
-
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
-</code></pre><pre class="prettyprint lang-js">var odds = evens.map(v =&gt; v + 1);  // no parentes and no brackets
-var nums = evens.map((v, i) =&gt; v + i);
-var pairs = evens.map(v =&gt; ({even: v, odd: v + 1}));
-
-// Statement bodies
-nums.forEach(v =&gt; {
-  if (v % 5 === 0)
-    fives.push(v);
-});</pre>
-
-<p>##<br>    this是如何工作的</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 代码:&lt;/span&gt;
-</code></pre><pre class="prettyprint lang-js">var object = {
-    name: "Name",
-    arrowGetName: () =&gt; this.name,
-    regularGetName: function() { return this.name },
-    arrowGetThis: () =&gt; this,
-    regularGetThis: function() { return this }
-}
-console.log(object);
-console.log(object.name)
-console.log(object.arrowGetName());
-console.log(object.arrowGetThis());
-console.log(this);
-console.log(object.regularGetName());
-console.log(object.regularGetThis());</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">console.log(object);  =&gt;
-Object {
-    name: "Name",
-    arrowGetName: function,
-    regularGetName: function,
-    arrowGetThis: function,
-    regularGetThis: function
-}
-
-console.log(object.name) =&gt;
-Name
-
-console.log(object.arrowGetName());  =&gt;
-undefined
-
-console.log(object.arrowGetThis());  =&gt;  [object Window]
-Window {
-    stop: function,
-    open: function,
-    alert: function,
-    confirm: function,
-    prompt: function,
-    ...
-}
-
-console.log(this);  =&gt; 同上
-
-console.log(object.regularGetName());   =&gt;
-Name
-
-console.log(object.regularGetThis());  =&gt;
-Object {
-    name: "Name",
-    arrowGetName: function,
-    regularGetName: function,
-    arrowGetThis: function,
-    regularGetThis: function
-}</pre>
-
-<p>##</p>
-<p>##<br>    我们知道“真正”语言中的类(Classes)。在 ES6 中类(Classes)其实是原型继承的语法糖。</p>
-<pre><code>ES6代码
-</code></pre><pre class="prettyprint lang-js">class SkinnedMesh extends THREE.Mesh {
-  constructor(geometry, materials) {
-    super(geometry, materials);
-
-    this.idMatrix = SkinnedMesh.defaultMatrix();
-    this.bones = [];
-    this.boneMatrices = [];
-    //...
-  }
-  update(camera) {
-    //...
-    super.update();
-  }
-  get boneCount() {
-    return this.bones.length;
-  }
-  set matrixType(matrixType) {
-    this.idMatrix = SkinnedMesh[matrixType]();
-  }
-  static defaultMatrix() {
-    return new THREE.Matrix4();
-  }
-}</pre>
-
-<p>##<br>    增强的对象字面量</p>
-<pre><code>ES6代码
-</code></pre><pre class="prettyprint lang-js">var theProtoObj = {
-  toString: function() {
-    return "The ProtoOBject To string"
-  }
-}
-var handler = () =&gt; "handler"
-var obj = {
-    // __proto__
-    __proto__: theProtoObj,
-    // Shorthand for ‘handler: handler’
-    handler,
-    // Methods
-    toString() {
-     // Super calls
-     return "d " + super.toString();
-    },
-    // Computed (dynamic) property names
-    [ "prop_" + (() =&gt; 42)() ]: 42
-};
-
-console.log(obj.handler)
-console.log(obj.handler())
-console.log(obj.toString())
-console.log(obj.prop_42)</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">obj.handler -&gt; () =&gt; "handler"
-obj.handler() -&gt; handler
-obj.toString() -&gt; d The ProtoOBject To string
-obj.prop_42 -&gt;
-(() =&gt; 42)()  是一个立即执行函数 (() =&gt; 42)() 相当于
-(function() {
-    return 42;
-})()
-42</pre>
-
-<p>##<br>    字符串插值</p>
-<pre class="prettyprint lang-js">var name = "Bob", time = "today";
-
-var multiLine = `This Line Spans Multiple Lines`；
-
-console.log(`Hello ${name},how are you ${time}?`)
-console.log(multiLine)</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">a -&gt; 1
-b -&gt; 3</pre>
-
-<p>####<br>    对象也能很好的解构</p>
-<pre class="prettyprint lang-js">nodes = () =&gt; { return {op: "a", lhs: "b", rhs: "c"}}
-var { op: a, lhs: b , rhs: c } = nodes()
-console.log(a)
-console.log(b)
-console.log(c)</pre>
-
-<p>###<br>    结果：</p>
-<p>###</p>
-<pre class="prettyprint lang-js">a -&gt; a
-b -&gt; b
-c -&gt; c</pre>
-
-<p>##<br>    使用速记表示法</p>
-<p>##</p>
-<pre class="prettyprint lang-js">nodes = () =&gt; { return {lhs: "a", op: "b", rhs: "c"}}
-
-// binds `op`, `lhs` and `rhs` in scope
-var {op, lhs, rhs} = nodes()
-
-console.log(op)
-console.log(lhs)
-console.log(rhs)</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">op -&gt; b
-lhs -&gt; a
-rhs -&gt; c</pre>
-
-<p>##<br>    可在参数位置使用</p>
-<pre class="prettyprint lang-js">function g({name: x}) {
-  return x
-}
-
-function m({name}) {
-  return name
-}
-
-console.log(g({name: 5}))
-console.log(m({name: 5}))
-</pre>
-
-<p>###<br>    结果：</p>
-<pre><code>** **
-</code></pre><pre class="prettyprint lang-js">**g({name: 5}) -&gt; 5
-m({name: 5}) -&gt; 5**</pre>
-** **
-
-##
-    **故障弱化解构**
-
-    ** **
-
-<pre class="prettyprint lang-js">**var [a] = []
-var [b = 1] = []
-var c = [];
-console.log(a)
-console.log(b);
-console.log(c);**</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">a -&gt; undefined
-b -&gt; 1
-c -&gt; []</pre>
-
-<p>##<br>    参数默认值（Default）</p>
-<pre class="prettyprint lang-js">function f(x, y=12) {
-  return x + y;
-}
-
-console.log(f(3))
-console.log(f(3,2))</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">f(3) -&gt; 15
-f(3,2) -&gt; 5</pre>
-
-<p>##<br>    扩展（Spread）</p>
-<pre><code>在函数中
-</code></pre><pre class="prettyprint lang-js">function f(x, y, z) {
-  return x + y + z;
-}
-// 传递数组的每个元素作为参数
-console.log(f(...[1,2,3]))</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">f(...[1,2,3]) -&gt; 6</pre>
-
-<p>##<br>    在数组中</p>
-<pre class="prettyprint lang-js">var parts = ["shoulders", "knees"];
-var lyrics = ["head", ...parts, "and", "toes"];
-
-console.log(lyrics)</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">var parts = ["shoulders", "knees"];
-var lyrics = ["head", ...parts, "and", "toes"];
-
-console.log(lyrics)</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">lyrics -&gt; ["head","shoulders","knees","and","toes"]</pre>
-
-<p>##<br>    扩展 + 对象字面量</p>
-<p>####</p>
-<pre><code>    我们可以使用这个创造很酷的对象。
-
-&lt;div&gt;
-    &lt;span style=&quot;font-weight:normal;&quot;&gt;
-</code></pre><pre class="prettyprint lang-js">let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
-console.log(x); // 1
-console.log(y); // 2
-console.log(z); // { a: 3, b: 4 }
-
-// Spread properties
-let n = { x, y, ...z };
-console.log(n); // { x: 1, y: 2, a: 3, b: 4 }
-console.log(obj)
-可惜的是它还不支持：
-
-npm install --save-dev babel-plugin-transform-object-rest-spread</pre>
-
-        <h2>
-            <span style="font-weight:normal;">Rest</span>
-
-    
-
-
-####
-    <span style="font-weight:normal;"><span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">我们可以使用 rest 操作符来允许无限参数。</span></span>
-
-####
-    <span style="font-weight:normal;">
-<pre class="prettyprint lang-js">function demo(part1, ...part2) {
-    return {part1, part2}
-}
-
-console.log(demo(1,2,3,4,5,6))</pre>
-</span>
-
-###
-    <span style="font-weight:normal;">结果：</span>
-
-<pre class="prettyprint lang-js">demo(1,2,3,4,5,6) -&gt; {"part1":1,"part2":[2,3,4,5,6]}</pre>
-
-<p>##<br>    Let</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">let是新的var。 因为它有块级作用域。</span></p>
-<pre class="prettyprint lang-js">{
-   var globalVar = "from demo1"
-}
-
-{
-   let globalLet = "from demo2";
-}
-
-console.log(globalVar)
-console.log(globalLet)</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">globalVar -&gt; from demo1
-globalLet -&gt; ReferenceError: globalLet is not defined</pre>
-
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">但是，它不会向window分配任何内容：</span></p>
-<pre class="prettyprint lang-js">let me = "go";  // 全局作用域
-var i = "able"; // 全局作用域
-
-console.log(window.me);
-console.log(window.i);</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">window.me -&gt; undefined
-window.i -&gt; able</pre>
-
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">不能使用let重新声明一个变量：</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">let me = "foo";
-let me = "bar";
-console.log(me);</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">SyntaxError: Identifier 'me' has already been declared</pre>
-<pre class="prettyprint lang-js">var me = "foo";
-var me = "bar";
-console.log(me)</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">me -&gt; bar</pre>
-
-<p>##</p>
-<p>##<br>    Const</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;**const 是只读变量。**&lt;/span&gt;
-
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;** **&lt;/span&gt;
-</code></pre><pre class="prettyprint lang-js">**const a = "b"
-a = "a"**</pre>
-** **
-
-###
-    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">**结果：**</span>
-
-<pre class="prettyprint lang-js">TypeError: Assignment to constant variable.</pre>
-
-<p>####</p>
-<p>####<br>    <strong>应该注意</strong>，const 对象仍然可以被改变的。</p>
-<pre class="prettyprint lang-js">const a = { a: "a" }
-a.a = "b"
-console.log(a)</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">a -&gt; {"a":"b"}</pre>
-
-<p>##</p>
-<p>##<br>    <strong>For..of</strong></p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器的新类型，可以替代for..in。它返回的是值而不是keys</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">let list = [4, 5, 6];
-console.log(list)
-for (let i in list) {
-   console.log(i);
-}</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">list -&gt; [4,5,6]
-i -&gt; 0
-i -&gt; 1
-i -&gt; 2</pre>
-<pre class="prettyprint lang-js">let list = [4, 5, 6];
-console.log(list)
-for (let i of list) {
-   console.log(i);
-}</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">list -&gt; [4,5,6]
-i -&gt; 4
-i -&gt; 5
-i -&gt; 6</pre>
-
-<p>##</p>
-<p>##<br>    迭代器（Iterators）</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">迭代器是一个比数组更动态的类型。</span></p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
-</code></pre><pre class="prettyprint lang-js">let infinite = {
-  [Symbol.iterator]() {
-    let c = 0;
-    return {
-      next() {
-        c++;
-        return { done: false, value: c }
-      }
-    }
-  }
-}
-
-console.log("start");
-
-for (var n of infinite) {
-  // truncate the sequence at 1000
-  if (n &gt; 10)
-    break;
-  console.log(n);
-}</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">"start" -&gt; start
-n -&gt; 1
-n -&gt; 2
-n -&gt; 3
-n -&gt; 4
-n -&gt; 5
-n -&gt; 6
-n -&gt; 7
-n -&gt; 8
-n -&gt; 9
-n -&gt; 10</pre>
-
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript，我们可以看到它接口的样子：</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">Typescript 代码:
-interface IteratorResult {
-  done: boolean;
-  value: any;
-}
-interface Iterator {
-  next(): IteratorResult;
-}
-interface Iterable {
-  [Symbol.iterator](): Iterator
-}</pre>
-
-<p>##</p>
-<p>###<br>    生成器（Generators）</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。</span></p>
-<pre class="prettyprint lang-js">var infinity = {
-  [Symbol.iterator]: function*() {
-    var c = 1;
-    for (;;) {   
-      yield c++;
-    }
-  }
-}
-
-console.log("start")
-for (var n of infinity) {
-  // truncate the sequence at 1000
-  if (n &gt; 10)
-    break;
-  console.log(n);
-}</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">"start" -&gt; start
-n -&gt; 1
-n -&gt; 2
-n -&gt; 3
-n -&gt; 4
-n -&gt; 5
-n -&gt; 6
-n -&gt; 7
-n -&gt; 8
-n -&gt; 9
-n -&gt; 10</pre>
-
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用Typescript 再次显示接口：</span></p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Typescript 代码:</span></p>
-<pre class="prettyprint lang-js">interface Generator extends Iterator {
-    next(value?: any): IteratorResult;
-    throw(exception: any);
-}</pre>
-
-<p>##</p>
-<p>###<br>    function* Iterators and generator</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">一个产量的例子*</span></p>
-<pre class="prettyprint lang-js">function* anotherGenerator(i) {
-  yield i + 1;
-  yield i + 2;
-  yield i + 3;
-}
-
-function* generator(i) {
-  yield i;
-  yield* anotherGenerator(i);
-  yield i + 10;
-}
-
-var gen = generator(10);
-
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">gen.next().value -&gt; 10
-gen.next().value -&gt; 11
-gen.next().value -&gt; 12
-gen.next().value -&gt; 13
-gen.next().value -&gt; 20</pre>
-
-<p>##</p>
-<p>###<br>    Unicode</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;ES6 为Unicode 提供了更好的支持。&lt;/span&gt;
-</code></pre><pre class="prettyprint lang-js">var regex = new RegExp('\u{61}', 'u');
-
-console.log(regex.unicode)
-console.log("\uD842\uDFD7")
-console.log("\uD842\uDFD7".codePointAt())</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">regex.unicode -&gt; true
-"" -&gt;
-"".codePointAt() -&gt; 134103</pre>
-
-<p>##</p>
-<p>###<br>    模块和模块加载器</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">原生支持模块。</span></p>
-<pre class="prettyprint lang-js">import defaultMember from "module-name";
-import * as name from "module-name";
-import { member } from "module-name";
-import { member as alias } from "module-name";
-import { member1 , member2 } from "module-name";
-import { member1 , member2 as alias2 , [...] } from "module-name";
-import defaultMember, { member [ , [...] ] } from "module-name";
-import defaultMember, * as name from "module-name";
-import "module-name";
-export { name1, name2, …, nameN };
-export { variable1 as name1, variable2 as name2, …, nameN };
-export let name1, name2, …, nameN; // also var
-export let name1 = …, name2 = …, …, nameN; // also var, const
-
-export expression;
-export default expression;
-export default function (…) { … } // also class, function*
-export default function name1(…) { … } // also class, function*
-export { name1 as default, … };
-
-export * from …;
-export { name1, name2, …, nameN } from …;
-export { import1 as name1, import2 as name2, …, nameN } from …;
-Import Export</pre>
-
-<p>##<br>    Set</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">Set 为数学对应，其中所有项目都是唯一的。对于知道SQL的人来说，这相当于distinct。</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">var set = new Set();
-set.add("Potato").add("Tomato").add("Tomato");
-console.log(set.size)
-console.log(set.has("Tomato"))
-
-for(var item of set) {
-   console.log(item)
-}</pre>
-
-<p>###<br>    结果</p>
-<pre><code>** **
-</code></pre><pre class="prettyprint lang-js">**set.size -&gt; 2
-set.has("Tomato") -&gt; true
-item -&gt; Potato
-item -&gt; Tomato**</pre>
-** **
-
-##
-    **
-    <h3 id="weakset" style="font-size:16px;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;background-color:#FFFFFF;">
-        WeakSet
-
-**
-</h3></h2>
-
-####
-    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">WeakSet对象允许您在集合中存储弱持有的对象。没有引用的对象将被垃圾回收。</span>
-
-<pre class="prettyprint lang-js">var item = { a:"Potato"}
-var set = new WeakSet();
-set.add({ a:"Potato"}).add(item).add({ a:"Tomato"}).add({ a:"Tomato"});
-console.log(set.size)
-console.log(set.has({a:"Tomato"}))
-console.log(set.has(item))
-
-for(let item of set) {
-   console.log(item)
-}</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">set.size -&gt; undefined
-set.has({a:"Tomato"}) -&gt; false
-set.has(item) -&gt; true
-TypeError: set[Symbol.iterator] is not a function</pre>
-
-<p>##<br>    Map</p>
-<pre><code>Map也称词典
-</code></pre><pre class="prettyprint lang-js">var map = new Map();
-map.set("Potato", 12);
-map.set("Tomato", 34);
-
-console.log(map.get("Potato"))
-
-for(let item of map) {
-   console.log(item)
-}
-
-for(let item in map) {
-   console.log(item)
-}</pre>
-
-<p>####<br>    结果：</p>
-<pre class="prettyprint lang-js">map.get("Potato") -&gt; 12
-item -&gt; ["Potato",12]
-item -&gt; ["Tomato",34]</pre>
-<span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">可以使用除字符串之外的其他类型。</span>
-
-<pre class="prettyprint lang-js">var map = new Map();
-var key = {a: "a"}
-map.set(key, 12);
-
-console.log(map.get(key))
-console.log(map.get({a: "a"}))</pre>
-
-<p>###<br>    结果</p>
-<pre class="prettyprint lang-js">map.get(key) -&gt; 12
-map.get({a: "a"}) -&gt; undefined</pre>
-
-<p>##<br>    WeakMap</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">使用键的对象，并且只保留对键的弱引用。</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">var wm = new WeakMap();
-
-var o1  = {}
-var o2  = {}
-var o3  = {}
-wm.set(o1, 1);
-wm.set(o2, 2);
-wm.set(o3, {a: "a"});
-wm.set({}, 4);
-
-console.log(wm.get(o2));
-console.log(wm.has({}))
-
-delete o2;
-
-console.log(wm.get(o3));
-
-for(let item in wm) {
-   console.log(item)
-}
-
-for(let item of wm) {
-   console.log(item)
-}</pre>
-
-<p>###<br>    <strong>结果</strong></p>
-<pre class="prettyprint lang-js">wm.get(o2) -&gt; 2
-wm.has({}) -&gt; false
-wm.get(o3) -&gt; {"a":"a"}
-TypeError: wm[Symbol.iterator] is not a function</pre>
-
-<p>##<br>    代理（Proxy）</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">代理可以用来改变对象的行为。 它们允许我们定义 trap 。</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">var obj = function ProfanityGenerator() {
-    return {
-       words: "Horrible words"    
-    }
-}()
-
-var handler = function CensoringHandler() {
-        return {
-        get: function (target, key) {
-            return target[key].replace("Horrible", "Nice");
-        },
-    }
-
-}()
-
-var proxy = new Proxy(obj, handler);
-
-console.log(proxy.words);</pre>
-
-<p>###<br>    结果</p>
-<pre class="prettyprint lang-js">proxy.words -&gt; Nice words</pre>
-
-<p>##</p>
-<p>###<br>    提供以下 trap ：</p>
-<pre class="prettyprint lang-js">var handler =
-{
-  get:...,
-  set:...,
-  has:...,
-  deleteProperty:...,
-  apply:...,
-  construct:...,
-  getOwnPropertyDescriptor:...,
-  defineProperty:...,
-  getPrototypeOf:...,
-  setPrototypeOf:...,
-  enumerate:...,
-  ownKeys:...,
-  preventExtensions:...,
-  isExtensible:...
-}</pre>
-
-<pre><code>&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;&quot;&gt;Symbols 是一个新类型。 可用于创建匿名属性。&lt;/span&gt;
-</code></pre><pre class="prettyprint lang-js">var typeSymbol = Symbol("type");
-
-class Pet {
-
-  constructor(type) {
-
-    this[typeSymbol] = type;
-
-  }
-  getType() {
-     return this[typeSymbol];
-  }
-
-}
-
-var a = new Pet("dog");
-console.log(a.getType());
-console.log(Object.getOwnPropertyNames(a))
-
-console.log(Symbol("a") === Symbol("a"))</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">a.getType() -&gt; dog
-Object.getOwnPropertyNames(a) -&gt; []
-Symbol("a") === Symbol("a") -&gt; false</pre>
-
-<p>##<br>    可继承内置函数</p>
-<p>####<br>    我们现在可以继承原生类</p>
-<p>####</p>
-<pre class="prettyprint lang-js">class CustomArray extends Array {
-
-}
-
-var a = new CustomArray();
-
-a[0] = 2
-console.log(a[0])</pre>
-结果：
-
-<pre class="prettyprint lang-js">a[0] -&gt; 2</pre>
-
-<p>##</p>
-<p>###<br>    不能使用数组的代理(Proxy)来覆盖getter函数。</p>
-<p>###<br>    新类库</p>
-<p>###<br>    各种新的方法和常量</p>
-<pre><code>** **
-</code></pre><pre class="prettyprint lang-js">**console.log(Number.EPSILON)
-console.log(Number.isInteger(Infinity))
-console.log(Number.isNaN("NaN"))
-
-console.log(Math.acosh(3))
-console.log(Math.hypot(3, 4))
-console.log(Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2))
-
-console.log("abcde".includes("cd") )
-console.log("abc".repeat(3) )
-
-console.log(Array.of(1, 2, 3) )
-console.log([0, 0, 0].fill(7, 1) )
-console.log([1, 2, 3].find(x =&gt; x == 3) )
-console.log([1, 2, 3].findIndex(x =&gt; x == 2))
-console.log([1, 2, 3, 4, 5].copyWithin(3, 0))
-console.log(["a", "b", "c"].entries() )
-console.log(["a", "b", "c"].keys() )
-console.log(["a", "b", "c"].values() )
-
-console.log(Object.assign({}, { origin: new Point(0,0) }))**</pre>
-** **
-
-###
-    **结果：**
-
-<pre class="prettyprint lang-js">Number.EPSILON -&gt; 2.220446049250313e-16
-Number.isInteger(Infinity) -&gt; false
-Number.isNaN("NaN") -&gt; false
-Math.acosh(3) -&gt; 1.7627471740390859
-Math.hypot(3, 4) -&gt; 5
-Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) -&gt; 2
-"abcde".includes("cd") -&gt; true
-"abc".repeat(3) -&gt; abcabcabc
-Array.of(1, 2, 3) -&gt; [1,2,3]
-[0, 0, 0].fill(7, 1) -&gt; [0,7,7]
-[1, 2, 3].find(x =&gt; x == 3) -&gt; 3
-[1, 2, 3].findIndex(x =&gt; x == 2) -&gt; 1
-[1, 2, 3, 4, 5].copyWithin(3, 0) -&gt; [1,2,3,1,2]
-["a", "b", "c"].entries() -&gt; {}
-["a", "b", "c"].keys() -&gt; {}
-["a", "b", "c"].values() -&gt; TypeError: ["a","b","c"].values is not a function
-Object.assign({}, { origin: new Point(0,0) }) -&gt; ReferenceError: Point is not defined
-文档: Number, Math, Array.from, Array.of, Array.prototype.copyWithin, Object.assign</pre>
-
-<p>##</p>
-<p>###<br>    二进制和八进制</p>
-<p>####<br>    <span style="color:#777777;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">二进制和八进制数字的字面量。</span></p>
-<pre class="prettyprint lang-js">console.log(0b11111)
-console.log(0o2342)
-
-console.log(0xff); // also in es5</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">ES6 代码:
-0b11111 -&gt; 31
-0o2342 -&gt; 1250
-0xff -&gt; 255</pre>
-
-<p>##</p>
-<p>###<br>    Promises</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">异步编程。</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">var p1 = new Promise((resolve, reject) =&gt; {
-  setTimeout(() =&gt; resolve("1"), 101)
-})
-var p2 = new Promise((resolve, reject) =&gt; {
-  setTimeout(() =&gt; resolve("2"), 100)
-})
-
-Promise.race([p1, p2]).then((res) =&gt; {
-   console.log(res)
-})
-
-Promise.all([p1, p2]).then((res) =&gt; {
-   console.log(res)
-})</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">res -&gt; 2
-res -&gt; ["1","2"]</pre>
-
-<p>##<br>    快速的Promise</p>
-<p>##</p>
-<pre class="prettyprint lang-js">var p1 = Promise.resolve("1")
-var p2 = Promise.reject("2")
-
-Promise.race([p1, p2]).then((res) =&gt; {
-   console.log(res)
-})</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">res -&gt; 1</pre>
-
-<p>##<br>    快速失败</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">如果一个 promise 失败，all和race也将 reject(拒绝)。</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">var p1 = new Promise((resolve, reject) =&gt; {
-  setTimeout(() =&gt; resolve("1"), 1001)
-})
-var p2 = new Promise((resolve, reject) =&gt; {
-  setTimeout(() =&gt; reject("2"), 1)
-})
-
-Promise.race([p1, p2]).then((res) =&gt; {
-   console.log("success" + res)
-}, res =&gt; {
-   console.log("error " + res)
-})
-
-Promise.all([p1, p2]).then((res) =&gt; {
-   console.log("success" + res)
-}, res =&gt; {
-   console.log("error " + res)
-})</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">"error " + res -&gt; error 2
-"error " + res -&gt; error 2</pre>
-
-<p>##<br>    反射（Reflect）</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">新类型的元编程与新的API现有的还有一些新的方法。</span></p>
-<pre class="prettyprint lang-js">var z = {w: "Super Hello"}
-var y = {x: "hello", __proto__: z};
-
-console.log(Reflect.getOwnPropertyDescriptor(y, "x"));
-console.log(Reflect.has(y, "w"));
-console.log(Reflect.ownKeys(y, "w"));
-
-console.log(Reflect.has(y, "x"));
-console.log(Reflect.deleteProperty(y,"x"))
-console.log(Reflect.has(y, "x"));</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">Reflect.getOwnPropertyDescriptor(y, "x") -&gt; {"value":"hello","writable":true,"enumerable":true,"configurable":true}
-Reflect.has(y, "w") -&gt; true
-Reflect.ownKeys(y, "w") -&gt; ["x"]
-Reflect.has(y, "x") -&gt; true
-Reflect.deleteProperty(y,"x") -&gt; true
-Reflect.has(y, "x") -&gt; false</pre>
-
-<p>##<br>    尾调用(Tail Call)优化</p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">尾调用的概念非常简单，一句话就能说清楚，就是指某个函数的最后一步是调用另一个函数。</span></p>
-<p>####<br>    <span style="color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">ES6可以确保尾调用不会造成堆栈溢出。 （不是所有的实现工作）。</span></p>
-<p>####</p>
-<pre class="prettyprint lang-js">function factorial(n, acc = 1) {
-    if (n &lt;= 1) return acc;
-    return factorial(n - 1, n * acc);
-}
-console.log(factorial(10))
-console.log(factorial(100))
-console.log(factorial(1000))
-console.log(factorial(10000))
-console.log(factorial(100000))
-console.log(factorial(1000000))</pre>
-
-<p>###<br>    结果：</p>
-<pre class="prettyprint lang-js">factorial(10) -&gt; 3628800
-factorial(100) -&gt; 9.332621544394418e+157
-factorial(1000) -&gt; Infinity
-factorial(10000) -&gt; Infinity
-factorial(100000) -&gt; RangeError: Maximum call stack size exceeded
-factorial(1000000) -&gt; RangeError: Maximum call stack size exceeded</pre>
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>function() 函数的简写表示法，但它不绑定 this。</p>
+<p>ES6 代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var odds = evens.map(v =&amp;gt; v + 1);  // no parentes and no brackets</div><div class="line">var nums = evens.map((v, i) =&amp;gt; v + i);</div><div class="line">var pairs = evens.map(v =&amp;gt; (&#123;even: v, odd: v + 1&#125;));</div><div class="line"></div><div class="line">// Statement bodies</div><div class="line">nums.forEach(v =&amp;gt; &#123;</div><div class="line">  if (v % 5 === 0)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h1 id="this是如何工作的"><a href="#this是如何工作的" class="headerlink" title="this是如何工作的"></a>this是如何工作的</h1><p>ES6 代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var object = &#123;</div><div class="line">    name: &quot;Name&quot;,</div><div class="line">    arrowGetName: () =&amp;gt; this.name,</div><div class="line">    regularGetName: function() &#123; return this.name &#125;,</div><div class="line">    arrowGetThis: () =&amp;gt; this,</div><div class="line">    regularGetThis: function() &#123; return this &#125;</div><div class="line">&#125;</div><div class="line">console.log(object);</div><div class="line">console.log(object.name)</div><div class="line">console.log(object.arrowGetName());</div><div class="line">console.log(object.arrowGetThis());</div><div class="line">console.log(this);</div><div class="line">console.log(object.regularGetName());</div><div class="line">console.log(object.regularGetThis());</div></pre></td></tr></table></figure>
+<h2 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">console.log(object);</div><div class="line"></div><div class="line">Object &#123;</div><div class="line">    name: &quot;Name&quot;,</div><div class="line">    arrowGetName: function,</div><div class="line">    regularGetName: function,</div><div class="line">    arrowGetThis: function,</div><div class="line">    regularGetThis: function</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(object.name) ;</div><div class="line">Name</div><div class="line"></div><div class="line">console.log(object.arrowGetName());</div><div class="line">undefined</div><div class="line"></div><div class="line">console.log(object.arrowGetThis());  // [object Window]</div><div class="line">Window &#123;</div><div class="line">    stop: function,</div><div class="line">    open: function,</div><div class="line">    alert: function,</div><div class="line">    confirm: function,</div><div class="line">    prompt: function,</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(this);  同上</div><div class="line"></div><div class="line">console.log(object.regularGetName());</div><div class="line"></div><div class="line">Name</div><div class="line"></div><div class="line">console.log(object.regularGetThis());</div><div class="line">Object &#123;</div><div class="line">    name: &quot;Name&quot;,</div><div class="line">    arrowGetName: function,</div><div class="line">    regularGetName: function,</div><div class="line">    arrowGetThis: function,</div><div class="line">    regularGetThis: function</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们知道“真正”语言中的类(Classes)。在 ES6 中类(Classes)其实是原型继承的语法糖。</p>
+<p>ES6代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class SkinnedMesh extends THREE.Mesh &#123;</div><div class="line">  constructor(geometry, materials) &#123;</div><div class="line">    super(geometry, materials);</div><div class="line"></div><div class="line">    this.idMatrix = SkinnedMesh.defaultMatrix();</div><div class="line">    this.bones = [];</div><div class="line">    this.boneMatrices = [];</div><div class="line">    //...</div><div class="line">  &#125;</div><div class="line">  update(camera) &#123;</div><div class="line">    //...</div><div class="line">    super.update();</div><div class="line">  &#125;</div><div class="line">  get boneCount() &#123;</div><div class="line">    return this.bones.length;</div><div class="line">  &#125;</div><div class="line">  set matrixType(matrixType) &#123;</div><div class="line">    this.idMatrix = SkinnedMesh[matrixType]();</div><div class="line">  &#125;</div><div class="line">  static defaultMatrix() &#123;</div><div class="line">    return new THREE.Matrix4();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="增强的对象字面量"><a href="#增强的对象字面量" class="headerlink" title="增强的对象字面量"></a>增强的对象字面量</h1><p>ES6代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">var theProtoObj = &#123;</div><div class="line">  toString: function() &#123;</div><div class="line">    return &quot;The ProtoOBject To string&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var handler = () =&amp;gt; &quot;handler&quot;</div><div class="line">var obj = &#123;</div><div class="line">    // __proto__</div><div class="line">    __proto__: theProtoObj,</div><div class="line">    // Shorthand for ‘handler: handler’</div><div class="line">    handler,</div><div class="line">    // Methods</div><div class="line">    toString() &#123;</div><div class="line">     // Super calls</div><div class="line">     return &quot;d &quot; + super.toString();</div><div class="line">    &#125;,</div><div class="line">    // Computed (dynamic) property names</div><div class="line">    [ &quot;prop_&quot; + (() =&amp;gt; 42)() ]: 42</div><div class="line">&#125;;</div><div class="line"></div><div class="line">console.log(obj.handler)</div><div class="line">console.log(obj.handler())</div><div class="line">console.log(obj.toString())</div><div class="line">console.log(obj.prop_42)</div></pre></td></tr></table></figure>
+<h2 id="结果：-1"><a href="#结果：-1" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">obj.handler -&amp;gt; () =&amp;gt; &quot;handler&quot;</div><div class="line">obj.handler() -&amp;gt; handler</div><div class="line">obj.toString() -&amp;gt; d The ProtoOBject To string</div><div class="line">obj.prop_42 -&amp;gt;</div><div class="line">(() =&amp;gt; 42)()  是一个立即执行函数 (() =&amp;gt; 42)() 相当于</div><div class="line">(function() &#123;</div><div class="line">    return 42;</div><div class="line">&#125;)()</div><div class="line">42</div></pre></td></tr></table></figure>
+<h1 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var name = &quot;Bob&quot;, time = &quot;today&quot;;</div><div class="line"></div><div class="line">var multiLine = `This Line Spans Multiple Lines`；</div><div class="line"></div><div class="line">console.log(`Hello $&#123;name&#125;,how are you $&#123;time&#125;?`)</div><div class="line">console.log(multiLine)</div></pre></td></tr></table></figure>
+<h2 id="结果：-2"><a href="#结果：-2" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a -&amp;gt; 1</div><div class="line">b -&amp;gt; 3</div></pre></td></tr></table></figure>
+<h2 id="对象也能很好的解构"><a href="#对象也能很好的解构" class="headerlink" title="对象也能很好的解构"></a>对象也能很好的解构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nodes = () =&gt; &#123; return &#123;op: &quot;a&quot;, lhs: &quot;b&quot;, rhs: &quot;c&quot;&#125;&#125;</div><div class="line">var &#123; op: a, lhs: b , rhs: c &#125; = nodes()</div><div class="line">console.log(a)</div><div class="line">console.log(b)</div><div class="line">console.log(c)</div></pre></td></tr></table></figure>
+<p>##结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a -&amp;gt; a</div><div class="line">b -&amp;gt; b</div><div class="line">c -&amp;gt; c</div></pre></td></tr></table></figure>
+<h2 id="使用速记表示法"><a href="#使用速记表示法" class="headerlink" title="使用速记表示法"></a>使用速记表示法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">nodes = () =&gt; &#123; return &#123;lhs: &quot;a&quot;, op: &quot;b&quot;, rhs: &quot;c&quot;&#125;&#125;</div><div class="line"></div><div class="line">// binds `op`, `lhs` and `rhs` in scope</div><div class="line">var &#123;op, lhs, rhs&#125; = nodes()</div><div class="line"></div><div class="line">console.log(op)</div><div class="line">console.log(lhs)</div><div class="line">console.log(rhs)</div></pre></td></tr></table></figure>
+<h2 id="结果：-3"><a href="#结果：-3" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">op -&amp;gt; b</div><div class="line">lhs -&amp;gt; a</div><div class="line">rhs -&amp;gt; c</div></pre></td></tr></table></figure>
+<h2 id="可在参数位置使用"><a href="#可在参数位置使用" class="headerlink" title="可在参数位置使用"></a>可在参数位置使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function g(&#123;name: x&#125;) &#123;</div><div class="line">  return x</div><div class="line">&#125;</div><div class="line"></div><div class="line">function m(&#123;name&#125;) &#123;</div><div class="line">  return name</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(g(&#123;name: 5&#125;))</div><div class="line">console.log(m(&#123;name: 5&#125;))</div></pre></td></tr></table></figure>
+<h2 id="结果：-4"><a href="#结果：-4" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">g(&#123;name: 5&#125;) -&amp;gt; 5</div><div class="line">m(&#123;name: 5&#125;) -&amp;gt; 5</div></pre></td></tr></table></figure>
+<h1 id="故障弱化解构"><a href="#故障弱化解构" class="headerlink" title="故障弱化解构"></a>故障弱化解构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var [a] = []</div><div class="line">var [b = 1] = []</div><div class="line">var c = [];</div><div class="line">console.log(a)</div><div class="line">console.log(b);</div><div class="line">console.log(c);</div></pre></td></tr></table></figure>
+<h2 id="结果：-5"><a href="#结果：-5" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a -&amp;gt; undefined</div><div class="line">b -&amp;gt; 1</div><div class="line">c -&amp;gt; []</div></pre></td></tr></table></figure>
+<h1 id="参数默认值（Default）"><a href="#参数默认值（Default）" class="headerlink" title="参数默认值（Default）"></a>参数默认值（Default）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function f(x, y=12) &#123;</div><div class="line">  return x + y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(f(3))</div><div class="line">console.log(f(3,2))</div></pre></td></tr></table></figure>
+<h2 id="结果：-6"><a href="#结果：-6" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f(3) -&amp;gt; 15</div><div class="line">f(3,2) -&amp;gt; 5</div></pre></td></tr></table></figure>
+<h1 id="扩展（Spread）"><a href="#扩展（Spread）" class="headerlink" title="扩展（Spread）"></a>扩展（Spread）</h1><p>在函数中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function f(x, y, z) &#123;</div><div class="line">  return x + y + z;</div><div class="line">&#125;</div><div class="line">// 传递数组的每个元素作为参数</div><div class="line">console.log(f(...[1,2,3]))</div></pre></td></tr></table></figure>
+<p>##结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f(...[1,2,3]) -&amp;gt; 6</div></pre></td></tr></table></figure>
+<h1 id="在数组中"><a href="#在数组中" class="headerlink" title="在数组中"></a>在数组中</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var parts = [&quot;shoulders&quot;, &quot;knees&quot;];</div><div class="line">var lyrics = [&quot;head&quot;, ...parts, &quot;and&quot;, &quot;toes&quot;];</div><div class="line"></div><div class="line">console.log(lyrics)</div></pre></td></tr></table></figure>
+<h2 id="结果：-7"><a href="#结果：-7" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var parts = [&quot;shoulders&quot;, &quot;knees&quot;];</div><div class="line">var lyrics = [&quot;head&quot;, ...parts, &quot;and&quot;, &quot;toes&quot;];</div><div class="line"></div><div class="line">console.log(lyrics)</div></pre></td></tr></table></figure>
+<h2 id="结果：-8"><a href="#结果：-8" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lyrics -&amp;gt; [&quot;head&quot;,&quot;shoulders&quot;,&quot;knees&quot;,&quot;and&quot;,&quot;toes&quot;]</div></pre></td></tr></table></figure>
+<h2 id="扩展-对象字面量"><a href="#扩展-对象字面量" class="headerlink" title="扩展 + 对象字面量"></a>扩展 + 对象字面量</h2><p>我们可以使用这个创造很酷的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">let &#123; x, y, ...z &#125; = &#123; x: 1, y: 2, a: 3, b: 4 &#125;;</div><div class="line">console.log(x); // 1</div><div class="line">console.log(y); // 2</div><div class="line">console.log(z); // &#123; a: 3, b: 4 &#125;</div><div class="line"></div><div class="line">// Spread properties</div><div class="line">let n = &#123; x, y, ...z &#125;;</div><div class="line">console.log(n); // &#123; x: 1, y: 2, a: 3, b: 4 &#125;</div><div class="line">console.log(obj)</div><div class="line">可惜的是它还不支持：</div><div class="line"></div><div class="line">npm install --save-dev babel-plugin-transform-object-rest-spread</div></pre></td></tr></table></figure>
+<h1 id="Rest"><a href="#Rest" class="headerlink" title="Rest"></a>Rest</h1><p>我们可以使用 rest 操作符来允许无限参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function demo(part1, ...part2) &#123;</div><div class="line">    return &#123;part1, part2&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(demo(1,2,3,4,5,6))</div></pre></td></tr></table></figure>
+<h2 id="结果：-9"><a href="#结果：-9" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">demo(1,2,3,4,5,6) -&amp;gt; &#123;&quot;part1&quot;:1,&quot;part2&quot;:[2,3,4,5,6]&#125;</div></pre></td></tr></table></figure>
+<h1 id="Let"><a href="#Let" class="headerlink" title="Let"></a>Let</h1><p>let是新的var。 因为它有块级作用域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   var globalVar = &quot;from demo1&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#123;</div><div class="line">   let globalLet = &quot;from demo2&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(globalVar)</div><div class="line">console.log(globalLet)</div></pre></td></tr></table></figure>
+<h2 id="结果：-10"><a href="#结果：-10" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">globalVar -&amp;gt; from demo1</div><div class="line">globalLet -&amp;gt; ReferenceError: globalLet is not defined</div></pre></td></tr></table></figure>
+<p>但是，它不会向window分配任何内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let me = &quot;go&quot;;  // 全局作用域</div><div class="line">var i = &quot;able&quot;; // 全局作用域</div><div class="line"></div><div class="line">console.log(window.me);</div><div class="line">console.log(window.i);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">window.me -&amp;gt; undefined</div><div class="line">window.i -&amp;gt; able</div></pre></td></tr></table></figure>
+<p>不能使用let重新声明一个变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let me = &quot;foo&quot;;</div><div class="line">let me = &quot;bar&quot;;</div><div class="line">console.log(me);</div></pre></td></tr></table></figure>
+<h2 id="结果：-11"><a href="#结果：-11" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SyntaxError: Identifier &apos;me&apos; has already been declared&lt;/pre&gt;</div><div class="line">&lt;pre class=&quot;prettyprint lang-js&quot;&gt;var me = &quot;foo&quot;;</div><div class="line">var me = &quot;bar&quot;;</div><div class="line">console.log(me)</div></pre></td></tr></table></figure>
+<h2 id="结果：-12"><a href="#结果：-12" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">me -&amp;gt; bar</div></pre></td></tr></table></figure>
+<h1 id="Const"><a href="#Const" class="headerlink" title="Const"></a>Const</h1><p>const 是只读变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const a = &quot;b&quot;</div><div class="line">a = &quot;a&quot;</div></pre></td></tr></table></figure>
+<h2 id="结果：-13"><a href="#结果：-13" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TypeError: Assignment to constant variable.</div></pre></td></tr></table></figure>
+<p>const 对象仍然可以被改变的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const a = &#123; a: &quot;a&quot; &#125;</div><div class="line">a.a = &quot;b&quot;</div><div class="line">console.log(a)</div></pre></td></tr></table></figure>
+<h2 id="结果：-14"><a href="#结果：-14" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a -&amp;gt; &#123;&quot;a&quot;:&quot;b&quot;&#125;</div></pre></td></tr></table></figure>
+<h1 id="For-of"><a href="#For-of" class="headerlink" title="For..of"></a>For..of</h1><p>迭代器的新类型，可以替代for..in。它返回的是值而不是keys</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let list = [4, 5, 6];</div><div class="line">console.log(list)</div><div class="line">for (let i in list) &#123;</div><div class="line">   console.log(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果：-15"><a href="#结果：-15" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">list -&amp;gt; [4,5,6]</div><div class="line">i -&amp;gt; 0</div><div class="line">i -&amp;gt; 1</div><div class="line">i -&amp;gt; 2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let list = [4, 5, 6];</div><div class="line">console.log(list)</div><div class="line">for (let i of list) &#123;</div><div class="line">   console.log(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果：-16"><a href="#结果：-16" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">list -&amp;gt; [4,5,6]</div><div class="line">i -&amp;gt; 4</div><div class="line">i -&amp;gt; 5</div><div class="line">i -&amp;gt; 6</div></pre></td></tr></table></figure>
+<h1 id="迭代器（Iterators）"><a href="#迭代器（Iterators）" class="headerlink" title="迭代器（Iterators）"></a>迭代器（Iterators）</h1><p>迭代器是一个比数组更动态的类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">let infinite = &#123;</div><div class="line">  [Symbol.iterator]() &#123;</div><div class="line">    let c = 0;</div><div class="line">    return &#123;</div><div class="line">      next() &#123;</div><div class="line">        c++;</div><div class="line">        return &#123; done: false, value: c &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(&quot;start&quot;);</div><div class="line"></div><div class="line">for (var n of infinite) &#123;</div><div class="line">  // truncate the sequence at 1000</div><div class="line">  if (n &amp;gt; 10)</div><div class="line">    break;</div><div class="line">  console.log(n);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果：-17"><a href="#结果：-17" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&quot;start&quot; -&amp;gt; start</div><div class="line">n -&amp;gt; 1</div><div class="line">n -&amp;gt; 2</div><div class="line">n -&amp;gt; 3</div><div class="line">n -&amp;gt; 4</div><div class="line">n -&amp;gt; 5</div><div class="line">n -&amp;gt; 6</div><div class="line">n -&amp;gt; 7</div><div class="line">n -&amp;gt; 8</div><div class="line">n -&amp;gt; 9</div><div class="line">n -&amp;gt; 10</div></pre></td></tr></table></figure>
+<p>使用Typescript，我们可以看到它接口的样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Typescript 代码:</div><div class="line">interface IteratorResult &#123;</div><div class="line">  done: boolean;</div><div class="line">  value: any;</div><div class="line">&#125;</div><div class="line">interface Iterator &#123;</div><div class="line">  next(): IteratorResult;</div><div class="line">&#125;</div><div class="line">interface Iterable &#123;</div><div class="line">  [Symbol.iterator](): Iterator</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="生成器（Generators）"><a href="#生成器（Generators）" class="headerlink" title="生成器（Generators）"></a>生成器（Generators）</h1><p>生成器创建迭代器，并且比迭代器更具动态性。他们不必以相同的方式跟踪状态 并不支持 done 的概念。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var infinity = &#123;</div><div class="line">  [Symbol.iterator]: function*() &#123;</div><div class="line">    var c = 1;</div><div class="line">    for (;;) &#123;   </div><div class="line">      yield c++;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(&quot;start&quot;)</div><div class="line">for (var n of infinity) &#123;</div><div class="line">  // truncate the sequence at 1000</div><div class="line">  if (n &amp;gt; 10)</div><div class="line">    break;</div><div class="line">  console.log(n);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果：-18"><a href="#结果：-18" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&quot;start&quot; -&amp;gt; start</div><div class="line">n -&amp;gt; 1</div><div class="line">n -&amp;gt; 2</div><div class="line">n -&amp;gt; 3</div><div class="line">n -&amp;gt; 4</div><div class="line">n -&amp;gt; 5</div><div class="line">n -&amp;gt; 6</div><div class="line">n -&amp;gt; 7</div><div class="line">n -&amp;gt; 8</div><div class="line">n -&amp;gt; 9</div><div class="line">n -&amp;gt; 10</div></pre></td></tr></table></figure>
+<p>使用Typescript 再次显示接口：</p>
+<p>Typescript 代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">interface Generator extends Iterator &#123;</div><div class="line">    next(value?: any): IteratorResult;</div><div class="line">    throw(exception: any);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="function-Iterators-and-generator"><a href="#function-Iterators-and-generator" class="headerlink" title="function* Iterators and generator"></a>function* Iterators and generator</h1><p>一个产量的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function* anotherGenerator(i) &#123;</div><div class="line">  yield i + 1;</div><div class="line">  yield i + 2;</div><div class="line">  yield i + 3;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function* generator(i) &#123;</div><div class="line">  yield i;</div><div class="line">  yield* anotherGenerator(i);</div><div class="line">  yield i + 10;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var gen = generator(10);</div><div class="line"></div><div class="line">console.log(gen.next().value);</div><div class="line">console.log(gen.next().value);</div><div class="line">console.log(gen.next().value);</div><div class="line">console.log(gen.next().value);</div><div class="line">console.log(gen.next().value);</div></pre></td></tr></table></figure>
+<h2 id="结果：-19"><a href="#结果：-19" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gen.next().value -&amp;gt; 10</div><div class="line">gen.next().value -&amp;gt; 11</div><div class="line">gen.next().value -&amp;gt; 12</div><div class="line">gen.next().value -&amp;gt; 13</div><div class="line">gen.next().value -&amp;gt; 20</div></pre></td></tr></table></figure>
+<h1 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h1><p>ES6 为Unicode 提供了更好的支持。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var regex = new RegExp(&apos;\u&#123;61&#125;&apos;, &apos;u&apos;);</div><div class="line"></div><div class="line">console.log(regex.unicode)</div><div class="line">console.log(&quot;\uD842\uDFD7&quot;)</div><div class="line">console.log(&quot;\uD842\uDFD7&quot;.codePointAt())</div></pre></td></tr></table></figure>
+<h2 id="结果：-20"><a href="#结果：-20" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">regex.unicode -&amp;gt; true</div><div class="line">&quot;&quot; -&amp;gt;</div><div class="line">&quot;&quot;.codePointAt() -&amp;gt; 134103</div></pre></td></tr></table></figure>
+<h1 id="模块和模块加载器"><a href="#模块和模块加载器" class="headerlink" title="模块和模块加载器"></a>模块和模块加载器</h1><p>原生支持模块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">import defaultMember from &quot;module-name&quot;;</div><div class="line">import * as name from &quot;module-name&quot;;</div><div class="line">import &#123; member &#125; from &quot;module-name&quot;;</div><div class="line">import &#123; member as alias &#125; from &quot;module-name&quot;;</div><div class="line">import &#123; member1 , member2 &#125; from &quot;module-name&quot;;</div><div class="line">import &#123; member1 , member2 as alias2 , [...] &#125; from &quot;module-name&quot;;</div><div class="line">import defaultMember, &#123; member [ , [...] ] &#125; from &quot;module-name&quot;;</div><div class="line">import defaultMember, * as name from &quot;module-name&quot;;</div><div class="line">import &quot;module-name&quot;;</div><div class="line">export &#123; name1, name2, …, nameN &#125;;</div><div class="line">export &#123; variable1 as name1, variable2 as name2, …, nameN &#125;;</div><div class="line">export let name1, name2, …, nameN; // also var</div><div class="line">export let name1 = …, name2 = …, …, nameN; // also var, const</div><div class="line"></div><div class="line">export expression;</div><div class="line">export default expression;</div><div class="line">export default function (…) &#123; … &#125; // also class, function*</div><div class="line">export default function name1(…) &#123; … &#125; // also class, function*</div><div class="line">export &#123; name1 as default, … &#125;;</div><div class="line"></div><div class="line">export * from …;</div><div class="line">export &#123; name1, name2, …, nameN &#125; from …;</div><div class="line">export &#123; import1 as name1, import2 as name2, …, nameN &#125; from …;</div><div class="line">Import Export</div></pre></td></tr></table></figure>
+<h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><p>Set 为数学对应，其中所有项目都是唯一的。对于知道SQL的人来说，这相当于distinct。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var set = new Set();</div><div class="line">set.add(&quot;Potato&quot;).add(&quot;Tomato&quot;).add(&quot;Tomato&quot;);</div><div class="line">console.log(set.size)</div><div class="line">console.log(set.has(&quot;Tomato&quot;))</div><div class="line"></div><div class="line">for(var item of set) &#123;</div><div class="line">   console.log(item)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">set.size -&amp;gt; 2</div><div class="line">set.has(&quot;Tomato&quot;) -&amp;gt; true</div><div class="line">item -&amp;gt; Potato</div><div class="line">item -&amp;gt; Tomato</div></pre></td></tr></table></figure>
+<h1 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h1><p>WeakSet对象允许您在集合中存储弱持有的对象。没有引用的对象将被垃圾回收。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var item = &#123; a:&quot;Potato&quot;&#125;</div><div class="line">var set = new WeakSet();</div><div class="line">set.add(&#123; a:&quot;Potato&quot;&#125;).add(item).add(&#123; a:&quot;Tomato&quot;&#125;).add(&#123; a:&quot;Tomato&quot;&#125;);</div><div class="line">console.log(set.size)</div><div class="line">console.log(set.has(&#123;a:&quot;Tomato&quot;&#125;))</div><div class="line">console.log(set.has(item))</div><div class="line"></div><div class="line">for(let item of set) &#123;</div><div class="line">   console.log(item)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果：-21"><a href="#结果：-21" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">set.size -&amp;gt; undefined</div><div class="line">set.has(&#123;a:&quot;Tomato&quot;&#125;) -&amp;gt; false</div><div class="line">set.has(item) -&amp;gt; true</div><div class="line">TypeError: set[Symbol.iterator] is not a function</div></pre></td></tr></table></figure>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>Map也称词典</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var map = new Map();</div><div class="line">map.set(&quot;Potato&quot;, 12);</div><div class="line">map.set(&quot;Tomato&quot;, 34);</div><div class="line"></div><div class="line">console.log(map.get(&quot;Potato&quot;))</div><div class="line"></div><div class="line">for(let item of map) &#123;</div><div class="line">   console.log(item)</div><div class="line">&#125;</div><div class="line"></div><div class="line">for(let item in map) &#123;</div><div class="line">   console.log(item)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果：-22"><a href="#结果：-22" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">map.get(&quot;Potato&quot;) -&amp;gt; 12</div><div class="line">item -&amp;gt; [&quot;Potato&quot;,12]</div><div class="line">item -&amp;gt; [&quot;Tomato&quot;,34]</div></pre></td></tr></table></figure>
+<p>可以使用除字符串之外的其他类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var map = new Map();</div><div class="line">var key = &#123;a: &quot;a&quot;&#125;</div><div class="line">map.set(key, 12);</div><div class="line"></div><div class="line">console.log(map.get(key))</div><div class="line">console.log(map.get(&#123;a: &quot;a&quot;&#125;))</div></pre></td></tr></table></figure>
+<h2 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">map.get(key) -&amp;gt; 12</div><div class="line">map.get(&#123;a: &quot;a&quot;&#125;) -&amp;gt; undefined</div></pre></td></tr></table></figure>
+<h1 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h1><p>使用键的对象，并且只保留对键的弱引用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">var wm = new WeakMap();</div><div class="line"></div><div class="line">var o1  = &#123;&#125;</div><div class="line">var o2  = &#123;&#125;</div><div class="line">var o3  = &#123;&#125;</div><div class="line">wm.set(o1, 1);</div><div class="line">wm.set(o2, 2);</div><div class="line">wm.set(o3, &#123;a: &quot;a&quot;&#125;);</div><div class="line">wm.set(&#123;&#125;, 4);</div><div class="line"></div><div class="line">console.log(wm.get(o2));</div><div class="line">console.log(wm.has(&#123;&#125;))</div><div class="line"></div><div class="line">delete o2;</div><div class="line"></div><div class="line">console.log(wm.get(o3));</div><div class="line"></div><div class="line">for(let item in wm) &#123;</div><div class="line">   console.log(item)</div><div class="line">&#125;</div><div class="line"></div><div class="line">for(let item of wm) &#123;</div><div class="line">   console.log(item)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wm.get(o2) -&amp;gt; 2</div><div class="line">wm.has(&#123;&#125;) -&amp;gt; false</div><div class="line">wm.get(o3) -&amp;gt; &#123;&quot;a&quot;:&quot;a&quot;&#125;</div><div class="line">TypeError: wm[Symbol.iterator] is not a function</div></pre></td></tr></table></figure>
+<h1 id="代理（Proxy）"><a href="#代理（Proxy）" class="headerlink" title="代理（Proxy）"></a>代理（Proxy）</h1><p>代理可以用来改变对象的行为。 它们允许我们定义 trap 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var obj = function ProfanityGenerator() &#123;</div><div class="line">    return &#123;</div><div class="line">       words: &quot;Horrible words&quot;    </div><div class="line">    &#125;</div><div class="line">&#125;()</div><div class="line"></div><div class="line">var handler = function CensoringHandler() &#123;</div><div class="line">        return &#123;</div><div class="line">        get: function (target, key) &#123;</div><div class="line">            return target[key].replace(&quot;Horrible&quot;, &quot;Nice&quot;);</div><div class="line">        &#125;,</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;()</div><div class="line"></div><div class="line">var proxy = new Proxy(obj, handler);</div><div class="line"></div><div class="line">console.log(proxy.words);</div></pre></td></tr></table></figure>
+<h2 id="结果-3"><a href="#结果-3" class="headerlink" title="结果"></a>结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxy.words -&amp;gt; Nice words</div></pre></td></tr></table></figure>
+<p>提供以下 trap ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var handler =</div><div class="line">&#123;</div><div class="line">  get:...,</div><div class="line">  set:...,</div><div class="line">  has:...,</div><div class="line">  deleteProperty:...,</div><div class="line">  apply:...,</div><div class="line">  construct:...,</div><div class="line">  getOwnPropertyDescriptor:...,</div><div class="line">  defineProperty:...,</div><div class="line">  getPrototypeOf:...,</div><div class="line">  setPrototypeOf:...,</div><div class="line">  enumerate:...,</div><div class="line">  ownKeys:...,</div><div class="line">  preventExtensions:...,</div><div class="line">  isExtensible:...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Symbols 是一个新类型。 可用于创建匿名属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var typeSymbol = Symbol(&quot;type&quot;);</div><div class="line"></div><div class="line">class Pet &#123;</div><div class="line"></div><div class="line">  constructor(type) &#123;</div><div class="line"></div><div class="line">    this[typeSymbol] = type;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">  getType() &#123;</div><div class="line">     return this[typeSymbol];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = new Pet(&quot;dog&quot;);</div><div class="line">console.log(a.getType());</div><div class="line">console.log(Object.getOwnPropertyNames(a))</div><div class="line"></div><div class="line">console.log(Symbol(&quot;a&quot;) === Symbol(&quot;a&quot;))</div></pre></td></tr></table></figure>
+<h2 id="结果：-23"><a href="#结果：-23" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a.getType() -&amp;gt; dog</div><div class="line">Object.getOwnPropertyNames(a) -&amp;gt; []</div><div class="line">Symbol(&quot;a&quot;) === Symbol(&quot;a&quot;) -&amp;gt; false</div></pre></td></tr></table></figure>
+<h1 id="可继承内置函数"><a href="#可继承内置函数" class="headerlink" title="可继承内置函数"></a>可继承内置函数</h1><p>我们现在可以继承原生类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class CustomArray extends Array &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = new CustomArray();</div><div class="line"></div><div class="line">a[0] = 2</div><div class="line">console.log(a[0])</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a[0] -&amp;gt; 2</div></pre></td></tr></table></figure>
+<p>不能使用数组的代理(Proxy)来覆盖getter函数。</p>
+<h1 id="新类库"><a href="#新类库" class="headerlink" title="新类库"></a>新类库</h1><p>各种新的方法和常量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">console.log(Number.EPSILON)</div><div class="line">console.log(Number.isInteger(Infinity))</div><div class="line">console.log(Number.isNaN(&quot;NaN&quot;))</div><div class="line"></div><div class="line">console.log(Math.acosh(3))</div><div class="line">console.log(Math.hypot(3, 4))</div><div class="line">console.log(Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2))</div><div class="line"></div><div class="line">console.log(&quot;abcde&quot;.includes(&quot;cd&quot;) )</div><div class="line">console.log(&quot;abc&quot;.repeat(3) )</div><div class="line"></div><div class="line">console.log(Array.of(1, 2, 3) )</div><div class="line">console.log([0, 0, 0].fill(7, 1) )</div><div class="line">console.log([1, 2, 3].find(x =&amp;gt; x == 3) )</div><div class="line">console.log([1, 2, 3].findIndex(x =&amp;gt; x == 2))</div><div class="line">console.log([1, 2, 3, 4, 5].copyWithin(3, 0))</div><div class="line">console.log([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].entries() )</div><div class="line">console.log([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].keys() )</div><div class="line">console.log([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].values() )</div><div class="line"></div><div class="line">console.log(Object.assign(&#123;&#125;, &#123; origin: new Point(0,0) &#125;))</div></pre></td></tr></table></figure>
+<h2 id="结果：-24"><a href="#结果：-24" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Number.EPSILON -&amp;gt; 2.220446049250313e-16</div><div class="line">Number.isInteger(Infinity) -&amp;gt; false</div><div class="line">Number.isNaN(&quot;NaN&quot;) -&amp;gt; false</div><div class="line">Math.acosh(3) -&amp;gt; 1.7627471740390859</div><div class="line">Math.hypot(3, 4) -&amp;gt; 5</div><div class="line">Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) -&amp;gt; 2</div><div class="line">&quot;abcde&quot;.includes(&quot;cd&quot;) -&amp;gt; true</div><div class="line">&quot;abc&quot;.repeat(3) -&amp;gt; abcabcabc</div><div class="line">Array.of(1, 2, 3) -&amp;gt; [1,2,3]</div><div class="line">[0, 0, 0].fill(7, 1) -&amp;gt; [0,7,7]</div><div class="line">[1, 2, 3].find(x =&amp;gt; x == 3) -&amp;gt; 3</div><div class="line">[1, 2, 3].findIndex(x =&amp;gt; x == 2) -&amp;gt; 1</div><div class="line">[1, 2, 3, 4, 5].copyWithin(3, 0) -&amp;gt; [1,2,3,1,2]</div><div class="line">[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].entries() -&amp;gt; &#123;&#125;</div><div class="line">[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].keys() -&amp;gt; &#123;&#125;</div><div class="line">[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].values() -&amp;gt; TypeError: [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;].values is not a function</div><div class="line">Object.assign(&#123;&#125;, &#123; origin: new Point(0,0) &#125;) -&amp;gt; ReferenceError: Point is not defined</div><div class="line">文档: Number, Math, Array.from, Array.of, Array.prototype.copyWithin, Object.assign</div></pre></td></tr></table></figure>
+<h1 id="二进制和八进制"><a href="#二进制和八进制" class="headerlink" title="二进制和八进制"></a>二进制和八进制</h1><p>二进制和八进制数字的字面量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">console.log(0b11111)</div><div class="line">console.log(0o2342)</div><div class="line"></div><div class="line">console.log(0xff); // also in es5</div></pre></td></tr></table></figure>
+<h2 id="结果：-25"><a href="#结果：-25" class="headerlink" title="结果："></a>结果：</h2><p>ES6 代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">0b11111 -&amp;gt; 31</div><div class="line">0o2342 -&amp;gt; 1250</div><div class="line">0xff -&amp;gt; 255</div></pre></td></tr></table></figure></p>
+<h1 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h1><p>异步编程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var p1 = new Promise((resolve, reject) =&amp;gt; &#123;</div><div class="line">  setTimeout(() =&amp;gt; resolve(&quot;1&quot;), 101)</div><div class="line">&#125;)</div><div class="line">var p2 = new Promise((resolve, reject) =&amp;gt; &#123;</div><div class="line">  setTimeout(() =&amp;gt; resolve(&quot;2&quot;), 100)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.race([p1, p2]).then((res) =&amp;gt; &#123;</div><div class="line">   console.log(res)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.all([p1, p2]).then((res) =&amp;gt; &#123;</div><div class="line">   console.log(res)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="结果：-26"><a href="#结果：-26" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">res -&amp;gt; 2</div><div class="line">res -&amp;gt; [&quot;1&quot;,&quot;2&quot;]</div></pre></td></tr></table></figure>
+<h2 id="快速的Promise"><a href="#快速的Promise" class="headerlink" title="快速的Promise"></a>快速的Promise</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var p1 = Promise.resolve(&quot;1&quot;)</div><div class="line">var p2 = Promise.reject(&quot;2&quot;)</div><div class="line"></div><div class="line">Promise.race([p1, p2]).then((res) =&amp;gt; &#123;</div><div class="line">   console.log(res)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="结果：-27"><a href="#结果：-27" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res -&amp;gt; 1</div></pre></td></tr></table></figure>
+<h2 id="快速失败"><a href="#快速失败" class="headerlink" title="快速失败"></a>快速失败</h2><p>如果一个 promise 失败，all和race也将 reject(拒绝)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var p1 = new Promise((resolve, reject) =&amp;gt; &#123;</div><div class="line">  setTimeout(() =&amp;gt; resolve(&quot;1&quot;), 1001)</div><div class="line">&#125;)</div><div class="line">var p2 = new Promise((resolve, reject) =&amp;gt; &#123;</div><div class="line">  setTimeout(() =&amp;gt; reject(&quot;2&quot;), 1)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.race([p1, p2]).then((res) =&amp;gt; &#123;</div><div class="line">   console.log(&quot;success&quot; + res)</div><div class="line">&#125;, res =&amp;gt; &#123;</div><div class="line">   console.log(&quot;error &quot; + res)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.all([p1, p2]).then((res) =&amp;gt; &#123;</div><div class="line">   console.log(&quot;success&quot; + res)</div><div class="line">&#125;, res =&amp;gt; &#123;</div><div class="line">   console.log(&quot;error &quot; + res)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="结果：-28"><a href="#结果：-28" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;error &quot; + res -&amp;gt; error 2</div><div class="line">&quot;error &quot; + res -&amp;gt; error 2</div></pre></td></tr></table></figure>
+<h1 id="反射（Reflect）"><a href="#反射（Reflect）" class="headerlink" title="反射（Reflect）"></a>反射（Reflect）</h1><p>新类型的元编程与新的API现有的还有一些新的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var z = &#123;w: &quot;Super Hello&quot;&#125;</div><div class="line">var y = &#123;x: &quot;hello&quot;, __proto__: z&#125;;</div><div class="line"></div><div class="line">console.log(Reflect.getOwnPropertyDescriptor(y, &quot;x&quot;));</div><div class="line">console.log(Reflect.has(y, &quot;w&quot;));</div><div class="line">console.log(Reflect.ownKeys(y, &quot;w&quot;));</div><div class="line"></div><div class="line">console.log(Reflect.has(y, &quot;x&quot;));</div><div class="line">console.log(Reflect.deleteProperty(y,&quot;x&quot;))</div><div class="line">console.log(Reflect.has(y, &quot;x&quot;));</div></pre></td></tr></table></figure>
+<h2 id="结果：-29"><a href="#结果：-29" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Reflect.getOwnPropertyDescriptor(y, &quot;x&quot;) -&amp;gt; &#123;&quot;value&quot;:&quot;hello&quot;,&quot;writable&quot;:true,&quot;enumerable&quot;:true,&quot;configurable&quot;:true&#125;</div><div class="line">Reflect.has(y, &quot;w&quot;) -&amp;gt; true</div><div class="line">Reflect.ownKeys(y, &quot;w&quot;) -&amp;gt; [&quot;x&quot;]</div><div class="line">Reflect.has(y, &quot;x&quot;) -&amp;gt; true</div><div class="line">Reflect.deleteProperty(y,&quot;x&quot;) -&amp;gt; true</div><div class="line">Reflect.has(y, &quot;x&quot;) -&amp;gt; false</div></pre></td></tr></table></figure>
+<h1 id="尾调用-Tail-Call-优化"><a href="#尾调用-Tail-Call-优化" class="headerlink" title="尾调用(Tail Call)优化"></a>尾调用(Tail Call)优化</h1><p>尾调用的概念非常简单，一句话就能说清楚，就是指某个函数的最后一步是调用另一个函数。</p>
+<p>ES6可以确保尾调用不会造成堆栈溢出。 （不是所有的实现工作）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function factorial(n, acc = 1) &#123;</div><div class="line">    if (n &amp;lt;= 1) return acc;</div><div class="line">    return factorial(n - 1, n * acc);</div><div class="line">&#125;</div><div class="line">console.log(factorial(10))</div><div class="line">console.log(factorial(100))</div><div class="line">console.log(factorial(1000))</div><div class="line">console.log(factorial(10000))</div><div class="line">console.log(factorial(100000))</div><div class="line">console.log(factorial(1000000))</div></pre></td></tr></table></figure>
+<h2 id="结果：-30"><a href="#结果：-30" class="headerlink" title="结果："></a>结果：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">factorial(10) -&amp;gt; 3628800</div><div class="line">factorial(100) -&amp;gt; 9.332621544394418e+157</div><div class="line">factorial(1000) -&amp;gt; Infinity</div><div class="line">factorial(10000) -&amp;gt; Infinity</div><div class="line">factorial(100000) -&amp;gt; RangeError: Maximum call stack size exceeded</div><div class="line">factorial(1000000) -&amp;gt; RangeError: Maximum call stack size exceeded</div></pre></td></tr></table></figure>
 
         </div>
 

@@ -20,17 +20,19 @@
     
     
     <meta name="keywords" content="CSS3,HTML5">
-    <meta name="description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图： ![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox">
+    <meta name="description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：                                                                                                            两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的 通过键盘控制3D盒子旋转，demo链接">
 <meta name="keywords" content="CSS3,HTML5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鼠标或键盘控制3D盒子旋转">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2016/05/12/e9-bc-a0-e6-a0-87-e6-88-96-e9-94-ae-e7-9b-98-e6-8e-a7-e5-88-b63d-e7-9b-92-e5-ad-90-e6-97-8b-e8-bd-ac/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图： ![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox">
-<meta property="og:updated_time" content="2017-06-08T09:51:16.000Z">
+<meta property="og:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：                                                                                                            两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的 通过键盘控制3D盒子旋转，demo链接">
+<meta property="og:image" content="http://www.chenqiangyi.com/wp-content/uploads/2016/05/3Dbox.png">
+<meta property="og:updated_time" content="2017-06-14T07:44:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鼠标或键盘控制3D盒子旋转">
-<meta name="twitter:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图： ![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox">
+<meta name="twitter:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：                                                                                                            两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的 通过键盘控制3D盒子旋转，demo链接">
+<meta name="twitter:image" content="http://www.chenqiangyi.com/wp-content/uploads/2016/05/3Dbox.png">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -196,286 +198,45 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：</p>
-<pre><code>![3Dbox](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox-300x300.png)![3Dbox2](http://qxu1589900249.my3w.com/wp-content/uploads/2016/05/3Dbox2.png)
-
-&lt;span style=&quot;font-size:14px;&quot;&gt;两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的&lt;/span&gt;
-
-&lt;span style=&quot;font-size:14px;&quot;&gt;通过键盘控制3D盒子旋转，demo链接：[http://chenqiangyi.com/example/3Dbox1.html](http://chenqiangyi.com/example/3Dbox1.html)&lt;/span&gt;
-
-&lt;span style=&quot;font-size:14px;&quot;&gt;通过鼠标控制3D盒子旋转，demo链接：[http://chenqiangyi.com/example/3Dbox1.html](http://chenqiangyi.com/example/3Dbox1.html)&lt;/span&gt;
-
-&lt;span style=&quot;color:#E53333;font-size:16px;&quot;&gt;1.页面布局&lt;/span&gt;
-
-&lt;span style=&quot;font-size:16px;&quot;&gt;需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：&lt;/span&gt;
-
-&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt;
-</code></pre><pre class="prettyprint lang-css">#div1 .right{ transform:rotateY(90deg) translateZ(100px);}</pre>
-然后就是左边的面，和右边的相似，只是旋转角度相反而已：
-
-    <span style="font-size:16px;"> </span>
-
-<pre class="prettyprint lang-css">#div1 .left{ transform:rotateY(-90deg) translateZ(100px);}</pre>
-前后面就是直接沿Z轴平移100px和-100px即可
-
-    <span style="font-size:16px;"> </span>
-
-<pre class="prettyprint lang-css">#div1 .front{ transform:translateZ(100px);}
-#div1 .back{ transform:translateZ(-100px);}</pre>
-上边的面就是沿Z轴平移100px然后再按照X轴旋转90度，相反下边的面沿y轴旋转-90度
-
-    <span style="font-size:16px;"> </span>
-
-<pre class="prettyprint lang-css">#div1 .top{ transform:rotateX(90deg) translateZ(100px);}
-#div1 .bottom{ transform:rotateX(-90deg) translateZ(100px);}</pre>
-然后就是为了看到3D效果，需要在其父级添加3D模型 &nbsp;transform-style: preserve-3d;
-
-    <span style="font-size:16px;">这样基本的布局就完成了</span>
-
-    <span style="font-size:16px;color:#E53333;">2.js控制</span>
-
-<span style="font-size:14px;">首先介绍键盘的控制，我们知道键盘的按下去与松开都对应一个onkeydown事件和onkeyup事件，我们可以用事件对象获取其中的动作当按上键的时候我们可以得到他的ev.keycode=37,同理可以得到其他键的值，我们可以先定义bTop=bBotton=bLeft=bRight=false，当按下去的时候，判定哪个键对应的方向为true，然后当松开的 时候再令<span style="font-size:14px;line-height:21px;">bTop=bBotton=bLeft=bRight=false</span>这样在就可控制他的停止与运动了，然后我们开一个定时器，让他在某个方向上每隔30ms加10，这样就把X，y的值获取到了。</span>
-
-    <span style="font-size:14px;"> </span>
-
-<pre class="prettyprint lang-js">document.onkeydown=function(ev){
-        if(ev.keyCode==37){
-            bLeft=true;
-        }
-        if(ev.keyCode==38){
-            bTop=true;
-        }
-        if(ev.keyCode==39){
-            bRight=true;
-        }
-        if(ev.keyCode==40){
-            bBotton=true;
-        }
-    }
-    document.onkeyup=function(ev){
-        if(ev.keyCode==37){
-            bLeft=false;
-        }
-        if(ev.keyCode==38){
-            bTop=false;
-        }
-        if(ev.keyCode==39){
-            bRight=false;
-        }
-        if(ev.keyCode==40){
-            bBotton=false;
-        }
-    }</pre>
-
-<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;然后就是改变他的X，y的变化，进行相应的运动变换&lt;/span&gt;
-</code></pre><pre class="prettyprint lang-js">//左右 y
-    var y=0;
-    //上下
-    var x=0;
-
-    setInterval(function(){
-        if(bLeft){
-            y-=10;
-        }
-        if(bRight){
-            y+=10;
-        }
-        if(bTop){
-            x-=10;
-        }
-        if(bBotton){
-            x+=10;
-        }
-        console.log(1)
-        oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
-    },30)</pre>
-<span style="font-size:14px;">这样键盘的控制就结束了，接下来就是鼠标的控制了</span>
-
-    <span style="font-size:16px;color:#E53333;">3.鼠标的控制</span>
-
-    <span style="font-size:14px;">主要运用鼠标的事件，当鼠标在网页上移动时会有相应的X和Y值得变化，这样我们就很容易得到鼠标的按下的位置和移动时的位置，我们可以根据在鼠标X轴移动的距离看做是他沿Y轴转动的角度，同时Y轴也是这样。</span>
-
-<pre class="prettyprint lang-js">document.onmousedown=function(ev){
-        var disX=ev.clientX-y;
-        var disY=ev.clientY-x;
-
-        document.onmousemove=function(ev){
-            y=ev.clientX-disX;
-            x=ev.clientY-disY;
-            oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
-
-        }
-        document.onmouseup=function(){
-            document.onmousemove=document.onmouseup=null;
-        }
-        return false;
-    }    </pre>
-<span style="font-size:14px;">这样两个效果就基本完成了。</span>
-
-    <span style="font-size:16px;color:#E53333;">4.总结</span>
-
-    <span style="font-size:14px;">这个效果主要运用到了键盘的控制事件，以及盒子的拖拽模型，还有就是布局的知识，在以后会加上在移动端的控制。</span>
-
-    <span style="font-size:14px;">最后附上两个模型的源代码：</span>
-
-    <span style="font-size:14px;">键盘控制3D盒子旋转：</span>
-
-<pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;title&gt;&lt;/title&gt;
-&lt;style type="text/css"&gt;
-*{margin: 0;padding: 0;}
-#div1{position: relative;width: 200px;height: 200px;margin: 100px auto;line-height: 200px;text-align: center;font-size: 30px;
-    transform: perspective(800px) rotateX(0deg) rotateY(0deg);
-    transform-style: preserve-3d;
-    /*transition: 3s all ease;*/
-}
-#div1 div{position: absolute;left: 0;top: 0;width: 198px;height: 198px;border: 1px solid #000;background: yellow;}
-
-#div1 .front{transform: translateZ(100px);background: green;}
-#div1 .back{transform: translateZ(-100px);background: blue;}
-#div1 .left{transform: rotateY(-90deg) translateZ(100px);background: pink;}
-#div1 .right{transform: rotateY(90deg) translateZ(100px);background: red;}
-#div1 .top{transform: rotateX(90deg) translateZ(100px);background: yellow;}
-#div1 .bottom{transform: rotateX(-90deg) translateZ(100px);background:orange;}
-
-/*#div1:hover{transform: perspective(800px) rotateX(-15deg) rotateY(360deg)}*/
-&lt;/style&gt;
-&lt;script type="text/javascript"&gt;
-window.onload=function(){
-    var oDiv=document.querySelector("#div1")
-    var bTop=bBotton=bLeft=bRight=false;
-    //左右 y
-    var y=0;
-    //上下
-    var x=0;
-
-    setInterval(function(){
-        if(bLeft){
-            y-=10;
-        }
-        if(bRight){
-            y+=10;
-        }
-        if(bTop){
-            x-=10;
-        }
-        if(bBotton){
-            x+=10;
-        }
-        console.log(1)
-        oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
-    },30)
-
-    document.onkeydown=function(ev){
-        if(ev.keyCode==37){
-            bLeft=true;
-        }
-        if(ev.keyCode==38){
-            bTop=true;
-        }
-        if(ev.keyCode==39){
-            bRight=true;
-        }
-        if(ev.keyCode==40){
-            bBotton=true;
-        }
-    }
-    document.onkeyup=function(ev){
-        if(ev.keyCode==37){
-            bLeft=false;
-        }
-        if(ev.keyCode==38){
-            bTop=false;
-        }
-        if(ev.keyCode==39){
-            bRight=false;
-        }
-        if(ev.keyCode==40){
-            bBotton=false;
-        }
-    }
-}
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id="div1"&gt;
-    &lt;div class="front"&gt;前面&lt;/div&gt;
-    &lt;div class="back"&gt;后面&lt;/div&gt;
-    &lt;div class="left"&gt;左面&lt;/div&gt;
-    &lt;div class="right"&gt;右面&lt;/div&gt;
-    &lt;div class="top"&gt;上面&lt;/div&gt;
-    &lt;div class="bottom"&gt;下面&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-
-<pre><code>&lt;span style=&quot;font-size:14px;&quot;&gt;鼠标控制3D盒子旋转：&lt;/span&gt;
-</code></pre><pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;title&gt;&lt;/title&gt;
-&lt;style type="text/css"&gt;
-*{margin: 0;padding: 0;}
-#div1{position: relative;width: 200px;height: 200px;margin: 100px auto;line-height: 200px;text-align: center;font-size: 30px;
-    transform: perspective(800px) rotateX(45deg) rotateY(0deg);
-    transform-style: preserve-3d;
-    /*transition: 3s all ease;*/
-}
-#div1 div{position: absolute;left: 0;top: 0;width: 198px;height: 198px;border: 1px solid #000;background: yellow;}
-
-#div1 .front{transform: translateZ(100px);background: green;}
-#div1 .back{transform: translateZ(-100px);background: blue;}
-#div1 .left{transform: rotateY(-90deg) translateZ(100px);background: pink;}
-#div1 .right{transform: rotateY(90deg) translateZ(100px);background: red;}
-#div1 .top{transform: rotateX(90deg) translateZ(100px);background: yellow;}
-#div1 .bottom{transform: rotateX(-90deg) translateZ(100px);background:orange;}
-
-/*#div1:hover{transform: perspective(800px) rotateX(-15deg) rotateY(360deg)}*/
-&lt;/style&gt;
-&lt;script type="text/javascript"&gt;
-window.onload=function(){
-    var oDiv=document.querySelector("#div1")
-    //左右 y
-    var y=0;
-    //上下
-    var x=0;
-    document.onmousedown=function(ev){
-        var disX=ev.clientX-y;
-        var disY=ev.clientY-x;
-
-        document.onmousemove=function(ev){
-            y=ev.clientX-disX;
-            x=ev.clientY-disY;
-            oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"
-
-        }
-        document.onmouseup=function(){
-            document.onmousemove=document.onmouseup=null;
-        }
-        return false;
-    }
-}
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id="div1"&gt;
-    &lt;div class="front"&gt;前面&lt;/div&gt;
-    &lt;div class="back"&gt;后面&lt;/div&gt;
-    &lt;div class="left"&gt;左面&lt;/div&gt;
-    &lt;div class="right"&gt;右面&lt;/div&gt;
-    &lt;div class="top"&gt;上面&lt;/div&gt;
-    &lt;div class="bottom"&gt;下面&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;over&lt;/span&gt;
-</code></pre>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/3Dbox.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的</p>
+<p>通过键盘控制3D盒子旋转，demo链接：<a href="http://chenqiangyi.com/example/3Dbox1.html" target="_blank" rel="external">http://chenqiangyi.com/example/3Dbox1.html</a></p>
+<p>通过鼠标控制3D盒子旋转，demo链接：<a href="http://chenqiangyi.com/example/3Dbox1.html" target="_blank" rel="external">http://chenqiangyi.com/example/3Dbox1.html</a></p>
+<p>1.页面布局</p>
+<p>需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#div1 .right&#123; transform:rotateY(90deg) translateZ(100px);&#125;</div></pre></td></tr></table></figure>
+<p>然后就是左边的面，和右边的相似，只是旋转角度相反而已：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#div1 .left&#123; transform:rotateY(-90deg) translateZ(100px);&#125;</div></pre></td></tr></table></figure>
+<p>前后面就是直接沿Z轴平移100px和-100px即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#div1 .front&#123; transform:translateZ(100px);&#125;</div><div class="line">#div1 .back&#123; transform:translateZ(-100px);&#125;</div></pre></td></tr></table></figure>
+<p>上边的面就是沿Z轴平移100px然后再按照X轴旋转90度，相反下边的面沿y轴旋转-90度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#div1 .top&#123; transform:rotateX(90deg) translateZ(100px);&#125;</div><div class="line">#div1 .bottom&#123; transform:rotateX(-90deg) translateZ(100px);&#125;</div></pre></td></tr></table></figure>
+<p>然后就是为了看到3D效果，需要在其父级添加3D模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-style: preserve-3d;</div></pre></td></tr></table></figure>
+<p>这样基本的布局就完成了</p>
+<p>2.js控制</p>
+<p>首先介绍键盘的控制，我们知道键盘的按下去与松开都对应一个onkeydown事件和onkeyup事件，我们可以用事件对象获取其中的动作当按上键的时候我们可以得到他的ev.keycode=37,同理可以得到其他键的值，我们可以先定义bTop=bBotton=bLeft=bRight=false，当按下去的时候，判定哪个键对应的方向为true，然后当松开的 时候再令bTop=bBotton=bLeft=bRight=false这样在就可控制他的停止与运动了，然后我们开一个定时器，让他在某个方向上每隔30ms加10，这样就把X，y的值获取到了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.onkeydown=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">37</span>)&#123;</div><div class="line">			bLeft=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">38</span>)&#123;</div><div class="line">			bTop=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">39</span>)&#123;</div><div class="line">			bRight=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">40</span>)&#123;</div><div class="line">			bBotton=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">document</span>.onkeyup=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">37</span>)&#123;</div><div class="line">			bLeft=<span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">38</span>)&#123;</div><div class="line">			bTop=<span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">39</span>)&#123;</div><div class="line">			bRight=<span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">40</span>)&#123;</div><div class="line">			bBotton=<span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>然后就是改变他的X，y的变化，进行相应的运动变换</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">//左右 y</span></div><div class="line"><span class="keyword">var</span> y=<span class="number">0</span>;</div><div class="line"><span class="comment">//上下</span></div><div class="line"><span class="keyword">var</span> x=<span class="number">0</span>;</div><div class="line"></div><div class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(bLeft)&#123;</div><div class="line">		y-=<span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(bRight)&#123;</div><div class="line">		y+=<span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(bTop)&#123;</div><div class="line">		x-=<span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(bBotton)&#123;</div><div class="line">		x+=<span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">console</span>.log(<span class="number">1</span>)</div><div class="line">	oDiv.style.transform=<span class="string">"perspective(800px) rotateX("</span>+-x+<span class="string">"deg) rotateY("</span>+y+<span class="string">"deg)"</span></div><div class="line">&#125;,<span class="number">30</span>)</div></pre></td></tr></table></figure>
+<p>这样键盘的控制就结束了，接下来就是鼠标的控制了&lt;</p>
+<p>3.鼠标的控制</p>
+<p>主要运用鼠标的事件，当鼠标在网页上移动时会有相应的X和Y值得变化，这样我们就很容易得到鼠标的按下的位置和移动时的位置，我们可以根据在鼠标X轴移动的距离看做是他沿Y轴转动的角度，同时Y轴也是这样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.onmousedown=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> disX=ev.clientX-y;</div><div class="line">		<span class="keyword">var</span> disY=ev.clientY-x;</div><div class="line"></div><div class="line">		<span class="built_in">document</span>.onmousemove=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">			y=ev.clientX-disX;</div><div class="line">			x=ev.clientY-disY;</div><div class="line">			oDiv.style.transform=<span class="string">"perspective(800px) rotateX("</span>+-x+<span class="string">"deg) rotateY("</span>+y+<span class="string">"deg)"</span></div><div class="line"></div><div class="line">		&#125;</div><div class="line">		<span class="built_in">document</span>.onmouseup=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="built_in">document</span>.onmousemove=<span class="built_in">document</span>.onmouseup=<span class="literal">null</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>这样两个效果就基本完成了。</p>
+<p>4.总结</p>
+<p>这个效果主要运用到了键盘的控制事件，以及盒子的拖拽模型，还有就是布局的知识，在以后会加上在移动端的控制。</p>
+<p>最后附上两个模型的源代码：</p>
+<p>键盘控制3D盒子旋转：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset="UTF-8"&gt;</div><div class="line">&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;style type="text/css"&gt;</div><div class="line">*&#123;margin: 0;padding: 0;&#125;</div><div class="line">#div1&#123;position: relative;width: 200px;height: 200px;margin: 100px auto;line-height: 200px;text-align: center;font-size: 30px;</div><div class="line">	transform: perspective(800px) rotateX(0deg) rotateY(0deg);</div><div class="line">	transform-style: preserve-3d;</div><div class="line">	/*transition: 3s all ease;*/</div><div class="line">&#125;</div><div class="line">#div1 div&#123;position: absolute;left: 0;top: 0;width: 198px;height: 198px;border: 1px solid #000;background: yellow;&#125;</div><div class="line"></div><div class="line">#div1 .front&#123;transform: translateZ(100px);background: green;&#125;</div><div class="line">#div1 .back&#123;transform: translateZ(-100px);background: blue;&#125;</div><div class="line">#div1 .left&#123;transform: rotateY(-90deg) translateZ(100px);background: pink;&#125;</div><div class="line">#div1 .right&#123;transform: rotateY(90deg) translateZ(100px);background: red;&#125;</div><div class="line">#div1 .top&#123;transform: rotateX(90deg) translateZ(100px);background: yellow;&#125;</div><div class="line">#div1 .bottom&#123;transform: rotateX(-90deg) translateZ(100px);background:orange;&#125;</div><div class="line"></div><div class="line">/*#div1:hover&#123;transform: perspective(800px) rotateX(-15deg) rotateY(360deg)&#125;*/</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line">window.onload=function()&#123;</div><div class="line">	var oDiv=document.querySelector("#div1")</div><div class="line">	var bTop=bBotton=bLeft=bRight=false;</div><div class="line">	//左右 y</div><div class="line">	var y=0;</div><div class="line">	//上下</div><div class="line">	var x=0;</div><div class="line"></div><div class="line">	setInterval(function()&#123;</div><div class="line">		if(bLeft)&#123;</div><div class="line">			y-=10;</div><div class="line">		&#125;</div><div class="line">		if(bRight)&#123;</div><div class="line">			y+=10;</div><div class="line">		&#125;</div><div class="line">		if(bTop)&#123;</div><div class="line">			x-=10;</div><div class="line">		&#125;</div><div class="line">		if(bBotton)&#123;</div><div class="line">			x+=10;</div><div class="line">		&#125;</div><div class="line">		console.log(1)</div><div class="line">		oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"</div><div class="line">	&#125;,30)</div><div class="line"></div><div class="line">	document.onkeydown=function(ev)&#123;</div><div class="line">		if(ev.keyCode==37)&#123;</div><div class="line">			bLeft=true;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==38)&#123;</div><div class="line">			bTop=true;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==39)&#123;</div><div class="line">			bRight=true;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==40)&#123;</div><div class="line">			bBotton=true;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	document.onkeyup=function(ev)&#123;</div><div class="line">		if(ev.keyCode==37)&#123;</div><div class="line">			bLeft=false;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==38)&#123;</div><div class="line">			bTop=false;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==39)&#123;</div><div class="line">			bRight=false;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==40)&#123;</div><div class="line">			bBotton=false;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id="div1"&gt;</div><div class="line">	&lt;div class="front"&gt;前面&lt;/div&gt;</div><div class="line">	&lt;div class="back"&gt;后面&lt;/div&gt;</div><div class="line">	&lt;div class="left"&gt;左面&lt;/div&gt;</div><div class="line">	&lt;div class="right"&gt;右面&lt;/div&gt;</div><div class="line">	&lt;div class="top"&gt;上面&lt;/div&gt;</div><div class="line">	&lt;div class="bottom"&gt;下面&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>鼠标控制3D盒子旋转：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset="UTF-8"&gt;</div><div class="line">&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;style type="text/css"&gt;</div><div class="line">*&#123;margin: 0;padding: 0;&#125;</div><div class="line">#div1&#123;position: relative;width: 200px;height: 200px;margin: 100px auto;line-height: 200px;text-align: center;font-size: 30px;</div><div class="line">	transform: perspective(800px) rotateX(45deg) rotateY(0deg);</div><div class="line">	transform-style: preserve-3d;</div><div class="line">	/*transition: 3s all ease;*/</div><div class="line">&#125;</div><div class="line">#div1 div&#123;position: absolute;left: 0;top: 0;width: 198px;height: 198px;border: 1px solid #000;background: yellow;&#125;</div><div class="line"></div><div class="line">#div1 .front&#123;transform: translateZ(100px);background: green;&#125;</div><div class="line">#div1 .back&#123;transform: translateZ(-100px);background: blue;&#125;</div><div class="line">#div1 .left&#123;transform: rotateY(-90deg) translateZ(100px);background: pink;&#125;</div><div class="line">#div1 .right&#123;transform: rotateY(90deg) translateZ(100px);background: red;&#125;</div><div class="line">#div1 .top&#123;transform: rotateX(90deg) translateZ(100px);background: yellow;&#125;</div><div class="line">#div1 .bottom&#123;transform: rotateX(-90deg) translateZ(100px);background:orange;&#125;</div><div class="line"></div><div class="line">/*#div1:hover&#123;transform: perspective(800px) rotateX(-15deg) rotateY(360deg)&#125;*/</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line">window.onload=function()&#123;</div><div class="line">	var oDiv=document.querySelector("#div1")</div><div class="line">	//左右 y</div><div class="line">	var y=0;</div><div class="line">	//上下</div><div class="line">	var x=0;</div><div class="line">	document.onmousedown=function(ev)&#123;</div><div class="line">		var disX=ev.clientX-y;</div><div class="line">		var disY=ev.clientY-x;</div><div class="line"></div><div class="line">		document.onmousemove=function(ev)&#123;</div><div class="line">			y=ev.clientX-disX;</div><div class="line">			x=ev.clientY-disY;</div><div class="line">			oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		document.onmouseup=function()&#123;</div><div class="line">			document.onmousemove=document.onmouseup=null;</div><div class="line">		&#125;</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id="div1"&gt;</div><div class="line">	&lt;div class="front"&gt;前面&lt;/div&gt;</div><div class="line">	&lt;div class="back"&gt;后面&lt;/div&gt;</div><div class="line">	&lt;div class="left"&gt;左面&lt;/div&gt;</div><div class="line">	&lt;div class="right"&gt;右面&lt;/div&gt;</div><div class="line">	&lt;div class="top"&gt;上面&lt;/div&gt;</div><div class="line">	&lt;div class="bottom"&gt;下面&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">

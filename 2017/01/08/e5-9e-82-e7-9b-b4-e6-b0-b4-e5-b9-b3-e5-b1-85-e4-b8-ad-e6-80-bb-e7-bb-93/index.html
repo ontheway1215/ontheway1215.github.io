@@ -19,18 +19,25 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="css,flex,垂直水平居中">
-    <meta name="description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 一、&amp;lt;span style=&amp;quot;color:#333333;font-family:-apple-system, &amp;amp;quot;font-size:medium;background-color:#FFFFFF;&amp;quot;&amp;gt;宽高不定，上下左右垂直居中。&amp;lt;/span&amp;gt;  (1).&amp;lt;span&amp;g">
-<meta name="keywords" content="css,flex,垂直水平居中">
+    <meta name="keywords" content="css,垂直水平居中,flex">
+    <meta name="description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 宽高不定，上下左右垂直居中。transform绝对定位top left 各50%，然后 transform 负数撑回来 代码如下： HTML代码 1&amp;lt;div class=&amp;quot;toast&amp;quot;&amp;gt;提交成功&amp;lt;/div&amp;gt; CSS代码 1234567891011.toast &amp;#123;  position:">
+<meta name="keywords" content="css,垂直水平居中,flex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="垂直水平居中总结">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 一、&amp;lt;span style=&amp;quot;color:#333333;font-family:-apple-system, &amp;amp;quot;font-size:medium;background-color:#FFFFFF;&amp;quot;&amp;gt;宽高不定，上下左右垂直居中。&amp;lt;/span&amp;gt;  (1).&amp;lt;span&amp;g">
-<meta property="og:updated_time" content="2017-06-08T09:42:18.000Z">
+<meta property="og:description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 宽高不定，上下左右垂直居中。transform绝对定位top left 各50%，然后 transform 负数撑回来 代码如下： HTML代码 1&amp;lt;div class=&amp;quot;toast&amp;quot;&amp;gt;提交成功&amp;lt;/div&amp;gt; CSS代码 1234567891011.toast &amp;#123;  position:">
+<meta property="og:image" content="https://webapp.didistatic.com/static/webapp/shield/img01.png">
+<meta property="og:image" content="https://webapp.didistatic.com/static/webapp/shield/img02.png">
+<meta property="og:image" content="https://webapp.didistatic.com/static/webapp/shield/img03.png">
+<meta property="og:image" content="https://webapp.didistatic.com/static/webapp/shield/img04.png">
+<meta property="og:image" content="https://webapp.didistatic.com/static/webapp/shield/img05.png">
+<meta property="og:image" content="https://webapp.didistatic.com/static/webapp/shield/img05.png">
+<meta property="og:updated_time" content="2017-06-14T06:39:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="垂直水平居中总结">
-<meta name="twitter:description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 一、&amp;lt;span style=&amp;quot;color:#333333;font-family:-apple-system, &amp;amp;quot;font-size:medium;background-color:#FFFFFF;&amp;quot;&amp;gt;宽高不定，上下左右垂直居中。&amp;lt;/span&amp;gt;  (1).&amp;lt;span&amp;g">
+<meta name="twitter:description" content="既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧 宽高不定，上下左右垂直居中。transform绝对定位top left 各50%，然后 transform 负数撑回来 代码如下： HTML代码 1&amp;lt;div class=&amp;quot;toast&amp;quot;&amp;gt;提交成功&amp;lt;/div&amp;gt; CSS代码 1234567891011.toast &amp;#123;  position:">
+<meta name="twitter:image" content="https://webapp.didistatic.com/static/webapp/shield/img01.png">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -172,6 +179,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#宽高不定，上下左右垂直居中。"><span class="post-toc-number">1.</span> <span class="post-toc-text">宽高不定，上下左右垂直居中。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#transform"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">transform</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用white-space-nowrap"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">用white-space:nowrap</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -196,66 +210,80 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧</p>
-<pre><code>一、&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;宽高不定，上下左右垂直居中。&lt;/span&gt;
-
-(1).&lt;span&gt;绝对定位top left 各50%，然后&lt;/span&gt;&lt;span style=&quot;color:#000080;font-family:Menlo, Monaco, Consolas, &amp;quot;font-size:12.8px;background-color:#F8F8F8;&quot;&gt;transform&lt;/span&gt;&lt;span&gt;负数撑回来&lt;/span&gt;
-
-&lt;span&gt;代码如下：&lt;/span&gt;
-
-&lt;span&gt;HTML代码&lt;/span&gt;
-
-&lt;span&gt; &lt;/span&gt;
-</code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast”&gt;提交成功&lt;/div&gt;</pre><br>CSS代码</p>
-<pre><code>&lt;span&gt; &lt;/span&gt;
-</code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%, -50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>}</pre><br>效果图：</p>
-<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img01.png)
-
-&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;But !&lt;/span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;这时候产品突然需要增加一个需求，Toast 组件一行最多只能有 12 个中文字符，超过的时候折行&lt;/span&gt;&lt;/span&gt;
-
-看起来这个要求也不高 ~ 我们修改一下代码
-
-CSS
-</code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%, -50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>  // 新增代码如下<br>  width: auto;<br>  max-width: 12em;<br>}</pre><br>效果如下图</p>
-<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img02.png)
-
-&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;可以看到，最终实现效果在第 9 个字的时候便折行了。&lt;/span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;这是为什么呢？我们把&lt;/span&gt;
-</code></pre><p><pre class="prettyprint lang-js">transform: translate(-50%, -50%)<br></pre><br><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">去掉看一下</span></p>
-<pre><code>![](https://webapp.didistatic.com/static/webapp/shield/img03.png)
-</code></pre><p><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">可以看到容器宽度在到达屏幕边界的时候就被截断折行了。</span><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">现在我们设定&nbsp;</span>left: 90%<span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">&nbsp;看一下</span></p>
-<pre><code>&lt;span&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img04.png '' '' %}
-</code></pre><p></p>
-<pre><code>&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;可以明显的看到容器被截断的更加严重。&lt;/span&gt;&lt;/span&gt;
-
-&lt;span&gt;&lt;span style=&quot;font-weight:700;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;至此我们分析得知，设置为&amp;nbsp;position: fixed的元素不仅位置是相对于屏幕边界定位，如果不指定元素宽高的话，宽高同样也会相对于屏幕边界被截断。&lt;/span&gt;&lt;/span&gt;
-
-&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;那么如何解决这个问题呢 ~&lt;/span&gt;&lt;/span&gt;
-
-&lt;span&gt;&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;代码如下 ~&lt;/span&gt;&lt;/span&gt;
-
-&lt;span&gt;HTML：&lt;/span&gt;
-
-&lt;span&gt; &lt;/span&gt;
-</code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast-container”&gt;<br>  &lt;div class=”toast”&gt;测试十二个字提交成功状态&lt;/div&gt;<br>&lt;/div&gt;<br></pre><br>CSS</p>
-<pre><code>&lt;span&gt; &lt;/span&gt;
-</code></pre><p><pre class="prettyprint lang-js">.toast-container {<br>  position: fixed;<br>  width: 100%;<br>  height: 100%;<br>  left: 100%;<br>  top: 100%;<br>}<br>.toast {<br>  position: absolute;<br>  top: -50%;<br>  left: -50%;<br>  transform: translate(-50%, -50%);<br>  width: auto;<br>  max-width: 12em;<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>}</pre><br><span style="color:#333333;font-family:-apple-system, &quot;font-size:medium;background-color:#FFFFFF;">在 .toast 外加一个和屏幕宽高相同 .container 容器，将 .container 容器 fixed 定位到窗口外层，再将 .toast 通过 absolute 定位翻转过来即可。</span></p>
-<pre><code>&lt;span&gt;效果如下：&lt;/span&gt;
-
-&lt;span&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img05.png '' '' %}
-</code></pre><p></p>
-<pre><code>（2）用&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;white-space:nowrap&lt;/span&gt;
-
-&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;代码：&lt;/span&gt;
-
-&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;HTML&lt;/span&gt;
-
-&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
-</code></pre><p><pre class="prettyprint lang-js">&lt;div class=”toast”&gt;提交成功提交成功提交成功&lt;/div&gt;</pre><br>CSS</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;
-</code></pre><p><pre class="prettyprint lang-js">.toast {<br>  position: fixed;<br>  top: 50%;<br>  left: 50%;<br>  transform: translate(-50%,-50%);<br>  padding: 13px 16px;<br>  font-size: 14px;<br>  color: #ccc;<br>  background-color: rgba(37, 38, 45, 0.9);<br>  border-radius: 2px;<br>  width: auto;<br>  max-width: 12em;<br>  white-space:nowrap ;<br>}</pre><br>效果</p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;{% image https://webapp.didistatic.com/static/webapp/shield/img05.png '' '' %}
-</code></pre><p></p>
-<pre><code>&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:15px;background-color:#FFFFFF;&quot;&gt;
-</code></pre><p></p>
+<h1 id="宽高不定，上下左右垂直居中。"><a href="#宽高不定，上下左右垂直居中。" class="headerlink" title="宽高不定，上下左右垂直居中。"></a>宽高不定，上下左右垂直居中。</h1><h2 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h2><p>绝对定位top left 各50%，然后 transform 负数撑回来</p>
+<p>代码如下：</p>
+<p>HTML代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;toast&quot;&gt;提交成功&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>CSS代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.toast &#123;</div><div class="line">  position: fixed;</div><div class="line">  top: 50%;</div><div class="line">  left: 50%;</div><div class="line">  transform: translate(-50%, -50%);</div><div class="line">  padding: 13px 16px;</div><div class="line">  font-size: 14px;</div><div class="line">  color: #ccc;</div><div class="line">  background-color: rgba(37, 38, 45, 0.9);</div><div class="line">  border-radius: 2px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://webapp.didistatic.com/static/webapp/shield/img01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>But !这时候产品突然需要增加一个需求，Toast 组件一行最多只能有12个中文字符，超过的时候折行</p>
+<p>看起来这个要求也不高 ~ 我们修改一下代码</p>
+<p>CSS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.toast &#123;</div><div class="line">  position: fixed;</div><div class="line">  top: 50%;</div><div class="line">  left: 50%;</div><div class="line">  transform: translate(-50%, -50%);</div><div class="line">  padding: 13px 16px;</div><div class="line">  font-size: 14px;</div><div class="line">  color: #ccc;</div><div class="line">  background-color: rgba(37, 38, 45, 0.9);</div><div class="line">  border-radius: 2px;</div><div class="line">  // 新增代码如下</div><div class="line">  width: auto;</div><div class="line">  max-width: 12em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如下图</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://webapp.didistatic.com/static/webapp/shield/img02.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>可以看到，最终实现效果在第 9 个字的时候便折行了。这是为什么呢？我们把</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform: translate(-50%, -50%)</div></pre></td></tr></table></figure>
+<p>去掉看一下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://webapp.didistatic.com/static/webapp/shield/img03.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>可以看到容器宽度在到达屏幕边界的时候就被截断折行了。现在我们设定 left: 90% 看一下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://webapp.didistatic.com/static/webapp/shield/img04.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>可以明显的看到容器被截断的更加严重。</p>
+<p>至此我们分析得知，设置为 position: fixed 的元素不仅位置是相对于屏幕边界定位，如果不指定元素宽高的话，宽高同样也会相对于屏幕边界被截断。</p>
+<p>那么如何解决这个问题呢 ~</p>
+<p>代码如下 ~</p>
+<p>HTML：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;toast-container&quot;&gt;</div><div class="line">  &lt;div class=&quot;toast&quot;&gt;测试十二个字提交成功状态&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>CSS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">.toast-container &#123;</div><div class="line">  position: fixed;</div><div class="line">  width: 100%;</div><div class="line">  height: 100%;</div><div class="line">  left: 100%;</div><div class="line">  top: 100%;</div><div class="line">&#125;</div><div class="line">.toast &#123;</div><div class="line">  position: absolute;</div><div class="line">  top: -50%;</div><div class="line">  left: -50%;</div><div class="line">  transform: translate(-50%, -50%);</div><div class="line">  width: auto;</div><div class="line">  max-width: 12em;</div><div class="line">  padding: 13px 16px;</div><div class="line">  font-size: 14px;</div><div class="line">  color: #ccc;</div><div class="line">  background-color: rgba(37, 38, 45, 0.9);</div><div class="line">  border-radius: 2px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 .toast 外加一个和屏幕宽高相同 .container 容器，将 .container 容器 fixed 定位到窗口外层，再将 .toast 通过 absolute 定位翻转过来即可。</p>
+<p>效果如下:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://webapp.didistatic.com/static/webapp/shield/img05.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="用white-space-nowrap"><a href="#用white-space-nowrap" class="headerlink" title="用white-space:nowrap"></a>用white-space:nowrap</h2><p>代码：</p>
+<p>HTML</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;toast&quot;&gt;提交成功提交成功提交成功&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>CSS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.toast &#123;</div><div class="line">  position: fixed;</div><div class="line">  top: 50%;</div><div class="line">  left: 50%;</div><div class="line">  transform: translate(-50%,-50%);</div><div class="line">  padding: 13px 16px;</div><div class="line">  font-size: 14px;</div><div class="line">  color: #ccc;</div><div class="line">  background-color: rgba(37, 38, 45, 0.9);</div><div class="line">  border-radius: 2px;</div><div class="line">  width: auto;</div><div class="line">  max-width: 12em;</div><div class="line">  white-space:nowrap ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://webapp.didistatic.com/static/webapp/shield/img05.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 
         </div>
 

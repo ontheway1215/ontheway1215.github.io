@@ -293,8 +293,9 @@ mounted() {
 
     
         ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章http://es6.ruanyifeng.com/。
-##    箭头函数
-&lt;span style=&quot;color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;background-color...
+箭头函数function() 函数的简写表示法，但它不绑定 this。
+ES6 代码:
+123456789var odds = evens.map(v =&amp;gt; v + 1);  // no parentes and no bracketsva...
     
 
         <a href="/2017/04/25/es6-e6-96-b0-e7-89-b9-e6-80-a7-e6-80-bb-e7-bb-93/" class="post-more waves-effect waves-button">
@@ -396,9 +397,12 @@ JS apply和js call方法总是让初学者困惑，下文就apply和call的区�
 
     
         既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧
-一、&lt;span style=&quot;color:#333333;font-family:-apple-system, &amp;quot;font-size:medium;background-color:#FFFFFF;&quot;&gt;宽高不定，上下左右垂直居中。&lt;/span&gt;
-
-(1).&lt;spa...
+宽高不定，上下左右垂直居中。transform绝对定位top left 各50%，然后 transform 负数撑回来
+代码如下：
+HTML代码
+1&lt;div class=&quot;toast&quot;&gt;提交成功&lt;/div&gt;
+CSS代码
+1234567891011.toast &#123;  positi...
     
 
         <a href="/2017/01/08/e5-9e-82-e7-9b-b4-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad-e6-80-bb-e7-bb-93/" class="post-more waves-effect waves-button">
@@ -653,8 +657,10 @@ Flex布局是什么？Flex是Flexible Box的缩写，意为”弹性布局”，
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。 
-&lt;span style=&quot;color:#3E3E3E;font-family:&amp;quot;font-size:16px;line-height:25.6px;background-color:#FFFFFF;&quot;&gt;&lt;span style=&quo...
+        这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。
+var 和 let/const 的比较除了 var ，我们现在还可以使用两个新的标示符来定义一个变量 —— let 和 const。和 var 不一样的是，let 和 const 不存在变量提升。
+使用 var 的栗子：
+123456789var snack = 'Meow Mix';fun...
     
 
         <a href="/2016/08/04/es6-e6-89-8b-e5-86-8c/" class="post-more waves-effect waves-button">
