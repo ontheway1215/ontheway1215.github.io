@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="JavaScript,call,apply">
-    <meta name="description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。 一、    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函">
+    <meta name="description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。  一、    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript">
 <meta name="keywords" content="JavaScript,call,apply">
 <meta property="og:type" content="article">
 <meta property="og:title" content="call与apply详解">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2017/02/14/call-e4-b8-8eapply-e8-af-a6-e8-a7-a3/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。 一、    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函">
-<meta property="og:updated_time" content="2017-06-13T07:44:35.000Z">
+<meta property="og:description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。  一、    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript">
+<meta property="og:updated_time" content="2017-06-14T05:23:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="call与apply详解">
-<meta name="twitter:description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。 一、    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函">
+<meta name="twitter:description" content="JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。  一、    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -195,48 +195,29 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。</p>
-<p>一、<br>    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。二者的作用完全一样，只是接受参数的方式不太一样。例如，有一个函数 func1 定义如下：</p>
-<pre><code>&lt;pre class=&quot;prettyprint lang-js&quot;&gt;var func1 = function(arg1, arg2) {};&lt;/pre&gt;
-</code></pre><p>就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, <span class="s1">[arg1, arg2]</span>); 来调用。其中 this 是你想指定的上下文，他可以任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。<br>JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。</p>
-<p>二、在javascript OOP中，我们经常会这样定义：</p>
-<pre class="prettyprint lang-js">function cat(){ } cat.prototype={  food:"fish",  say: function(){  alert("I love "+this.food);  } } var blackCat = new cat;
-blackCat.say();</pre>
-
-<p>但是如果我们有一个对象whiteDog = {food:<span class="s1">“bone”</span>},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：blackCat.say.call(whiteDog);所以,可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法,但是其他的有，我们可以借助call或apply用其它对象的方法来操作。用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：</p>
-<pre><code>&lt;pre class=&quot;prettyprint lang-js&quot;&gt;var domNodes = Array.prototype.slice.call(document.getElementsByTagName(&quot;*&quot;));&lt;/pre&gt;
-</code></pre><p>这样domNodes就可以应用Array下的所有方法了。</p>
-<p>三、</p>
-<pre><code>&lt;pre class=&quot;prettyprint lang-js&quot;&gt;obj.call(thisObj, arg1, arg2, ...);
-obj.apply(thisObj, [arg1, arg2, ...]);&lt;/pre&gt;
-</code></pre><p>  两者作用一致，都是把obj(即this)绑定到thisObj，这时候thisObj具备了obj的属性和方法。或者说thisObj『继承』了obj的属性和方法。唯一区别是apply接受的是数组参数，call接受的是连续参数。</p>
-<pre class="prettyprint lang-js">function add(j, k){
-    return j+k;
-}
-
-function sub(j, k){
-    return j-k;
-}</pre>
-
+            <blockquote>
+<p>JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。</p>
+</blockquote>
+<p>一、<br>    call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。二者的作用完全一样，只是接受参数的方式不太一样。例如，有一个函数 func1 定义如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> func1 = <span class="function"><span class="keyword">function</span>(<span class="params">arg1, arg2</span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure></p>
+<p>就可以通过</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func1.call(<span class="keyword">this</span>, arg1, arg2);</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func1.apply(<span class="keyword">this</span>, [arg1, arg2]);</div></pre></td></tr></table></figure>
+<p>来调用。其中 this 是你想指定的上下文，他可以任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。</p>
+<p>JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用apply，然后把参数 push 进数组传递进去。<br>当参数数量不确定时，函数内部也可以通过 arguments这个数组来便利所有的参数。</p>
+<p>二、<br>在javascript OOP中，我们经常会这样定义：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">cat</span>(<span class="params"></span>) </span>&#123; &#125;</div><div class="line">cat.prototype = &#123;</div><div class="line">    <span class="attr">food</span>: <span class="string">"fish"</span>,</div><div class="line">    <span class="attr">say</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="string">"I love "</span>+<span class="keyword">this</span>.food);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> blackCat = <span class="keyword">new</span> cat;</div><div class="line">blackCat.say();</div></pre></td></tr></table></figure>
+<p>但是如果我们有一个对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whiteDog = &#123;<span class="attr">food</span>:<span class="string">"bone"</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：blackCat.say.call(whiteDog);所以,可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法,但是其他的有，我们可以借助call或apply用其它对象的方法来操作。用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> domNodes = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">document</span>.getElementsByTagName(<span class="string">"*"</span>));</div></pre></td></tr></table></figure>
+<p>这样domNodes就可以应用Array下的所有方法了。</p>
+<p>三、<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj.call(thisObj, arg1, arg2, ...);</div><div class="line">obj.apply(thisObj, [arg1, arg2, ...]);</div></pre></td></tr></table></figure></p>
+<p>两者作用一致，都是把obj(即this)绑定到thisObj，这时候thisObj具备了obj的属性和方法。或者说thisObj『继承』了obj的属性和方法。唯一区别是apply接受的是数组参数，call接受的是连续参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">j, k</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> j+k;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">j, k</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> j-k;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们在控制台运行：</p>
-<pre class="prettyprint lang-js">add(5,3); //8
-add.call(sub, 5, 3); //8
-add.apply(sub, [5, 3]); //8
-
-sub(5, 3); //2
-sub.call(add, 5, 3); //2
-sub.apply(add, [5, 3]); //2</pre>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">add(<span class="number">5</span>,<span class="number">3</span>); <span class="comment">//8</span></div><div class="line">add.call(sub, <span class="number">5</span>, <span class="number">3</span>); <span class="comment">//8</span></div><div class="line">add.apply(sub, [<span class="number">5</span>, <span class="number">3</span>]); <span class="comment">//8</span></div><div class="line"></div><div class="line">sub(<span class="number">5</span>, <span class="number">3</span>); <span class="comment">//2</span></div><div class="line">sub.call(add, <span class="number">5</span>, <span class="number">3</span>); <span class="comment">//2</span></div><div class="line">sub.apply(add, [<span class="number">5</span>, <span class="number">3</span>]); <span class="comment">//2</span></div></pre></td></tr></table></figure>
 <p>通过call和apply，我们可以实现对象继承。示例：</p>
-<pre class="prettyprint lang-js">var Parent = function(){
-    this.name = "yjc";
-    this.age = 22;
-}
-var child = {};
-console.log(child);//Object {} ,空对象
-Parent.call(child);
-console.log(child); //Object {name: "yjc", age: 22}</pre>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Parent = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = <span class="string">"yjc"</span>;</div><div class="line">    <span class="keyword">this</span>.age = <span class="number">22</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> child = &#123;&#125;;</div><div class="line"><span class="built_in">console</span>.log(child);<span class="comment">//Object &#123;&#125; ,空对象</span></div><div class="line">Parent.call(child);</div><div class="line"><span class="built_in">console</span>.log(child); <span class="comment">//Object &#123;name: "yjc", age: 22&#125;</span></div></pre></td></tr></table></figure>
 <p>以上实现了对象的继承。</p>
 
         </div>
