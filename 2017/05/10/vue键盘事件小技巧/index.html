@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="JavaScript,vue,键盘事件">
-    <meta name="description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
+    <meta name="description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下：  12345678910111213mounted() &amp;#123;">
 <meta name="keywords" content="JavaScript,vue,键盘事件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue键盘事件小技巧">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
-<meta property="og:updated_time" content="2017-06-08T09:50:06.000Z">
+<meta property="og:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下：  12345678910111213mounted() &amp;#123;">
+<meta property="og:updated_time" content="2017-06-14T14:05:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue键盘事件小技巧">
-<meta name="twitter:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
+<meta name="twitter:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下：  12345678910111213mounted() &amp;#123;">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -195,71 +195,13 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下：</p>
-<pre class="prettyprint lang-js">mounted() {
-     var that = this;
-     document.onkeydown=function(e) {
-           if(e &amp;&amp; e.keyCode==83 &amp;&amp; e.altKey ){     //同时按下Alt+S
-                   that.submitBtn(e);
-           }
-      }
-},
-methods: {
-    submitBtn(e) {
-        //相关函数
-    }
-}</pre>
-然后就总结一下vue中的键盘事件：
-
-<pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;meta charset="utf-8"&gt;
-    &lt;script src="vue.js"&gt;&lt;/script&gt;
-
-    &lt;script type="text/javascript"&gt;
-        window.onload = function(){
-            var vm = new Vue({
-                el:'#box',
-                methods:{
-                    show:function(ev){
-                        if(ev.keyCode == 13){
-                            alert('你按回车键了');
-                        }
-                    },
-                }
-            });
-        }
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id="box"&gt;
-        &lt;input type="text" placeholder="请输入" @keyup="show($event)"&gt;
-
-        &lt;input type="text" placeholder="请输入" @keyup.13="show($event)"&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-
-<pre><code>&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.13 回车&lt;/span&gt;
-
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.enter 回车&lt;/span&gt;
-
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.left 左键&lt;/span&gt;
-
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.right 右键&lt;/span&gt;
-
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.up 上键&lt;/span&gt;
-
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.down 下键&lt;/span&gt;
-
-&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;@keyup.&lt;span class=&quot;hljs-keyword&quot;&gt;delete 删除键&lt;span style=&quot;color:#4C33E5;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-
-&lt;span style=&quot;font-size:16px;&quot;&gt;其他按键别名：&lt;/span&gt;
-
-&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt;
-</code></pre><ul>
+            <blockquote>
+<p>最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mounted() &#123;</div><div class="line">     var that = this;</div><div class="line">     document.onkeydown=function(e) &#123;</div><div class="line">           if(e &amp;amp;&amp;amp; e.keyCode==83 &amp;amp;&amp;amp; e.altKey )&#123;     //同时按下Alt+S</div><div class="line">                   that.submitBtn(e);</div><div class="line">           &#125;</div><div class="line">      &#125;</div><div class="line">&#125;,</div><div class="line">methods: &#123;</div><div class="line">    submitBtn(e) &#123;</div><div class="line">        //相关函数</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后就总结一下vue中的键盘事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;script src=&quot;vue.js&quot;&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">        window.onload = function()&#123;</div><div class="line">            var vm = new Vue(&#123;</div><div class="line">                el:&apos;#box&apos;,</div><div class="line">                methods:&#123;</div><div class="line">                    show:function(ev)&#123;</div><div class="line">                        if(ev.keyCode == 13)&#123;</div><div class="line">                            alert(&apos;你按回车键了&apos;);</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=&quot;box&quot;&gt;</div><div class="line">        &lt;input type=&quot;text&quot; placeholder=&quot;请输入&quot; @keyup=&quot;show($event)&quot;&gt;</div><div class="line"></div><div class="line">        &lt;input type=&quot;text&quot; placeholder=&quot;请输入&quot; @keyup.13=&quot;show($event)&quot;&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<ul>
 <li>.enter</li>
 <li>.tab</li>
 <li>.delete&nbsp;(捕获 “删除” 和 “退格” 键)</li>
@@ -268,44 +210,18 @@ methods: {
 <li>.up</li>
 <li>.down</li>
 <li>.left</li>
-<li><p>.right<br><span style="color:#34495E;font-family:&quot;font-size:15px;background-color:#FFFFFF;">可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应：</span></p>
-<p><span style="font-size:16px;"> </span></p>
-</li>
-<li><p>.ctrl</p>
-</li>
+<li>.right</li>
+</ul>
+<p>可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应</p>
+<ul>
+<li>.ctrl</li>
 <li>.alt</li>
 <li>.shift</li>
-<li>.meta<br><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">注意：在Mac系统键盘上，meta对应命令键 (⌘)。在Windows系统键盘meta对应windows徽标键(⊞)。在Sun操作系统键盘上，meta对应实心宝石键 (◆)。在其他特定键盘上，尤其在MIT和Lisp键盘及其后续，比如Knight键盘，space-cadet键盘，meta被标记为“META”。在Symbolics键盘上，meta被标记为“META” 或者 “Meta”。</span></li>
+<li>.meta</li>
 </ul>
-<p><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">例如:</span></p>
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt;
-</code></pre><pre>        
-
-<div class="line">
-    <span class="comment" style="color:#B3B3B3;">&lt;!-- Alt + C --&gt;</span>
-</div>
-
-<div class="line">
-    <span class="tag" style="color:#2973B7;">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string" style="color:#42B983;">"clear"</span>&gt;</span>
-</div>
-
-<div class="line">
-
-</div>
-
-<div class="line">
-    <span class="comment" style="color:#B3B3B3;">&lt;!-- Ctrl + Click --&gt;</span>
-</div>
-
-<div class="line">
-    <span class="tag" style="color:#2973B7;">&lt;<span class="name">div</span> @<span class="attr">click.ctrl</span>=<span class="string" style="color:#42B983;">"doSomething"</span>&gt;</span>Do something<span class="tag" style="color:#2973B7;">&lt;/<span class="name">div</span>&gt;</span>
-</div>
-</pre>
-
-<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt;
-</code></pre><p></p>
-<p></p>
-
+<p>注意：在Mac系统键盘上，meta对应命令键 (⌘)。在Windows系统键盘meta对应windows徽标键(⊞)。在Sun操作系统键盘上，meta对应实心宝石键 (◆)。在其他特定键盘上，尤其在MIT和Lisp键盘及其后续，比如Knight键盘，space-cadet键盘，meta被标记为“META”。在Symbolics键盘上，meta被标记为“META” 或者 “Meta”。</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Alt + C --&gt;</div><div class="line">&lt;input @keyup.alt.67=&quot;clear&quot;&gt;</div><div class="line"></div><div class="line">&lt;!-- Ctrl + Click --&gt;</div><div class="line">&lt;div @click.ctrl=&quot;doSomething&quot;&gt;Do something&lt;/div&gt;</div></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">

@@ -20,17 +20,19 @@
     
     
     <meta name="keywords" content="mac命令">
-    <meta name="description" content="我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：Please try running this command again as root/Administrator. &amp;lt;span style=&amp;quot;font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:">
+    <meta name="description" content="我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：Please try running this command again as root/Administrator.  如图：                                                                                              1">
 <meta name="keywords" content="mac命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mac 命令行 安装 需要管理员 权限“Please try running this command again as root&#x2F;Administrator”的解决办法">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2016/12/19/mac权限修改/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:description" content="我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：Please try running this command again as root/Administrator. &amp;lt;span style=&amp;quot;font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:">
-<meta property="og:updated_time" content="2017-06-14T11:35:54.000Z">
+<meta property="og:description" content="我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：Please try running this command again as root/Administrator.  如图：                                                                                              1">
+<meta property="og:image" content="http://www.chenqiangyi.com/wp-content/uploads/2016/12/1-300x48.png">
+<meta property="og:updated_time" content="2017-06-14T13:52:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac 命令行 安装 需要管理员 权限“Please try running this command again as root&#x2F;Administrator”的解决办法">
-<meta name="twitter:description" content="我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：Please try running this command again as root/Administrator. &amp;lt;span style=&amp;quot;font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:">
+<meta name="twitter:description" content="我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：Please try running this command again as root/Administrator.  如图：                                                                                              1">
+<meta name="twitter:image" content="http://www.chenqiangyi.com/wp-content/uploads/2016/12/1-300x48.png">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -195,13 +197,20 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p><span style="font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;"><span style="line-height:19.5px;"><span style="font-size:14px;">我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：</span></span></span><span style="font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:19.5px;">Please try running this command again as root/Administrator.</span></p>
-<pre><code>&lt;span style=&quot;font-size:14px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;line-height:19.5px;&quot;&gt;如图：&lt;/span&gt;
-
-![1](http://www.chenqiangyi.com/wp-content/uploads/2016/12/1-300x48.png)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
-
-&lt;span style=&quot;color:#555555;font-size:15px;background-color:#FFFFFF;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;&quot;&gt;&lt;span style=&quot;line-height:19.5px;&quot;&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;解决办法是&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color:#555555;background-color:#FFFFFF;line-height:19.5px;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;font-size:14px;&quot;&gt;在终端输入：&lt;/span&gt;
-</code></pre><p><pre class="prettyprint lang-js">sudo chown -R $USER /usr/local</pre><br><span style="color:#555555;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;font-size:14px;background-color:#FFFFFF;">然后输入安装的密码，在执行相关安装命令就行了</span></p>
+            <blockquote>
+<p>我们在进行mac 命令行安装软件的时候，有的时候会遇见这样的问题：Please try running this command again as root/Administrator.</p>
+</blockquote>
+<p>如图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/12/1-300x48.png" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<p>解决办法是在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R $USER /usr/local</div></pre></td></tr></table></figure>
+<p>然后输入安装的密码，在执行相关安装命令就行了</p>
 
         </div>
 

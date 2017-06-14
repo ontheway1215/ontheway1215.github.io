@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="Ajax,HTTP headers">
-    <meta name="description" content="最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下： $(document).ready(function(){         $.ajax({          url: &quot;https://api.stickerpipe.com/api/v2/shop&quot;,          type: &quot;GET&quot;,">
+    <meta name="description" content="最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下：  12345678910111213141516171819$(document).ready(function()&amp;#123;		$.ajax(&amp;#123;		 url: &amp;quot;https://api.stickerpipe.com/api/v2/shop&amp;qu">
 <meta name="keywords" content="Ajax,HTTP headers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript和jquery读取和修改HTTP headers">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2016/06/13/javascript和jquery读取和修改HTTP headers/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:description" content="最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下： $(document).ready(function(){         $.ajax({          url: &quot;https://api.stickerpipe.com/api/v2/shop&quot;,          type: &quot;GET&quot;,">
-<meta property="og:updated_time" content="2017-06-08T09:48:26.000Z">
+<meta property="og:description" content="最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下：  12345678910111213141516171819$(document).ready(function()&amp;#123;		$.ajax(&amp;#123;		 url: &amp;quot;https://api.stickerpipe.com/api/v2/shop&amp;qu">
+<meta property="og:updated_time" content="2017-06-14T13:50:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript和jquery读取和修改HTTP headers">
-<meta name="twitter:description" content="最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下： $(document).ready(function(){         $.ajax({          url: &quot;https://api.stickerpipe.com/api/v2/shop&quot;,          type: &quot;GET&quot;,">
+<meta name="twitter:description" content="最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下：  12345678910111213141516171819$(document).ready(function()&amp;#123;		$.ajax(&amp;#123;		 url: &amp;quot;https://api.stickerpipe.com/api/v2/shop&amp;qu">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -172,6 +172,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jquery修改HTTP-headers"><span class="post-toc-number">1.</span> <span class="post-toc-text">jquery修改HTTP headers</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jquery获取HTTP-headers"><span class="post-toc-number">2.</span> <span class="post-toc-text">jquery获取HTTP headers:</span></a></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-javascript和jquery读取和修改HTTP headers"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -195,117 +202,22 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下：</p>
-<pre class="prettyprint lang-js">$(document).ready(function(){
-        $.ajax({
-         url: "https://api.stickerpipe.com/api/v2/shop",
-         type: "GET",
-          headers: {
-                'Platform':'JS',
-                'ApiKey':'173a6bc645f17ea974cc4a25b431a82c',
-                'UserId':'12345'
-            },
-        data :{limit:'10',offset:"0"},
-         success: function(json){
-             console.log(json.data);
-         },
-         error: function(){
-             alert('fail');
-         }
-     });
-
-})</pre>
-
-<pre><code>在这中间的ajax获取数据时需要修改HTTP headers信息，下面就来介绍一下如何修改头信息
-
-一、jquery修改HTTP headers
-</code></pre><hr>
-<pre><code>jQuery Ajax可以通过headers或beforeSend修改request的HTTP headers，例如：
-</code></pre><pre class="prettyprint lang-js"> $.ajax({
-        url: "./test.php",
-        type: "POST",
-        headers: {
-            "Accept" : "text/plain; charset=utf-8",
-            "Content-Type": "text/plain; charset=utf-8"
-        },
-        /*
-        beforeSend: function(jqXHR, settings) {
-            jqXHR.setRequestHeader('Accept', 'text/plain; charset=utf-8');
-            jqXHR.setRequestHeader('Content-Type', 'text/plain; charset=utf-8');
-        },
-        */
-        data: {"user" : "min", "pass" : "he"},
-        error: function(jqXHR, textStatus, errorThrown) {
-            //....
-        },
-        success: function(data, textStatus, jqXHR) {
-            //....
-        }
-    }</pre>
-
-<pre><code>注意：：W3规定XMLHttpRequest并不能修改全部的HTTP Headers，而仅是一小部分。
-
-二、&lt;span style=&quot;line-height:1.5;&quot;&gt;jquery获取HTTP headers:&lt;/span&gt;
-
-&lt;span style=&quot;line-height:1.5;&quot;&gt;&lt;/span&gt;
-</code></pre><hr>
-<pre><code>&lt;span style=&quot;line-height:1.5;&quot;&gt;html
-</code></pre><p></p>
-<pre class="prettyprint lang-js">html&gt;
-    &lt;head&gt;
-        &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;&lt;/body&gt;
-    &lt;script type="text/javascript"&gt;
-    $(document).ready(function(){
-        $.ajax({
-            url: "./test.php",
-            type: "POST",
-            data: {"user" : "min", "pass" : "he"},
-            error: function(jqXHR, textStatus, errorThrown) {
-                if (textStatus == "error") {
-                    alert(textStatus + " : " +errorThrown);
-                } else {
-                    alert(textStatus);
-                }
-            },
-            success: function(data, textStatus, jqXHR) {
-                alert(jqXHR.getResponseHeader("Server"));
-                alert(jqXHR.getResponseHeader("Content-Type"));
-                alert(jqXHR.getResponseHeader("X-Powered-By"));
-                alert(jqXHR.getResponseHeader("Content-Encoding"));
-                alert(jqXHR.getAllResponseHeaders());
-                alert(jqXHR.getResponseHeader("Set-Cookie"));       //返回null，不能获取Set-Cookie的值
-                alert(data + textStatus);
-            }
-        });
-    });
-    &lt;/script&gt;
-    &lt;/html&gt;</pre>
-
-<pre><code>&lt;span style=&quot;line-height:1.5;&quot;&gt;test.php&lt;/span&gt;
-
-&lt;span style=&quot;line-height:1.5;&quot;&gt; &lt;/span&gt;
-</code></pre><pre class="prettyprint lang-js"> &lt;?php
-    if (isset($_COOKIE["time"])) {
-        $time = $_COOKIE["time"] + 1;
-    } else {
-        $time = 1;
-    }
-    setcookie("time", $time);
-
-    $user = $_REQUEST["user"];
-    $pass = $_REQUEST["pass"];
-    print $user.$pass." ".$time;</pre>
-
-<pre><code>jQuery通过XMLHttpRequest的getResponseHeader或getAllResponseHeaders()可以获取指定的HTTP header field的值，但规定不能获取Set-Cookie和Set-Cookie2的值。
-</code></pre><p>参考：</p>
-<pre><code>&lt;span style=&quot;line-height:1.5;&quot;&gt;[http://stackoverflow.com/questions/1145588/cannot-properly-set-the-accept-http-header-with-jquery](http://stackoverflow.com/questions/1145588/cannot-properly-set-the-accept-http-header-with-jquery)&lt;/span&gt;
-
-[http://stackoverflow.com/questions/2444489/getresponseheader-is-not-a-function](http://stackoverflow.com/questions/2444489/getresponseheader-is-not-a-function)
-
-&lt;span style=&quot;line-height:1.5;&quot;&gt;
-</code></pre><p></p>
+            <blockquote>
+<p>最近项目中遇到了一些问题，需要从第三方获取数据，通过ajax获取的时候需要修改HTTP headers信息。其中主要代码如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function()&#123;</div><div class="line">		$.ajax(&#123;</div><div class="line">		 url: &quot;https://api.stickerpipe.com/api/v2/shop&quot;,</div><div class="line">         type: &quot;GET&quot;,</div><div class="line">          headers: &#123;</div><div class="line">		        &apos;Platform&apos;:&apos;JS&apos;,</div><div class="line">		        &apos;ApiKey&apos;:&apos;173a6bc645f17ea974cc4a25b431a82c&apos;,</div><div class="line">		        &apos;UserId&apos;:&apos;12345&apos;</div><div class="line">		    &#125;,</div><div class="line">		data :&#123;limit:&apos;10&apos;,offset:&quot;0&quot;&#125;,</div><div class="line">         success: function(json)&#123;</div><div class="line">         	console.log(json.data);</div><div class="line">         &#125;,</div><div class="line">         error: function()&#123;</div><div class="line">             alert(&apos;fail&apos;);</div><div class="line">         &#125;</div><div class="line">     &#125;);</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>在这中间的ajax获取数据时需要修改HTTP headers信息，下面就来介绍一下如何修改头信息</p>
+<h1 id="jquery修改HTTP-headers"><a href="#jquery修改HTTP-headers" class="headerlink" title="jquery修改HTTP headers"></a>jquery修改HTTP headers</h1><p>jQuery Ajax可以通过headers或beforeSend修改request的HTTP headers，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">        url: &quot;./test.php&quot;,</div><div class="line">        type: &quot;POST&quot;,</div><div class="line">        headers: &#123;</div><div class="line">            &quot;Accept&quot; : &quot;text/plain; charset=utf-8&quot;,</div><div class="line">            &quot;Content-Type&quot;: &quot;text/plain; charset=utf-8&quot;</div><div class="line">        &#125;,</div><div class="line">        /*</div><div class="line">        beforeSend: function(jqXHR, settings) &#123;</div><div class="line">            jqXHR.setRequestHeader(&apos;Accept&apos;, &apos;text/plain; charset=utf-8&apos;);</div><div class="line">            jqXHR.setRequestHeader(&apos;Content-Type&apos;, &apos;text/plain; charset=utf-8&apos;);</div><div class="line">        &#125;,</div><div class="line">        */</div><div class="line">        data: &#123;&quot;user&quot; : &quot;min&quot;, &quot;pass&quot; : &quot;he&quot;&#125;,</div><div class="line">        error: function(jqXHR, textStatus, errorThrown) &#123;</div><div class="line">            //....</div><div class="line">        &#125;,</div><div class="line">        success: function(data, textStatus, jqXHR) &#123;</div><div class="line">            //....</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>注意：：W3规定XMLHttpRequest并不能修改全部的HTTP Headers，而仅是一小部分。</p>
+<h1 id="jquery获取HTTP-headers"><a href="#jquery获取HTTP-headers" class="headerlink" title="jquery获取HTTP headers:"></a>jquery获取HTTP headers:</h1><p>html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;&lt;/body&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    $(document).ready(function()&#123;</div><div class="line">        $.ajax(&#123;</div><div class="line">            url: &quot;./test.php&quot;,</div><div class="line">            type: &quot;POST&quot;,</div><div class="line">            data: &#123;&quot;user&quot; : &quot;min&quot;, &quot;pass&quot; : &quot;he&quot;&#125;,</div><div class="line">            error: function(jqXHR, textStatus, errorThrown) &#123;</div><div class="line">                if (textStatus == &quot;error&quot;) &#123;</div><div class="line">                    alert(textStatus + &quot; : &quot; +errorThrown);</div><div class="line">                &#125; else &#123;</div><div class="line">                    alert(textStatus);</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            success: function(data, textStatus, jqXHR) &#123;</div><div class="line">                alert(jqXHR.getResponseHeader(&quot;Server&quot;));</div><div class="line">                alert(jqXHR.getResponseHeader(&quot;Content-Type&quot;));</div><div class="line">                alert(jqXHR.getResponseHeader(&quot;X-Powered-By&quot;));</div><div class="line">                alert(jqXHR.getResponseHeader(&quot;Content-Encoding&quot;));</div><div class="line">                alert(jqXHR.getAllResponseHeaders());</div><div class="line">                alert(jqXHR.getResponseHeader(&quot;Set-Cookie&quot;));       //返回null，不能获取Set-Cookie的值</div><div class="line">                alert(data + textStatus);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">    &lt;/script&gt;</div><div class="line">    &lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>test.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">   if (isset($_COOKIE[&quot;time&quot;])) &#123;</div><div class="line">       $time = $_COOKIE[&quot;time&quot;] + 1;</div><div class="line">   &#125; else &#123;</div><div class="line">       $time = 1;</div><div class="line">   &#125;</div><div class="line">   setcookie(&quot;time&quot;, $time);</div><div class="line"></div><div class="line">   $user = $_REQUEST[&quot;user&quot;];</div><div class="line">   $pass = $_REQUEST[&quot;pass&quot;];</div><div class="line">   print $user.$pass.&quot; &quot;.$time;</div></pre></td></tr></table></figure>
+<p>jQuery通过XMLHttpRequest的getResponseHeader或getAllResponseHeaders()可以获取指定的HTTP header field的值，但规定不能获取Set-Cookie和Set-Cookie2的值。</p>
+<p>参考：</p>
+<p><a href="http://stackoverflow.com/questions/1145588/cannot-properly-set-the-accept-http-header-with-jquery" target="_blank" rel="external">http://stackoverflow.com/questions/1145588/cannot-properly-set-the-accept-http-header-with-jquery</a></p>
+<p><a href="http://stackoverflow.com/questions/2444489/getresponseheader-is-not-a-function" target="_blank" rel="external">http://stackoverflow.com/questions/2444489/getresponseheader-is-not-a-function</a></p>
 
         </div>
 
