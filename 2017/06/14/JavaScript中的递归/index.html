@@ -20,14 +20,19 @@
     
     
     <meta name="keywords" content="Javascript 递归">
-    <meta name="keywords" content="Javascript 递归">
+    <meta name="description" content="译者按: 程序员应该知道递归，但是你真的知道是怎么回事么？ 原文: All About Recursion, PTC, TCO and STC in JavaScript 译者: Fundebug 为了保证可读性，本文采用意译而非直译。  一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法，它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序">
+<meta name="keywords" content="Javascript 递归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript中的递归">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2017/06/14/JavaScript中的递归/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:updated_time" content="2017-06-14T02:54:48.000Z">
+<meta property="og:description" content="译者按: 程序员应该知道递归，但是你真的知道是怎么回事么？ 原文: All About Recursion, PTC, TCO and STC in JavaScript 译者: Fundebug 为了保证可读性，本文采用意译而非直译。  一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法，它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序">
+<meta property="og:image" content="https://blog.fundebug.com/2017/06/14/all-about-recursions/factorial-calls.png">
+<meta property="og:updated_time" content="2017-06-14T14:25:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的递归">
+<meta name="twitter:description" content="译者按: 程序员应该知道递归，但是你真的知道是怎么回事么？ 原文: All About Recursion, PTC, TCO and STC in JavaScript 译者: Fundebug 为了保证可读性，本文采用意译而非直译。  一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法，它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序">
+<meta name="twitter:image" content="https://blog.fundebug.com/2017/06/14/all-about-recursions/factorial-calls.png">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -167,6 +172,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#递归的调用栈"><span class="post-toc-number">1.</span> <span class="post-toc-text">递归的调用栈</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#尾递归"><span class="post-toc-number">2.</span> <span class="post-toc-text">尾递归</span></a></li></ol>
+        </nav>
+    </aside>
+    
 <article id="[layout]-JavaScript中的递归"
   class="post-article article-type-[layout] fade" itemprop="blogPost">
 
@@ -188,7 +200,67 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <p>译者按: 程序员应该知道递归，但是你真的知道是怎么回事么？</p>
+<p>原文: <a href="http://lucasfcosta.com/2017/05/08/All-About-Recursion-PTC-TCO-and-STC-in-JavaScript.html" target="_blank" rel="external">All About Recursion, PTC, TCO and STC in JavaScript</a></p>
+<p>译者: <a href="https://fundebug.com/" target="_blank" rel="external">Fundebug</a></p>
+<p>为了保证可读性，本文采用意译而非直译。</p>
+<blockquote>
+<p>一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法，它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。</p>
+</blockquote>
+<p>我们来举个例子，我们可以用4的阶乘乘以4来定义5的阶乘，3的阶乘乘以4来定义4的阶乘，以此类推。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">factorial(5) = factorial(4) * 5</div><div class="line">factorial(5) = factorial(3) * 4 * 5</div><div class="line">factorial(5) = factorial(2) * 3 * 4 * 5</div><div class="line">factorial(5) = factorial(1) * 2 * 3 * 4 * 5</div><div class="line">factorial(5) = factorial(0) * 1 * 2 * 3 * 4 * 5</div><div class="line">factorial(5) = 1 * 1 * 2 * 3 * 4 * 5</div></pre></td></tr></table></figure>
+<p>用Haskell的Pattern matching 可以很直观的定义factorial函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">factorial n = factorial (n-1)  * n</div><div class="line">factorial 0 = 1</div></pre></td></tr></table></figure>
+<p>在递归的例子中，从第一个调用factorial(5)开始，一直递归调用factorial函数自身直到参数的值为0。下面是一个形象的图例：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.fundebug.com/2017/06/14/all-about-recursions/factorial-calls.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="递归的调用栈"><a href="#递归的调用栈" class="headerlink" title="递归的调用栈"></a>递归的调用栈</h1><p>为了理解调用栈，我们回到factorial函数的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function factorial(n) &#123;</div><div class="line">    if (n === 0) &#123;</div><div class="line">        return 1</div><div class="line">    &#125;</div><div class="line">    return n * factorial(n - 1)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果我们传入参数3，将会递归调用factorial(2)、factorial(1)和factorial(0)，因此会额外再调用factorial三次。</p>
+<p>每次函数调用都会压入调用栈，整个调用栈如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">factorial(0) // 0的阶乘为1</div><div class="line">factorial(1) // 该调用依赖factorial(0)</div><div class="line">factorial(2) // 该调用依赖factorial(1)</div><div class="line">factorial(3) // 该掉用依赖factorial(2)</div></pre></td></tr></table></figure>
+<p>现在我们修改代码，插入console.trace()来查看每一次当前的调用栈的状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function factorial(n) &#123;</div><div class="line">    console.trace()</div><div class="line">    if (n === 0) &#123;</div><div class="line">        return 1</div><div class="line">    &#125;</div><div class="line">    return n * factorial(n - 1)</div><div class="line">&#125;</div><div class="line">factorial(3)</div></pre></td></tr></table></figure>
+<p>接下来我们看看调用栈是怎样的。</p>
+<ul>
+<li>第一个：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Trace</div><div class="line">    at factorial (repl:2:9)</div><div class="line">    at repl:1:1 // 请忽略以下底层实现细节代码</div><div class="line">    at realRunInThisContextScript (vm.js:22:35)</div><div class="line">    at sigintHandlersWrap (vm.js:98:12)</div><div class="line">    at ContextifyScript.Script.runInThisContext (vm.js:24:12)</div><div class="line">    at REPLServer.defaultEval (repl.js:313:29)</div><div class="line">    at bound (domain.js:280:14)</div><div class="line">    at REPLServer.runBound [as eval] (domain.js:293:12)</div><div class="line">    at REPLServer.onLine (repl.js:513:10)</div><div class="line">    at emitOne (events.js:101:20)</div></pre></td></tr></table></figure>
+<p>你会发现，该调用栈包含一个对factorial函数的调用，这里是factorial(3)。接下来就更加有趣了，我们来看第二次打印出来的调用栈：</p>
+<p>现在我们有两个对factorial函数的调用。</p>
+<ul>
+<li>第三次：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Trace</div><div class="line">    at factorial (repl:2:9)</div><div class="line">    at factorial (repl:7:12)</div><div class="line">    at factorial (repl:7:12)</div><div class="line">    at repl:1:1</div><div class="line">    at realRunInThisContextScript (vm.js:22:35)</div><div class="line">    at sigintHandlersWrap (vm.js:98:12)</div><div class="line">    at ContextifyScript.Script.runInThisContext (vm.js:24:12)</div><div class="line">    at REPLServer.defaultEval (repl.js:313:29)</div><div class="line">    at bound (domain.js:280:14)</div><div class="line">    at REPLServer.runBound [as eval] (domain.js:293:12)</div></pre></td></tr></table></figure>
+<ul>
+<li>第四次：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Trace</div><div class="line">    at factorial (repl:2:9)</div><div class="line">    at factorial (repl:7:12)</div><div class="line">    at factorial (repl:7:12)</div><div class="line">    at factorial (repl:7:12)</div><div class="line">    at repl:1:1</div><div class="line">    at realRunInThisContextScript (vm.js:22:35)</div><div class="line">    at sigintHandlersWrap (vm.js:98:12)</div><div class="line">    at ContextifyScript.Script.runInThisContext (vm.js:24:12)</div><div class="line">    at REPLServer.defaultEval (repl.js:313:29)</div><div class="line">    at bound (domain.js:280:14)</div></pre></td></tr></table></figure>
+<p>设想，如果传入的参数值特别大，那么这个调用栈将会非常之大，最终可能超出调用栈的缓存大小而崩溃导致程序执行失败。那么如何解决这个问题呢？使用尾递归。</p>
+<h1 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h1><p>尾递归是一种递归的写法，可以避免不断的将函数压栈最终导致堆栈溢出。通过设置一个累加参数，并且每一次都将当前的值累加上去，然后递归调用。</p>
+<p>我们来看如何改写之前定义factorial函数为尾递归：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function factorial(n, total = 1) &#123;</div><div class="line">    if (n === 0) &#123;</div><div class="line">        return total</div><div class="line">    &#125;</div><div class="line">    return factorial(n - 1, n * total)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>factorial(3)的执行步骤如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">factorial(3, 1)</div><div class="line">factorial(2, 3)</div><div class="line">factorial(1, 6)</div><div class="line">factorial(0, 6)</div></pre></td></tr></table></figure>
+<p>调用栈不再需要多次对factorial进行压栈处理，因为每一个递归调用都不在依赖于上一个递归调用的值。因此，空间的复杂度为o(1)而不是0(n)。</p>
+<p>接下来，通过console.trace()函数将调用栈打印出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function factorial(n, total = 1) &#123;</div><div class="line">    console.trace()</div><div class="line">    if (n === 0) &#123;</div><div class="line">        return total</div><div class="line">    &#125;</div><div class="line">    return factorial(n - 1, n * total)</div><div class="line">&#125;</div><div class="line">factorial(3)</div></pre></td></tr></table></figure>
+<p>很惊讶的发现，依然有很多压栈!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// ...</div><div class="line">// 下面是最后两次对factorial的调用</div><div class="line">Trace</div><div class="line">    at factorial (repl:2:9) // 3次压栈</div><div class="line">    at factorial (repl:7:8)</div><div class="line">    at factorial (repl:7:8)</div><div class="line">    at repl:1:1 // 请忽略以下底层实现细节代码</div><div class="line">    at realRunInThisContextScript (vm.js:22:35)</div><div class="line">    at sigintHandlersWrap (vm.js:98:12)</div><div class="line">    at ContextifyScript.Script.runInThisContext (vm.js:24:12)</div><div class="line">    at REPLServer.defaultEval (repl.js:313:29)</div><div class="line">    at bound (domain.js:280:14)</div><div class="line">    at REPLServer.runBound [as eval] (domain.js:293:12)</div><div class="line">Trace</div><div class="line">    at factorial (repl:2:9) // 最后第一调用再次压栈</div><div class="line">    at factorial (repl:7:8)</div><div class="line">    at factorial (repl:7:8)</div><div class="line">    at factorial (repl:7:8)</div><div class="line">    at repl:1:1 // 请忽略以下底层实现细节代码</div><div class="line">    at realRunInThisContextScript (vm.js:22:35)</div><div class="line">    at sigintHandlersWrap (vm.js:98:12)</div><div class="line">    at ContextifyScript.Script.runInThisContext (vm.js:24:12)</div><div class="line">    at REPLServer.defaultEval (repl.js:313:29)</div><div class="line">    at bound (domain.js:280:14)</div></pre></td></tr></table></figure>
+<p>这是为什么呢？<br>在Nodejs下面，我们可以通过开启strict mode, 并且使用–harmony_tailcalls来开启尾递归(proper tail call)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;</div><div class="line">function factorial(n, total = 1) &#123;</div><div class="line">    console.trace()</div><div class="line">    if (n === 0) &#123;</div><div class="line">        return total</div><div class="line">    &#125;</div><div class="line">    return factorial(n - 1, n * total)</div><div class="line">&#125;</div><div class="line">factorial(3)</div></pre></td></tr></table></figure>
+<p>使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node --harmony_tailcalls factorial.js</div></pre></td></tr></table></figure>
+<p>调用栈信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">Trace</div><div class="line">    at factorial (/Users/stefanzan/factorial.js:3:13)</div><div class="line">    at Object.&lt;anonymous&gt; (/Users/stefanzan/factorial.js:9:1)</div><div class="line">    at Module._compile (module.js:570:32)</div><div class="line">    at Object.Module._extensions..js (module.js:579:10)</div><div class="line">    at Module.load (module.js:487:32)</div><div class="line">    at tryModuleLoad (module.js:446:12)</div><div class="line">    at Function.Module._load (module.js:438:3)</div><div class="line">    at Module.runMain (module.js:604:10)</div><div class="line">    at run (bootstrap_node.js:394:7)</div><div class="line">    at startup (bootstrap_node.js:149:9)</div><div class="line">Trace</div><div class="line">    at factorial (/Users/stefanzan/factorial.js:3:13)</div><div class="line">    at Object.&lt;anonymous&gt; (/Users/stefanzan/factorial.js:9:1)</div><div class="line">    at Module._compile (module.js:570:32)</div><div class="line">    at Object.Module._extensions..js (module.js:579:10)</div><div class="line">    at Module.load (module.js:487:32)</div><div class="line">    at tryModuleLoad (module.js:446:12)</div><div class="line">    at Function.Module._load (module.js:438:3)</div><div class="line">    at Module.runMain (module.js:604:10)</div><div class="line">    at run (bootstrap_node.js:394:7)</div><div class="line">    at startup (bootstrap_node.js:149:9)</div><div class="line">Trace</div><div class="line">    at factorial (/Users/stefanzan/factorial.js:3:13)</div><div class="line">    at Object.&lt;anonymous&gt; (/Users/stefanzan/factorial.js:9:1)</div><div class="line">    at Module._compile (module.js:570:32)</div><div class="line">    at Object.Module._extensions..js (module.js:579:10)</div><div class="line">    at Module.load (module.js:487:32)</div><div class="line">    at tryModuleLoad (module.js:446:12)</div><div class="line">    at Function.Module._load (module.js:438:3)</div><div class="line">    at Module.runMain (module.js:604:10)</div><div class="line">    at run (bootstrap_node.js:394:7)</div><div class="line">    at startup (bootstrap_node.js:149:9)</div><div class="line">Trace</div><div class="line">    at factorial (/Users/stefanzan/factorial.js:3:13)</div><div class="line">    at Object.&lt;anonymous&gt; (/Users/stefanzan/factorial.js:9:1)</div><div class="line">    at Module._compile (module.js:570:32)</div><div class="line">    at Object.Module._extensions..js (module.js:579:10)</div><div class="line">    at Module.load (module.js:487:32)</div><div class="line">    at tryModuleLoad (module.js:446:12)</div><div class="line">    at Function.Module._load (module.js:438:3)</div><div class="line">    at Module.runMain (module.js:604:10)</div><div class="line">    at run (bootstrap_node.js:394:7)</div><div class="line">    at startup (bootstrap_node.js:149:9)</div></pre></td></tr></table></figure>
+<p>你会发现，不会在每次调用的时候压栈，只有一个factorial。</p>
+<p>注意：尾递归不一定会将你的代码执行速度提高；相反，可能会变慢。不过，尾递归可以让你使用更少的内存，使你的递归函数更加安全 (前提是你要开启harmony模式)。</p>
+
         </div>
 
         <blockquote class="post-copyright">
