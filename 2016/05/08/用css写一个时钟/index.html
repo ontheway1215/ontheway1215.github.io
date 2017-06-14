@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>用css写一个时钟 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CSS3,HTML5">
+    <meta name="description" content="HTML5以及CSS3能做出许多特别炫的东西，这也是为什么越来越多人喜欢学习H5和CSS3了，今天来分享一个通过CSS3和原生js写出的时钟。先放链接：http://chenqiangyi.com/demo/cssClock.html,上面的时钟刻度以及指针的旋转都用了CSS3的tranform的rotate属性，接下来将主要方法吧。">
+<meta name="keywords" content="CSS3,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用css写一个时钟">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="HTML5以及CSS3能做出许多特别炫的东西，这也是为什么越来越多人喜欢学习H5和CSS3了，今天来分享一个通过CSS3和原生js写出的时钟。先放链接：http://chenqiangyi.com/demo/cssClock.html,上面的时钟刻度以及指针的旋转都用了CSS3的tranform的rotate属性，接下来将主要方法吧。">
+<meta property="og:image" content="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160522213317_88662.png">
+<meta property="og:updated_time" content="2017-06-14T07:05:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用css写一个时钟">
+<meta name="twitter:description" content="HTML5以及CSS3能做出许多特别炫的东西，这也是为什么越来越多人喜欢学习H5和CSS3了，今天来分享一个通过CSS3和原生js写出的时钟。先放链接：http://chenqiangyi.com/demo/cssClock.html,上面的时钟刻度以及指针的旋转都用了CSS3的tranform的rotate属性，接下来将主要方法吧。">
+<meta name="twitter:image" content="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160522213317_88662.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://element.chenqiangyi.cn" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">用css写一个时钟</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">用css写一个时钟</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-08T15:42:54.000Z" itemprop="datePublished" class="page-time">
+  2016-05-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局"><span class="post-toc-number">1.</span> <span class="post-toc-text">布局</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#js控制"><span class="post-toc-number">2.</span> <span class="post-toc-text">js控制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加钟表是时刻针"><span class="post-toc-number">3.</span> <span class="post-toc-text">添加钟表是时刻针</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加拖拽效果"><span class="post-toc-number">4.</span> <span class="post-toc-text">添加拖拽效果</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-用css写一个时钟"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">用css写一个时钟</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-08 23:42:54" datetime="2016-05-08T15:42:54.000Z"  itemprop="datePublished">2016-05-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>HTML5以及CSS3能做出许多特别炫的东西，这也是为什么越来越多人喜欢学习H5和CSS3了，今天来分享一个通过CSS3和原生js写出的时钟。<br>先放链接：<a href="http://chenqiangyi.com/demo/cssClock.html" target="_blank" rel="external">http://chenqiangyi.com/demo/cssClock.html</a>,<br>上面的时钟刻度以及指针的旋转都用了CSS3的tranform的rotate属性，接下来将主要方法吧。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160522213317_88662.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>css玩的就是布局，首先需要一个大盒子作为钟表的圆盘，然后就是三个指针，因为三个指针都需要摆动，所以指针需要是绝对定位的。可以先设置指针的top和left为50%，然后通过margin-top和margin-left分别为负的宽高的一半就会调整到中心位置最终可以把三个点固定到中心的cap位置上。</p>
+<h2 id="js控制"><a href="#js控制" class="headerlink" title="js控制"></a>js控制</h2><p> 现获取时间对象，获取每一刻的时iH、分iM、秒iS，然后通过修改每一个指针的每一刻旋转的角度来，控制钟表时间的转动；其中当时针每走一个刻度转动的角度是iH<em>30+iM/60</em>30,分针每走一个刻度转动的角度是iH<em>6+iM/60</em>6,秒针每走一个刻度转动的角度是iH<em>6+iMs/1000</em>6,其中不能忘了当时针转一定角度的时候分针也转动了一定角度，需要在加上时针转动的角度时时针转动的相应的角度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">oH.style.transform=&quot;rotate(&quot;+(iH*30+iM/60*30)+&quot;deg)&quot;;</div><div class="line">oM.style.transform=&quot;rotate(&quot;+(iM*6+iS/60*6)+&quot;deg)&quot;;</div><div class="line">oS.style.transform=&quot;rotate(&quot;+(iS*6+iMs/1000*6)+&quot;deg)&quot;;</div></pre></td></tr></table></figure>
+<p>然后给钟表添加一个定时器，就会看到钟表开始跑了，此时你会发现转动的角度乱七八糟，这是因为转动的旋转中心没有设定，需要把指针的旋转中心设置为tranform-origin:center bottom;也就是圆盘的正中心，这时就会看到指针正常了，如果你看到了秒针每次跳动几格，那是因为你的时分秒没有加上分秒毫秒转动时他们转动的角度。</p>
+<h2 id="添加钟表是时刻针"><a href="#添加钟表是时刻针" class="headerlink" title="添加钟表是时刻针"></a>添加钟表是时刻针</h2><p> 如果手工添加的话就太笨重了，作为一名程序员当然是自动添加的，这时就有一个问题了：怎么让指针每隔五个刻度变大一次，这需要对刻度遍历，因为只有60个刻度，只需循环60次即可把指针创建出来。这时需要创建span标签，然后添加到表盘中，此时会看到所有的刻度针都挤在了12刻度出，这时需要对每一个刻度进行旋转一定角度，并且旋转的中心也是中心点就像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">oSpan.style.transform=&quot;rotate(&quot;+i*6+&quot;deg)&quot;</div></pre></td></tr></table></figure>
+<p> 然后再对5取余刚好正除的添加一个长一点的样式，此时就连时钟的刻度表也会出来了，此时你可能会感觉怪怪的，那是因为刻度数字也被旋转了，此时就需要对刻度数次重新调整方向：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">oSpan.children[0].style.transform=&quot;rotate(&quot;+(-i*6)+&quot;deg)&quot;</div></pre></td></tr></table></figure>
+<p> 让span的第一个子元素，也就是时刻度数归位，此时就会看到时钟的模型已经出来了。</p>
+<h2 id="添加拖拽效果"><a href="#添加拖拽效果" class="headerlink" title="添加拖拽效果"></a>添加拖拽效果</h2><p> 通过鼠标的拖拽实时改动盒子的left和top值就完成了拖拽</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p> 通过钟表的制作自己对CSS3有了更多的认识，也感觉到了CSS3的强大，以后将会做出更多的CSS效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">	#div1&#123;width: 300px;height: 300px;position: absolute;border: 10px solid #0099ff;box-shadow: 1px 2px 2px #0099ff; border-radius: 50%;margin:auto;&#125;</div><div class="line">	#cap&#123;position: absolute;width: 20px;height: 20px;border-radius: 50%;background: #0099ff;top: 50%;left: 50%;margin-left: -10px;margin-top: -10px;&#125;</div><div class="line">	#div1 div&#123;transform-origin: center bottom&#125;</div><div class="line">	#hour&#123;width: 10px;height: 80px;position: absolute;left: 50%;top: 50%;margin-left: -5px;background: #000;margin-top: -80px;&#125;</div><div class="line">	#minute&#123;width: 8px;height: 100px;top: 50%;left: 50%;margin-left: -4px;margin-top: -100px;position: absolute;background: #000;&#125;</div><div class="line">	#second&#123;width: 6px;height: 120px;left: 50%;top: 50%;margin-left: -3px;margin-top: -120px;position: absolute;background: red;&#125;</div><div class="line">	#div1 span&#123;position: absolute;left: 50%;top: 0px;background: #000;width: 2px;margin-left: -2px;height: 8px;transform-origin: center 150px;&#125;</div><div class="line">	#div1 span.on&#123;width: 4px;height: 12px;margin-left: -2px;&#125;</div><div class="line">	#div1 span strong&#123;position: absolute;left: 50%;top: 10px;width: 40px;margin-left: -20px;text-align: center;font-weight: normal;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	window.onload=function()&#123;</div><div class="line">		var oDiv=document.getElementById(&quot;div1&quot;);</div><div class="line">		var oH=document.getElementById(&quot;hour&quot;);</div><div class="line">		var oM=document.getElementById(&quot;minute&quot;);</div><div class="line">		var oS=document.getElementById(&quot;second&quot;);</div><div class="line">		var oSpan=document.getElementById(&quot;span&quot;);</div><div class="line">		var oCap=document.getElementById(&quot;cap&quot;);</div><div class="line">		function click()&#123;</div><div class="line">			var oDate=new Date();</div><div class="line">			var iH=oDate.getHours();</div><div class="line">			var iM=oDate.getMinutes();</div><div class="line">			var iS=oDate.getSeconds();</div><div class="line">			var iMs=oDate.getMilliseconds();</div><div class="line">			oH.style.transform=&quot;rotate(&quot;+(iH*30+iM/60*30)+&quot;deg)&quot;;</div><div class="line">			oM.style.transform=&quot;rotate(&quot;+(iM*6+iS/60*6)+&quot;deg)&quot;;</div><div class="line">			oS.style.transform=&quot;rotate(&quot;+(iS*6+iMs/1000*6)+&quot;deg)&quot;;</div><div class="line">		&#125;</div><div class="line">		click();</div><div class="line">		setInterval(click,30);</div><div class="line">		//创建刻度</div><div class="line">		for(var i=0;i&lt;60;i++)&#123;</div><div class="line">			var oSpan=document.createElement(&quot;span&quot;);</div><div class="line">			oDiv.appendChild(oSpan);</div><div class="line">			if(i%5==0)&#123;</div><div class="line">				oSpan.className=&quot;on&quot;;</div><div class="line">				oSpan.innerHTML=&quot;&lt;strong&gt;&quot;+(i==0?12:i/5)+&quot;&lt;/strong&gt;&quot;;</div><div class="line">				oSpan.children[0].style.transform=&quot;rotate(&quot;+(-i*6)+&quot;deg)&quot;</div><div class="line">			&#125;</div><div class="line">			oSpan.style.transform=&quot;rotate(&quot;+i*6+&quot;deg)&quot;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		oDiv.onmousedown=function(ev)&#123;</div><div class="line">			var oEvt=ev||event;</div><div class="line">			var disX=oEvt.clientX-oDiv.offsetLeft;</div><div class="line">			var disY=oEvt.clientY-oDiv.offsetTop;</div><div class="line">			document.onmousemove=function(ev)&#123;</div><div class="line">				var oEvt=ev||event;</div><div class="line">				oDiv.style.left=oEvt.clientX-disX+&quot;px&quot;;</div><div class="line">				oDiv.style.top=oEvt.clientY-disY+&quot;px&quot;;</div><div class="line">			&#125;</div><div class="line">			document.onmouseup=function()&#123;</div><div class="line">				document.onmousemove=document.onmouseup=null;</div><div class="line">				oDiv.releaseCapture &amp;&amp; oDiv.releaseCapture();</div><div class="line">			&#125;</div><div class="line">			oDiv.setCapture &amp;&amp; oDiv.setCapture();</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;div1&quot;&gt;</div><div class="line">	&lt;div id=&quot;hour&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;div id=&quot;minute&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;div id=&quot;second&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;div id=&quot;cap&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;!--	&lt;span&gt;&lt;strong&gt;12&lt;/strong&gt;&lt;/span&gt;--&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/05/08/用css写一个时钟/" target="_blank" rel="external">http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/&title=《用css写一个时钟》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/&title=《用css写一个时钟》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《用css写一个时钟》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/05/11/HTML5头图切换效果/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">HTML5头图切换效果</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/05/gulp学习笔记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">gulp学习笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/&title=《用css写一个时钟》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/&title=《用css写一个时钟》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《用css写一个时钟》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQXLDIAwF0Nz/0um2M23dLwl3Cn6sMomDeSw0IOn1isf700h+fX8Z1zMnb1kwMDAwtmW8L0e+rB41+Xy9NgwMjOcwklCYP3/9TbJl1XdhYGBgJAe46zCdzIyBgYGxinEdOpPL6h3BHQMD4wmM6nGtisw37va7OAYGxoaMPOv+959vqW9gYGBsxXgXRzWJPwnQhVVhYGAczcgD3OTguOri+ku5FAMD42hG7w/J95P2i7y0gIGB8RxGXkqchNQ8MdcM6xgYGIcykj/3SpV5U0VeVPhxBgwMjKMZazPwSRDvpfCWVUIwMDC2Ykwm6h3mqjNEQRYDA+NoRi/VfveFtvoMBgbG2YykMJkfAedHvfxCG/WMYGBgHMqYLysvM8yTcQtqCxgYGP+ekfcq9MoD1eat66WX84IYGBgHMe5o+cpTbNXEX9RsgYGBcRCjGl5zRjUoV7cJAwMDYxKC81pErx/kmzdiYGAczbijhavKmxQYmrdwDAyMDRl5kbKZw2tdbsvFAwwMjAcwqqE2WdykSFDePgwMjAcwJi1ieftFb4OiRB4GBsahjF4BIDlEThoyylQMDIyjGdUjWjW5n5cHeo0XZRgGBsa2jDzIrgL3AvqySywGBsa2jEn6LE/o55fe6moxMDAwqg0T+QyT5zEwMDB6xcvqEpNQG4VpDAyMBzDmxYBq0j8vFSxOt2FgYGzImLdn9Y53vRaxUVETAwNjP8YHF13bGf1bWyEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

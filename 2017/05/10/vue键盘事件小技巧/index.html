@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>vue键盘事件小技巧 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript,vue,键盘事件">
+    <meta name="description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
+<meta name="keywords" content="JavaScript,vue,键盘事件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue键盘事件小技巧">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
+<meta property="og:updated_time" content="2017-06-08T09:50:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue键盘事件小技巧">
+<meta name="twitter:description" content="最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下： mounted() {      var that = this;">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://element.chenqiangyi.cn" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vue键盘事件小技巧</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue键盘事件小技巧</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-10T14:04:01.000Z" itemprop="datePublished" class="page-time">
+  2017-05-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-vue键盘事件小技巧"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue键盘事件小技巧</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-10 22:04:01" datetime="2017-05-10T14:04:01.000Z"  itemprop="datePublished">2017-05-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近用Vue做一个运营工具，需求是当在编辑完成的时候可以知接按住Alt+S提交表单并保存,查询vue文档发现尤大已经把常用的按键封装到框架中了，然而所有的绑定都必须在表单元素中进行，显然不符合我那个开发工具的需求，最后不断查文档，并没有找到相关的文章。最后只能用原生的keydown事件了，监听整个windowd,代码如下：</p>
+<pre class="prettyprint lang-js">mounted() {
+     var that = this;
+     document.onkeydown=function(e) {
+           if(e &amp;&amp; e.keyCode==83 &amp;&amp; e.altKey ){     //同时按下Alt+S
+                   that.submitBtn(e);
+           }
+      }
+},
+methods: {
+    submitBtn(e) {
+        //相关函数
+    }
+}</pre>
+然后就总结一下vue中的键盘事件：
+
+<pre class="prettyprint lang-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;script src="vue.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript"&gt;
+        window.onload = function(){
+            var vm = new Vue({
+                el:'#box',
+                methods:{
+                    show:function(ev){
+                        if(ev.keyCode == 13){
+                            alert('你按回车键了');
+                        }
+                    },
+                }
+            });
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="box"&gt;
+        &lt;input type="text" placeholder="请输入" @keyup="show($event)"&gt;
+
+        &lt;input type="text" placeholder="请输入" @keyup.13="show($event)"&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<pre><code>&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.13 回车&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.enter 回车&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.left 左键&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.right 右键&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.up 上键&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;@keyup.down 下键&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot; style=&quot;color:#0000FF;&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;@keyup.&lt;span class=&quot;hljs-keyword&quot;&gt;delete 删除键&lt;span style=&quot;color:#4C33E5;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span style=&quot;font-size:16px;&quot;&gt;其他按键别名：&lt;/span&gt;
+
+&lt;span style=&quot;font-size:16px;&quot;&gt; &lt;/span&gt;
+</code></pre><ul>
+<li>.enter</li>
+<li>.tab</li>
+<li>.delete&nbsp;(捕获 “删除” 和 “退格” 键)</li>
+<li>.esc</li>
+<li>.space</li>
+<li>.up</li>
+<li>.down</li>
+<li>.left</li>
+<li><p>.right<br><span style="color:#34495E;font-family:&quot;font-size:15px;background-color:#FFFFFF;">可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应：</span></p>
+<p><span style="font-size:16px;"> </span></p>
+</li>
+<li><p>.ctrl</p>
+</li>
+<li>.alt</li>
+<li>.shift</li>
+<li>.meta<br><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">注意：在Mac系统键盘上，meta对应命令键 (⌘)。在Windows系统键盘meta对应windows徽标键(⊞)。在Sun操作系统键盘上，meta对应实心宝石键 (◆)。在其他特定键盘上，尤其在MIT和Lisp键盘及其后续，比如Knight键盘，space-cadet键盘，meta被标记为“META”。在Symbolics键盘上，meta被标记为“META” 或者 “Meta”。</span></li>
+</ul>
+<p><span style="color:#34495E;font-family:&quot;font-size:15px;font-weight:600;background-color:#FFFFFF;">例如:</span></p>
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt; &lt;/span&gt;&lt;/span&gt;
+</code></pre><pre>        
+
+<div class="line">
+    <span class="comment" style="color:#B3B3B3;">&lt;!-- Alt + C --&gt;</span>
+</div>
+
+<div class="line">
+    <span class="tag" style="color:#2973B7;">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string" style="color:#42B983;">"clear"</span>&gt;</span>
+</div>
+
+<div class="line">
+
+</div>
+
+<div class="line">
+    <span class="comment" style="color:#B3B3B3;">&lt;!-- Ctrl + Click --&gt;</span>
+</div>
+
+<div class="line">
+    <span class="tag" style="color:#2973B7;">&lt;<span class="name">div</span> @<span class="attr">click.ctrl</span>=<span class="string" style="color:#42B983;">"doSomething"</span>&gt;</span>Do something<span class="tag" style="color:#2973B7;">&lt;/<span class="name">div</span>&gt;</span>
+</div>
+</pre>
+
+<pre><code>&lt;span style=&quot;font-size:16px;&quot;&gt;&lt;span style=&quot;color:#34495E;font-family:&amp;quot;font-size:15px;font-weight:600;background-color:#FFFFFF;&quot;&gt;
+</code></pre><p></p>
+<p></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/05/10/vue键盘事件小技巧/" target="_blank" rel="external">http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键盘事件/">键盘事件</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/14/JavaScript中的递归/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JavaScript中的递归</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/25/ES6新特性总结/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ES6新特性总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/&title=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue键盘事件小技巧》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/05/10/vue键盘事件小技巧/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQY7jMAwEwPz/057rAot4u6lksJZKJ8OJY5UODCnq9YrH9cf4+07yafubr28MDAyMxzKu25FMuv395H4+NwwMjHMY716/8tNtgL6//secMTAwMN5MMZn6bIEwMDAwPhVwkxTz/i3/xf8GBgbGQxjtJD716WxTDwMD4zRGvmX2+9df6W9gYGA8inGVo21wto3JazQwMDD2ZuQBbtYMWA/c+cJhYGDsysiPPqzcb0vWtv2AgYGxN6N9+NsTzduZ0f8GBgbGFow8UUvSwVmamC/B20QTAwNja8aniti8rM0L1/rYGQYGxqaM/LDXrHDNk8vksEVUvmJgYGzHiFKuhWSxvZMfHYtIGBgYWzCShGy9ZJ0li0VoxsDA2JoxC4XtYa/ZQbF6Gw4DA+MARrt9dv/NFtmG7OGOIAYGxmMZ32gP5Ft1eQIaLRMGBsamjPaB/JWzp4ZHMTAwMA5gtA/nE2237fJAjIGBgZHcyZPCWfMyXzIMDIwTGCsl6CxwDxsA75YDAwPjGEaSDs7K1LooLY9lYGBgnMBIrpMEsW0qtE3Kt9/EwMDYlHGVY7YdthLKIyoGBsbWjPbAVjLFPPlbSQeTEI+BgbETY32jP89D83fVARcDA+MAxqy4zVPMNuwu1eIYGBgYcXsg34BbP6KBgYGBcR9k2ykWk8vDNAYGxgGMWUp3H4LbLbl2WTEwMM5hzErHldJ0/ZDZsKmJgYHxPMYPmKKyUJutYmcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>ES6-手册 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ES6,JavaScript">
+    <meta name="description" content="这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。 var 和 let/const 的比较除了 var ，我们现在还可以使用两个新的标示符来定义一个变量 —— let 和 const。和 var 不一样的是，let 和 const 不存在变量提升。 使用 var 的栗子： 123456789var snack = &apos;Meow Mix&apos;;functi">
+<meta name="keywords" content="ES6,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6-手册">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2016/08/04/ES6-手册/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。 var 和 let/const 的比较除了 var ，我们现在还可以使用两个新的标示符来定义一个变量 —— let 和 const。和 var 不一样的是，let 和 const 不存在变量提升。 使用 var 的栗子： 123456789var snack = &apos;Meow Mix&apos;;functi">
+<meta property="og:updated_time" content="2017-06-14T11:23:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6-手册">
+<meta name="twitter:description" content="这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。 var 和 let/const 的比较除了 var ，我们现在还可以使用两个新的标示符来定义一个变量 —— let 和 const。和 var 不一样的是，let 和 const 不存在变量提升。 使用 var 的栗子： 123456789var snack = &apos;Meow Mix&apos;;functi">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://element.chenqiangyi.cn" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ES6-手册</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ES6-手册</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-08-04T01:05:52.000Z" itemprop="datePublished" class="page-time">
+  2016-08-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#var-和-let-const-的比较"><span class="post-toc-number">1.</span> <span class="post-toc-text">var 和 let/const 的比较</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#用块级作用域代替"><span class="post-toc-number">2.</span> <span class="post-toc-text">用块级作用域代替</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-ES6-的块级作用域："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">使用 ES6 的块级作用域：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#箭头函数"><span class="post-toc-number">3.</span> <span class="post-toc-text">箭头函数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#字符串"><span class="post-toc-number">4.</span> <span class="post-toc-text">字符串</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#includes"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">.includes()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#repeat"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">repeat()</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模版字符串"><span class="post-toc-number">5.</span> <span class="post-toc-text">模版字符串</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解构"><span class="post-toc-number">6.</span> <span class="post-toc-text">解构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结构数组"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">结构数组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结构对象"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">结构对象</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模块"><span class="post-toc-number">7.</span> <span class="post-toc-text">模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-ES6-的出口"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">使用 ES6 的出口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#或者暴露一个对象列表："><span class="post-toc-number">7.2.</span> <span class="post-toc-text">或者暴露一个对象列表：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ES6-中的导入"><span class="post-toc-number">8.</span> <span class="post-toc-text">ES6 中的导入</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参数"><span class="post-toc-number">9.</span> <span class="post-toc-text">参数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rest-参数"><span class="post-toc-number">10.</span> <span class="post-toc-text">rest 参数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#命名参数"><span class="post-toc-number">11.</span> <span class="post-toc-text">命名参数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#展开操作"><span class="post-toc-number">12.</span> <span class="post-toc-text">展开操作</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#类-Classes"><span class="post-toc-number">13.</span> <span class="post-toc-text">类 Classes</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Symbols"><span class="post-toc-number">14.</span> <span class="post-toc-text">Symbols</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Symbol"><span class="post-toc-number">14.1.</span> <span class="post-toc-text">Symbol()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Symbol-for-key"><span class="post-toc-number">14.2.</span> <span class="post-toc-text">Symbol.for(key)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Maps"><span class="post-toc-number">15.</span> <span class="post-toc-text">Maps</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#WeakMaps"><span class="post-toc-number">16.</span> <span class="post-toc-text">WeakMaps</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Promises"><span class="post-toc-number">17.</span> <span class="post-toc-text">Promises</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Generators-生成器"><span class="post-toc-number">18.</span> <span class="post-toc-text">Generators 生成器</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Async-Await"><span class="post-toc-number">19.</span> <span class="post-toc-text">Async Await</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Getter-Setter-函数"><span class="post-toc-number">20.</span> <span class="post-toc-text">Getter/Setter 函数</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ES6-手册"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ES6-手册</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-08-04 09:05:52" datetime="2016-08-04T01:05:52.000Z"  itemprop="datePublished">2016-08-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ES6/">ES6</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这篇手册包含了 ES2015(ES6) 的使用小技巧、最佳实践以及可以给你每天的工作参考的代码片段。</p>
+<h1 id="var-和-let-const-的比较"><a href="#var-和-let-const-的比较" class="headerlink" title="var 和 let/const 的比较"></a>var 和 let/const 的比较</h1><p>除了 var ，我们现在还可以使用两个新的标示符来定义一个变量 —— let 和 const。和 var 不一样的是，let 和 const 不存在变量提升。</p>
+<p>使用 var 的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> snack = <span class="string">'Meow Mix'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFood</span>(<span class="params">food</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(food) &#123;</div><div class="line">    <span class="keyword">var</span> snack = <span class="string">'Friskies'</span>;</div><div class="line">    <span class="keyword">return</span> snack;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> snack;</div><div class="line">&#125;</div><div class="line">getFood(<span class="literal">false</span>);    <span class="comment">//  undefined</span></div></pre></td></tr></table></figure>
+<p>当我们用 let 代替 var 的时候，观察会发生什么：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> snack = <span class="string">'Meow Mix'</span> ;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFood</span>(<span class="params">food</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(food) &#123;</div><div class="line">    <span class="keyword">let</span> snack = <span class="string">'Friskies'</span>;</div><div class="line">    <span class="keyword">return</span> snack;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> snack;</div><div class="line">&#125; </div><div class="line">getFood(<span class="literal">false</span>);     <span class="comment">//  'Meow Mix'</span></div></pre></td></tr></table></figure>
+<p>当我们重构使用 var 的老代码的时候应该注意上面的变化。盲目地使用 let 替换 var 可能会出现出乎意料的情况。</p>
+<p>注意： let 和 const 是块级作用域，因此在变量未被定义之前使用它会产生一个 ReferenceError。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(x);       <span class="comment">//    Uncaught ReferenceError: x is not defined</span></div><div class="line"><span class="keyword">let</span> x = <span class="string">'hi'</span>;</div></pre></td></tr></table></figure>
+<p>最佳实践： 在遗留代码中放弃使用 var 声明意味着需要很小心地重构；在新的项目代码中，使用 let 声明一个可以改变的变量，用 const 声明一个不能被重新赋值的变量。</p>
+<h1 id="用块级作用域代替"><a href="#用块级作用域代替" class="headerlink" title="用块级作用域代替"></a>用块级作用域代替</h1><p>函数立即执行表达式 的通常用途是创造一个内部的作用域，在 ES6 中，我们能够创造一个块级作用域而不仅限于函数作用域：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> food = <span class="string">'Meow Mix'</span>;</div><div class="line">&#125;)();</div><div class="line"><span class="built_in">console</span>.log(food);      <span class="comment">//ReferenceError: food is not defined</span></div></pre></td></tr></table></figure>
+<h2 id="使用-ES6-的块级作用域："><a href="#使用-ES6-的块级作用域：" class="headerlink" title="使用 ES6 的块级作用域："></a>使用 ES6 的块级作用域：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="keyword">let</span> food = <span class="string">'Meow Mix'</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(food);     <span class="comment">// ReferenceError: food is not defined</span></div></pre></td></tr></table></figure>
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>我们经常需要给回调函数维护一个词法作用域的上下文 this。</p>
+<p>看看这个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype.prefixName = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">character</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + character;</div><div class="line">&#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//    Cannot read property 'name' of undefined</span></div></pre></td></tr></table></figure>
+<p>一个常用的解决办法是把 this 存在一个变量中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype.prefixName = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;      <span class="comment">// Store the context of this</span></div><div class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">character</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + character;</div><div class="line">&#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>我们也可以传递一个合适的 this 上下文：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype.prefixName = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">character</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + character;</div><div class="line">&#125;,<span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line">(arr) &#123;</div><div class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">character</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + character;</div><div class="line">&#125;,<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们还可以绑定上下文：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype.prefixName = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">character</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + character;</div><div class="line">&#125;.bind(<span class="keyword">this</span>));</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>使用 箭头函数，this 将不会受到影响，并且我们可以重写上面的函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype.prefixName = funciton (arr) &#123;</div><div class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="params">character</span> =&gt;</span> <span class="keyword">this</span>.name + character)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>最佳实践：当你需要维护一个 this 上下文的时候使用 箭头函数。</p>
+<p>在我们写一个函数的时候，箭头函数更加简洁并且可以很简单地返回一个值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Squares = arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x * X&#125;);  <span class="comment">//ReferenceError: arr is not defined</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>arr = [1, 2, 3, 4, 5];</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const squares = arr.map(x =&gt; x * x);</div><div class="line">//Arrow Function for terser implementation</div></pre></td></tr></table></figure>
+<p>最佳实践：尽可能使用箭头函数代替原来的写法。</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>在 ES6 中，标准库升级了很多，在这些变化中有许多新的对于字符串的函数，比如 .includes() 和 .repeat()。</p>
+<h2 id="includes"><a href="#includes" class="headerlink" title=".includes()"></a>.includes()</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> string = <span class="string">'food'</span>;</div><div class="line"><span class="keyword">var</span> substring = <span class="string">'foo'</span>;</div><div class="line"><span class="built_in">console</span>.log(string.indexOf(substring) &gt; <span class="number">-1</span>);     <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>之前我们使用 indexOf() 函数的返回值是否 -1 来判断字符串是否包含某些字符串，现在我们更简单地使用 .includes() 来返回一个布尔值来判断：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> string = <span class="string">'food'</span>;</div><div class="line"><span class="keyword">var</span> substring = <span class="string">'foo'</span>;</div><div class="line"><span class="built_in">console</span>.log(string.includes(substring));     <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">repeat</span>(<span class="params">string, count</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> strings = [];</div><div class="line">  <span class="keyword">while</span>(strings.length &gt; count) &#123;</div><div class="line">    strings.push(string);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> strings.join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 ES6 中，可以更简便地实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// String.repeat(numberOfRepetitions)</span></div><div class="line"><span class="string">'meow'</span>.repeat(<span class="number">3</span>)      <span class="comment">//"meowmeowmeow"</span></div></pre></td></tr></table></figure>
+<h1 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h1><p>使用 模版字符串 我们就可以不用对某些特殊自符进行转义处理了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = <span class="string">"This string contains \"double quotes\"  which are escaped."</span></div><div class="line">alert(text);</div><div class="line"><span class="comment">//This string contains "double quotes" which are escaped.</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> text = <span class="string">`This string contains "double quotes"  which are escaped.`</span>;</div></pre></td></tr></table></figure>
+<p>模版字符串 还支持插入，可以把变量值和字符串连接起来.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'Tiger'</span>;</div><div class="line"><span class="keyword">var</span> age = <span class="number">13</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'My cat is named'</span> + name + <span class="string">'and is'</span> +age + <span class="string">'years old.'</span>);</div><div class="line"><span class="comment">//My cat is namedTigerand is13years old.</span></div></pre></td></tr></table></figure>
+<p>更简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="string">'Tiger'</span>;</div><div class="line"><span class="keyword">const</span> age = <span class="number">13</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`My cat is named <span class="subst">$&#123;name&#125;</span> and is <span class="subst">$&#123;age&#125;</span> years old.`</span>);</div></pre></td></tr></table></figure>
+<p>在 ES5 中，需要换行时，需要这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = (</div><div class="line">  <span class="string">'cat\n'</span> +</div><div class="line">  <span class="string">'dog\n'</span> +</div><div class="line">  <span class="string">'nickelodeon'</span></div><div class="line">);</div><div class="line"><span class="built_in">console</span>.log(text);</div><div class="line"></div><div class="line"><span class="comment">//</span></div><div class="line">cat</div><div class="line">dog</div><div class="line">nickelodeon</div></pre></td></tr></table></figure>
+<p>或者这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = [</div><div class="line">  <span class="string">'cat'</span></div><div class="line">  <span class="string">'dog'</span></div><div class="line">  <span class="string">'nickelodeon'</span></div><div class="line">].join(<span class="string">'\n'</span>);</div></pre></td></tr></table></figure>
+<p>模版字符串 可以支持换行并且不需要额外的处理：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> text = ( <span class="string">`cat</span></div><div class="line">dog</div><div class="line">nicklodeon`</div></pre></td></tr></table></figure>
+<p>模版字符串 还支持表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="keyword">let</span> text = <span class="string">`The time and date is</span></div><div class="line"><span class="subst">$&#123;today.toLocaleString()&#125;</span>`;</div></pre></td></tr></table></figure>
+<h1 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h1><p>结构可以让我们用一个更简便的语法从一个数组或者对象（即使是深层的）中分离出来值，并存储他们。</p>
+<h2 id="结构数组"><a href="#结构数组" class="headerlink" title="结构数组"></a>结构数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="keyword">var</span> a = arr[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> b = arr[<span class="number">1</span>];</div><div class="line"><span class="keyword">var</span> c = arr[<span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> d = arr[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let [a, b, c, d] = [1, 2, 3, 4];</div><div class="line">console.log(a);    // 1</div><div class="line">console.log(b);    //  2</div></pre></td></tr></table></figure>
+<h2 id="结构对象"><a href="#结构对象" class="headerlink" title="结构对象"></a>结构对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> luke = &#123; <span class="attr">occupation</span>: <span class="string">'jedi'</span>, <span class="attr">father</span>: <span class="string">'anakin'</span> &#125;;</div><div class="line"><span class="keyword">var</span> occupation = luke.occupation;    <span class="comment">//  'jedi'</span></div><div class="line"><span class="keyword">var</span> father = luke.father;    <span class="comment">//  'anakin'</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> luke = &#123; <span class="attr">occupation</span>: <span class="string">'jedi'</span>, <span class="attr">father</span>: <span class="string">'anakin'</span> &#125;;</div><div class="line"><span class="keyword">let</span> &#123;occupation, father&#125; = luke;</div><div class="line"><span class="built_in">console</span>.log(occupation);    <span class="comment">//  'jedu'</span></div><div class="line"><span class="built_in">console</span>.log(father);    <span class="comment">//  'anakin'</span></div></pre></td></tr></table></figure>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>在 ES6 之前，我们使用 Browserify 这样的库来创建客户端的模块化，在 node.js 中使用 require。</p>
+<p>在 ES6 中，我们可以直接使用所有类型的模块化（AMD 和 CommonJS）。</p>
+<p>使用 CommonJS 的出口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="number">1</span>;</div><div class="line"><span class="built_in">module</span>.exports = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span>&#125;;</div><div class="line"><span class="built_in">module</span>.export = [<span class="string">'foo'</span>, <span class="string">'bar'</span>];</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;&#125;;</div></pre></td></tr></table></figure>
+<h2 id="使用-ES6-的出口"><a href="#使用-ES6-的出口" class="headerlink" title="使用 ES6 的出口"></a>使用 ES6 的出口</h2><p>在 ES6 中我们可以暴漏多个值，使用 Exports：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export let name = &apos;David&apos;;</div><div class="line">export let age = 25;</div></pre></td></tr></table></figure>
+<h2 id="或者暴露一个对象列表："><a href="#或者暴露一个对象列表：" class="headerlink" title="或者暴露一个对象列表："></a>或者暴露一个对象列表：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumTwo</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line"> <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumThree</span>(<span class="params">a, b, c</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b + c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> &#123; sumTwo, sumThree &#125;;</div></pre></td></tr></table></figure>
+<p>我们还可以暴露函数、对象和其他的值，通过简单地使用 export 这个关键字：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sumTwo</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sumThree</span>(<span class="params">a, b, c</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b + c;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后，我们还可以绑定一个默认的输出：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumTwo</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumThree</span>(<span class="params">a, b, c</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b + c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> api = &#123;</div><div class="line">  sumTwo,</div><div class="line">  sumThree</div><div class="line">&#125;;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> api;</div></pre></td></tr></table></figure>
+<p>最佳实践：</p>
+<p>总是在模块的最后面使用 export default 方法，这可以让暴露的东西更加清晰并且可以节省时间去找出暴漏出来值的名字。尤其如此，在 CommonJS 中通常的实践就是暴露一个简单的值或者对象。坚持这种模式，可以让我们的代码更加可读，并且在 ES6 和 CommonJS 模块之间更好地兼容。</p>
+<h1 id="ES6-中的导入"><a href="#ES6-中的导入" class="headerlink" title="ES6 中的导入"></a>ES6 中的导入</h1><p>在 ES6 中同样提供了多样的导入方式，我们可以这么导入一个整个文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'underscore'</span>;</div></pre></td></tr></table></figure>
+<p>需要着重注意的一点是简单的导入整个文件会在那个文件的顶部执行所有的代码</p>
+<p>和 Python 中类似，我们可以命名导入的值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; sumTwo, sumThree &#125; <span class="keyword">from</span> <span class="string">'math/addition'</span>;</div></pre></td></tr></table></figure>
+<p>我们还可以重命名导入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  sumTwo <span class="keyword">as</span> addTwoNumbers,</div><div class="line">  sumThree <span class="keyword">as</span> sumThreeNumbers</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'math/addition'</span>;</div></pre></td></tr></table></figure>
+<p>另外，我们可以导入所有的东西（整体加载）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * asutil <span class="keyword">from</span> <span class="string">'math/addition'</span>;</div></pre></td></tr></table></figure>
+<p>最后，我们可以从一个模块中导入一个值的列表：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> additionUtil <span class="keyword">from</span> <span class="string">'math/addition'</span>;</div><div class="line"><span class="keyword">const</span> &#123; sumTwo, sumThree &#125; = additionUtil;</div></pre></td></tr></table></figure>
+<p>可以像这样导入默认绑定的输出：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">'math/addition'</span>;</div><div class="line"><span class="comment">//  same as :import &#123;default as api &#125; from 'math/addition';</span></div></pre></td></tr></table></figure>
+<p>虽然最好保持出口的简单，但如果需要的话我们有时可以混合默认的进口和混合进口。当我们这样出口的时候：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// foos.js</span></div><div class="line"><span class="keyword">export</span> &#123; foo <span class="keyword">as</span> <span class="keyword">default</span>, foo1, foo2 &#125;;</div></pre></td></tr></table></figure>
+<p>我们可以这样导入它们：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> foo, &#123; foo1, foo2 &#125; <span class="keyword">from</span> <span class="string">'foos'</span>;</div></pre></td></tr></table></figure>
+<p>当我们用 commonjs 的语法导入一个模块的出口时（比如 React），我们可以这样做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">const</span> &#123; Component, PropTypes &#125; = React;</div></pre></td></tr></table></figure>
+<p>还有更精简的写法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component, PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div></pre></td></tr></table></figure>
+<p>注意：导出的值是动态引用的，而不是拷贝。因此，在一个模块中改变一个变量的绑定将影响输出模块中的值。应该避免改变这些导出值的公共接口。（原文这里我觉得有误）</p>
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><p>在 ES5 中，在函数中我们需要各种操作去处理 默认参数、不定参数 和 重命名参数 等需求，在 ES6 中我们可以使用更简洁的语法完成这些需求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTwoNumbers</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  x = x || <span class="number">0</span>;</div><div class="line">  y = y || <span class="number">0</span>;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line">addTwoNumbers(<span class="number">3</span>);    <span class="comment">// 3</span></div><div class="line">addTwoNumbers(<span class="number">3</span>,<span class="number">2</span>);  <span class="comment">// 5</span></div><div class="line">addTwoNumbers();    <span class="comment">//0</span></div></pre></td></tr></table></figure>
+<p>ES6 中，函数的参数可以支持设置默认值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTwoNumbers</span>(<span class="params"> x = <span class="number">0</span>, y = <span class="number">0</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line">addTwoNumbers(<span class="number">2</span>, <span class="number">4</span>);    <span class="comment">//6</span></div><div class="line">addTwoNumbers(<span class="number">2</span>);    <span class="comment">//2</span></div><div class="line">addTwoNumbers();    <span class="comment">//0</span></div></pre></td></tr></table></figure>
+<h1 id="rest-参数"><a href="#rest-参数" class="headerlink" title="rest 参数"></a>rest 参数</h1><p>在 ES5 中，我们需要这么处理不定参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">logArguments</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i&amp;lt; <span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[i]);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用 rest ，我们就可以处理不确定数目的参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">logArguments</span>(<span class="params">...args</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> arg <span class="keyword">of</span> args) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[i]);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="命名参数"><a href="#命名参数" class="headerlink" title="命名参数"></a>命名参数</h1><p>在 ES5 中是使用配置对象的模式来处理命名参数，jQuery 中的使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initializeCanvas</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> height = options.height || <span class="number">600</span>;</div><div class="line">  <span class="keyword">var</span> width = options.width || <span class="number">400</span>;</div><div class="line">  <span class="keyword">var</span> lineStroke = options.lineStroke || <span class="string">'black'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以利用解构的一个函数的形参实现相同的功能：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initializeCanvas</span>(<span class="params"></span></span></div><div class="line">  &#123; height = <span class="number">600</span>, width = <span class="number">400</span>, lineStroke = <span class="string">'black'</span>&#125;) &#123;</div><div class="line">     <span class="comment">// Use variables height, width, lineStroke here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果我们想使整个值可选择，我们可以结构将一个空的对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initializeCanvas</span> (<span class="params"></span></span></div><div class="line"> &#123; height = <span class="number">600</span>, width = <span class="number">400</span>, lineStroke = <span class="string">'black'</span> &#125; = &#123;&#125;) &#123;</div><div class="line">    <span class="comment">//  ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="展开操作"><a href="#展开操作" class="headerlink" title="展开操作"></a>展开操作</h1><p>在 ES5 中，我们可以 apply Math.max 方法来获得一个数组中的最大值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, [<span class="number">-1</span>, <span class="number">100</span>, <span class="number">9001</span>, <span class="number">-32</span>]);    <span class="comment">//  9001</span></div></pre></td></tr></table></figure>
+<p>在 ES6 中，我们可以通过展开操作把一个数组的值作为参数传递给一个函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.max(...[<span class="number">-1</span>, <span class="number">100</span>, <span class="number">9001</span>, <span class="number">-32</span>]);</div></pre></td></tr></table></figure>
+<p>我们可以更简洁地使用这个语法来合并数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> cities = [ <span class="string">'San Francisco'</span>, <span class="string">'Los Angeles'</span>];</div><div class="line"><span class="keyword">let</span> places = [ <span class="string">'Miami'</span>, ...cities, <span class="string">'Chicago'</span>];   <span class="comment">//['Miami', 'San Francisco', 'Los Angeles', 'Chicago' ]</span></div></pre></td></tr></table></figure>
+<h1 id="类-Classes"><a href="#类-Classes" class="headerlink" title="类 Classes"></a>类 Classes</h1><p>在 ES6 之前，我们通过构造函数来创造一个类，并且通过原型来扩展属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age, gender</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;</div><div class="line">  <span class="keyword">this</span>.gender = gender;</div><div class="line">&#125;</div><div class="line">Person.prototype.incrementAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.age +=<span class="number">1</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>然后可以这样继承类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Personal</span>(<span class="params">name, age, gender, occupation,hobby</span>)</span></div><div class="line">&#123;</div><div class="line">  Person.call(<span class="keyword">this</span>, name, age, gender);</div><div class="line">  <span class="keyword">this</span>.occupation = occupation;</div><div class="line">  <span class="keyword">this</span>.hobby = hobby;</div><div class="line">&#125;</div><div class="line">Personal.prototype = <span class="built_in">Object</span>.create(Person.prototype);</div><div class="line">Person.prototype.constructor = Personal;</div><div class="line">Personal.prototype.incrementAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  Person.prototype.incrementAge.call(<span class="keyword">this</span>);</div><div class="line">  <span class="keyword">this</span>.age += <span class="number">20</span>;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</div><div class="line">&#125;&lt;<span class="regexp">/pre&gt;</span></div></pre></td></tr></table></figure>
+<p>在 ES6 中，提供了更多的语法糖，可以直接创造一个类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, age, gender) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">    <span class="keyword">this</span>.gender = gender;</div><div class="line">  &#125;</div><div class="line">  incrementAge() &#123;</div><div class="line">    <span class="keyword">this</span>.age += <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用 extends 关键字来继承一个类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Personal</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, age, gender, occupation, hobby) &#123;</div><div class="line">    <span class="keyword">super</span>(name, age, gender);</div><div class="line">    <span class="keyword">this</span>.occupation = occupation;</div><div class="line">    <span class="keyword">this</span>.hobby = hobby;</div><div class="line">  &#125;</div><div class="line">  incrementAge() &#123;</div><div class="line">    <span class="keyword">super</span>.incrementAge();</div><div class="line">    <span class="keyword">this</span>.age +=<span class="number">20</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最佳实践：虽然使用 ES6 的语法创造类的时候，js引擎是如何实现类以及如何操作原型是令人费解的，但是未来对初学者来说这是一个好的开始，同时也可以让我们写更简洁的代码。</p>
+<h1 id="Symbols"><a href="#Symbols" class="headerlink" title="Symbols"></a>Symbols</h1><p>Symbols 在 ES6 之前就已经存在，但是我们现在可以直接使用一个开发的接口了。Symbols 是不可改变并且是第一无二的，可以在任意哈希中作一个key。</p>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol()"></a>Symbol()</h2><p>调用 Symbol() 或者 Symbol(description) 可以创造一个第一无二的符号，但是在全局是看不到的。Symbol() 的一个使用情况是给一个类或者命名空间打上补丁，但是可以确定的是你不会去更新它。比如，你想给 React.Component 类添加一个 refreshComponent 方法，但是可以确定的是你不会在之后更新这个方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> refreshComponent = <span class="built_in">Symbol</span>();</div><div class="line">React.Component.prototype[refreshComponent] = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Symbol-for-key"><a href="#Symbol-for-key" class="headerlink" title="Symbol.for(key)"></a>Symbol.for(key)</h2><p>Symbol.for(key) 同样会创造一个独一无二并且不可改变的 Symbol，但是它可以全局看到，两个相同的调用 Symbol.for(key) 会返回同一个 Symbol 类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Symbol</span>(<span class="string">'foo'</span>) === <span class="built_in">Symbol</span>(<span class="string">'foo'</span>)    <span class="comment">// false</span></div><div class="line"><span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>) === <span class="built_in">Symbol</span>(<span class="string">'foo'</span>);  <span class="comment">//false</span></div><div class="line"><span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>) === <span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>);  <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>对于 Symbols 的普遍用法（尤其是Symbol.for(key)）是为了协同性。它可以通过在一个第三方插件中已知的接口中对象中的参数中寻找用 Symbol 成员来实现，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">reader</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> specialRead = <span class="built_in">Symbol</span>.for(<span class="string">'specialRead'</span>);</div><div class="line">  <span class="keyword">if</span> (obj[specialRead]) &#123;</div><div class="line">    <span class="keyword">const</span> reader = obj[specialRead]();</div><div class="line">    <span class="comment">// do something with reader</span></div><div class="line">  &#125; <span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'object cannot be read'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在另一个库中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> specialRead = <span class="built_in">Symbol</span>.for(<span class="string">'specialRead'</span>);</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeReadableType</span> </span>&#123;</div><div class="line">  [specialRead]() &#123;</div><div class="line">    <span class="keyword">const</span> reader = createSomeReaderForm(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">return</span> reader;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Maps"><a href="#Maps" class="headerlink" title="Maps"></a>Maps</h1><p>Maps 在 JavaScript 中是一个非常必须的数据结构，在 ES6 之前，我们通过对象来实现哈希表：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">map[key1] = <span class="string">'value1'</span>;</div><div class="line">map[key2] = <span class="string">'value2'</span>;</div></pre></td></tr></table></figure>
+<p>但是它并不能防止我们偶然地用一些特殊的属性名重写函数:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getOwnProperty(&#123; <span class="attr">hasOwnProperty</span>: <span class="string">'Hah, overwritten'</span>&#125;, <span class="string">'Pwned'</span>);</div></pre></td></tr></table></figure>
+<p>实际上 Maps 允许我们对值进行 set、get 和 search 操作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">map.set(<span class="string">'name'</span>,<span class="string">'david'</span>);</div><div class="line">map.get(<span class="string">'name'</span>);    <span class="comment">//  david</span></div><div class="line">map.has(<span class="string">'name'</span>);   <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>Maps 更令人惊奇的部分就是它不仅限于使用字符串作为 key，还可以用其他任何类型的数据作为 key：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">  [<span class="string">'name'</span>, <span class="string">'david'</span>],</div><div class="line">  [<span class="literal">true</span>, <span class="string">'false'</span>],</div><div class="line">  [<span class="number">1</span>, <span class="string">'one'</span>],</div><div class="line">  [&#123;&#125;, <span class="string">'object'</span>],</div><div class="line">  [<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;, <span class="string">'function'</span>]</div><div class="line">]);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> map.keys()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> key);</div><div class="line">  <span class="comment">//  string, boolean, number, object, function</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：但我们使用 map.get() 方法去测试相等时，如果在 Maps 中使用 函数 或者 对象 等非原始类型值的时候测试将不起作用，所以我们应该使用 Strings, Booleans 和 Numbers 这样的原始类型的值。</p>
+<p>我们还可以使用 .entries() 来遍历迭代：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map.entries()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(key, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="WeakMaps"><a href="#WeakMaps" class="headerlink" title="WeakMaps"></a>WeakMaps</h1><p>在 ES6 之前，为了存储私有变量，我们有各种各样的方法去实现，其中一种方法就是用命名约定：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(age) &#123;</div><div class="line">    <span class="keyword">this</span>._age = age;</div><div class="line">  &#125;</div><div class="line">  _incrementAge() &#123;</div><div class="line">    <span class="keyword">this</span>._age += <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是命名约定在代码中仍然会令人混淆并且并不会真正的保持私有变量不被访问。现在，我们可以使用 WeakMaps 来存储变量：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> _age = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(age) &#123;</div><div class="line">    _age.set(<span class="keyword">this</span>, age);</div><div class="line">  &#125;</div><div class="line">  incrementAge() &#123;</div><div class="line">    <span class="keyword">let</span> age = _age.get(<span class="keyword">this</span>) + <span class="number">1</span>;</div><div class="line">    _age.set(<span class="keyword">this</span>, age);</div><div class="line">    <span class="keyword">if</span> (age &gt; <span class="number">50</span>) &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"Midlife crisis"</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 WeakMaps 存储变量很酷的一件事是它的 key 他不需要属性名称，可以使用 Reflect.ownKeys() 来查看这一点：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> Person(<span class="number">50</span>);</div><div class="line">person.incrementAge();     <span class="comment">//  'Midlife crisis'</span></div><div class="line"><span class="built_in">Reflect</span>.ownKeys(person);    <span class="comment">//  []</span></div></pre></td></tr></table></figure>
+<p>一个更实际的实践就是可以 WeakMaps 储存 DOM 元素，而不会污染元素本身：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"><span class="keyword">let</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'someElement'</span>);</div><div class="line"><span class="comment">// Store a weak reference to the element with a key</span></div><div class="line">map.set(el, <span class="string">'reference'</span>);</div><div class="line"><span class="comment">//  Access the value of element</span></div><div class="line"><span class="keyword">let</span> value = map.get(el);     <span class="comment">//  'reference'</span></div><div class="line"><span class="comment">//  Remove the reference</span></div><div class="line">el.parentNode.removeChild(el);</div><div class="line">el = <span class="literal">null</span>;</div><div class="line"></div><div class="line"><span class="comment">// map is empty, since the element is destroyed</span></div></pre></td></tr></table></figure>
+<p>如上所示，当一个对象被垃圾回收机制销毁的时候， WeakMap 将会自动地一处关于这个对象地键值对。</p>
+<p>注意：为了进一步说明这个例子的实用性，可以考虑 jQuery 是如何实现缓存一个对象相关于对引用地 DOM 元素对象。使用 jQuery ，当一个特定地元素一旦在 document 中移除的时候，jQuery 会自动地释放内存。总体来说，jQuery 在任何 dom 库中都是很有用的。</p>
+<h1 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h1><p>Promises 可以让我们远离平行的代码（回调地狱）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">func1(<span class="function"><span class="keyword">function</span> (<span class="params">value1</span>) </span>&#123;</div><div class="line">  func2(value1, <span class="function"><span class="keyword">function</span> (<span class="params">value2</span>) </span>&#123;</div><div class="line">    func3(value2, <span class="function"><span class="keyword">function</span> (<span class="params">value3</span>) </span>&#123;</div><div class="line">      func4(value3, <span class="function"><span class="keyword">function</span> (<span class="params">value4</span>) </span>&#123;</div><div class="line">        func5(value4, funciton (value5) &#123;</div><div class="line">          <span class="comment">//  Do something with value 5</span></div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>转变成垂直代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func1(value1)</div><div class="line">  .then(func2)</div><div class="line">  .then(func3)</div><div class="line">  .then(func4)</div><div class="line">  .then(func5, value5 =&gt; &#123;</div><div class="line">    <span class="comment">//  Do something with value 5</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在 ES6 之前，我们使用 bluebird 或者 q，现在我们可以使用原生的 Promise 了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span> (<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span></div><div class="line">  reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Failed to fulfill Promise'</span>)))</div><div class="line">  .catch(<span class="function"><span class="params">reason</span> =&gt;</span> <span class="built_in">console</span>.log(reason));</div></pre></td></tr></table></figure>
+<p>我们有两个处理器，resolve（当Promise是 fulfilled 时的回调）和 reject（当Promise是 rejected 时的回调）：。</p>
+<p>Promises的好处：对错误的处理使用一些列回调会使代码很混乱，使用 Promise ，我看可以清晰的让错误冒泡并且在合适的时候处理它，甚至，在 Promise 确定了 resolved/rejected 之后，他的值是不可改变的－－它从来不会变化。</p>
+<p>这是使用 Promise 的一个实际的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</div><div class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resove, reject</span>) =&gt;</span> &#123;</div><div class="line">  request.get(url,(error, response, body) =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (body) &#123;</div><div class="line">      resove(<span class="built_in">JSON</span>.parse(body));</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      resove(&#123;&#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>我们还可以使用 Promise.all() 来 并行 处理多个异步函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> urls = [</div><div class="line">  <span class="string">'/api/commits'</span>,</div><div class="line">  <span class="string">'/api/issues/opened'</span>,</div><div class="line">  <span class="string">'/api/issues/assigned'</span>,</div><div class="line">  <span class="string">'/api/issues/completed'</span>,</div><div class="line">  <span class="string">'/api/issues/comments'</span>,</div><div class="line">  <span class="string">'/api/pullrequests'</span></div><div class="line">];</div><div class="line"><span class="keyword">let</span> promises = urls.map(<span class="function">(<span class="params">url</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    $.ajax(&#123; <span class="attr">url</span>: url&#125;)</div><div class="line">      .done(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</div><div class="line">        resolve(data);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"><span class="built_in">Promise</span>.all(promises)</div><div class="line">  .then(<span class="function">(<span class="params">results</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">// Do something with result of all our promise</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h1 id="Generators-生成器"><a href="#Generators-生成器" class="headerlink" title="Generators 生成器"></a>Generators 生成器</h1><p>就像 Promises 可以帮我们避免回调地狱，Generators 可以帮助我们让代码风格更整洁－－用同步的代码风格来写异步代码，它本质上是一个可以暂停计算并且可以随后返回表达式的值的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">sillyGenerator</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> generator = sillyGenerator();</div><div class="line"><span class="built_in">console</span>.log(generator.next());  <span class="comment">//  &#123; value: 1, done: false &#125;</span></div><div class="line"><span class="built_in">console</span>.log(generator.next());  <span class="comment">//  &#123; value: 2, done: false &#125;</span></div><div class="line"><span class="built_in">console</span>.log(generator.next());  <span class="comment">//  &#123; value: 3, done: false &#125;</span></div><div class="line"><span class="built_in">console</span>.log(generator.next());  <span class="comment">//  &#123; value: 4, done: false &#125;</span></div></pre></td></tr></table></figure>
+<p>next 可以回去到下一个 yield 返回的值，当然上面的代码是非常不自然的，我们可以利用 Generators 来用同步的方式来写异步操作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">  getJSON(url, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">    generator.next(response);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">getData</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> entry1 = <span class="keyword">yield</span> request(<span class="string">'http://some_api/item1'</span>);</div><div class="line">  <span class="keyword">var</span> data1 = <span class="built_in">JSON</span>.parse(entry1);</div><div class="line">  <span class="keyword">var</span> entry2 = <span class="keyword">yield</span> request(<span class="string">'http://some_api/item2'</span>);</div><div class="line">  <span class="keyword">var</span> data2 = <span class="built_in">JSON</span>.parse(entry2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过 yield，我们可以保证 entry1 有 data1 中我们需要解析并储存的数据。</p>
+<p>虽然我们可以利用 Generators 来用同步的方式来写异步操作，但是确认错误的传播变得不再清晰，我们可以在 Generators 中加上 Promise：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    getJSON(url, resolve);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后我们写一个函数逐步调用 next 并且利用 request 方法产生一个 Promise：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">iterateGenerator</span>(<span class="params">gen</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> generator = gen();</div><div class="line">  (<span class="function"><span class="keyword">function</span> <span class="title">iterate</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ret = generator.next();</div><div class="line">    <span class="keyword">if</span>(!ret.done) &#123;</div><div class="line">      ret.value.then(iterate);</div><div class="line">    &#125;</div><div class="line">  &#125;)();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 Generators 中加上 Promise 之后我们可以更清晰的使用 Promise 中的 .catch 和 reject来捕捉错误，让我们使用新的 Generator，和之前的还是蛮相似的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">iterateGenerator(<span class="function"><span class="keyword">function</span>* <span class="title">getData</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> entry1 = <span class="keyword">yield</span> request(<span class="string">'http://some_api/item1'</span>);</div><div class="line">  <span class="keyword">var</span> data1 = JSPN.parse(entry);</div><div class="line">  <span class="keyword">var</span> entry2 = yidld request(<span class="string">'http://some_api/item2'</span>);</div><div class="line">  <span class="keyword">var</span> data2 = <span class="built_in">JSON</span>.parse(entry2);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h1 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async Await"></a>Async Await</h1><p>当 ES6 真正到来的时候，async await 可以用更少的处理实现 Promise 和 Generators 所实现的异步处理：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</div><div class="line">funciton getJSON(url) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    request(url, <span class="function"><span class="keyword">function</span>(<span class="params">error, response, body</span>) </span>&#123;</div><div class="line">      resolve(body);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> data = <span class="keyword">await</span> getJSON();</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;</div><div class="line">main();</div></pre></td></tr></table></figure>
+<p>在 js 引擎中，它所实现的和 Generators 其实是一样的，我更推荐在 Generators + Promises 之上使用 async await，更多的资源和使用 ES7 和 用 babel 转化可以看这里。</p>
+<h1 id="Getter-Setter-函数"><a href="#Getter-Setter-函数" class="headerlink" title="Getter/Setter 函数"></a>Getter/Setter 函数</h1><p>ES6 已经开始实现了 getter 和 setter 函数，比如虾面这个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</div><div class="line">  construstor(name) &#123;</div><div class="line">    <span class="keyword">this</span>._name = name;</div><div class="line">  &#125;</div><div class="line">  get name() &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._name) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'Mr. '</span> + <span class="keyword">this</span>._name.toUpperCase();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">undefined</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  set name(newName) &#123;</div><div class="line">    <span class="keyword">if</span> (newName == <span class="keyword">this</span>._name) &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'I already have this name.'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newName) &#123;</div><div class="line">      <span class="keyword">this</span>._name = newName;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> emp = <span class="keyword">new</span> Employee(<span class="string">"James Bond"</span>);</div><div class="line"><span class="keyword">if</span> (emp.name) &#123;</div><div class="line">  <span class="built_in">console</span>.log(emp.name);    <span class="comment">//  Mr.  JAMES  BOND</span></div><div class="line"> &#125;</div><div class="line">emp.name = <span class="string">"Bond 007"</span>;</div><div class="line"><span class="built_in">console</span>.log(emp.name);    <span class="comment">//  Mr.  Bond  007</span></div></pre></td></tr></table></figure>
+<p>最新版本的浏览器也在对象中实现了 getter 和 setter 函数，我们可以使用它们来实现 计算属性，在设置和获取一个属性之前加上监听器和处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">  <span class="attr">firstName</span>: <span class="string">'James'</span>,</div><div class="line">  <span class="attr">lastName</span>: <span class="string">'Bond'</span>,</div><div class="line">  get fullName() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Getting FullName'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.firstName + <span class="string">' '</span> + <span class="keyword">this</span>.lastName;</div><div class="line">  &#125;,</div><div class="line">  set fullName (name) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Setting FullName'</span>);</div><div class="line">    <span class="keyword">var</span> words = name.toString().split(<span class="string">' '</span>);</div><div class="line">    <span class="keyword">this</span>.firstName = words[<span class="number">0</span>] || <span class="string">''</span>;</div><div class="line">    <span class="keyword">this</span>.lastName = words[<span class="number">1</span>] || <span class="string">''</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">person.fullName;    <span class="comment">//  James Bond</span></div><div class="line">person.fullName = <span class="string">'Bond 007'</span>;</div><div class="line">person.fullName;    <span class="comment">//  Bond 007</span></div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/08/04/ES6-手册/" target="_blank" rel="external">http://www.chenqiangyi.cn/2016/08/04/ES6-手册/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/&title=《ES6-手册》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/&title=《ES6-手册》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6-手册》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/08/09/ES6新特性(2)——深刻而易懂的ES6解构教程/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ES6新特性(2)——深刻而易懂的ES6解构教程</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/08/02/ES6新特性(1)——Arguments和Parameters/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ES6新特性(1)——Arguments和Parameters</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/&title=《ES6-手册》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/&title=《ES6-手册》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6-手册》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/08/04/ES6-手册/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACFklEQVR42u3aQW7DMAwEwPz/0+m5KJzsik6BSKNTkcY2xwdGJPV4xOt5sZLvJ3dur1pcGBgYX8t4vlxXD8hJSYh/75zHhoGBcQ6jvXWeQF+/srVnYWBgYLShJ/fJA8LAwMD4BCNJo6+3mMl/MTAwMJIiNkmRd72OD9biGBgYX8jIu+7///dH5hsYGBhfxXiWK9kIztNlHRUGBsbWjLaVdhXEXWODtXgwMDD2ZuTtsPmajzwvqRgYGMcwkscnn+eN/nYTeXlnDAyMIxnt0DFJl/lLqQ9wYGBgbM1IHjYJd/5J8n0MDIwTGPNQ7jpIkV9V9wUxMDC+ljHZlr1Ox0UJOr4PBgbG3oy29d+OGNcS8drPAAYGxt6MtY1am6yLQrRttGFgYBzA+MRYcU5tD4phYGDsykgelpeXk6vWRqe/anEMDIxNGUnWao9Q3JUDRxtEDAyMAxhr48Z25zY5iIaBgXEao93e5clxciwsH2RiYGCcw7i3cX9Xiy15TRgYGCcz2qMVyYYyKX3X0j0GBsY5jDaNtiFOjppFRSwGBsZ2jGe51orV9pBZTcXAwNiasdbcnxz/yseT9dYQAwNja0abZOfJNylW64SLgYFxAGOS+NpQJr8Ab/a5GBgYGGWIawcvFktWDAwMjDi4NsR2RPqmiMXAwNiakRSxSVttraG/1rbDwMA4h9Huu9YGk3mabht5GBgYWzN+AGgZk2HI9RjLAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

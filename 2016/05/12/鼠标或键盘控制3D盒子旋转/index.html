@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>鼠标或键盘控制3D盒子旋转 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CSS3,HTML5">
+    <meta name="description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：                                                                                                            两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的 通过键盘控制3D盒子旋转，demo链接">
+<meta name="keywords" content="CSS3,HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鼠标或键盘控制3D盒子旋转">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：                                                                                                            两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的 通过键盘控制3D盒子旋转，demo链接">
+<meta property="og:image" content="http://www.chenqiangyi.com/wp-content/uploads/2016/05/3Dbox.png">
+<meta property="og:updated_time" content="2017-06-14T07:44:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鼠标或键盘控制3D盒子旋转">
+<meta name="twitter:description" content="最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：                                                                                                            两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的 通过键盘控制3D盒子旋转，demo链接">
+<meta name="twitter:image" content="http://www.chenqiangyi.com/wp-content/uploads/2016/05/3Dbox.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://element.chenqiangyi.cn" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">鼠标或键盘控制3D盒子旋转</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">鼠标或键盘控制3D盒子旋转</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-11T16:59:22.000Z" itemprop="datePublished" class="page-time">
+  2016-05-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML5/">HTML5</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-鼠标或键盘控制3D盒子旋转"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">鼠标或键盘控制3D盒子旋转</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-12 00:59:22" datetime="2016-05-11T16:59:22.000Z"  itemprop="datePublished">2016-05-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML5/">HTML5</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近在研究3D盒子的旋转问题，今天来学习一下通过鼠标或者键盘控制3D盒子的旋转，效图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/3Dbox.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的</p>
+<p>通过键盘控制3D盒子旋转，demo链接：<a href="http://chenqiangyi.com/example/3Dbox1.html" target="_blank" rel="external">http://chenqiangyi.com/example/3Dbox1.html</a></p>
+<p>通过鼠标控制3D盒子旋转，demo链接：<a href="http://chenqiangyi.com/example/3Dbox1.html" target="_blank" rel="external">http://chenqiangyi.com/example/3Dbox1.html</a></p>
+<p>1.页面布局</p>
+<p>需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#div1 .right&#123; transform:rotateY(90deg) translateZ(100px);&#125;</div></pre></td></tr></table></figure>
+<p>然后就是左边的面，和右边的相似，只是旋转角度相反而已：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#div1 .left&#123; transform:rotateY(-90deg) translateZ(100px);&#125;</div></pre></td></tr></table></figure>
+<p>前后面就是直接沿Z轴平移100px和-100px即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#div1 .front&#123; transform:translateZ(100px);&#125;</div><div class="line">#div1 .back&#123; transform:translateZ(-100px);&#125;</div></pre></td></tr></table></figure>
+<p>上边的面就是沿Z轴平移100px然后再按照X轴旋转90度，相反下边的面沿y轴旋转-90度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#div1 .top&#123; transform:rotateX(90deg) translateZ(100px);&#125;</div><div class="line">#div1 .bottom&#123; transform:rotateX(-90deg) translateZ(100px);&#125;</div></pre></td></tr></table></figure>
+<p>然后就是为了看到3D效果，需要在其父级添加3D模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-style: preserve-3d;</div></pre></td></tr></table></figure>
+<p>这样基本的布局就完成了</p>
+<p>2.js控制</p>
+<p>首先介绍键盘的控制，我们知道键盘的按下去与松开都对应一个onkeydown事件和onkeyup事件，我们可以用事件对象获取其中的动作当按上键的时候我们可以得到他的ev.keycode=37,同理可以得到其他键的值，我们可以先定义bTop=bBotton=bLeft=bRight=false，当按下去的时候，判定哪个键对应的方向为true，然后当松开的 时候再令bTop=bBotton=bLeft=bRight=false这样在就可控制他的停止与运动了，然后我们开一个定时器，让他在某个方向上每隔30ms加10，这样就把X，y的值获取到了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.onkeydown=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">37</span>)&#123;</div><div class="line">			bLeft=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">38</span>)&#123;</div><div class="line">			bTop=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">39</span>)&#123;</div><div class="line">			bRight=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">40</span>)&#123;</div><div class="line">			bBotton=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">document</span>.onkeyup=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">37</span>)&#123;</div><div class="line">			bLeft=<span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">38</span>)&#123;</div><div class="line">			bTop=<span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">39</span>)&#123;</div><div class="line">			bRight=<span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(ev.keyCode==<span class="number">40</span>)&#123;</div><div class="line">			bBotton=<span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>然后就是改变他的X，y的变化，进行相应的运动变换</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">//左右 y</span></div><div class="line"><span class="keyword">var</span> y=<span class="number">0</span>;</div><div class="line"><span class="comment">//上下</span></div><div class="line"><span class="keyword">var</span> x=<span class="number">0</span>;</div><div class="line"></div><div class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(bLeft)&#123;</div><div class="line">		y-=<span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(bRight)&#123;</div><div class="line">		y+=<span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(bTop)&#123;</div><div class="line">		x-=<span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(bBotton)&#123;</div><div class="line">		x+=<span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">console</span>.log(<span class="number">1</span>)</div><div class="line">	oDiv.style.transform=<span class="string">"perspective(800px) rotateX("</span>+-x+<span class="string">"deg) rotateY("</span>+y+<span class="string">"deg)"</span></div><div class="line">&#125;,<span class="number">30</span>)</div></pre></td></tr></table></figure>
+<p>这样键盘的控制就结束了，接下来就是鼠标的控制了&lt;</p>
+<p>3.鼠标的控制</p>
+<p>主要运用鼠标的事件，当鼠标在网页上移动时会有相应的X和Y值得变化，这样我们就很容易得到鼠标的按下的位置和移动时的位置，我们可以根据在鼠标X轴移动的距离看做是他沿Y轴转动的角度，同时Y轴也是这样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.onmousedown=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> disX=ev.clientX-y;</div><div class="line">		<span class="keyword">var</span> disY=ev.clientY-x;</div><div class="line"></div><div class="line">		<span class="built_in">document</span>.onmousemove=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">			y=ev.clientX-disX;</div><div class="line">			x=ev.clientY-disY;</div><div class="line">			oDiv.style.transform=<span class="string">"perspective(800px) rotateX("</span>+-x+<span class="string">"deg) rotateY("</span>+y+<span class="string">"deg)"</span></div><div class="line"></div><div class="line">		&#125;</div><div class="line">		<span class="built_in">document</span>.onmouseup=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="built_in">document</span>.onmousemove=<span class="built_in">document</span>.onmouseup=<span class="literal">null</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>这样两个效果就基本完成了。</p>
+<p>4.总结</p>
+<p>这个效果主要运用到了键盘的控制事件，以及盒子的拖拽模型，还有就是布局的知识，在以后会加上在移动端的控制。</p>
+<p>最后附上两个模型的源代码：</p>
+<p>键盘控制3D盒子旋转：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset="UTF-8"&gt;</div><div class="line">&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;style type="text/css"&gt;</div><div class="line">*&#123;margin: 0;padding: 0;&#125;</div><div class="line">#div1&#123;position: relative;width: 200px;height: 200px;margin: 100px auto;line-height: 200px;text-align: center;font-size: 30px;</div><div class="line">	transform: perspective(800px) rotateX(0deg) rotateY(0deg);</div><div class="line">	transform-style: preserve-3d;</div><div class="line">	/*transition: 3s all ease;*/</div><div class="line">&#125;</div><div class="line">#div1 div&#123;position: absolute;left: 0;top: 0;width: 198px;height: 198px;border: 1px solid #000;background: yellow;&#125;</div><div class="line"></div><div class="line">#div1 .front&#123;transform: translateZ(100px);background: green;&#125;</div><div class="line">#div1 .back&#123;transform: translateZ(-100px);background: blue;&#125;</div><div class="line">#div1 .left&#123;transform: rotateY(-90deg) translateZ(100px);background: pink;&#125;</div><div class="line">#div1 .right&#123;transform: rotateY(90deg) translateZ(100px);background: red;&#125;</div><div class="line">#div1 .top&#123;transform: rotateX(90deg) translateZ(100px);background: yellow;&#125;</div><div class="line">#div1 .bottom&#123;transform: rotateX(-90deg) translateZ(100px);background:orange;&#125;</div><div class="line"></div><div class="line">/*#div1:hover&#123;transform: perspective(800px) rotateX(-15deg) rotateY(360deg)&#125;*/</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line">window.onload=function()&#123;</div><div class="line">	var oDiv=document.querySelector("#div1")</div><div class="line">	var bTop=bBotton=bLeft=bRight=false;</div><div class="line">	//左右 y</div><div class="line">	var y=0;</div><div class="line">	//上下</div><div class="line">	var x=0;</div><div class="line"></div><div class="line">	setInterval(function()&#123;</div><div class="line">		if(bLeft)&#123;</div><div class="line">			y-=10;</div><div class="line">		&#125;</div><div class="line">		if(bRight)&#123;</div><div class="line">			y+=10;</div><div class="line">		&#125;</div><div class="line">		if(bTop)&#123;</div><div class="line">			x-=10;</div><div class="line">		&#125;</div><div class="line">		if(bBotton)&#123;</div><div class="line">			x+=10;</div><div class="line">		&#125;</div><div class="line">		console.log(1)</div><div class="line">		oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"</div><div class="line">	&#125;,30)</div><div class="line"></div><div class="line">	document.onkeydown=function(ev)&#123;</div><div class="line">		if(ev.keyCode==37)&#123;</div><div class="line">			bLeft=true;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==38)&#123;</div><div class="line">			bTop=true;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==39)&#123;</div><div class="line">			bRight=true;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==40)&#123;</div><div class="line">			bBotton=true;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	document.onkeyup=function(ev)&#123;</div><div class="line">		if(ev.keyCode==37)&#123;</div><div class="line">			bLeft=false;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==38)&#123;</div><div class="line">			bTop=false;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==39)&#123;</div><div class="line">			bRight=false;</div><div class="line">		&#125;</div><div class="line">		if(ev.keyCode==40)&#123;</div><div class="line">			bBotton=false;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id="div1"&gt;</div><div class="line">	&lt;div class="front"&gt;前面&lt;/div&gt;</div><div class="line">	&lt;div class="back"&gt;后面&lt;/div&gt;</div><div class="line">	&lt;div class="left"&gt;左面&lt;/div&gt;</div><div class="line">	&lt;div class="right"&gt;右面&lt;/div&gt;</div><div class="line">	&lt;div class="top"&gt;上面&lt;/div&gt;</div><div class="line">	&lt;div class="bottom"&gt;下面&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>鼠标控制3D盒子旋转：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset="UTF-8"&gt;</div><div class="line">&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;style type="text/css"&gt;</div><div class="line">*&#123;margin: 0;padding: 0;&#125;</div><div class="line">#div1&#123;position: relative;width: 200px;height: 200px;margin: 100px auto;line-height: 200px;text-align: center;font-size: 30px;</div><div class="line">	transform: perspective(800px) rotateX(45deg) rotateY(0deg);</div><div class="line">	transform-style: preserve-3d;</div><div class="line">	/*transition: 3s all ease;*/</div><div class="line">&#125;</div><div class="line">#div1 div&#123;position: absolute;left: 0;top: 0;width: 198px;height: 198px;border: 1px solid #000;background: yellow;&#125;</div><div class="line"></div><div class="line">#div1 .front&#123;transform: translateZ(100px);background: green;&#125;</div><div class="line">#div1 .back&#123;transform: translateZ(-100px);background: blue;&#125;</div><div class="line">#div1 .left&#123;transform: rotateY(-90deg) translateZ(100px);background: pink;&#125;</div><div class="line">#div1 .right&#123;transform: rotateY(90deg) translateZ(100px);background: red;&#125;</div><div class="line">#div1 .top&#123;transform: rotateX(90deg) translateZ(100px);background: yellow;&#125;</div><div class="line">#div1 .bottom&#123;transform: rotateX(-90deg) translateZ(100px);background:orange;&#125;</div><div class="line"></div><div class="line">/*#div1:hover&#123;transform: perspective(800px) rotateX(-15deg) rotateY(360deg)&#125;*/</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line">window.onload=function()&#123;</div><div class="line">	var oDiv=document.querySelector("#div1")</div><div class="line">	//左右 y</div><div class="line">	var y=0;</div><div class="line">	//上下</div><div class="line">	var x=0;</div><div class="line">	document.onmousedown=function(ev)&#123;</div><div class="line">		var disX=ev.clientX-y;</div><div class="line">		var disY=ev.clientY-x;</div><div class="line"></div><div class="line">		document.onmousemove=function(ev)&#123;</div><div class="line">			y=ev.clientX-disX;</div><div class="line">			x=ev.clientY-disY;</div><div class="line">			oDiv.style.transform="perspective(800px) rotateX("+-x+"deg) rotateY("+y+"deg)"</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		document.onmouseup=function()&#123;</div><div class="line">			document.onmousemove=document.onmouseup=null;</div><div class="line">		&#125;</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id="div1"&gt;</div><div class="line">	&lt;div class="front"&gt;前面&lt;/div&gt;</div><div class="line">	&lt;div class="back"&gt;后面&lt;/div&gt;</div><div class="line">	&lt;div class="left"&gt;左面&lt;/div&gt;</div><div class="line">	&lt;div class="right"&gt;右面&lt;/div&gt;</div><div class="line">	&lt;div class="top"&gt;上面&lt;/div&gt;</div><div class="line">	&lt;div class="bottom"&gt;下面&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/05/12/鼠标或键盘控制3D盒子旋转/" target="_blank" rel="external">http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/&title=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/&title=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/06/13/restful-api/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">RESTful API</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/11/简单粗暴地理解js原型链–js面向对象编程/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">简单粗暴地理解js原型链–js面向对象编程(转)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/&title=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/&title=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《鼠标或键盘控制3D盒子旋转》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/05/12/鼠标或键盘控制3D盒子旋转/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACo0lEQVR42u3aQW7kMAwEwPz/07sPWHimyZZmJ0D5FCSGrdLBZFr8+YmvP8H1dP+/v5/+/PS0YxceHh7e0aU/LXf64tdPe701ydsfn4mHh4d3jZcsKF9KvgUJY7oePDw8vO/nJU9LStG0tODh4eH9Lt70r7vo4b8VBjw8PLyA1zy6b4vz1vxi1oKHh4cX8/JTpO/5+cr5Hh4eHt6hgYA8hG2KTb6Vg9Xi4eHhXeD1weu0zU3Gs5rCgIeHh3eb17w4H6XKP+L52MFrKh4eHt5nePlYwI6xG+TaDRZM9gAPDw/vDG/3Ud4NBPQHbI9rw8PDw7vGm4a2+RLze5I3DvIVPDw8vGu8XRu9a4Wb2CLfoDdIPDw8vKO86MO6iiSaMDcvAG+QeHh4eId4eaywu/qmfFe08PDw8O7xpg3x4N/+1SKagHi5CDw8PLwhLz+S79vo6WhXHjo8vgUPDw/vg7y8AOwKxjSw+NldeHh4eBd4u8/6tBXOD/7z+/PCg4eHh3eWl0Su0y9tngbsys/gTjw8PLxrvDwq3R2AJQFEH228Od/Dw8PDO8TbfcTzpe/ub06y3vzfgIeHh1fz8gKQH+TnS58GEPkW4OHh4d3m5WNM/VjAjj0tNoOpBDw8PLwh7zMn7/2QwbSxHoDx8PDwVrz+E9+UnOkR2nRb8fDw8O7xpoFCXjCmgwjTJ1e1BQ8PD6/mNfc3x/xNoPDmaXh4eHhHef0QVRLF5onI4SEDPDw8vAu8U7Vl2mrvIoYk0q3abjw8PLyYtzue7xvifLm7DcLDw8O7zctfnx9TTYPaqnY9WfDw8PC+gNdHA3m00RcMPDw8vG/j7VrnBNA3/Xh4eHi3efnAUz4UtRuZen3P+K94eHh4F3hN5NoXjDwO7sez8PDw8GreX3YaDQEPUk7DAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
