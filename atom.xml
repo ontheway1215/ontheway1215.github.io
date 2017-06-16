@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenqiangyi.cn/"/>
-  <updated>2017-06-14T14:25:11.000Z</updated>
+  <updated>2017-06-16T15:54:37.000Z</updated>
   <id>http://www.chenqiangyi.cn/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hh</title>
+    <link href="http://www.chenqiangyi.cn/2017/06/16/hh/"/>
+    <id>http://www.chenqiangyi.cn/2017/06/16/hh/</id>
+    <published>2017-06-16T15:54:37.000Z</published>
+    <updated>2017-06-16T15:54:37.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>JavaScript中的递归</title>
@@ -2054,29 +2068,6 @@
     
     
       <category term="gulp" scheme="http://www.chenqiangyi.cn/tags/gulp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一篇blog</title>
-    <link href="http://www.chenqiangyi.cn/2016/04/29/%E7%AC%AC%E4%B8%80%E7%AF%87blog/"/>
-    <id>http://www.chenqiangyi.cn/2016/04/29/第一篇blog/</id>
-    <published>2016-04-29T08:39:06.000Z</published>
-    <updated>2017-06-14T07:06:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>折腾了好久，个人博客终于上线了，以前在CSDN上面写一些学习上的感悟，总是需要审核，最后想了想还是自己搭建一个个人博客来写点生活学习上的点点滴滴，一方面是对学习成果的复习以及反思，另一方面是对人生的每个阶段的总结。刚开始学习前端的时候每次遇到问题都会在网上看一些大牛的技术博客，都讲解的特别清晰，从他们的博客中可以看出他们的技术积累。诚然，学习每一样东西都是不断地积累，在积累中不断成长，以后就在这里记录自己学习的历程，不断地积累自己的技术栈。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;折腾了好久，个人博客终于上线了，以前在CSDN上面写一些学习上的感悟，总是需要审核，最后想了想还是自己搭建一个个人博客来写点生活学习上的点点滴滴，一方面是对学习成果的复习以及反思，另一方面是对人生的每个阶段的总结。刚开始学习前端的时候每次遇到问题都会在网上看一些大牛的技术博
-    
-    </summary>
-    
-      <category term="blog" scheme="http://www.chenqiangyi.cn/categories/blog/"/>
-    
-    
-      <category term="blog" scheme="http://www.chenqiangyi.cn/tags/blog/"/>
     
   </entry>
   
