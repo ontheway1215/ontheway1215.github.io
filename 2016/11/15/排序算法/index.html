@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101091518-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="fKSnk-43hoqWu410Gy8MznrpJ9NNVTuz7G-hB2JFi5s">
+    
+    
+    
+    <title>排序算法 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="排序算法">
+    <meta name="description" content="1var array = [1, 5, 6, 2 , 11, 3, 4, 8, 9, 15, 100, 20, 31, 256] 冒泡排序123456789101112131415161718192021222324// 最佳情况：T(n) = O(n)// 最差情况：T(n) = O(n2)// 平均情况：T(n) = O(n2)function bubbleSort(data, type) &amp;">
+<meta name="keywords" content="排序算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2016/11/15/排序算法/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="1var array = [1, 5, 6, 2 , 11, 3, 4, 8, 9, 15, 100, 20, 31, 256] 冒泡排序123456789101112131415161718192021222324// 最佳情况：T(n) = O(n)// 最差情况：T(n) = O(n2)// 平均情况：T(n) = O(n2)function bubbleSort(data, type) &amp;">
+<meta property="og:updated_time" content="2017-06-16T16:14:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法">
+<meta name="twitter:description" content="1var array = [1, 5, 6, 2 , 11, 3, 4, 8, 9, 15, 100, 20, 31, 256] 冒泡排序123456789101112131415161718192021222324// 最佳情况：T(n) = O(n)// 最差情况：T(n) = O(n2)// 平均情况：T(n) = O(n2)function bubbleSort(data, type) &amp;">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://element.chenqiangyi.cn" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">排序算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">排序算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-15T15:43:03.000Z" itemprop="datePublished" class="page-time">
+  2016-11-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/排序算法/">排序算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#冒泡排序"><span class="post-toc-number">1.</span> <span class="post-toc-text">冒泡排序</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#选择排序"><span class="post-toc-number">2.</span> <span class="post-toc-text">选择排序</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#插入排序"><span class="post-toc-number">3.</span> <span class="post-toc-text">插入排序</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#快速排序"><span class="post-toc-number">4.</span> <span class="post-toc-text">快速排序</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-排序算法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">排序算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-11-15 23:43:03" datetime="2016-11-15T15:43:03.000Z"  itemprop="datePublished">2016-11-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/排序算法/">排序算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var array = [1, 5, 6, 2 , 11, 3, 4, 8, 9, 15, 100, 20, 31, 256]</div></pre></td></tr></table></figure>
+<h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// 最佳情况：T(n) = O(n)</div><div class="line">// 最差情况：T(n) = O(n2)</div><div class="line">// 平均情况：T(n) = O(n2)</div><div class="line">function bubbleSort(data, type) &#123;</div><div class="line">  var arr = data ? data : []</div><div class="line">  var i = data.length -1</div><div class="line">  while (i &gt; 0) &#123;</div><div class="line">    var post = 0</div><div class="line">    for (var j = 0; j &lt; i; j++) &#123;</div><div class="line">      if (arr[j] &gt; arr[j+1]) &#123;</div><div class="line">        post = j</div><div class="line">        var t = arr[j]</div><div class="line">        arr[j] = arr[j+1]</div><div class="line">        arr[j+1] = t</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    i = post</div><div class="line">  &#125;</div><div class="line">  arr =  type === &apos;max&apos; ? arr.reverse() : arr</div><div class="line">  return arr</div><div class="line">&#125;</div><div class="line"></div><div class="line">//console.log(bubbleSort(array, &apos;min&apos;))</div><div class="line">//console.log(bubbleSort(array, &apos;max&apos;))</div></pre></td></tr></table></figure>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// 最佳情况：T(n) = O(n2)</div><div class="line">// 最差情况：T(n) = O(n2)</div><div class="line">// 平均情况：T(n) = O(n2)</div><div class="line">function chooseSort(data, type) &#123;</div><div class="line">  var arr = data ? data : []</div><div class="line">  var l = arr.length</div><div class="line">  var minIndex, t</div><div class="line">  for (var i = 0; i &lt; l - 1; i++) &#123;</div><div class="line">    minIndex = i</div><div class="line">    for (var j = i + 1; j &lt; l - 1; j++) &#123;</div><div class="line">      if (arr[j] &lt; arr[minIndex]) &#123;</div><div class="line">        minIndex = j</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    t = arr[i]</div><div class="line">    arr[i] = arr[minIndex]</div><div class="line">    arr[minIndex] = t</div><div class="line">  &#125;</div><div class="line">  arr =  type === &apos;max&apos; ? arr.reverse() : arr</div><div class="line">  return arr</div><div class="line">&#125;</div><div class="line"></div><div class="line">// console.log(chooseSort(array, &apos;min&apos;))</div><div class="line">// console.log(chooseSort(array, &apos;max&apos;))</div></pre></td></tr></table></figure>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function insertSort(data, type) &#123;</div><div class="line">  var arr = data ? data : []</div><div class="line">  for (var i = 1; i &lt; arr.length; i ++) &#123;</div><div class="line">    var key = arr[i]</div><div class="line">    var j = i - 1</div><div class="line">    while (j &gt;= 0 &amp;&amp; arr[j] &gt; key) &#123;</div><div class="line">      arr[j + 1] = arr[j]</div><div class="line">      j--</div><div class="line">    &#125;</div><div class="line">    arr[j + 1] = key</div><div class="line">  &#125;</div><div class="line">  arr =  type === &apos;max&apos; ? arr.reverse() : arr</div><div class="line">  return arr</div><div class="line">&#125;</div><div class="line"></div><div class="line">// console.log(insertSort(array, &apos;min&apos;))</div><div class="line">// console.log(insertSort(array, &apos;max&apos;))</div></pre></td></tr></table></figure>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">var array = [1, 5, 6, 2 , 11, 3, 4, 8, 9, 15, 100, 20, 31, 256, 1024]</div><div class="line"></div><div class="line">function quickSort (arr, type) &#123;</div><div class="line">  if (arr.length &lt;= 1) &#123;</div><div class="line">    return arr</div><div class="line">  &#125;</div><div class="line">  var index = Math.floor(arr.length / 2)</div><div class="line">  var pivot = arr.splice(index, 1)[0]</div><div class="line">  var left = []</div><div class="line">  var right = []</div><div class="line">  for (var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">    if (type === &apos;min&apos;) &#123;</div><div class="line">      arr[i] &lt; pivot ? left.push(arr[i]) : right.push(arr[i])</div><div class="line">    &#125; else &#123;</div><div class="line">      arr[i] &gt; pivot ? left.push(arr[i]) : right.push(arr[i])</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return quickSort(left, type).concat([pivot], quickSort(right, type))</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(quickSort(array, &apos;min&apos;))</div><div class="line">console.log(quickSort(array, &apos;max&apos;))</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-06-16T16:14:16.000Z" itemprop="dateUpdated">2017-06-17 00:14:16</time>
+</span><br>
+
+
+        
+        原始链接：<a href="/2016/11/15/排序算法/" target="_blank" rel="external">http://www.chenqiangyi.cn/2016/11/15/排序算法/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序算法/">排序算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/11/15/排序算法/&title=《排序算法》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/11/15/排序算法/&title=《排序算法》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/11/15/排序算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/11/15/排序算法/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/11/15/排序算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/19/mac权限修改/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mac 命令行 安装 需要管理员 权限“Please try running this command again as root/Administrator”的解决办法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/08/09/ES6新特性(2)——深刻而易懂的ES6解构教程/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ES6新特性(2)——深刻而易懂的ES6解构教程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://www.chenqiangyi.cn/2016/11/15/排序算法/index.html',
+        sourceId: '排序算法',
+        productKey: '506ecdd478bc49caab66fa9b51442d32',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/pc.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/pc.min.js',
+        ],
+        mobileFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/mobile.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/mobile.min.js'
+        ]
+    };
+    </script>
+    <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/loader.min.js"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2016/11/15/排序算法/&title=《排序算法》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2016/11/15/排序算法/&title=《排序算法》 — ChenBlog-chenqiangyi.cn&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2016/11/15/排序算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2016/11/15/排序算法/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2016/11/15/排序算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3awa6CQAwFUP//p31bkxfxtoUF5bAyZoQeFrUz7esVX++P6/83n99/W1+95+uKCwMD47aM9+F1HHT+4G+/TT4fx4aBgfEcxrcHH6+p/ip/ZXlsGBgYGMcB5ffJA8LAwMCYM6qFY29zi4GBgTEv16rb16TETF7QCXtxDAyMGzImW9OrP1/S38DAwLgV4128qpvVarp8ty4MDIzdjDzB5S3M3ga1mnAxMDCexsiDPm0wotXyTI4IMTAwdjOSYa+8sEvScf7EfD0GBsZWRnXLmpd0eeKeNBIwMDCew8hTanJANhnLSF7cj704BgbGOka+9NwDsiomehYGBsZSRq/F2Au6t2WN1mBgYCxlVI/48yP7eVOz0DrFwMBYzZgMW0wO16qtzSjpY2BgLGX0ysFkqCIvIqutgvJsCAYGxiLGJPT8eK638kfKxsDAWM2YNAkm63utgkt6HRgYGDdhnDXm1Qu3Vz5GMyMYGBirGecOe02al4VRDAwMjAcweqFXq85jQHWwI5oZwcDAWMSonrrnbcteCTj638DAwHgAoxd0nojnsGgsDAMDYwXjrMbkde2BqEmAgYGxmtFLc71A87RbfU0YGBhPYEwGvJLCcT5AVpgQwcDAWM3IE2Uv9GpTsxotBgYGRq9hWT1uG21ZMTAwMIqlW28gLI8w6m9gYGCsY+RjYclNC0MSccI97bgNAwPjhox53dUDVwdkT2hqYmBg3I/xB36avCpz7+SJAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
