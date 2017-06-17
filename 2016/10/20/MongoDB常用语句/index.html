@@ -31,14 +31,17 @@ ga('send', 'pageview');
     
     
     <meta name="keywords" content="MongoDB">
-    <meta name="keywords" content="MongoDB">
+    <meta name="description" content="记录一下MongoDB常用语句，顺带与SQL做个简单的对比。  查询(find)查询所有结果123select * from articledb.article.find() 指定返回哪些键123select title, author from articledb.article.find(&amp;#123;&amp;#125;, &amp;#123;&amp;quot;title&amp;quot;: 1, &amp;quot;auth">
+<meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB常用语句">
 <meta property="og:url" content="http://www.chenqiangyi.cn/2016/10/20/MongoDB常用语句/index.html">
 <meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
-<meta property="og:updated_time" content="2017-06-17T15:56:20.000Z">
+<meta property="og:description" content="记录一下MongoDB常用语句，顺带与SQL做个简单的对比。  查询(find)查询所有结果123select * from articledb.article.find() 指定返回哪些键123select title, author from articledb.article.find(&amp;#123;&amp;#125;, &amp;#123;&amp;quot;title&amp;quot;: 1, &amp;quot;auth">
+<meta property="og:updated_time" content="2017-06-17T17:35:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB常用语句">
+<meta name="twitter:description" content="记录一下MongoDB常用语句，顺带与SQL做个简单的对比。  查询(find)查询所有结果123select * from articledb.article.find() 指定返回哪些键123select title, author from articledb.article.find(&amp;#123;&amp;#125;, &amp;#123;&amp;quot;title&amp;quot;: 1, &amp;quot;auth">
     
         <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
     
@@ -180,6 +183,13 @@ ga('send', 'pageview');
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#查询-find"><span class="post-toc-number">1.</span> <span class="post-toc-text">查询(find)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询所有结果"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">查询所有结果</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定返回哪些键"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">指定返回哪些键</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#where-条件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">where 条件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#and-条件"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">and 条件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#or-条件"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">or 条件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#比较条件"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">比较条件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#in-条件"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">in 条件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#like"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">like</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#count"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">count</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不等于"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">不等于</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排序"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#升序："><span class="post-toc-number">1.11.1.</span> <span class="post-toc-text">升序：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#降序："><span class="post-toc-number">1.11.2.</span> <span class="post-toc-text">降序：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#创建-insert"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建(insert)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#更新-update"><span class="post-toc-number">3.</span> <span class="post-toc-text">更新(update)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#update"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">update()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#save"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">save()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新操作符"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">更新操作符</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-MongoDB常用语句"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -203,14 +213,56 @@ ga('send', 'pageview');
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <blockquote>
+<p>记录一下MongoDB常用语句，顺带与SQL做个简单的对比。</p>
+</blockquote>
+<h1 id="查询-find"><a href="#查询-find" class="headerlink" title="查询(find)"></a>查询(find)</h1><h2 id="查询所有结果"><a href="#查询所有结果" class="headerlink" title="查询所有结果"></a>查询所有结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article</div><div class="line"></div><div class="line">db.article.find()</div></pre></td></tr></table></figure>
+<h2 id="指定返回哪些键"><a href="#指定返回哪些键" class="headerlink" title="指定返回哪些键"></a>指定返回哪些键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select title, author from article</div><div class="line"></div><div class="line">db.article.find(&#123;&#125;, &#123;&quot;title&quot;: 1, &quot;author&quot;: 1&#125;)</div></pre></td></tr></table></figure>
+<h2 id="where-条件"><a href="#where-条件" class="headerlink" title="where 条件"></a>where 条件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where title = &quot;mongodb&quot;</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;title&quot;: &quot;mongodb&quot;&#125;)</div></pre></td></tr></table></figure>
+<h2 id="and-条件"><a href="#and-条件" class="headerlink" title="and 条件"></a>and 条件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where title = &quot;mongodb&quot; and author = &quot;god&quot;</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;title&quot;: &quot;mongodb&quot;, &quot;author&quot;: &quot;god&quot;&#125;)</div></pre></td></tr></table></figure>
+<h2 id="or-条件"><a href="#or-条件" class="headerlink" title="or 条件"></a>or 条件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where title = &quot;mongodb&quot; or author = &quot;god&quot;</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;&amp;or&quot;: [&#123;&quot;title&quot;: &quot;mongodb&quot;&#125;, &#123;&quot;author&quot;: &quot;god&quot;&#125;]&#125;)</div></pre></td></tr></table></figure>
+<h2 id="比较条件"><a href="#比较条件" class="headerlink" title="比较条件"></a>比较条件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where read &gt;= 100;</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;read&quot;: &#123;&quot;$gt&quot;: 100&#125;&#125;)</div></pre></td></tr></table></figure>
+<p><code>$gt</code>(&gt;)、<code>$gte</code>(&gt;=)、<code>$lt</code>(&lt;)、<code>$lte</code>(&lt;=)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where read &gt;= 100 and read &lt;=200</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;read&quot;: &#123;&quot;$gte&quot;: 100, &quot;$lte&quot;: 200&#125;&#125;)</div></pre></td></tr></table></figure>
+<h2 id="in-条件"><a href="#in-条件" class="headerlink" title="in 条件"></a>in 条件</h2> <figure class="highlight plain"><figcaption><span>* from article where author in ("a", "b", "c")</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">db.article.find(&#123;&quot;author&quot;: &#123;&quot;$in&quot;: [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]&#125;&#125;)</div></pre></td></tr></table></figure>
+<h2 id="like"><a href="#like" class="headerlink" title="like"></a>like</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where title like &quot;%mongodb%&quot;</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;title&quot;: /mongodb/&#125;)</div></pre></td></tr></table></figure>
+<h2 id="count"><a href="#count" class="headerlink" title="count"></a>count</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select count(*) from article</div><div class="line"></div><div class="line">db.article.count()</div></pre></td></tr></table></figure>
+<h2 id="不等于"><a href="#不等于" class="headerlink" title="不等于"></a>不等于</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where author != &quot;a&quot;</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;author&quot;: &#123;&quot;$ne&quot;: &quot;a&quot;&#125;&#125;)</div></pre></td></tr></table></figure>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="升序："><a href="#升序：" class="headerlink" title="升序："></a>升序：</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where type = &quot;mongodb&quot; order by read desc</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;type&quot;: &quot;mongodb&quot;&#125;).sort(&#123;&quot;read&quot;: -1&#125;)</div></pre></td></tr></table></figure>
+<h3 id="降序："><a href="#降序：" class="headerlink" title="降序："></a>降序：</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from article where type = &quot;mongodb&quot; order by read asc</div><div class="line"></div><div class="line">db.article.find(&#123;&quot;type&quot;: &quot;mongodb&quot;&#125;).sort(&#123;&quot;read&quot;: 1&#125;)</div></pre></td></tr></table></figure>
+<p> <code>findOne()</code>: 除了只返回一个查询结果外，使用方法与<code>find()</code>一样</p>
+<h1 id="创建-insert"><a href="#创建-insert" class="headerlink" title="创建(insert)"></a>创建(insert)</h1> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">insert into article(title, author, content) values(&quot;mongodb&quot;, &quot;tg&quot;, &quot;haha&quot;)</div><div class="line"></div><div class="line">db.article.insert(&#123;&quot;title&quot;: &quot;mongodb&quot;, &quot;author&quot;: &quot;tg&quot;, &quot;content&quot;: &quot;haha&quot;&#125;)</div></pre></td></tr></table></figure>
+<h1 id="更新-update"><a href="#更新-update" class="headerlink" title="更新(update)"></a>更新(update)</h1><h2 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h2><p> 语法：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.clooection.update(query, update[, options])</div></pre></td></tr></table></figure>
+<ul>
+<li><code>query</code>: 必选，查询条件，类似find中的查询条件</li>
+<li><code>update</code>: 必选，update的对象和一些更新的操作符(如$,$inc…)等</li>
+<li><code>options</code>: 可选，一些更新配置的对象。</li>
+<li><code>upsert</code>: 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。</li>
+<li><code>multi</code>: 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。</li>
+<li><p><code>writeConcern</code>: 可选，抛出异常的级别。</p>
+<p>简单更新:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">update article set title = &quot;mongodb&quot; where read &gt; 100</div><div class="line"></div><div class="line">db.article.update(&#123;&quot;read&quot;: &#123;&quot;$gt&quot;: 100&#125;&#125;, &#123;&quot;$set&quot;: &#123;&quot;title&quot;: &quot;mongodb&quot;&#125;&#125;)</div></pre></td></tr></table></figure>
+<h2 id="save"><a href="#save" class="headerlink" title="save()"></a>save()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.save(&#123;_id: 123, title: &quot;mongodb&quot;&#125;)</div></pre></td></tr></table></figure>
+<p>执行上面的语句，如果集合中已经存在一个_id为123的文档，则更新对应字段;否则插入。</p>
+<p>注：如果更新对象不存在_id，系统会自动生成并作为新的文档插入。</p>
+<h2 id="更新操作符"><a href="#更新操作符" class="headerlink" title="更新操作符"></a>更新操作符</h2><p>MongoDB提供一些强大的更新操作符。</p>
+<p>更新特定字段（<code>$set</code>）:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">update game set count = 10000 where _id = 123</div><div class="line"></div><div class="line">db.game.update(&#123;&quot;_id&quot;: 123&#125;, &#123;&quot;$set&quot;: &#123;&quot;count&quot;: 10000&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>删除特定字段(<code>$unset</code>):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;&quot;_id&quot;: 123&#125;, &#123;&quot;$unset&quot;: &#123;&quot;author&quot;: 1&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>注：<code>$unset</code>指定字段的值只需是任意合法值即可。</p>
+<p>（未完）</p>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-06-17T15:56:20.000Z" itemprop="dateUpdated">2017-06-17 23:56:20</time>
+    最后更新时间：<time datetime="2017-06-17T17:35:39.000Z" itemprop="dateUpdated">2017-06-18 01:35:39</time>
 </span><br>
 
 
