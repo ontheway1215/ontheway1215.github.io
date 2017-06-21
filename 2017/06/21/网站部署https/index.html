@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101091518-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="fKSnk-43hoqWu410Gy8MznrpJ9NNVTuz7G-hB2JFi5s">
+    
+    
+    <link rel="canonical" href="https://chenqiangyi.cn/2017/06/21/网站部署https/">
+    
+    
+    <title>网站部署https | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="https">
+    <meta name="description" content="以下不是一篇指南式的教程，只是记录了将我的博客升级为https的过程，主要记录了一些配置nginx时遇到的问题，但也可以做一下参考 😁  什么是HTTPS简单地说就是 HTTP + SSL,SSL是Secure Socket Layer的缩写，字面意思上看就是在HTTP上又加了一层SSL层使传输更安全。HTTP数据是以明文传输的，没有加密。传输中会遇到以下风险：  窃听风险（eavesdrop">
+<meta name="keywords" content="https">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网站部署https">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2017/06/21/网站部署https/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="以下不是一篇指南式的教程，只是记录了将我的博客升级为https的过程，主要记录了一些配置nginx时遇到的问题，但也可以做一下参考 😁  什么是HTTPS简单地说就是 HTTP + SSL,SSL是Secure Socket Layer的缩写，字面意思上看就是在HTTP上又加了一层SSL层使传输更安全。HTTP数据是以明文传输的，没有加密。传输中会遇到以下风险：  窃听风险（eavesdrop">
+<meta property="og:image" content="http://orw66421u.bkt.clouddn.com/SSL.jpeg">
+<meta property="og:updated_time" content="2017-06-21T10:41:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网站部署https">
+<meta name="twitter:description" content="以下不是一篇指南式的教程，只是记录了将我的博客升级为https的过程，主要记录了一些配置nginx时遇到的问题，但也可以做一下参考 😁  什么是HTTPS简单地说就是 HTTP + SSL,SSL是Secure Socket Layer的缩写，字面意思上看就是在HTTP上又加了一层SSL层使传输更安全。HTTP数据是以明文传输的，没有加密。传输中会遇到以下风险：  窃听风险（eavesdrop">
+<meta name="twitter:image" content="http://orw66421u.bkt.clouddn.com/SSL.jpeg">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.chenqiangyi.cn/other-project/vue-element" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">网站部署https</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">网站部署https</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-21T09:27:55.000Z" itemprop="datePublished" class="page-time">
+  2017-06-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/https/">https</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是HTTPS"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是HTTPS</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#获取SSL"><span class="post-toc-number">2.</span> <span class="post-toc-text">获取SSL</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nginx配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">nginx配置</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-网站部署https"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">网站部署https</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-21 17:27:55" datetime="2017-06-21T09:27:55.000Z"  itemprop="datePublished">2017-06-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/https/">https</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>以下不是一篇指南式的教程，只是记录了将我的博客升级为https的过程，主要记录了一些配置nginx时遇到的问题，但也可以做一下参考 😁</p>
+</blockquote>
+<h1 id="什么是HTTPS"><a href="#什么是HTTPS" class="headerlink" title="什么是HTTPS"></a>什么是HTTPS</h1><p>简单地说就是 HTTP + SSL,SSL是Secure Socket Layer的缩写，字面意思上看就是在HTTP上又加了一层SSL层使传输更安全。HTTP数据是以明文传输的，没有加密。传输中会遇到以下风险：</p>
+<ul>
+<li>窃听风险（eavesdropping）：第三方可以获知通信内容</li>
+<li>篡改风险（tampering）：第三方可以篡改通信内容</li>
+<li>冒充风险（pretending）：第三方可以冒充他人身份参与通信</li>
+</ul>
+<p>而 HTTPS 则可以通过 SSL/TLS 来解决以上三个问题。</p>
+<h1 id="获取SSL"><a href="#获取SSL" class="headerlink" title="获取SSL"></a>获取SSL</h1><p>这里我选择的是腾讯云的域名型（DV）SSL证书，可以免费使用一年，到期后需要续费，续费金额还是挺高的。</p>
+<p>因为腾讯云提供中文文档，申请到安装还是挺顺利的，申请成功后如图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://orw66421u.bkt.clouddn.com/SSL.jpeg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>证书到手，然后下载下来，传到放到<code>/etc/nginx/</code>目录下，注意两个文件需要和Nginx的配置文件在同一个目录下（腾讯云指导书上说可以随意放一个到同一个目录下，但是我的不知道为什么会报错）<br>按照文档的指示配置Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 443;</div><div class="line">        server_name www.domain.com; #填写绑定证书的域名</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate 1_www.domain.com_bundle.crt;</div><div class="line">        ssl_certificate_key 2_www.domain.com.key;</div><div class="line">        ssl_session_timeout 5m;</div><div class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        location / &#123;</div><div class="line">            root   html; #站点目录</div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>配置完成后用nginx -t测试一下配置文件是否有误，正确无误的话重启Nginx，就可以使用了。<br>然而，我用https访问一直报500的错误，最后才发现HTTPS默认使用的端口是443，需要我们开放443端口。</p>
+<p>然后可以正常使用<a href="https:www.chenqiangyi.cn" target="_blank" rel="external">https:www.chenqiangyi.cn</a>正常访问。<br>但是，当使用<a href="http://www.chenqiangyi.cn">http://www.chenqiangyi.cn</a>访问的时候又报错。需要我们对http的请求强制转为https访问。</p>
+<h1 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h1><p>https服务器监听443端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       443;</div><div class="line">        server_name  www.chenqiangyi.cn;</div><div class="line">	ssl on;</div><div class="line">        ssl_certificate      1_www.chenqiangyi.com_bundle.crt;</div><div class="line">        ssl_certificate_key  2_www.withyoufriends.com.key;</div><div class="line"></div><div class="line">        ssl_session_cache    shared:SSL:1m;</div><div class="line">        ssl_session_timeout  5m;</div><div class="line">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">	ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</div><div class="line"> 	ssl_prefer_server_ciphers  on;</div><div class="line">        ...</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>把http的请求重定向到https</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       80;</div><div class="line">        server_name  chenqiangyi.cn;</div><div class="line">	rewrite  ^(.*) https://$host$1 permanent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就ok了，请求<a href="www.chenqiangyi.cn">www.chenqiangyi.cn</a> 和 <a href="chenqiangyi.cn">chenqiangyi.cn</a>都能跳转到<a href="https://www.chenqiangyi.cn">https://www.chenqiangyi.cn</a>访问。</p>
+<p>但是有时候会发现访问<a href="chenqiangyi.cn">chenqiangyi.cn</a>会出现无限重定向，不知道是为什么，现在还在探索。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-06-21T10:41:19.000Z" itemprop="dateUpdated">2017-06-21 18:41:19</time>
+</span><br>
+
+
+        
+        原始链接：<a href="/2017/06/21/网站部署https/" target="_blank" rel="external">http://www.chenqiangyi.cn/2017/06/21/网站部署https/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/06/21/网站部署https/&title=《网站部署https》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/06/21/网站部署https/&title=《网站部署https》 — ChenBlog-chenqiangyi.cn&source=IT技术分享 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/06/21/网站部署https/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网站部署https》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/06/21/网站部署https/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/06/21/网站部署https/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/14/JavaScript中的递归/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript中的递归</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://www.chenqiangyi.cn/2017/06/21/网站部署https/index.html',
+        sourceId: '网站部署https',
+        productKey: '506ecdd478bc49caab66fa9b51442d32',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/pc.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/pc.min.js',
+        ],
+        mobileFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/mobile.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/mobile.min.js'
+        ]
+    };
+    </script>
+    <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/loader.min.js"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/06/21/网站部署https/&title=《网站部署https》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/06/21/网站部署https/&title=《网站部署https》 — ChenBlog-chenqiangyi.cn&source=IT技术分享 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/06/21/网站部署https/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《网站部署https》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/06/21/网站部署https/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/06/21/网站部署https/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3aUXajMAwF0O5/05kFtCHvyXROsS9fnASILh+KLenrKz5e34533ybXf7/33XNuPjAwMB7LeF0e12Fd3/Uu0OSZeWwYGBjnMJJUmOBniTg5/xAzBgYGRpl82xeRvz4MDAyMexNu/it/+n8DAwPjzzCSTewKMimo5ZtkDAyM0xh51f3/n/9KfwMDA+NRjFd55K3Ntp2ZJ9kfnoaBgbE1I09w7ZJxtjGexYOBgXECI9lA5kHPkvVK8wADA2NvRr5dzMcmrt9ZXpjL26gYGBgnMNrWY95CaIfGZktMDAyMExgrrce2oL/eJPjhWwwMjK0Zye42L7S1sNsGwjAwMA5gtAvE2ZBWctdSisfAwNiU0Zbm88bAeum/WKpiYGAcxpilv9kAWVvm+zAtgoGBsTVjluZmC7u8GPfr+28MDIwHMtbHs9p2Ztv4jGZGMDAwtmPkga5sX5NX0KZsDAyMcxgrzYD2rraFmTcYMDAw9mbkG8tZAm2Dm51jYGCcwGgHufKF4GxBeX3lh5kRDAyMrRntQnAWULukK/4rMDAwDmDMHtq2FlYanB9+BQMDY1PGqzyiDkMcaDvS8fZpGBgYWzNWim6zDfC9pbcbaocYGBgPYSRJNgk3v2Z9LGzYwcDAwHg4ow1rZVDjrgIcBgYGRttcXGmIrr84DAwMjHZpOFsUtuCov4GBgbERI9nErn+Sh1U3QTEwMLZm3DVm0YbbhnVDUxMDA+N5jH+EKSy6OPB4uQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+console.log("%c Powered by Chenqiangyi - chenqiangyi.cn","background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
+</script>
+
+
+
+</body>
+</html>

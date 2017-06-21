@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenqiangyi.cn/"/>
-  <updated>2017-06-14T14:25:11.000Z</updated>
+  <updated>2017-06-21T10:41:19.000Z</updated>
   <id>http://www.chenqiangyi.cn/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网站部署https</title>
+    <link href="http://www.chenqiangyi.cn/2017/06/21/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2https/"/>
+    <id>http://www.chenqiangyi.cn/2017/06/21/网站部署https/</id>
+    <published>2017-06-21T09:27:55.000Z</published>
+    <updated>2017-06-21T10:41:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>以下不是一篇指南式的教程，只是记录了将我的博客升级为https的过程，主要记录了一些配置nginx时遇到的问题，但也可以做一下参考 😁</p>
+</blockquote>
+<h1 id="什么是HTTPS"><a href="#什么是HTTPS" class="headerlink" title="什么是HTTPS"></a>什么是HTTPS</h1><p>简单地说就是 HTTP + SSL,SSL是Secure Socket Layer的缩写，字面意思上看就是在HTTP上又加了一层SSL层使传输更安全。HTTP数据是以明文传输的，没有加密。传输中会遇到以下风险：</p>
+<ul>
+<li>窃听风险（eavesdropping）：第三方可以获知通信内容</li>
+<li>篡改风险（tampering）：第三方可以篡改通信内容</li>
+<li>冒充风险（pretending）：第三方可以冒充他人身份参与通信</li>
+</ul>
+<p>而 HTTPS 则可以通过 SSL/TLS 来解决以上三个问题。</p>
+<h1 id="获取SSL"><a href="#获取SSL" class="headerlink" title="获取SSL"></a>获取SSL</h1><p>这里我选择的是腾讯云的域名型（DV）SSL证书，可以免费使用一年，到期后需要续费，续费金额还是挺高的。</p>
+<p>因为腾讯云提供中文文档，申请到安装还是挺顺利的，申请成功后如图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://orw66421u.bkt.clouddn.com/SSL.jpeg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>证书到手，然后下载下来，传到放到<code>/etc/nginx/</code>目录下，注意两个文件需要和Nginx的配置文件在同一个目录下（腾讯云指导书上说可以随意放一个到同一个目录下，但是我的不知道为什么会报错）<br>按照文档的指示配置Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 443;</div><div class="line">        server_name www.domain.com; #填写绑定证书的域名</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate 1_www.domain.com_bundle.crt;</div><div class="line">        ssl_certificate_key 2_www.domain.com.key;</div><div class="line">        ssl_session_timeout 5m;</div><div class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        location / &#123;</div><div class="line">            root   html; #站点目录</div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>配置完成后用nginx -t测试一下配置文件是否有误，正确无误的话重启Nginx，就可以使用了。<br>然而，我用https访问一直报500的错误，最后才发现HTTPS默认使用的端口是443，需要我们开放443端口。</p>
+<p>然后可以正常使用<a href="https:www.chenqiangyi.cn" target="_blank" rel="external">https:www.chenqiangyi.cn</a>正常访问。<br>但是，当使用<a href="http://www.chenqiangyi.cn">http://www.chenqiangyi.cn</a>访问的时候又报错。需要我们对http的请求强制转为https访问。</p>
+<h1 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h1><p>https服务器监听443端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       443;</div><div class="line">        server_name  www.chenqiangyi.cn;</div><div class="line">	ssl on;</div><div class="line">        ssl_certificate      1_www.chenqiangyi.com_bundle.crt;</div><div class="line">        ssl_certificate_key  2_www.withyoufriends.com.key;</div><div class="line"></div><div class="line">        ssl_session_cache    shared:SSL:1m;</div><div class="line">        ssl_session_timeout  5m;</div><div class="line">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">	ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</div><div class="line"> 	ssl_prefer_server_ciphers  on;</div><div class="line">        ...</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>把http的请求重定向到https</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       80;</div><div class="line">        server_name  chenqiangyi.cn;</div><div class="line">	rewrite  ^(.*) https://$host$1 permanent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就ok了，请求<a href="www.chenqiangyi.cn">www.chenqiangyi.cn</a> 和 <a href="chenqiangyi.cn">chenqiangyi.cn</a>都能跳转到<a href="https://www.chenqiangyi.cn">https://www.chenqiangyi.cn</a>访问。</p>
+<p>但是有时候会发现访问<a href="chenqiangyi.cn">chenqiangyi.cn</a>会出现无限重定向，不知道是为什么，现在还在探索。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;以下不是一篇指南式的教程，只是记录了将我的博客升级为https的过程，主要记录了一些配置nginx时遇到的问题，但也可以做一下参考 😁&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;什么是HTTPS&quot;&gt;&lt;a href=&quot;#什么是HTTPS&quot;
+    
+    </summary>
+    
+      <category term="https" scheme="http://www.chenqiangyi.cn/categories/https/"/>
+    
+    
+      <category term="https" scheme="http://www.chenqiangyi.cn/tags/https/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript中的递归</title>
@@ -1990,50 +2041,6 @@
     
     
       <category term="3D切换" scheme="http://www.chenqiangyi.cn/tags/3D%E5%88%87%E6%8D%A2/"/>
-    
-      <category term="CSS3" scheme="http://www.chenqiangyi.cn/tags/CSS3/"/>
-    
-      <category term="HTML5" scheme="http://www.chenqiangyi.cn/tags/HTML5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用css写一个时钟</title>
-    <link href="http://www.chenqiangyi.cn/2016/05/08/%E7%94%A8css%E5%86%99%E4%B8%80%E4%B8%AA%E6%97%B6%E9%92%9F/"/>
-    <id>http://www.chenqiangyi.cn/2016/05/08/用css写一个时钟/</id>
-    <published>2016-05-08T15:42:54.000Z</published>
-    <updated>2017-06-14T07:05:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>HTML5以及CSS3能做出许多特别炫的东西，这也是为什么越来越多人喜欢学习H5和CSS3了，今天来分享一个通过CSS3和原生js写出的时钟。<br>先放链接：<a href="http://chenqiangyi.com/demo/cssClock.html" target="_blank" rel="external">http://chenqiangyi.com/demo/cssClock.html</a>,<br>上面的时钟刻度以及指针的旋转都用了CSS3的tranform的rotate属性，接下来将主要方法吧。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160522213317_88662.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>css玩的就是布局，首先需要一个大盒子作为钟表的圆盘，然后就是三个指针，因为三个指针都需要摆动，所以指针需要是绝对定位的。可以先设置指针的top和left为50%，然后通过margin-top和margin-left分别为负的宽高的一半就会调整到中心位置最终可以把三个点固定到中心的cap位置上。</p>
-<h2 id="js控制"><a href="#js控制" class="headerlink" title="js控制"></a>js控制</h2><p> 现获取时间对象，获取每一刻的时iH、分iM、秒iS，然后通过修改每一个指针的每一刻旋转的角度来，控制钟表时间的转动；其中当时针每走一个刻度转动的角度是iH<em>30+iM/60</em>30,分针每走一个刻度转动的角度是iH<em>6+iM/60</em>6,秒针每走一个刻度转动的角度是iH<em>6+iMs/1000</em>6,其中不能忘了当时针转一定角度的时候分针也转动了一定角度，需要在加上时针转动的角度时时针转动的相应的角度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">oH.style.transform=&quot;rotate(&quot;+(iH*30+iM/60*30)+&quot;deg)&quot;;</div><div class="line">oM.style.transform=&quot;rotate(&quot;+(iM*6+iS/60*6)+&quot;deg)&quot;;</div><div class="line">oS.style.transform=&quot;rotate(&quot;+(iS*6+iMs/1000*6)+&quot;deg)&quot;;</div></pre></td></tr></table></figure>
-<p>然后给钟表添加一个定时器，就会看到钟表开始跑了，此时你会发现转动的角度乱七八糟，这是因为转动的旋转中心没有设定，需要把指针的旋转中心设置为tranform-origin:center bottom;也就是圆盘的正中心，这时就会看到指针正常了，如果你看到了秒针每次跳动几格，那是因为你的时分秒没有加上分秒毫秒转动时他们转动的角度。</p>
-<h2 id="添加钟表是时刻针"><a href="#添加钟表是时刻针" class="headerlink" title="添加钟表是时刻针"></a>添加钟表是时刻针</h2><p> 如果手工添加的话就太笨重了，作为一名程序员当然是自动添加的，这时就有一个问题了：怎么让指针每隔五个刻度变大一次，这需要对刻度遍历，因为只有60个刻度，只需循环60次即可把指针创建出来。这时需要创建span标签，然后添加到表盘中，此时会看到所有的刻度针都挤在了12刻度出，这时需要对每一个刻度进行旋转一定角度，并且旋转的中心也是中心点就像：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">oSpan.style.transform=&quot;rotate(&quot;+i*6+&quot;deg)&quot;</div></pre></td></tr></table></figure>
-<p> 然后再对5取余刚好正除的添加一个长一点的样式，此时就连时钟的刻度表也会出来了，此时你可能会感觉怪怪的，那是因为刻度数字也被旋转了，此时就需要对刻度数次重新调整方向：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">oSpan.children[0].style.transform=&quot;rotate(&quot;+(-i*6)+&quot;deg)&quot;</div></pre></td></tr></table></figure>
-<p> 让span的第一个子元素，也就是时刻度数归位，此时就会看到时钟的模型已经出来了。</p>
-<h2 id="添加拖拽效果"><a href="#添加拖拽效果" class="headerlink" title="添加拖拽效果"></a>添加拖拽效果</h2><p> 通过鼠标的拖拽实时改动盒子的left和top值就完成了拖拽</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p> 通过钟表的制作自己对CSS3有了更多的认识，也感觉到了CSS3的强大，以后将会做出更多的CSS效果。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">	#div1&#123;width: 300px;height: 300px;position: absolute;border: 10px solid #0099ff;box-shadow: 1px 2px 2px #0099ff; border-radius: 50%;margin:auto;&#125;</div><div class="line">	#cap&#123;position: absolute;width: 20px;height: 20px;border-radius: 50%;background: #0099ff;top: 50%;left: 50%;margin-left: -10px;margin-top: -10px;&#125;</div><div class="line">	#div1 div&#123;transform-origin: center bottom&#125;</div><div class="line">	#hour&#123;width: 10px;height: 80px;position: absolute;left: 50%;top: 50%;margin-left: -5px;background: #000;margin-top: -80px;&#125;</div><div class="line">	#minute&#123;width: 8px;height: 100px;top: 50%;left: 50%;margin-left: -4px;margin-top: -100px;position: absolute;background: #000;&#125;</div><div class="line">	#second&#123;width: 6px;height: 120px;left: 50%;top: 50%;margin-left: -3px;margin-top: -120px;position: absolute;background: red;&#125;</div><div class="line">	#div1 span&#123;position: absolute;left: 50%;top: 0px;background: #000;width: 2px;margin-left: -2px;height: 8px;transform-origin: center 150px;&#125;</div><div class="line">	#div1 span.on&#123;width: 4px;height: 12px;margin-left: -2px;&#125;</div><div class="line">	#div1 span strong&#123;position: absolute;left: 50%;top: 10px;width: 40px;margin-left: -20px;text-align: center;font-weight: normal;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	window.onload=function()&#123;</div><div class="line">		var oDiv=document.getElementById(&quot;div1&quot;);</div><div class="line">		var oH=document.getElementById(&quot;hour&quot;);</div><div class="line">		var oM=document.getElementById(&quot;minute&quot;);</div><div class="line">		var oS=document.getElementById(&quot;second&quot;);</div><div class="line">		var oSpan=document.getElementById(&quot;span&quot;);</div><div class="line">		var oCap=document.getElementById(&quot;cap&quot;);</div><div class="line">		function click()&#123;</div><div class="line">			var oDate=new Date();</div><div class="line">			var iH=oDate.getHours();</div><div class="line">			var iM=oDate.getMinutes();</div><div class="line">			var iS=oDate.getSeconds();</div><div class="line">			var iMs=oDate.getMilliseconds();</div><div class="line">			oH.style.transform=&quot;rotate(&quot;+(iH*30+iM/60*30)+&quot;deg)&quot;;</div><div class="line">			oM.style.transform=&quot;rotate(&quot;+(iM*6+iS/60*6)+&quot;deg)&quot;;</div><div class="line">			oS.style.transform=&quot;rotate(&quot;+(iS*6+iMs/1000*6)+&quot;deg)&quot;;</div><div class="line">		&#125;</div><div class="line">		click();</div><div class="line">		setInterval(click,30);</div><div class="line">		//创建刻度</div><div class="line">		for(var i=0;i&lt;60;i++)&#123;</div><div class="line">			var oSpan=document.createElement(&quot;span&quot;);</div><div class="line">			oDiv.appendChild(oSpan);</div><div class="line">			if(i%5==0)&#123;</div><div class="line">				oSpan.className=&quot;on&quot;;</div><div class="line">				oSpan.innerHTML=&quot;&lt;strong&gt;&quot;+(i==0?12:i/5)+&quot;&lt;/strong&gt;&quot;;</div><div class="line">				oSpan.children[0].style.transform=&quot;rotate(&quot;+(-i*6)+&quot;deg)&quot;</div><div class="line">			&#125;</div><div class="line">			oSpan.style.transform=&quot;rotate(&quot;+i*6+&quot;deg)&quot;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		oDiv.onmousedown=function(ev)&#123;</div><div class="line">			var oEvt=ev||event;</div><div class="line">			var disX=oEvt.clientX-oDiv.offsetLeft;</div><div class="line">			var disY=oEvt.clientY-oDiv.offsetTop;</div><div class="line">			document.onmousemove=function(ev)&#123;</div><div class="line">				var oEvt=ev||event;</div><div class="line">				oDiv.style.left=oEvt.clientX-disX+&quot;px&quot;;</div><div class="line">				oDiv.style.top=oEvt.clientY-disY+&quot;px&quot;;</div><div class="line">			&#125;</div><div class="line">			document.onmouseup=function()&#123;</div><div class="line">				document.onmousemove=document.onmouseup=null;</div><div class="line">				oDiv.releaseCapture &amp;&amp; oDiv.releaseCapture();</div><div class="line">			&#125;</div><div class="line">			oDiv.setCapture &amp;&amp; oDiv.setCapture();</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;div1&quot;&gt;</div><div class="line">	&lt;div id=&quot;hour&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;div id=&quot;minute&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;div id=&quot;second&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;div id=&quot;cap&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;!--	&lt;span&gt;&lt;strong&gt;12&lt;/strong&gt;&lt;/span&gt;--&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;HTML5以及CSS3能做出许多特别炫的东西，这也是为什么越来越多人喜欢学习H5和CSS3了，今天来分享一个通过CSS3和原生js写出的时钟。&lt;br&gt;先放链接：&lt;a href=&quot;http://chenqiangyi.com/demo/cssClock.html&quot; targe
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://www.chenqiangyi.cn/categories/CSS/"/>
-    
     
       <category term="CSS3" scheme="http://www.chenqiangyi.cn/tags/CSS3/"/>
     
