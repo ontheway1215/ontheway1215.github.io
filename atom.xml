@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenqiangyi.cn/"/>
-  <updated>2017-06-21T10:41:19.000Z</updated>
+  <updated>2017-06-21T10:49:31.000Z</updated>
   <id>http://www.chenqiangyi.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.chenqiangyi.cn/2017/06/21/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2https/"/>
     <id>http://www.chenqiangyi.cn/2017/06/21/网站部署https/</id>
     <published>2017-06-21T09:27:55.000Z</published>
-    <updated>2017-06-21T10:41:19.000Z</updated>
+    <updated>2017-06-21T10:49:31.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>以下不是一篇指南式的教程，只是记录了将我的博客升级为https的过程，主要记录了一些配置nginx时遇到的问题，但也可以做一下参考 😁</p>
@@ -43,7 +43,7 @@
 <p>配置完成后用nginx -t测试一下配置文件是否有误，正确无误的话重启Nginx，就可以使用了。<br>然而，我用https访问一直报500的错误，最后才发现HTTPS默认使用的端口是443，需要我们开放443端口。</p>
 <p>然后可以正常使用<a href="https:www.chenqiangyi.cn" target="_blank" rel="external">https:www.chenqiangyi.cn</a>正常访问。<br>但是，当使用<a href="http://www.chenqiangyi.cn">http://www.chenqiangyi.cn</a>访问的时候又报错。需要我们对http的请求强制转为https访问。</p>
 <h1 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h1><p>https服务器监听443端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       443;</div><div class="line">        server_name  www.chenqiangyi.cn;</div><div class="line">	ssl on;</div><div class="line">        ssl_certificate      1_www.chenqiangyi.com_bundle.crt;</div><div class="line">        ssl_certificate_key  2_www.withyoufriends.com.key;</div><div class="line"></div><div class="line">        ssl_session_cache    shared:SSL:1m;</div><div class="line">        ssl_session_timeout  5m;</div><div class="line">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">	ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</div><div class="line"> 	ssl_prefer_server_ciphers  on;</div><div class="line">        ...</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       443;</div><div class="line">        server_name  www.chenqiangyi.cn;</div><div class="line">	ssl on;</div><div class="line">        ssl_certificate      1_www.chenqiangyi.cn_bundle.crt;</div><div class="line">        ssl_certificate_key  2_www.chenqiangyi.cn.key;</div><div class="line"></div><div class="line">        ssl_session_cache    shared:SSL:1m;</div><div class="line">        ssl_session_timeout  5m;</div><div class="line">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">	ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</div><div class="line"> 	ssl_prefer_server_ciphers  on;</div><div class="line">        ...</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>把http的请求重定向到https</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       80;</div><div class="line">        server_name  chenqiangyi.cn;</div><div class="line">	rewrite  ^(.*) https://$host$1 permanent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样就ok了，请求<a href="www.chenqiangyi.cn">www.chenqiangyi.cn</a> 和 <a href="chenqiangyi.cn">chenqiangyi.cn</a>都能跳转到<a href="https://www.chenqiangyi.cn">https://www.chenqiangyi.cn</a>访问。</p>
