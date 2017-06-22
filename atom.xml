@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenqiangyi.cn/"/>
-  <updated>2017-06-21T10:49:31.000Z</updated>
+  <updated>2017-06-22T05:33:23.000Z</updated>
   <id>http://www.chenqiangyi.cn/</id>
   
   <author>
@@ -16,11 +16,80 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>javascript中的this</title>
+    <link href="http://www.chenqiangyi.cn/2017/06/22/javascript%E4%B8%AD%E7%9A%84this/"/>
+    <id>http://www.chenqiangyi.cn/2017/06/22/javascript中的this/</id>
+    <published>2017-06-22T03:06:29.000Z</published>
+    <updated>2017-06-22T05:33:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>JavaScript 中的this一直是初学者比较困惑的知识点，当然我也不例外。因为this很重要，所以面试中基本都有涉及this相关的问题，在曾经的面试中也被问过this，比较容易弄混，今天就来整理一下this相关的知识。</p>
+</blockquote>
+<p>首先要知道this指的是什么？简单概括就是：</p>
+<ul>
+<li>上下文是在函数调用的时候被创建的。</li>
+<li>this是组成上下文的一部分。</li>
+</ul>
+<p>因此每次函数被调用的时候就会产生一个新的this。具体分为下面几种。</p>
+<h1 id="作为普通函数在全局中被调用"><a href="#作为普通函数在全局中被调用" class="headerlink" title="作为普通函数在全局中被调用"></a>作为普通函数在全局中被调用</h1><p>在全局环境里面，this永远指向window，因此在全局环境里作为普通函数被调用的时候，this也是window(这里仅指在浏览器环境下，不靠路Node)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">function fn() &#123;</div><div class="line">    console.log(this);  //window</div><div class="line">    console.log(this.name)  //chen</div><div class="line">&#125;</div><div class="line">fn();</div></pre></td></tr></table></figure>
+<p>这里，fn其实是作为window的一个方法被调用的，而name也是window的一个属性，因此fn()实际上就是window.fn().就如上面的window.name == ‘chen’</p>
+<h1 id="作为对象的属性被调用"><a href="#作为对象的属性被调用" class="headerlink" title="作为对象的属性被调用"></a>作为对象的属性被调用</h1><p>如果函数作为一个对象的属性方法，并且被调用的时候，this就指向这个对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">var person = &#123;</div><div class="line">    name: &apos;yi&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">var sayNameWin = person.sayName;</div><div class="line"></div><div class="line">person.sayName();  //yi</div><div class="line">sayNameWin();  //chen  作为window的方法被调用</div></pre></td></tr></table></figure>
+<p>在这里sayName方法是作为person的一个属性方法被调用的，因此指向person，但是sayNameWin方法确实作为window的一个属性方法被调用的，因此console.log的值是chen。<br>我们再看一个变形。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var person1 = &#123;</div><div class="line">    name: &apos;chen&apos;,</div><div class="line">    sayName: function()&#123;</div><div class="line">        console.log(this.name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var person2 = &#123;</div><div class="line">    name: &apos;yi&apos;,</div><div class="line">    sayName: person1.sayName</div><div class="line">&#125;</div><div class="line"></div><div class="line">person2.sayName();  //yi  作为person2的属性方法被调用</div></pre></td></tr></table></figure>
+<p><code>但是当在对象方法中再定义函数，这时候this又是window。</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">var person = &#123;</div><div class="line">    name: &apos;yi&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(this);  //window</div><div class="line">            console.log(this.name);  //chen</div><div class="line">        &#125;</div><div class="line">        fn();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
+<p>如果想让this指向person的话，只需要用that保存下来this的值即可，也可以使用apply等改变this。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">var person = &#123;</div><div class="line">    name: &apos;yi&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        var that = this;</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(that);  //Object &#123;name: &apos;chen&apos;, ...&#125;</div><div class="line">            console.log(that.name);  //yi</div><div class="line">        &#125;</div><div class="line">        fn();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
+<h1 id="作为构造函数被调用"><a href="#作为构造函数被调用" class="headerlink" title="作为构造函数被调用"></a>作为构造函数被调用</h1><p>作为构造函数被调用的时候，<code>this</code>代表它即将<code>new</code>出来的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Person(name) &#123;</div><div class="line">    this.name = name;</div><div class="line">    console.log(this);  //Person &#123;name: &apos;chen&apos;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var person = new Person(&apos;chen&apos;);</div><div class="line">console.log(person.name);  //chen</div></pre></td></tr></table></figure>
+<p>如果不加<code>new</code>，表示即作为普通函数调用，指向<code>window</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Person(name) &#123;</div><div class="line">    this.name = name;</div><div class="line">    console.log(this);  //window</div><div class="line">    console.log(this.name);  //chen</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person(&apos;chen&apos;);</div><div class="line">console.log(window.name);  //chen</div></pre></td></tr></table></figure>
+<h1 id="作为call-apply-bind方法的调用"><a href="#作为call-apply-bind方法的调用" class="headerlink" title="作为call/apply/bind方法的调用"></a>作为call/apply/bind方法的调用</h1><p>作为<code>call/apply/bind</code>方法被调用的时候指向传入的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var person = &#123;</div><div class="line">    name: &apos;chen&apos;</div><div class="line">&#125;;</div><div class="line">function fn() &#123;</div><div class="line">    console.log(this);  //Object &#123;name: &apos;chen&apos;&#125;</div><div class="line">    console.log(this.name);  //chen</div><div class="line">&#125;</div><div class="line">fn.apply(person);</div></pre></td></tr></table></figure>
+<h1 id="严格模式下"><a href="#严格模式下" class="headerlink" title="严格模式下"></a>严格模式下</h1><p>在严格模式下，在全局环境中执行函数调用的时候是会指向<code>undefined</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">function person() &#123;</div><div class="line">    console.log(this);  //undefined</div><div class="line">&#125;;</div><div class="line">person();</div></pre></td></tr></table></figure>
+<h1 id="setTimeout、setInterval中的this"><a href="#setTimeout、setInterval中的this" class="headerlink" title="setTimeout、setInterval中的this"></a>setTimeout、setInterval中的this</h1><p>《javascript高级程序设计》中写到：”超时调用的代码都是在全局执行域中执行的”。setTimeout/setInterval执行的时候，this默认指向window对象，除非手动改变this指向。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">function Person()&#123;</div><div class="line">    this.name = &apos;yi&apos;;</div><div class="line">    this.sayName = function() &#123;</div><div class="line">        console.log(this);  //window</div><div class="line">        console.log(this.name);  //chen</div><div class="line">    &#125;;</div><div class="line">    setTimeout(this.sayName, 10);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var person = new Person();</div></pre></td></tr></table></figure>
+<p>在这里如果想改变this，可以使用apply/call/bind等，也可以使用that保存this。setTimeout中的回调函数在严格模下也指向<code>window</code>而不是undefined（是个坑）。因为setTimeout的回调函数如果没有指定的this，会做一个隐式的操作，将全局上下问注入进去，不管是在严格模式还是非严格模式下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">function person() &#123;</div><div class="line">    console.log(this);  //window</div><div class="line">&#125;</div><div class="line">setTimeout(person, 0);</div></pre></td></tr></table></figure>
+<h1 id="构造函数prototype属性"><a href="#构造函数prototype属性" class="headerlink" title="构造函数prototype属性"></a>构造函数prototype属性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">function Person() &#123;</div><div class="line">    this.name = &apos;yi&apos;;</div><div class="line">&#125;</div><div class="line">Person.prototype.sayName = function() &#123;</div><div class="line">    console.log(this);  //Person &#123;name: &apos;yi&apos;&#125;</div><div class="line">    console.log(this.name);  //yi</div><div class="line">&#125;</div><div class="line">var person = new Person();</div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
+<p>在Person.prototype.sayName函数中，this指向的person对象。即便是在整个原型链中，this也代表当前对象的值。</p>
+<h1 id="Eval函数"><a href="#Eval函数" class="headerlink" title="Eval函数"></a>Eval函数</h1><p>在Eval中，this指向当前作用域的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">var person = &#123;</div><div class="line">    name: &apos;yi&apos;,</div><div class="line">    getName: function() &#123;</div><div class="line">        eval(&quot;console.log(this)&quot;);</div><div class="line">        eval(&quot;console.log(this.name)&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">person.getName();  //Object &#123;name: &apos;yi&apos;, ...&#125; yi</div><div class="line"></div><div class="line">var getNameWin = person.getName;  //window chen</div><div class="line">getNameWin();</div></pre></td></tr></table></figure>
+<p>在这里，和不适用Eval，作为对象的方法调用的时候的出来的结果是一样的。</p>
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>箭头函数里面this始终指向外部对象，因为箭头函数没有this，因此它自身不能进行new实例化，同时也不能使用call,apply,bind等方法来改变this的指向。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var person = &#123;</div><div class="line">    name: &apos;chen&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        var fn = () =&gt; &#123;</div><div class="line">            return () =&gt; &#123;</div><div class="line">                console.log(this);  //Object &#123;name: &apos;chen&apos;, ...&#125;</div><div class="line">                coneole.log(this.name);  //chen</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        fn()();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3988422.html" target="_blank" rel="external">深入理解javascript原型和闭包（10）——this</a></p>
+<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3996037.html" target="_blank" rel="external">深入理解javascript原型和闭包（17）——补this</a></p>
+<p><a href="http://www.cnblogs.com/justany/archive/2012/11/01/the_keyword_this_in_javascript.html" target="_blank" rel="external">Javascript中this关键字详解 - Justany_WhiteSnow - 博客园</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;JavaScript 中的this一直是初学者比较困惑的知识点，当然我也不例外。因为this很重要，所以面试中基本都有涉及this相关的问题，在曾经的面试中也被问过this，比较容易弄混，今天就来整理一下this相关的知识。&lt;/p&gt;
+&lt;/block
+    
+    </summary>
+    
+      <category term="this" scheme="http://www.chenqiangyi.cn/categories/this/"/>
+    
+    
+      <category term="this" scheme="http://www.chenqiangyi.cn/tags/this/"/>
+    
+      <category term="javascript" scheme="http://www.chenqiangyi.cn/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>网站部署https</title>
     <link href="http://www.chenqiangyi.cn/2017/06/21/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2https/"/>
     <id>http://www.chenqiangyi.cn/2017/06/21/网站部署https/</id>
     <published>2017-06-21T09:27:55.000Z</published>
-    <updated>2017-06-21T10:49:31.000Z</updated>
+    <updated>2017-06-22T03:05:11.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>以下不是一篇指南式的教程，只是记录了将我的博客升级为https的过程，主要记录了一些配置nginx时遇到的问题，但也可以做一下参考 😁</p>
@@ -63,6 +132,8 @@
     
     
       <category term="https" scheme="http://www.chenqiangyi.cn/tags/https/"/>
+    
+      <category term="nginx" scheme="http://www.chenqiangyi.cn/tags/nginx/"/>
     
   </entry>
   
@@ -1974,77 +2045,6 @@
       <category term="JavaScript" scheme="http://www.chenqiangyi.cn/tags/JavaScript/"/>
     
       <category term="原型与原型链" scheme="http://www.chenqiangyi.cn/tags/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML5头图切换效果</title>
-    <link href="http://www.chenqiangyi.cn/2016/05/11/HTML5%E5%A4%B4%E5%9B%BE%E5%88%87%E6%8D%A2%E6%95%88%E6%9E%9C/"/>
-    <id>http://www.chenqiangyi.cn/2016/05/11/HTML5头图切换效果/</id>
-    <published>2016-05-10T16:58:16.000Z</published>
-    <updated>2017-06-14T13:45:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>HTML5配合上CSS3可以做出很炫的效果，这也是为什么越来越多的人学习H5的原因，话不多说，先放图</p>
-</blockquote>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160522185643_14355.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>从图中就可以看出大概的效果，当点击next或prev按钮是，图片向前或向后旋转切换拨动，并且是以立体的效果切换的，<br>链接：<a href="http://www.chenqiangyi.com/demo/switch/" target="_blank" rel="external">http://www.chenqiangyi.com/demo/switch/</a> 接下来就来分享一下制作的方法</p>
-<h1 id="页面布局"><a href="#页面布局" class="headerlink" title="页面布局"></a>页面布局</h1><ul>
-<li>首先需要有一个大盒子包裹着所有的元素，并且需要其为绝对定位relative，方便对其子元素的位置的控制;</li>
-<li>需要增加一个ul包含这一堆li，在每个li中包含一张图片，并且是撑满li的，而且需要对li进行绝对定位absolute</li>
-<li>在图中可以看到每次显示三张图片，哦~不对，应该是五张图片，还有两张图片在盒子的最边缘，在切换的时候就会隐掉，从左到右暂时规定图片的class为l2,l1,cur,r1,r2,当我们切换的时候只需改变每一张图片的class即可</li>
-</ul>
-<h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><p>transition和transform控制</p>
-<p>当页面刚开始加载的时候我们需要布局呈先如图的样式，这句需要运用transform的知识了，首先在刚开始的时候所有图片都平铺在最中间，对于最中间的图片的位置没有变，我们暂时不考虑，只需考虑两边的图片，右一图片r1可以看做是原来的图片向右移动了一段距离，然后沿着Y轴旋转一定角度得到的，那么问题来了，是如何旋转的，需要旋转多少度呢？这里有一个方法，就是人站在朝向y轴的正方向，如果顺时针旋转就为正角度，逆时针旋转就为负角度。就如图中的图片，如果要按照y轴旋转，你需要站在图片的正下方看图片，此时你看到的只是图片的一条棱，那么就可以看到图片逆时针旋转得到了图中的样式。如此一来，右二图l2就可以知道他是先向右移动一定距离，然后逆时针旋转了一个更大的角度。如此轮推就可以知道前面的两张图片是按照向左平移一定距离，然后顺时针旋转了一定的角度得到的，只是角度大小不同而已。</p>
-<p>五张图片的初始样式的css代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ul1 li.l2&#123;opacity: 0;z-index: 1;transform: perspective(800px) translateX(-300px) rotateY(45deg);&#125;</div><div class="line">#ul1 li.l1&#123;opacity: 1;z-index: 3;transform: perspective(800px) translateX(-200px) rotateY(60deg);&#125;</div><div class="line">#ul1 li.cur&#123;opacity: 1;z-index: 5;&#125;</div><div class="line">#ul1 li.r1&#123;opacity: 1;z-index: 3;transform: perspective(800px) translateX(200px) rotateY(-60deg);&#125;</div><div class="line">#ul1 li.r2&#123;opacity: 0;z-index: 1;transform: perspective(800px) translateX(300px) rotateY(-45deg);&#125;</div></pre></td></tr></table></figure>
-<h1 id="transform的初始化"><a href="#transform的初始化" class="headerlink" title="transform的初始化"></a>transform的初始化</h1><p>transform: perspective(800px) rotateY(0)</p>
-<p>在添加css的3D效果的时候要想看到立体的效果，需要添加一个视距的属性，这个属性的值越大类似站在比较远的地方看东西，可能会比较小，如果太近的话，就会看到物体特别大，所以合适的视距值很重要，一般perspective的值为800px的时候看到的物体的效果最佳。此时我们还需要初始化transform，否则的话在运动的时候会出现晃动的现象，初始化只需要在要添加运动的元素添加初始值transform: perspective(800px) rotateY(0);</p>
-<p>初始化代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#ul1 li&#123;position: absolute;left: 0;top: 0;width: 100%;height: 100%;opacity: 0;transform: perspective(800px) rotateY(0);transition: 1s all ease;&#125;</div></pre></td></tr></table></figure>
-<h1 id="js控制图片的切换"><a href="#js控制图片的切换" class="headerlink" title="js控制图片的切换"></a>js控制图片的切换</h1><p>一般的思路就是对每一张图片的class挨个更换，这样可以达到效果，就是代码太冗余了，这里提供一个比较简便的用法：</p>
-<p>当点击next的按钮时，原本前一张图片往后退一步，加上class即可;因为同样是给下一张图片添加class，我们可以把所有的图片的存成一个数组，当切换下一张的时候，我们只需把第一张图片拿出来，添加到图片集合的尾部，这样图片他们原有的class就添加到了下一张图片上，这样下一张图片就有了图片原先的样式，再加上运动时间，这样运动的效果就做出来了，点击prev同样的方法，只是把最后一张添加到图片集的头部，这样同样实现了图片的切换。</p>
-<h1 id="解决next和prev连续点击出现的bug"><a href="#解决next和prev连续点击出现的bug" class="headerlink" title="解决next和prev连续点击出现的bug"></a>解决next和prev连续点击出现的bug</h1><p>出现这样的bug是因为当图片本次的运动还没有完成时，继续点击按钮，出现了运动的凌乱，要解决这个bug，此时js刚好有一个叫transformend的事件，真是要风得风，要雨得雨，不禁感叹js的功能的强大，从字面上就可以看出这个事件的意思，就是当运动完成的时候出现的这个事件。因为每五张图片都是同时完成的，此时我们只需监听一张图片的运动结果即可。我们可以先定义一个变量aReady=true;当他的值为false时，不执行切换的函数，此时直接返回即可，然后设置aReady=false，当每一个的运动完成时再令aReady=true,这样就可以在一次运动完成之后再点击按钮才会执行下一次运动，这样这个H5的效果就基本完成了。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li><p>先运用css对几行图片进项初始化布局</p>
-</li>
-<li><p>transform的初始化</p>
-</li>
-<li><p>js的控制，每一次删除数组中最后一个，添加到最前面或者删除最前面的一个，添加到数组的最后面，然后更换图片的class</p>
-</li>
-<li><p>解决bug，运用transformend函数。</p>
-</li>
-<li><p>反思运用H5和css3做出更多比较炫的东西</p>
-</li>
-</ul>
-<h1 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">*&#123;margin: 0;padding: 0;list-style: none;&#125;</div><div class="line">.container&#123;background: #aee2d9;width: 800px;margin: 100px auto;overflow: hidden;&#125;</div><div class="line">#ul1&#123;position: relative;width: 400px;height: 200px;background: #ccc;margin: 100px auto;&#125;</div><div class="line">#ul1 li&#123;position: absolute;left: 0;top: 0;width: 100%;height: 100%;opacity: 0;transform: perspective(800px) rotateY(0);transition: 1s all ease;&#125;</div><div class="line">#ul1 li img&#123;width: 400px;&#125;</div><div class="line">#ul1 li.l2&#123;opacity: 0;z-index: 1;transform: perspective(800px) translateX(-300px) rotateY(45deg);&#125;</div><div class="line">#ul1 li.l1&#123;opacity: 1;z-index: 3;transform: perspective(800px) translateX(-200px) rotateY(60deg);&#125;</div><div class="line">#ul1 li.cur&#123;opacity: 1;z-index: 5;&#125;</div><div class="line">#ul1 li.r1&#123;opacity: 1;z-index: 3;transform: perspective(800px) translateX(200px) rotateY(-60deg);&#125;</div><div class="line">#ul1 li.r2&#123;opacity: 0;z-index: 1;transform: perspective(800px) translateX(300px) rotateY(-45deg);&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	window.onload=function()&#123;</div><div class="line">		var oUl=document.getElementById(&quot;ul1&quot;);</div><div class="line">		var oPrev=document.getElementById(&quot;prev&quot;);</div><div class="line">		var oNext=document.getElementById(&quot;next&quot;);</div><div class="line">		var aLi=oUl.children;</div><div class="line">		var bReady=true;</div><div class="line">		var aClass=[];</div><div class="line">		for(var i=0;i&lt;aLi.length;i++)&#123;</div><div class="line">			aClass.push(aLi[i].className)</div><div class="line">		&#125;</div><div class="line">		//下一张</div><div class="line">		oNext.onclick=function()&#123;</div><div class="line"></div><div class="line">			if(!bReady) return;</div><div class="line">			bReady=false;</div><div class="line"></div><div class="line">			aClass.unshift(aClass.pop());</div><div class="line"></div><div class="line">			tab()</div><div class="line">		&#125;;</div><div class="line">		//上一张</div><div class="line">		oPrev.onclick=function()&#123;</div><div class="line"></div><div class="line">			if(!bReady) return;</div><div class="line">			bReady=false;</div><div class="line"></div><div class="line">			aClass.push(aClass.shift());</div><div class="line"></div><div class="line">			tab()</div><div class="line">		&#125;;</div><div class="line"></div><div class="line">		function tab()&#123;</div><div class="line">			for(var i=0;i&lt;aLi.length;i++)&#123;</div><div class="line">				aLi[i].className=aClass[i];</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			var oCur=oUl.querySelector(&quot;.cur&quot;);</div><div class="line">			oCur.addEventListener(&quot;transitionend&quot;,function()&#123;</div><div class="line">				bReady=true;</div><div class="line">			&#125;,false)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div class=&quot;container&quot;&gt;</div><div class="line">		&lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;prev&quot; value=&quot;上一张&quot; /&gt;</div><div class="line">		&lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;next&quot; value=&quot;下一张&quot; /&gt;</div><div class="line">		&lt;ul id=&quot;ul1&quot;&gt;</div><div class="line">			&lt;li class=&quot;l2&quot;&gt;&lt;img src=&quot;images/1.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li class=&quot;l1&quot;&gt;&lt;img src=&quot;images/2.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li class=&quot;cur&quot;&gt;&lt;img src=&quot;images/3.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li class=&quot;r1&quot;&gt;&lt;img src=&quot;images/4.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li class=&quot;r2&quot;&gt;&lt;img src=&quot;images/5.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;img src=&quot;images/6.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;img src=&quot;images/7.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;img src=&quot;images/8.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;img src=&quot;images/9.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;img src=&quot;images/10.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;img src=&quot;images/11.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">			&lt;li&gt;&lt;img src=&quot;images/12.jpg&quot;/&gt;&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>over</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;HTML5配合上CSS3可以做出很炫的效果，这也是为什么越来越多的人学习H5的原因，话不多说，先放图&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&quot;image-bubble&quot;&gt;
-                &lt;div clas
-    
-    </summary>
-    
-      <category term="HTML5" scheme="http://www.chenqiangyi.cn/categories/HTML5/"/>
-    
-    
-      <category term="3D切换" scheme="http://www.chenqiangyi.cn/tags/3D%E5%88%87%E6%8D%A2/"/>
-    
-      <category term="CSS3" scheme="http://www.chenqiangyi.cn/tags/CSS3/"/>
-    
-      <category term="HTML5" scheme="http://www.chenqiangyi.cn/tags/HTML5/"/>
     
   </entry>
   
