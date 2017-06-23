@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenqiangyi.cn/"/>
-  <updated>2017-06-22T05:51:08.000Z</updated>
+  <updated>2017-06-23T06:20:18.000Z</updated>
   <id>http://www.chenqiangyi.cn/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数组去重总结</title>
+    <link href="http://www.chenqiangyi.cn/2017/09/10/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%80%BB%E7%BB%93/"/>
+    <id>http://www.chenqiangyi.cn/2017/09/10/数组去重总结/</id>
+    <published>2017-09-10T02:35:23.000Z</published>
+    <updated>2017-06-23T06:20:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>数组去重是一个常见的需求，在面试中也经常被问到，曾经被问到写出几种方法来完成数组去重，当时没有做出来，今天就来总一下。主要是理清思路，以下方法网上都能找得到，这里简单做一下总结。</p>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
+<li>遍历数组，比较，比较到相同的就删除后面的</li>
+<li>遍历数组，比较，比较相同的，跳过前面重复的，不相同的放入新数组</li>
+<li>任取一个数组放入新数组，遍历剩下的数组元素任取一个，与新数组元素一一比较，如有不同的，放入新数组。</li>
+<li>遍历数组，取一个元素，作为对象的属性，判断属性是否存在</li>
+<li>利用ES6提供的 new Set(arr),可直接去重</li>
+</ul>
+<h1 id="代码示范"><a href="#代码示范" class="headerlink" title="代码示范"></a>代码示范</h1><h2 id="删除后面重复的"><a href="#删除后面重复的" class="headerlink" title="删除后面重复的"></a>删除后面重复的</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date).getTime();</div><div class="line">    for (var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">        for (var j = i + 1; j &lt; arr.length; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                arr.splice(j, 1);</div><div class="line">                j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date).getTime() - a1);</div><div class="line">    return arr.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="相同则跳出循环"><a href="#相同则跳出循环" class="headerlink" title="相同则跳出循环"></a>相同则跳出循环</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date()).getTime();</div><div class="line">    var b = [], n = arr.length, i, j;</div><div class="line">    for (i = 0; i &lt; n; i++) &#123;</div><div class="line">        for (j = i + 1; j &lt; n; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                j = false;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (j) &#123;</div><div class="line">            b.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return b.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="不同则放入新数组"><a href="#不同则放入新数组" class="headerlink" title="不同则放入新数组"></a>不同则放入新数组</h2><p>这里j循环虽然继续了，但是i值已经变了。就等于是一个新的i循环：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = ((new Date()).getTime());</div><div class="line">    var b = [], n =arr.length, i, j;</div><div class="line">    for (var i = 0; i &lt; n; i++) &#123;</div><div class="line">        for (j = i + 1; j &lt; n; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                j = ++i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        b.push(arr[i]);</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return b.sort((a, b) =&gt; &#123;return a -b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="保证新数组中的数都是唯一的"><a href="#保证新数组中的数都是唯一的" class="headerlink" title="保证新数组中的数都是唯一的"></a>保证新数组中的数都是唯一的</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = ((new Date()).getTime());</div><div class="line">    var m = [], f;</div><div class="line">    for (var i = 0; i&lt; arr.length; i++) &#123;</div><div class="line">        f = true;</div><div class="line">        for (var j = 0; j &lt; m.length; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                f = false;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (f) &#123;</div><div class="line">            m.push(arr[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return m.sort((a, b) =&gt; &#123; return a - b&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="用对象属性"><a href="#用对象属性" class="headerlink" title="用对象属性"></a>用对象属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date()).getTime();</div><div class="line">    var m, n = [], o = &#123;&#125;;</div><div class="line">    for (var i = 0; (m = arr[i]) !== undefined; i++) &#123;</div><div class="line">        if (!o[m]) &#123;</div><div class="line">            n.push(m);</div><div class="line">            o[m] = true;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return n.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ES6新特性-new-Set"><a href="#ES6新特性-new-Set" class="headerlink" title="ES6新特性 new Set()"></a>ES6新特性 new Set()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 3, 5, 2, 3, 1, 4, 2, 3];</div><div class="line">var a = new Set(arr);</div><div class="line">console.log([...a].sort((a, b) =&gt; &#123;return a - b&#125;));  // [1, 2, 3, 4, 5]</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;数组去重是一个常见的需求，在面试中也经常被问到，曾经被问到写出几种方法来完成数组去重，当时没有做出来，今天就来总一下。主要是理清思路，以下方法网上都能找得到，这里简单做一下总结。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;思路&quot;&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="数组去重" scheme="http://www.chenqiangyi.cn/categories/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
+    
+    
+      <category term="数组去重" scheme="http://www.chenqiangyi.cn/tags/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
+    
+      <category term="Array" scheme="http://www.chenqiangyi.cn/tags/Array/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript中的this</title>
@@ -1890,161 +1934,6 @@
       <category term="CSS3" scheme="http://www.chenqiangyi.cn/tags/CSS3/"/>
     
       <category term="HTML5" scheme="http://www.chenqiangyi.cn/tags/HTML5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简单粗暴地理解js原型链–js面向对象编程(转)</title>
-    <link href="http://www.chenqiangyi.cn/2016/05/11/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E5%9C%B0%E7%90%86%E8%A7%A3js%E5%8E%9F%E5%9E%8B%E9%93%BE%E2%80%93js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"/>
-    <id>http://www.chenqiangyi.cn/2016/05/11/简单粗暴地理解js原型链–js面向对象编程/</id>
-    <published>2016-05-11T14:19:10.000Z</published>
-    <updated>2017-06-14T07:32:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：<a href="http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。" target="_blank" rel="external">http://www.cnblogs.com/qieguo/archive/2016/05/03/5451626.html。</a><br>接下来就是逗逼的文章了。</p>
-<p>原型链理解起来有点绕了，网上资料也是很多，每次晚上睡不着的时候总喜欢在网上找点原型链和闭包的文章看，效果极好。</p>
-<p>不要纠结于那一堆术语了，那除了让你脑筋拧成麻花，真的不能帮你什么。简单粗暴点看原型链吧，想点与代码无关的事，比如人、妖以及人妖。</p>
-<p></p>
-<p>1）人是人他妈生的，妖是妖他妈生的。人和妖都是对象实例，而人他妈和妖他妈就是原型。原型也是对象，叫原型对象。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521224834_96368.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>2）人他妈和人他爸啪啪啪能生出一堆人宝宝、妖他妈和妖他爸啪啪啪能生出一堆妖宝宝，啪啪啪就是构造函数，俗称造人。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521224811_76474.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>3）人他妈会记录啪啪啪的信息，所以可以通过人他妈找到啪啪啪的信息，也就是说能通过原型对象找到构造函数。</p>
-<p>4）人他妈可以生很多宝宝，但这些宝宝只有一个妈妈，这就是原型的唯一性。</p>
-<p>5）人他妈也是由人他妈他妈生的，通过人他妈找到人他妈他妈，再通过人他妈他妈找到人他妈他妈……，这个关系叫做原型链。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521224901_19458.png" alt="5" title="">
-                </div>
-                <div class="image-caption">5</div>
-            </figure>
-<p>6）原型链并不是无限的，当你通过人他妈一直往上找，最后发现你会发现人他妈他妈他妈……的他妈都不是人，也就是原型链最终指向null。</p>
-<p>7）人他妈生的人会有人的样子，妖他妈生的妖会有妖的丑陋，这叫继承。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521224954_46031.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>8）你继承了你妈的肤色，你妈继承了你妈他妈的肤色，你妈他妈……，这就是原型链的继承。</p>
-<p>9）你谈对象了，她妈让你带上房产证去提货，你若没有，那她妈会问你妈有没有，你妈没有那她妈会问你妈她妈有没有……这就是原型链的向上搜索。</p>
-<p>10）你会继承你妈的样子，但是你也可以去染发洗剪吹，就是说对象的属性可以自定义，会覆盖继承得到的属性。</p>
-<p>11）虽然你洗剪吹了染成黄毛了，但你不能改变你妈的样子，你妈生的弟弟妹妹跟你的黄毛洗剪吹没一点关系，就是说对象实例不能改动原型的属性。</p>
-<p>12）但是你家被你玩火烧了的话，那就是说你家你妈家你弟们家都被烧了，这就是原型属性的共享。</p>
-<p>13）你妈外号阿珍，邻居大娘都叫你阿珍儿，但你妈头发从飘柔做成了金毛狮王后，隔壁大婶都改口叫你包租仔，这叫原型的动态性。</p>
-<p>14）你妈爱美，又跑到韩国整形，整到你妈他妈都认不出来，即使你妈头发换回飘柔了，但隔壁邻居还是叫你金毛狮王子。因为没人认出你妈，整形后的你妈已经回炉再造了，这就是原型的整体重写。</p>
-<p>尼玛！你特么也是够了！ Don’t BB！ Show me the code！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Person (name) &#123; this.name = name; &#125;</div><div class="line">function Mother () &#123; &#125;</div><div class="line">Mother.prototype = &#123;    //Mother的原型</div><div class="line">    age: 18,</div><div class="line">    home: [&apos;Beijing&apos;, &apos;Shanghai&apos;]</div><div class="line">&#125;;</div><div class="line">Person.prototype = new Mother(); //Person的原型为Mother</div></pre></td></tr></table></figure>
-<p>用chrome调试工具查看，提供了<strong>proto</strong>接口查看原型，这里有两层原型，各位还是直接看chrome好一点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">var p1 = new Person(&apos;Jack&apos;); //p1:&apos;Jack&apos;; __proto__:&#123;__proto__:18,[&apos;Beijing&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line">var p2 = new Person(&apos;Mark&apos;); //p2:&apos;Mark&apos;; __proto__:&#123;__proto__:18,[&apos;Beijing&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"></div><div class="line">p1.age = 20;  </div><div class="line">/* 实例不能改变原型的基本值属性，正如你洗剪吹染黄毛跟你妈无关</div><div class="line"> * 在p1实例下增加一个age属性的普通操作，与原型无关。跟var o=&#123;&#125;; o.age=20一样。</div><div class="line"> * p1：下面多了个属性age，而__proto__跟 Mother.prototype一样，age=18。</div><div class="line"> * p2：只有属性name，__proto__跟 Mother.prototype一样</div><div class="line"> */</div><div class="line"></div><div class="line">p1.home[0] = &apos;Shenzhen&apos;;</div><div class="line">/* 原型中引用类型属性的共享，正如你烧了你家，就是烧了你全家的家</div><div class="line"> * 这个先过，下文再仔细唠叨一下可好？</div><div class="line"> * p1：&apos;Jack&apos;,20; __proto__:&#123;__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> * p2：&apos;Mark&apos;;    __proto__:&#123;__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> */</div><div class="line"></div><div class="line">p1.home = [&apos;Hangzhou&apos;, &apos;Guangzhou&apos;];</div><div class="line">/* 其实跟p1.age=20一样的操作。换成这个理解: var o=&#123;&#125;; o.home=[&apos;big&apos;,&apos;house&apos;]</div><div class="line"> * p1：&apos;Jack&apos;,20,[&apos;Hangzhou&apos;,&apos;Guangzhou&apos;]; __proto__:&#123;__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> * p2：&apos;Mark&apos;;                             __proto__:&#123;__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> */</div><div class="line"></div><div class="line">delete p1.age;    </div><div class="line">/* 删除实例的属性之后，原本被覆盖的原型值就重见天日了。正如你剃了光头，遗传的迷人小卷发就长出来了。</div><div class="line"> * 这就是向上搜索机制，先搜你，然后你妈，再你妈他妈，所以你妈的改动会动态影响你。</div><div class="line"> * p1：&apos;Jack&apos;,[&apos;Hangzhou&apos;,&apos;Guangzhou&apos;]; __proto__:&#123;__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> * p2：&apos;Mark&apos;;                          __proto__:&#123;__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> */</div><div class="line"></div><div class="line">Person.prototype.lastName = &apos;Jin&apos;;</div><div class="line">/* 改写原型，动态反应到实例中。正如你妈变新潮了，邻居提起你都说你妈真潮。</div><div class="line"> * 注意，这里我们改写的是Person的原型，就是往Mother里加一个lastName属性，等同于Mother.lastName=&apos;Jin&apos;</div><div class="line"> * 这里并不是改Mother.prototype，改动不同的层次，效果往往会有很大的差异。</div><div class="line"> * p1：&apos;Jack&apos;,[&apos;Hangzhou&apos;,&apos;Guangzhou&apos;]; __proto__:&#123;&apos;jin&apos;,__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> * p2：&apos;Mark&apos;;                          __proto__:&#123;&apos;jin&apos;,__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> */</div><div class="line"></div><div class="line">Person.prototype = &#123;</div><div class="line">    age: 28,</div><div class="line">    address: &#123; country: &apos;USA&apos;, city: &apos;Washington&apos; &#125;</div><div class="line">&#125;;</div><div class="line">var p3 = new Person(&apos;Obama&apos;);</div><div class="line">/* 重写原型！这个时候Person的原型已经完全变成一个新的对象了，也就是说Person换了个妈，叫后妈。</div><div class="line"> * 换成这样理解：var a=10; b=a; a=20; c=a。所以b不变，变得是c，所以p3跟着后妈变化，与亲妈无关。</div><div class="line"> * p1：&apos;Jack&apos;,[&apos;Hangzhou&apos;,&apos;Guangzhou&apos;]; __proto__:&#123;&apos;jin&apos;,__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> * p2：&apos;Mark&apos;;                          __proto__:&#123;&apos;jin&apos;,__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;]&#125;</div><div class="line"> * p3:&apos;Obama&apos;;__proto__: 28 &#123;country: &apos;USA&apos;, city: &apos;Washington&apos;&#125;</div><div class="line"> */</div><div class="line"></div><div class="line">Mother.prototype.no = 9527;</div><div class="line">/* 改写原型的原型，动态反应到实例中。正如你妈他妈变新潮了，邻居提起你都说你丫外婆真潮。</div><div class="line"> * 注意，这里我们改写的是Mother.prototype，p1p2会变，但上面p3跟亲妈已经了无瓜葛了，不影响他。</div><div class="line"> * p1：&apos;Jack&apos;,[&apos;Hangzhou&apos;,&apos;Guangzhou&apos;]; __proto__:&#123;&apos;jin&apos;,__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;],9527&#125;</div><div class="line"> * p2：&apos;Mark&apos;;                          __proto__:&#123;&apos;jin&apos;,__proto__:18,[&apos;Shenzhen&apos;,&apos;Shanghai&apos;],9527&#125;</div><div class="line"> * p3:&apos;Obama&apos;;__proto__: 28 &#123;country: &apos;USA&apos;, city: &apos;Washington&apos;&#125;</div><div class="line"> */</div><div class="line"></div><div class="line">Mother.prototype = &#123;</div><div class="line">    car: 2,</div><div class="line">    hobby: [&apos;run&apos;,&apos;walk&apos;]</div><div class="line">&#125;;</div><div class="line">var p4 = new Person(&apos;Tony&apos;);</div><div class="line">/* 重写原型的原型！这个时候Mother的原型已经完全变成一个新的对象了！人他妈换了个后妈！</div><div class="line"> * 由于上面Person与Mother已经断开联系了，这时候Mother怎么变已经不影响Person了。</div><div class="line"> * p4:&apos;Tony&apos;;__proto__: 28 &#123;country: &apos;USA&apos;, city: &apos;Washington&apos;&#125;</div><div class="line"> */</div><div class="line"></div><div class="line">Person.prototype = new Mother(); //再次绑定</div><div class="line">var p5 = new Person(&apos;Luffy&apos;);</div><div class="line">// 这个时候如果需要应用这些改动的话，那就要重新将Person的原型绑到mother上了</div><div class="line">// p5:&apos;Luffy&apos;;__proto__:&#123;__proto__: 2, [&apos;run&apos;,&apos;walk&apos;]&#125;</div><div class="line"></div><div class="line">p1.__proto__.__proto__.__proto__.__proto__ //null，你说原型链的终点不是null？</div><div class="line">Mother.__proto__.__proto__.__proto__    //null，你说原型链的终点不是null？</div></pre></td></tr></table></figure>
-<p>看完基本能理解了吧？</p>
-<p>现在再来说说 p1.age = 20、p1.home = [‘Hangzhou’, ‘Guangzhou’] 和 p1.home[0] = ‘Shenzhen’ 的区别。 p1.home[0] = ‘Shenzhen’; 总结一下是 p1.object.method，p1.object.property 这样的形式。</p>
-<p>p1.age = 20; p1.home = [‘Hangzhou’, ‘Guangzhou’];这两句还是比较好理解的，先忘掉原型吧，想想我们是怎么为一个普通对象增加属性的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = new Object();</div><div class="line">obj.name=&apos;xxx&apos;;</div><div class="line">obj.num = [100, 200];</div></pre></td></tr></table></figure>
-<p>这样是不是就理解了呢？一样一样的呀。</p>
-<p>那为什么 p1.home[0] = ‘Shenzhen’ 不会在 p1 下创建一个 home 数组属性，然后将其首位设为 ‘Shenzhen’呢？ 我们还是先忘了这个，想想上面的obj对象，如果写成这样： var obj.name = ‘xxx’, obj.num = [100, 200]，能得到你要的结果吗？ 显然，除了报错你什么都得不到。因为obj还未定义，又怎么能往里面加入东西呢？同理，p1.home[0]中的 home 在 p1 下并未被定义，所以也不能直接一步定义 home[0] 了。如果要在p1下创建一个 home 数组，当然是这么写了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p1.home = [];</div><div class="line">p1.home[0] = &apos;Shenzhen&apos;;</div></pre></td></tr></table></figure>
-<p>这不就是我们最常用的办法吗？</p>
-<p>而之所以 p1.home[0] = ‘Shenzhen’ 不直接报错，是因为在原型链中有一个搜索机制。当我们输入 p1.object 的时候，原型链的搜索机制是先在实例中搜索相应的值，找不到就在原型中找，还找不到就再往上一级原型中搜索……一直到了原型链的终点，就是到null还没找到的话，就返回一个 undefined。当我们输入 p1.home[0] 的时候，也是同样的搜索机制，先搜索 p1 看有没有名为 home 的属性和方法，然后逐级向上查找。最后我们在Mother的原型里面找到了，所以修改他就相当于修改了 Mother 的原型啊。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Mother.prototype.home[0] = ‘Shenzhen’。</div></pre></td></tr></table></figure>
-<p>由上面的分析可以知道，原型链继承的主要问题在于属性的共享，很多时候我们只想共享方法而并不想要共享属性，理想中每个实例应该有独立的属性。因此，原型继承就有了下面的两种改良方式：</p>
-<p>1）组合继承</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function Mother (age) &#123;</div><div class="line">    this.age = age;</div><div class="line">    this.hobby = [&apos;running&apos;,&apos;football&apos;]</div><div class="line">&#125;</div><div class="line">Mother.prototype.showAge = function () &#123;</div><div class="line">    console.log(this.age);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function Person (name, age) &#123;</div><div class="line">    Mother.call(this, age);　　//第二次执行</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype = new Mother(); 　//第一次执行</div><div class="line">Person.prototype.constructor = Person;</div><div class="line">Person.prototype.showName = function () &#123;</div><div class="line">    console.log(this.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p1 = new Person(&apos;Jack&apos;, 20);</div><div class="line">p1.hobby.push(&apos;basketball&apos;);  //p1:&apos;Jack&apos;; __proto__:20,[&apos;running&apos;,&apos;football&apos;]</div><div class="line">var p2 = new Person(&apos;Mark&apos;, 18);  //p2:&apos;Mark&apos;; __proto__:18,[&apos;running&apos;,&apos;football&apos;]</div></pre></td></tr></table></figure>
-<p>结果是酱紫的：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521225635_50823.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521225712_44768.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>这里第一次执行的时候，得到 Person.prototype.age = undefined, Person.prototype.hobby = [‘running’,’football’]，第二次执行也就是 var p1 = new Person(‘Jack’, 20) 的时候，得到 p1.age =20, p1.hobby = [‘running’,’football’]，push后就变成了 p1.hobby = [‘running’,’football’, ‘basketball’]。其实分辨好 this 的变化，理解起来也是比较简单的，把 this 简单替换一下就能得到这个结果了。 如果感觉理解起来比较绕的话，试着把脑子里面的概念扔掉吧，把自己当浏览器从上到下执行一遍代码，结果是不是就出来了呢？</p>
-<p>通过第二次执行原型的构造函数 Mother()，我们在对象实例中复制了一份原型的属性，这样就做到了与原型属性的分离独立。细心的你会发现，我们第一次调用 Mother()，好像什么用都没有呢，能不调用他吗？可以，就有了下面的寄生组合式继承。</p>
-<p>2）寄生组合式继承</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">function object(o)&#123;</div><div class="line">    function F()&#123;&#125;</div><div class="line">    F.prototype = o;</div><div class="line">    return new F();</div><div class="line">&#125;</div><div class="line"></div><div class="line">function inheritPrototype(Person, Mother)&#123;</div><div class="line">    var prototype = object(Mother.prototype);</div><div class="line">    prototype.constructor = Person;    </div><div class="line">    Person.prototype = prototype;    </div><div class="line">&#125;</div><div class="line"></div><div class="line">function Mother (age) &#123;</div><div class="line">    this.age = age;</div><div class="line">    this.hobby = [&apos;running&apos;,&apos;football&apos;]</div><div class="line">&#125;</div><div class="line">Mother.prototype.showAge = function () &#123;</div><div class="line">    console.log(this.age);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function Person (name, age) &#123;</div><div class="line">    Mother.call(this, age);</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">inheritPrototype(Person, Mother);</div><div class="line"></div><div class="line">Person.prototype.showName = function () &#123;</div><div class="line">    console.log(this.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p1 = new Person(&apos;Jack&apos;, 20);</div><div class="line">p1.hobby.push(&apos;basketball&apos;);//p1:&apos;Jack&apos;; __proto__:20,[&apos;running&apos;,&apos;football&apos;]</div><div class="line">var p2 = new Person(&apos;Mark&apos;, 18); //p2:&apos;Mark&apos;; __proto__:18,[&apos;running&apos;,&apos;football&apos;]</div></pre></td></tr></table></figure>
-<p>结果是酱紫的：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521225810_65716.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521225841_19299.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>原型中不再有 age 和 hobby 属性了，只有两个方法，正是我们想要的结果！</p>
-<p>关键点在于 object(o) 里面，这里借用了一个临时对象来巧妙避免了调用new Mother()，然后将原型为 o 的新对象实例返回，从而完成了原型链的设置。很绕，对吧，那是因为我们不能直接设置 Person.prototype = Mother.prototype 啊。</p>
-<p>小结</p>
-<p>说了这么多，其实核心只有一个：属性共享和独立的控制，当你的对象实例需要独立的属性，所有做法的本质都是在对象实例里面创建属性。若不考虑太多，你大可以在Person里面直接定义你所需要独立的属性来覆盖掉原型的属性。总之，使用原型继承的时候，要对于原型中的属性要特别注意，因为他们都是牵一发而动全身的存在。</p>
-<p>下面简单罗列下js中创建对象的各种方法，现在最常用的方法是组合模式，熟悉的同学可以跳过到文章末尾点赞了。</p>
-<p>1）原始模式</p>
-<p>1.原始模式，对象字面量方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var person = &#123;</div><div class="line">    name: &apos;Jack&apos;,</div><div class="line">    age: 18,</div><div class="line">    sayName: function () &#123; alert(this.name); &#125;</div><div class="line">&#125;;</div><div class="line">//1.原始模式，Object构造函数方式</div><div class="line">var person = new Object();</div><div class="line">person.name = &apos;Jack&apos;;</div><div class="line">person.age = 18;</div><div class="line">person.sayName = function () &#123;</div><div class="line">    alert(this.name);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>2）工厂模式</p>
-<p>2.工厂模式，定义一个函数创建对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function creatPerson (name, age) &#123;</div><div class="line">    var person = new Object();</div><div class="line">    person.name = name;</div><div class="line">    person.age = age;</div><div class="line">    person.sayName = function () &#123;</div><div class="line">        alert(this.name);</div><div class="line">    &#125;;</div><div class="line">    return person;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>工厂模式就是批量化生产，简单调用就可以进入造人模式</p>
-<p>（<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.chenqiangyi.com/wp-content/uploads/2016/05/20160521225303_94229.gif" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>啪啪啪……）。指定姓名年龄就可以造一堆小宝宝啦，解放双手。但是由于是工厂暗箱操作的，所以你不能识别这个对象到底是什么类型、是人还是狗傻傻分不清（instanceof 测试为 Object），另外每次造人时都要创建一个独立的temp对象，代码臃肿，雅蠛蝶啊。</p>
-<p>3）构造函数</p>
-<p>3.构造函数模式，为对象定义一个构造函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Person (name, age) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.sayName = function () &#123;</div><div class="line">        alert(this.name);</div><div class="line">    &#125;;    </div><div class="line">&#125;</div><div class="line">var p1 = new Person(&apos;Jack&apos;, 18); //创建一个p1对象</div><div class="line">Person(&apos;Jack&apos;, 18);    //属性方法都给window对象，window.name=&apos;Jack&apos;，window.sayName()会输出Jack</div></pre></td></tr></table></figure>
-<p>构造函数与C++、JAVA中类的构造函数类似，易于理解，另外Person可以作为类型识别（instanceof 测试为 Person 、Object）。但是所有实例依然是独立的，不同实例的方法其实是不同的函数。这里把函数两个字忘了吧，把sayName当做一个对象就好理解了，就是说张三的 sayName 和李四的 sayName是不同的存在，但显然我们期望的是共用一个 sayName 以节省内存。</p>
-<p>4）原型模式</p>
-<p>4.原型模式，直接定义prototype属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Person () &#123;&#125;</div><div class="line">Person.prototype.name = &apos;Jack&apos;;</div><div class="line">Person.prototype.age = 18;</div><div class="line">Person.prototype.sayName = function () &#123;</div><div class="line"> alert(this.name);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>4.原型模式，字面量定义方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Person () &#123;&#125;</div><div class="line">Person.prototype = &#123;</div><div class="line">    name: &apos;Jack&apos;,</div><div class="line">    age: 18,</div><div class="line">    sayName: function () &#123; alert(this.name); &#125;</div><div class="line">&#125;;</div><div class="line">var p1 = new Person(); //name=&apos;Jack&apos;</div><div class="line">var p2 = new Person(); //name=&apos;Jack&apos;</div></pre></td></tr></table></figure>
-<p>这里需要注意的是原型属性和方法的共享，即所有实例中都只是引用原型中的属性方法，任何一个地方产生的改动会引起其他实例的变化。</p>
-<p>5）混合模式（构造+原型）</p>
-<p>5.原型构造组合模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function Person (name, age) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">&#125;</div><div class="line">Person.prototype = &#123;</div><div class="line">    hobby: [&apos;running&apos;,&apos;football&apos;];</div><div class="line">    sayName: function () &#123; alert(this.name); &#125;,</div><div class="line">    sayAge: function () &#123; alert(this.age); &#125;</div><div class="line">&#125;;</div><div class="line">var p1 = new Person(&apos;Jack&apos;, 20);</div><div class="line">//p1:&apos;Jack&apos;,20; __proto__: [&apos;running&apos;,&apos;football&apos;],sayName,sayAge</div><div class="line">var p2 = new Person(&apos;Mark&apos;, 18);</div><div class="line">//p1:&apos;Mark&apos;,18;__proto__: [&apos;running&apos;,&apos;football&apos;],sayName,sayAge</div></pre></td></tr></table></figure>
-<p>做法是将需要独立的属性方法放入构造函数中，而可以共享的部分则放入原型中，这样做可以最大限度节省内存而又保留对象实例的独立性。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天在前端大全上看到一篇关于原型与原型链的文章，诙谐的语言加上逗逼的比喻，最重要的是讲的特别的透彻，于是就忍不住转载过来，充当学习的资料。本文内容转自微信公众号：前端大全。链接：&lt;a href=&quot;http://www.cnblogs.com/qieguo/archive/2
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/tags/JavaScript/"/>
-    
-      <category term="原型与原型链" scheme="http://www.chenqiangyi.cn/tags/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     
   </entry>
   
