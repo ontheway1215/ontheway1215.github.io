@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenqiangyi.cn/"/>
-  <updated>2017-06-23T06:20:18.000Z</updated>
+  <updated>2017-06-22T05:51:08.000Z</updated>
   <id>http://www.chenqiangyi.cn/</id>
   
   <author>
@@ -14,50 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>数组去重总结</title>
-    <link href="http://www.chenqiangyi.cn/2017/09/10/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%80%BB%E7%BB%93/"/>
-    <id>http://www.chenqiangyi.cn/2017/09/10/数组去重总结/</id>
-    <published>2017-09-10T02:35:23.000Z</published>
-    <updated>2017-06-23T06:20:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>数组去重是一个常见的需求，在面试中也经常被问到，曾经被问到写出几种方法来完成数组去重，当时没有做出来，今天就来总一下。主要是理清思路，以下方法网上都能找得到，这里简单做一下总结。</p>
-</blockquote>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
-<li>遍历数组，比较，比较到相同的就删除后面的</li>
-<li>遍历数组，比较，比较相同的，跳过前面重复的，不相同的放入新数组</li>
-<li>任取一个数组放入新数组，遍历剩下的数组元素任取一个，与新数组元素一一比较，如有不同的，放入新数组。</li>
-<li>遍历数组，取一个元素，作为对象的属性，判断属性是否存在</li>
-<li>利用ES6提供的 new Set(arr),可直接去重</li>
-</ul>
-<h1 id="代码示范"><a href="#代码示范" class="headerlink" title="代码示范"></a>代码示范</h1><h2 id="删除后面重复的"><a href="#删除后面重复的" class="headerlink" title="删除后面重复的"></a>删除后面重复的</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date).getTime();</div><div class="line">    for (var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">        for (var j = i + 1; j &lt; arr.length; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                arr.splice(j, 1);</div><div class="line">                j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date).getTime() - a1);</div><div class="line">    return arr.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="相同则跳出循环"><a href="#相同则跳出循环" class="headerlink" title="相同则跳出循环"></a>相同则跳出循环</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date()).getTime();</div><div class="line">    var b = [], n = arr.length, i, j;</div><div class="line">    for (i = 0; i &lt; n; i++) &#123;</div><div class="line">        for (j = i + 1; j &lt; n; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                j = false;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (j) &#123;</div><div class="line">            b.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return b.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="不同则放入新数组"><a href="#不同则放入新数组" class="headerlink" title="不同则放入新数组"></a>不同则放入新数组</h2><p>这里j循环虽然继续了，但是i值已经变了。就等于是一个新的i循环：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = ((new Date()).getTime());</div><div class="line">    var b = [], n =arr.length, i, j;</div><div class="line">    for (var i = 0; i &lt; n; i++) &#123;</div><div class="line">        for (j = i + 1; j &lt; n; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                j = ++i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        b.push(arr[i]);</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return b.sort((a, b) =&gt; &#123;return a -b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="保证新数组中的数都是唯一的"><a href="#保证新数组中的数都是唯一的" class="headerlink" title="保证新数组中的数都是唯一的"></a>保证新数组中的数都是唯一的</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = ((new Date()).getTime());</div><div class="line">    var m = [], f;</div><div class="line">    for (var i = 0; i&lt; arr.length; i++) &#123;</div><div class="line">        f = true;</div><div class="line">        for (var j = 0; j &lt; m.length; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                f = false;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (f) &#123;</div><div class="line">            m.push(arr[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return m.sort((a, b) =&gt; &#123; return a - b&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="用对象属性"><a href="#用对象属性" class="headerlink" title="用对象属性"></a>用对象属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date()).getTime();</div><div class="line">    var m, n = [], o = &#123;&#125;;</div><div class="line">    for (var i = 0; (m = arr[i]) !== undefined; i++) &#123;</div><div class="line">        if (!o[m]) &#123;</div><div class="line">            n.push(m);</div><div class="line">            o[m] = true;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return n.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="ES6新特性-new-Set"><a href="#ES6新特性-new-Set" class="headerlink" title="ES6新特性 new Set()"></a>ES6新特性 new Set()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 3, 5, 2, 3, 1, 4, 2, 3];</div><div class="line">var a = new Set(arr);</div><div class="line">console.log([...a].sort((a, b) =&gt; &#123;return a - b&#125;));  // [1, 2, 3, 4, 5]</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;数组去重是一个常见的需求，在面试中也经常被问到，曾经被问到写出几种方法来完成数组去重，当时没有做出来，今天就来总一下。主要是理清思路，以下方法网上都能找得到，这里简单做一下总结。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;思路&quot;&gt;&lt;a h
-    
-    </summary>
-    
-      <category term="数组去重" scheme="http://www.chenqiangyi.cn/categories/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
-    
-    
-      <category term="数组去重" scheme="http://www.chenqiangyi.cn/tags/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
-    
-      <category term="Array" scheme="http://www.chenqiangyi.cn/tags/Array/"/>
-    
-  </entry>
   
   <entry>
     <title>javascript中的this</title>
@@ -1197,6 +1153,50 @@
     
     
       <category term="MongoDB" scheme="http://www.chenqiangyi.cn/tags/MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数组去重总结</title>
+    <link href="http://www.chenqiangyi.cn/2016/09/10/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%80%BB%E7%BB%93/"/>
+    <id>http://www.chenqiangyi.cn/2016/09/10/数组去重总结/</id>
+    <published>2016-09-10T02:35:23.000Z</published>
+    <updated>2017-06-24T03:38:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>数组去重是一个常见的需求，在面试中也经常被问到，曾经被问到写出几种方法来完成数组去重，当时没有做出来，今天就来总一下。主要是理清思路，以下方法网上都能找得到，这里简单做一下总结。</p>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
+<li>遍历数组，比较，比较到相同的就删除后面的</li>
+<li>遍历数组，比较，比较相同的，跳过前面重复的，不相同的放入新数组</li>
+<li>任取一个数组放入新数组，遍历剩下的数组元素任取一个，与新数组元素一一比较，如有不同的，放入新数组。</li>
+<li>遍历数组，取一个元素，作为对象的属性，判断属性是否存在</li>
+<li>利用ES6提供的 new Set(arr),可直接去重</li>
+</ul>
+<h1 id="代码示范"><a href="#代码示范" class="headerlink" title="代码示范"></a>代码示范</h1><h2 id="删除后面重复的"><a href="#删除后面重复的" class="headerlink" title="删除后面重复的"></a>删除后面重复的</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date).getTime();</div><div class="line">    for (var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">        for (var j = i + 1; j &lt; arr.length; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                arr.splice(j, 1);</div><div class="line">                j--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date).getTime() - a1);</div><div class="line">    return arr.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="相同则跳出循环"><a href="#相同则跳出循环" class="headerlink" title="相同则跳出循环"></a>相同则跳出循环</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date()).getTime();</div><div class="line">    var b = [], n = arr.length, i, j;</div><div class="line">    for (i = 0; i &lt; n; i++) &#123;</div><div class="line">        for (j = i + 1; j &lt; n; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                j = false;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (j) &#123;</div><div class="line">            b.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return b.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="不同则放入新数组"><a href="#不同则放入新数组" class="headerlink" title="不同则放入新数组"></a>不同则放入新数组</h2><p>这里j循环虽然继续了，但是i值已经变了。就等于是一个新的i循环：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = ((new Date()).getTime());</div><div class="line">    var b = [], n =arr.length, i, j;</div><div class="line">    for (var i = 0; i &lt; n; i++) &#123;</div><div class="line">        for (j = i + 1; j &lt; n; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                j = ++i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        b.push(arr[i]);</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return b.sort((a, b) =&gt; &#123;return a -b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="保证新数组中的数都是唯一的"><a href="#保证新数组中的数都是唯一的" class="headerlink" title="保证新数组中的数都是唯一的"></a>保证新数组中的数都是唯一的</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = ((new Date()).getTime());</div><div class="line">    var m = [], f;</div><div class="line">    for (var i = 0; i&lt; arr.length; i++) &#123;</div><div class="line">        f = true;</div><div class="line">        for (var j = 0; j &lt; m.length; j++) &#123;</div><div class="line">            if (arr[i] === arr[j]) &#123;</div><div class="line">                f = false;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (f) &#123;</div><div class="line">            m.push(arr[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return m.sort((a, b) =&gt; &#123; return a - b&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="用对象属性"><a href="#用对象属性" class="headerlink" title="用对象属性"></a>用对象属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function unique(arr) &#123;</div><div class="line">    var a1 = (new Date()).getTime();</div><div class="line">    var m, n = [], o = &#123;&#125;;</div><div class="line">    for (var i = 0; (m = arr[i]) !== undefined; i++) &#123;</div><div class="line">        if (!o[m]) &#123;</div><div class="line">            n.push(m);</div><div class="line">            o[m] = true;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    console.info((new Date()).getTime() - a1);</div><div class="line">    return n.sort((a, b) =&gt; &#123;return a - b&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ES6新特性-new-Set"><a href="#ES6新特性-new-Set" class="headerlink" title="ES6新特性 new Set()"></a>ES6新特性 new Set()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 3, 5, 2, 3, 1, 4, 2, 3];</div><div class="line">var a = new Set(arr);</div><div class="line">console.log([...a].sort((a, b) =&gt; &#123;return a - b&#125;));  // [1, 2, 3, 4, 5]</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;数组去重是一个常见的需求，在面试中也经常被问到，曾经被问到写出几种方法来完成数组去重，当时没有做出来，今天就来总一下。主要是理清思路，以下方法网上都能找得到，这里简单做一下总结。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;思路&quot;&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="数组去重" scheme="http://www.chenqiangyi.cn/categories/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
+    
+    
+      <category term="数组去重" scheme="http://www.chenqiangyi.cn/tags/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
+    
+      <category term="Array" scheme="http://www.chenqiangyi.cn/tags/Array/"/>
     
   </entry>
   
