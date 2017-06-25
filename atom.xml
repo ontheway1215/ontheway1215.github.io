@@ -614,7 +614,7 @@
     <link href="http://www.chenqiangyi.cn/2017/02/14/call%E4%B8%8Eapply%E8%AF%A6%E8%A7%A3/"/>
     <id>http://www.chenqiangyi.cn/2017/02/14/call与apply详解/</id>
     <published>2017-02-14T07:45:29.000Z</published>
-    <updated>2017-06-14T11:40:40.000Z</updated>
+    <updated>2017-06-25T15:06:16.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>JS apply和js call方法总是让初学者困惑，下文就apply和call的区别，什么情况下用apply,什么情况下用call、apply的巧妙用法来阐述js apply和js call方法的详细使用方法。</p>
@@ -626,7 +626,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func1.apply(<span class="keyword">this</span>, [arg1, arg2]);</div></pre></td></tr></table></figure>
 <p>来调用。其中 this 是你想指定的上下文，他可以任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。</p>
 <p>JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用apply，然后把参数 push 进数组传递进去。<br>当参数数量不确定时，函数内部也可以通过 arguments这个数组来便利所有的参数。</p>
-<p>#</p>
 <p>在javascript OOP中，我们经常会这样定义：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">cat</span>(<span class="params"></span>) </span>&#123; &#125;</div><div class="line">cat.prototype = &#123;</div><div class="line">    <span class="attr">food</span>: <span class="string">"fish"</span>,</div><div class="line">    <span class="attr">say</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="string">"I love "</span>+<span class="keyword">this</span>.food);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> blackCat = <span class="keyword">new</span> cat;</div><div class="line">blackCat.say();</div></pre></td></tr></table></figure>
 <p>但是如果我们有一个对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whiteDog = &#123;<span class="attr">food</span>:<span class="string">"bone"</span>&#125;</div></pre></td></tr></table></figure></p>
