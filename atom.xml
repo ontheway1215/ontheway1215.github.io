@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenqiangyi.cn/"/>
-  <updated>2017-06-22T05:51:08.000Z</updated>
+  <updated>2017-06-28T03:54:33.000Z</updated>
   <id>http://www.chenqiangyi.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.chenqiangyi.cn/2017/06/22/javascript%E4%B8%AD%E7%9A%84this/"/>
     <id>http://www.chenqiangyi.cn/2017/06/22/javascript中的this/</id>
     <published>2017-06-22T03:06:29.000Z</published>
-    <updated>2017-06-22T05:51:08.000Z</updated>
+    <updated>2017-06-28T03:54:33.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>JavaScript 中的this一直是初学者比较困惑的知识点，当然我也不例外。因为this很重要，所以面试中基本都有涉及this相关的问题，在曾经的面试中也被问过this，比较容易弄混，今天就来整理一下this相关的知识。</p>
@@ -41,7 +41,7 @@
 <p>但是当在对象方法中再定义函数，这时候this又是<code>window</code>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">var person = &#123;</div><div class="line">    name: &apos;yi&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(this);  //window</div><div class="line">            console.log(this.name);  //chen</div><div class="line">        &#125;</div><div class="line">        fn();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
 <p>如果想让this指向person的话，只需要用that保存下来this的值即可，也可以使用apply等改变this。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">var person = &#123;</div><div class="line">    name: &apos;yi&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        var that = this;</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(that);  //Object &#123;name: &apos;chen&apos;, ...&#125;</div><div class="line">            console.log(that.name);  //yi</div><div class="line">        &#125;</div><div class="line">        fn();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var name = &apos;chen&apos;;</div><div class="line">var person = &#123;</div><div class="line">    name: &apos;yi&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        var that = this;</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(that);  //Object &#123;name: &apos;yi&apos;, ...&#125;</div><div class="line">            console.log(that.name);  //yi</div><div class="line">        &#125;</div><div class="line">        fn();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
 <h1 id="作为构造函数被调用"><a href="#作为构造函数被调用" class="headerlink" title="作为构造函数被调用"></a>作为构造函数被调用</h1><p>作为构造函数被调用的时候，<code>this</code>代表它即将<code>new</code>出来的对象。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Person(name) &#123;</div><div class="line">    this.name = name;</div><div class="line">    console.log(this);  //Person &#123;name: &apos;chen&apos;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var person = new Person(&apos;chen&apos;);</div><div class="line">console.log(person.name);  //chen</div></pre></td></tr></table></figure>
 <p>如果不加<code>new</code>，表示即作为普通函数调用，指向<code>window</code>。</p>
