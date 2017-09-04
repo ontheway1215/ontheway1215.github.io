@@ -72,6 +72,67 @@
   </entry>
   
   <entry>
+    <title>页面滚动 页面渲染性能优化</title>
+    <link href="http://www.chenqiangyi.cn/2017/07/18/%E9%A1%B5%E9%9D%A2%E6%BB%9A%E5%8A%A8-%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/</id>
+    <published>2017-07-18T14:35:42.000Z</published>
+    <updated>2017-09-04T12:08:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="web页面展示步骤"><a href="#web页面展示步骤" class="headerlink" title="web页面展示步骤"></a>web页面展示步骤</h1><ul>
+<li><p>JavaScript</p>
+<p>  实现视觉变化，比如动画以及操作DOM</p>
+</li>
+<li><p>Style</p>
+<p>  计算样式，根据CSS选择器，对每个DOM元素匹配应的CSS样式。这一步结束后就确定DOM元素上该有什么样的CSS规则</p>
+</li>
+<li><p>Layout</p>
+<p>  布局，上一步确定了每个DOM元素的样式规则，这一步就是具体计算每个DOM元素最终在屏幕上显示的大小和位置。</p>
+</li>
+<li><p>Paint</p>
+<p>  绘制，本质上就是填充像素的过程。包括绘制文字、颜色、图像、边框和阴影等。</p>
+</li>
+<li><p>Composite</p>
+<p>  渲染合并，由上一步可知，对页面中的DOM元素的绘制是在多个层面上进行的。</p>
+</li>
+</ul>
+<blockquote>
+<p>简单来说，网页生成时至少会渲染（Layout + Paint）一次。用户访问的过程中，还会不断重新的重排（reflow）和重绘（repaint）。<br>其中用户的scroll和resize行为（即滑动页面和改变窗口大小）会导致页面不断的重新渲染。</p>
+</blockquote>
+<h1 id="防抖（Debouncing）和节流（Throttling）"><a href="#防抖（Debouncing）和节流（Throttling）" class="headerlink" title="防抖（Debouncing）和节流（Throttling）"></a>防抖（Debouncing）和节流（Throttling）</h1><p>scroll事件本身会触发页面的重新渲染，同时scroll事件的handler又会被高频率触发，因此事件的handler内部不应该有复杂操作，例如DOM操作就不应该放在事件处理中。</p>
+<blockquote>
+<p>针对此类高频率触发事件问题（scroll, resize, 监听用户输入）介绍两种常用的解决方法，防抖和节流</p>
+</blockquote>
+<p>##防抖（Debouncing）</p>
+<ul>
+<li>防抖就是把多个顺序调用合并成一次，也就是在一定时间内，规定时间被处罚的次数。例如：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// 简单的防抖动函数</div><div class="line">function debounce(func, wait) &#123;</div><div class="line">	// 定时器变量</div><div class="line">	var timeout;</div><div class="line">	return function() &#123;</div><div class="line">		// 每次触发scroll handler时先清除定时器</div><div class="line">		clearTimeout(timeout);</div><div class="line">		//指定xx ms后触发真正的操作handler</div><div class="line">		timeout = setTimeout(func, wait);</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 实际想绑定在scroll事件上的handler</div><div class="line">function realFunc() &#123;</div><div class="line">	console.log(&apos;sucess&apos;);</div><div class="line">&#125;</div><div class="line">// 采用了防抖</div><div class="line">window.addEventListener(&apos;scroll&apos;, debounce(realFunc, 500));</div><div class="line">// 没采用防抖动</div><div class="line">window.addEventListener(&apos;scroll&apos;, realFunc);</div></pre></td></tr></table></figure>
+<p>上面函数的功能是如果500ms内没有连续触发两次scroll事件，那么才会触发我们真正想在scroll事件中触发的函数。</p>
+<p>上面的例子可以更好的封装下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// 防抖函数</div><div class="line">function debounce(func, wait, immetiate) &#123;</div><div class="line">	var timeout;</div><div class="line">	return function() &#123;</div><div class="line">		var context = this, args = arguments;</div><div class="line">		var later = function() &#123;</div><div class="line">			timeout = null;</div><div class="line">			if (!immediate) func.apply(context, args);</div><div class="line">		&#125;;</div><div class="line">		var callNow = immediate &amp;&amp; !timeout;</div><div class="line">		clearTimeout(timeout);</div><div class="line">		timeout = setTimeout(later, wait);</div><div class="line">		if (callNow) func.apply(context, args);</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line">var myEfficientFn = debounce(function() &#123;</div><div class="line">// 滚动中的真正的操作</div><div class="line">&#125;, 250);</div><div class="line">// 绑定监听</div><div class="line">window.addEventListener(&apos;resize&apos;, myEfficientFn);</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;web页面展示步骤&quot;&gt;&lt;a href=&quot;#web页面展示步骤&quot; class=&quot;headerlink&quot; title=&quot;web页面展示步骤&quot;&gt;&lt;/a&gt;web页面展示步骤&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;JavaScript&lt;/p&gt;
+&lt;p&gt;  实现视觉变化，比如动画以及
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/categories/JavaScript/"/>
+    
+      <category term="性能优化" scheme="http://www.chenqiangyi.cn/categories/JavaScript/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="性能优化" scheme="http://www.chenqiangyi.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+      <category term="页面滚动" scheme="http://www.chenqiangyi.cn/tags/%E9%A1%B5%E9%9D%A2%E6%BB%9A%E5%8A%A8/"/>
+    
+      <category term="页面渲染" scheme="http://www.chenqiangyi.cn/tags/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javascript中的this</title>
     <link href="http://www.chenqiangyi.cn/2017/06/22/javascript%E4%B8%AD%E7%9A%84this/"/>
     <id>http://www.chenqiangyi.cn/2017/06/22/javascript中的this/</id>
@@ -1857,76 +1918,6 @@
       <category term="Ajax" scheme="http://www.chenqiangyi.cn/tags/Ajax/"/>
     
       <category term="HTTP headers" scheme="http://www.chenqiangyi.cn/tags/HTTP-headers/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RESTful API</title>
-    <link href="http://www.chenqiangyi.cn/2016/06/13/restful-api/"/>
-    <id>http://www.chenqiangyi.cn/2016/06/13/restful-api/</id>
-    <published>2016-06-12T16:25:01.000Z</published>
-    <updated>2017-06-14T14:00:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>好久没有写博客了，最近刚好在弄公司的一个项目需要调用别人的API，其中遇到好多坑，今天将其记录下来，方便以后的学习。<br>主要参考阮一峰的文章<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a>和博客园的一篇文章<a href="http://www.cnblogs.com/princeoicq/articles/2217808.html" target="_blank" rel="external">http://www.cnblogs.com/princeoicq/articles/2217808.html</a>，接下来就来介绍RESTful API的设计与应用。</p>
-</blockquote>
-<h1 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h1><p>API与用户的通信协议，总是使用HTTP协议</p>
-<h1 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h1><p>应该尽量将API部署到专用域名下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://api.example.com</div></pre></td></tr></table></figure>
-<p>如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://example.org/api/</div></pre></td></tr></table></figure>
-<h1 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h1><p>将API的版本放入URL</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://api.example.com/v1/</div></pre></td></tr></table></figure>
-<p>另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。Github采用这种做法。</p>
-<h1 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h1><p>路径又称”终点”（endpoint），表示API的具体网址。</p>
-<p>在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的”集合”（collection），所以API中的名词也应该使用复数。</p>
-<p>举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">https://api.example.com/v1/zoos</div><div class="line">https://api.example.com/v1/animals</div><div class="line">https://api.example.com/v1/employees</div></pre></td></tr></table></figure>
-<h1 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h1><p>对于资源的具体操作类型，由HTTP动词表示。</p>
-<p>常用的HTTP动词有下面五个（括号里是对应的SQL命令）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">GET（SELECT）：从服务器取出资源（一项或多项）。</div><div class="line">POST（CREATE）：在服务器新建一个资源。</div><div class="line">PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</div><div class="line">PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</div><div class="line">DELETE（DELETE）：从服务器删除资源。&lt;/pre&gt;</div><div class="line">还有两个不常用的HTTP动词</div><div class="line"></div><div class="line">&lt;pre class=&quot;prettyprint lang-js&quot;&gt;HEAD：获取资源的元数据。</div><div class="line">OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。</div></pre></td></tr></table></figure>
-<p>下面是一些例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">GET /zoos：列出所有动物园</div><div class="line">POST /zoos：新建一个动物园</div><div class="line">GET /zoos/ID：获取某个指定动物园的信息</div><div class="line">PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）</div><div class="line">PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）</div><div class="line">DELETE /zoos/ID：删除某个动物园</div><div class="line">GET /zoos/ID/animals：列出某个指定动物园的所有动物</div><div class="line">DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物</div></pre></td></tr></table></figure>
-<h1 id="过滤信息-Filtering"><a href="#过滤信息-Filtering" class="headerlink" title="过滤信息 Filtering"></a>过滤信息 Filtering</h1><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。</p>
-<p>下面是一些常见的参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">?limit=10：指定返回记录的数量</div><div class="line">?offset=10：指定返回记录的开始位置。</div><div class="line">?page=2&amp;per_page=100：指定第几页，以及每页的记录数。</div><div class="line">?sortby=name&amp;order=asc：指定返回结果按照哪个属性排序，以及排序顺序。</div><div class="line">?animal_type_id=1：指定筛选条件</div></pre></td></tr></table></figure>
-<p>参数的设计允许存在冗余，即允许API路径和URL参数偶尔有重复。比如，GET /zoo/ID/animals 与 GET /animals?zoo_id=ID 的含义是相同的。</p>
-<h1 id="状态码（Status-Code）"><a href="#状态码（Status-Code）" class="headerlink" title="状态码（Status Code）"></a>状态码（Status Code）</h1><p>服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">200  OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</div><div class="line">201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。</div><div class="line">202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）</div><div class="line">204 NO CONTENT - [DELETE]：用户删除数据成功。</div><div class="line">400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</div><div class="line">401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。</div><div class="line">403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。</div><div class="line">404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</div><div class="line">406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</div><div class="line">410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。</div><div class="line">422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。</div><div class="line">500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</div></pre></td></tr></table></figure>
-<p>状态码的完全列表参见这里<br><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank" rel="external">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a>。</p>
-<h1 id="错误处理（Error-Handling）"><a href="#错误处理（Error-Handling）" class="headerlink" title="错误处理（Error Handling）"></a>错误处理（Error Handling）</h1><p>如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    error: &quot;Invalid API key&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h1><p>针对不同操作，服务器向用户返回的结果应该符合以下规范。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">GET /collection：返回资源对象的列表（数组）</div><div class="line">GET /collection/resource：返回单个资源对象</div><div class="line">POST /collection：返回新生成的资源对象</div><div class="line">PUT /collection/resource：返回完整的资源对象</div><div class="line">PATCH /collection/resource：返回完整的资源对象</div><div class="line">DELETE /collection/resource：返回一个空文档</div></pre></td></tr></table></figure>
-<h1 id="Hypermedia-API"><a href="#Hypermedia-API" class="headerlink" title="Hypermedia API"></a>Hypermedia API</h1><p>RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。</p>
-<p>比如，当用户向api.example.com的根目录发出请求，会得到这样一个文档。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;link&quot;: &#123;</div><div class="line">  &quot;rel&quot;:   &quot;collection https://www.example.com/zoos&quot;,</div><div class="line">  &quot;href&quot;:  &quot;https://api.example.com/zoos&quot;,</div><div class="line">  &quot;title&quot;: &quot;List of zoos&quot;,</div><div class="line">  &quot;type&quot;:  &quot;application/vnd.yourformat+json&quot;</div><div class="line">&#125;&#125;</div></pre></td></tr></table></figure>
-<p>上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。</p>
-<p>Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访问api.github.com会得到一个所有可用API的网址列表。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;current_user_url&quot;: &quot;https://api.github.com/user&quot;,</div><div class="line">  &quot;authorizations_url&quot;: &quot;https://api.github.com/authorizations&quot;,</div><div class="line">  // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>从上面可以看到，如果想获取当前用户的信息，应该去访问<a href="http://api.github.com/user" target="_blank" rel="external">http://api.github.com/user</a>，然后就得到了下面结果。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;message&quot;: &quot;Requires authentication&quot;,</div><div class="line">  &quot;documentation_url&quot;: &quot;https://developer.github.com/v3&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面代码表示，服务器给出了提示信息，以及文档的网址。</p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul>
-<li><p>API的身份认证应该使用OAuth 2.0框架。</p>
-</li>
-<li><p>服务器返回的数据格式，应该尽量使用JSON，避免使用XML。</p>
-<p>  （完）</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;好久没有写博客了，最近刚好在弄公司的一个项目需要调用别人的API，其中遇到好多坑，今天将其记录下来，方便以后的学习。&lt;br&gt;主要参考阮一峰的文章&lt;a href=&quot;http://www.ruanyifeng.com/blog/2014/05/rest
-    
-    </summary>
-    
-      <category term="API" scheme="http://www.chenqiangyi.cn/categories/API/"/>
-    
-    
-      <category term="API" scheme="http://www.chenqiangyi.cn/tags/API/"/>
     
   </entry>
   

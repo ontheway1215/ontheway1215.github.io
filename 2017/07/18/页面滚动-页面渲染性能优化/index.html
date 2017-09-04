@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101091518-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=63011053"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?e9d0ebf9ee66ca3b0f0599e4a85ee733"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="fKSnk-43hoqWu410Gy8MznrpJ9NNVTuz7G-hB2JFi5s">
+    
+    
+    <link rel="canonical" href="https://chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/">
+    
+    
+    <title>页面滚动 页面渲染性能优化 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="性能优化,页面滚动,页面渲染">
+    <meta name="description" content="web页面展示步骤 JavaScript   实现视觉变化，比如动画以及操作DOM  Style   计算样式，根据CSS选择器，对每个DOM元素匹配应的CSS样式。这一步结束后就确定DOM元素上该有什么样的CSS规则  Layout   布局，上一步确定了每个DOM元素的样式规则，这一步就是具体计算每个DOM元素最终在屏幕上显示的大小和位置。  Paint   绘制，本质上就是填充像素的过程。包">
+<meta name="keywords" content="性能优化,页面滚动,页面渲染">
+<meta property="og:type" content="article">
+<meta property="og:title" content="页面滚动 页面渲染性能优化">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="web页面展示步骤 JavaScript   实现视觉变化，比如动画以及操作DOM  Style   计算样式，根据CSS选择器，对每个DOM元素匹配应的CSS样式。这一步结束后就确定DOM元素上该有什么样的CSS规则  Layout   布局，上一步确定了每个DOM元素的样式规则，这一步就是具体计算每个DOM元素最终在屏幕上显示的大小和位置。  Paint   绘制，本质上就是填充像素的过程。包">
+<meta property="og:updated_time" content="2017-09-04T12:08:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="页面滚动 页面渲染性能优化">
+<meta name="twitter:description" content="web页面展示步骤 JavaScript   实现视觉变化，比如动画以及操作DOM  Style   计算样式，根据CSS选择器，对每个DOM元素匹配应的CSS样式。这一步结束后就确定DOM元素上该有什么样的CSS规则  Layout   布局，上一步确定了每个DOM元素的样式规则，这一步就是具体计算每个DOM元素最终在屏幕上显示的大小和位置。  Paint   绘制，本质上就是填充像素的过程。包">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.chenqiangyi.cn/other-project/vue-element" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">页面滚动 页面渲染性能优化</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">页面滚动 页面渲染性能优化</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-18T14:35:42.000Z" itemprop="datePublished" class="page-time">
+  2017-07-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/性能优化/">性能优化</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#web页面展示步骤"><span class="post-toc-number">1.</span> <span class="post-toc-text">web页面展示步骤</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#防抖（Debouncing）和节流（Throttling）"><span class="post-toc-number">2.</span> <span class="post-toc-text">防抖（Debouncing）和节流（Throttling）</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-页面滚动-页面渲染性能优化"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">页面滚动 页面渲染性能优化</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-18 22:35:42" datetime="2017-07-18T14:35:42.000Z"  itemprop="datePublished">2017-07-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/性能优化/">性能优化</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="web页面展示步骤"><a href="#web页面展示步骤" class="headerlink" title="web页面展示步骤"></a>web页面展示步骤</h1><ul>
+<li><p>JavaScript</p>
+<p>  实现视觉变化，比如动画以及操作DOM</p>
+</li>
+<li><p>Style</p>
+<p>  计算样式，根据CSS选择器，对每个DOM元素匹配应的CSS样式。这一步结束后就确定DOM元素上该有什么样的CSS规则</p>
+</li>
+<li><p>Layout</p>
+<p>  布局，上一步确定了每个DOM元素的样式规则，这一步就是具体计算每个DOM元素最终在屏幕上显示的大小和位置。</p>
+</li>
+<li><p>Paint</p>
+<p>  绘制，本质上就是填充像素的过程。包括绘制文字、颜色、图像、边框和阴影等。</p>
+</li>
+<li><p>Composite</p>
+<p>  渲染合并，由上一步可知，对页面中的DOM元素的绘制是在多个层面上进行的。</p>
+</li>
+</ul>
+<blockquote>
+<p>简单来说，网页生成时至少会渲染（Layout + Paint）一次。用户访问的过程中，还会不断重新的重排（reflow）和重绘（repaint）。<br>其中用户的scroll和resize行为（即滑动页面和改变窗口大小）会导致页面不断的重新渲染。</p>
+</blockquote>
+<h1 id="防抖（Debouncing）和节流（Throttling）"><a href="#防抖（Debouncing）和节流（Throttling）" class="headerlink" title="防抖（Debouncing）和节流（Throttling）"></a>防抖（Debouncing）和节流（Throttling）</h1><p>scroll事件本身会触发页面的重新渲染，同时scroll事件的handler又会被高频率触发，因此事件的handler内部不应该有复杂操作，例如DOM操作就不应该放在事件处理中。</p>
+<blockquote>
+<p>针对此类高频率触发事件问题（scroll, resize, 监听用户输入）介绍两种常用的解决方法，防抖和节流</p>
+</blockquote>
+<p>##防抖（Debouncing）</p>
+<ul>
+<li>防抖就是把多个顺序调用合并成一次，也就是在一定时间内，规定时间被处罚的次数。例如：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// 简单的防抖动函数</div><div class="line">function debounce(func, wait) &#123;</div><div class="line">	// 定时器变量</div><div class="line">	var timeout;</div><div class="line">	return function() &#123;</div><div class="line">		// 每次触发scroll handler时先清除定时器</div><div class="line">		clearTimeout(timeout);</div><div class="line">		//指定xx ms后触发真正的操作handler</div><div class="line">		timeout = setTimeout(func, wait);</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 实际想绑定在scroll事件上的handler</div><div class="line">function realFunc() &#123;</div><div class="line">	console.log(&apos;sucess&apos;);</div><div class="line">&#125;</div><div class="line">// 采用了防抖</div><div class="line">window.addEventListener(&apos;scroll&apos;, debounce(realFunc, 500));</div><div class="line">// 没采用防抖动</div><div class="line">window.addEventListener(&apos;scroll&apos;, realFunc);</div></pre></td></tr></table></figure>
+<p>上面函数的功能是如果500ms内没有连续触发两次scroll事件，那么才会触发我们真正想在scroll事件中触发的函数。</p>
+<p>上面的例子可以更好的封装下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// 防抖函数</div><div class="line">function debounce(func, wait, immetiate) &#123;</div><div class="line">	var timeout;</div><div class="line">	return function() &#123;</div><div class="line">		var context = this, args = arguments;</div><div class="line">		var later = function() &#123;</div><div class="line">			timeout = null;</div><div class="line">			if (!immediate) func.apply(context, args);</div><div class="line">		&#125;;</div><div class="line">		var callNow = immediate &amp;&amp; !timeout;</div><div class="line">		clearTimeout(timeout);</div><div class="line">		timeout = setTimeout(later, wait);</div><div class="line">		if (callNow) func.apply(context, args);</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line">var myEfficientFn = debounce(function() &#123;</div><div class="line">// 滚动中的真正的操作</div><div class="line">&#125;, 250);</div><div class="line">// 绑定监听</div><div class="line">window.addEventListener(&apos;resize&apos;, myEfficientFn);</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-04T12:08:31.000Z" itemprop="dateUpdated">2017-09-04 20:08:31</time>
+</span><br>
+
+
+        
+        原始链接：<a href="/2017/07/18/页面滚动-页面渲染性能优化/" target="_blank" rel="external">http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/页面渲染/">页面渲染</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/页面滚动/">页面滚动</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/&title=《页面滚动 页面渲染性能优化》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/&title=《页面滚动 页面渲染性能优化》 — ChenBlog-chenqiangyi.cn&source=IT技术分享,前端技术分享,JavaScript,CSS,NodeJS,个人博客 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《页面滚动 页面渲染性能优化》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/04/call-apply-bind-区别/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">call apply bind 区别</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/22/javascript中的this/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">javascript中的this</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/index.html',
+        sourceId: '页面滚动-页面渲染性能优化',
+        productKey: '506ecdd478bc49caab66fa9b51442d32',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/pc.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/pc.min.js',
+        ],
+        mobileFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/mobile.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/mobile.min.js'
+        ]
+    };
+    </script>
+    <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/loader.min.js"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/&title=《页面滚动 页面渲染性能优化》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/&title=《页面滚动 页面渲染性能优化》 — ChenBlog-chenqiangyi.cn&source=IT技术分享,前端技术分享,JavaScript,CSS,NodeJS,个人博客 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《页面滚动 页面渲染性能优化》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/07/18/页面滚动-页面渲染性能优化/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3a0W7cMAwEwP7/T6dAnwokcXZJ6XoFxk8HJ2drGEBkSP36FV8ff67vPv995/m7n7/13RM+339+y+rCw8PDGy39+ZXPd9pFJOFo3/5toPHw8PCu8dpk8JwkkmSQJI9kPT9Y8PDw8P4pLymgk4J49mQ8PDy8/5fXNi9ycJ5O8PDw8N6BlzQj8rZsu8S21Xul14KHh4cX8/YDsNd/ful8Dw8PDy9OCXmqyAdXsyDOVouHh4d3g7cfYuUDraTVmzOSBgceHh7ea3h5XZr8ZtKu3XwrCiUeHh7eUV6+oeeN1BshGx4+wMPDw7vAa7fgzQDsxqGu6AgCHh4e3lFeO4Bvy99TBXQeji/+bnh4eHhHefnYqT0kmoep/Wm7Njw8PLyzvLwI3qSEvN3QlvU/PBMPDw/vAm+zue/bvu0T6i4LHh4e3gXe5mX5gYBNsd42f/Hw8PDegdeOu2bhyA+BFb+Ph4eHd4H3vOjZEav26NWmgC7+AcDDw8M7ytssdxaO2XwqTxJFYY2Hh4dX8vJh1b6le/boQPQnwcPDw7vGyxe3b16072rbIl9kPDw8PLyjvM3waTb4z8f/SWMiSjl4eHh4F3izDbpt0eaTqdmILoLh4eHhHeLlB0nzxmvRRV4X9PVkDw8PD2/By9up+Xhs9sy2QE/u4OHh4d3gzbbgtozO2c/N2fZgFh4eHt4NXruJzwZXG8bsKBgeHh7ePd7Zhbbb+qzsng3q8PDw8E7xPsprNsg/NRJrEwYeHh7eDd4mkyQj/E1KaAO0QuLh4eGVvHxB7YZ+toDO14aHh4f3Gl47Ems36CSR5KEswoSHh4f3BrxZOD5G16zsxsPDw3sfXnuw4PlbbRJqGxl4eHh4t3mzZkQ+psp7yXlQisSAh4eHd5TXDsBmIcjTQ96oPQDDw8PD6+78Bo3unHFBqF7PAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1262814007&web_id=1262814007')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+console.log("%c Powered by Chenqiangyi - chenqiangyi.cn","background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
+</script>
+
+
+
+</body>
+</html>
