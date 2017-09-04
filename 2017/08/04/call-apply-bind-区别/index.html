@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101091518-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=63011053"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?e9d0ebf9ee66ca3b0f0599e4a85ee733"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="fKSnk-43hoqWu410Gy8MznrpJ9NNVTuz7G-hB2JFi5s">
+    
+    
+    <link rel="canonical" href="https://chenqiangyi.cn/2017/08/04/call-apply-bind-区别/">
+    
+    
+    <title>call apply bind 区别 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript,call,apply,bind">
+    <meta name="description" content="这三个方法都可以改变函数this的指向，对于新手来说经常搞混，现在总结一下他们的区别。首先总结一下他们的相似之处:   都是用来改变函数的this对象的指向 第一个参数都是this要指向的对象 都可以利用后续参数传参  区别在哪里的，先看一个例子 1234567891011121314var xw = &amp;#123;	name: &amp;quot;小王&amp;quot;,	gender: &amp;quot;男&amp;qu">
+<meta name="keywords" content="JavaScript,call,apply,bind">
+<meta property="og:type" content="article">
+<meta property="og:title" content="call apply bind 区别">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="这三个方法都可以改变函数this的指向，对于新手来说经常搞混，现在总结一下他们的区别。首先总结一下他们的相似之处:   都是用来改变函数的this对象的指向 第一个参数都是this要指向的对象 都可以利用后续参数传参  区别在哪里的，先看一个例子 1234567891011121314var xw = &amp;#123;	name: &amp;quot;小王&amp;quot;,	gender: &amp;quot;男&amp;qu">
+<meta property="og:updated_time" content="2017-09-04T12:00:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="call apply bind 区别">
+<meta name="twitter:description" content="这三个方法都可以改变函数this的指向，对于新手来说经常搞混，现在总结一下他们的区别。首先总结一下他们的相似之处:   都是用来改变函数的this对象的指向 第一个参数都是this要指向的对象 都可以利用后续参数传参  区别在哪里的，先看一个例子 1234567891011121314var xw = &amp;#123;	name: &amp;quot;小王&amp;quot;,	gender: &amp;quot;男&amp;qu">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.chenqiangyi.cn/other-project/vue-element" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">call apply bind 区别</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">call apply bind 区别</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-04T11:57:21.000Z" itemprop="datePublished" class="page-time">
+  2017-08-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-call-apply-bind-区别"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">call apply bind 区别</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-04 19:57:21" datetime="2017-08-04T11:57:21.000Z"  itemprop="datePublished">2017-08-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>这三个方法都可以改变函数this的指向，对于新手来说经常搞混，现在总结一下他们的区别。首先总结一下他们的相似之处:</p>
+</blockquote>
+<ul>
+<li>都是用来改变函数的this对象的指向</li>
+<li>第一个参数都是this要指向的对象</li>
+<li>都可以利用后续参数传参</li>
+</ul>
+<p>区别在哪里的，先看一个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var xw = &#123;</div><div class="line">	name: &quot;小王&quot;,</div><div class="line">	gender: &quot;男&quot;,</div><div class="line">	age: 24,</div><div class="line">	say: function() &#123;</div><div class="line">		console.log(`$&#123;this.name&#125;,$&#123;this.gender&#125;,今年$&#123;this.age&#125; )</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var xh = &#123;</div><div class="line">	name: &quot;小红&quot;,</div><div class="line">	gender: &quot;女&quot;,</div><div class="line">	age: 18</div><div class="line">&#125;</div><div class="line">xw.say();</div></pre></td></tr></table></figure>
+<p>输出的结果肯定是小王,男,今年24.那么如何用wx的say方法来显示xh的数据呢，对于call可以这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xw.say.call(xh);</div></pre></td></tr></table></figure></p>
+<p>对于apply可以这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xw.say.apply(xh);</div></pre></td></tr></table></figure></p>
+<p>对于bind可以这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xw.say.bind(xh)()</div></pre></td></tr></table></figure>
+<p>看了以上结果不难发现，call和apply都是对函数的直接调用而bind方法返回的仍是一个函数，因此后面需要加一个()来进行调用才可以。<br>那call和apply又有什么区别呢？改一下例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var xw = &#123;</div><div class="line">	name: &quot;小王&quot;,</div><div class="line">	gender: &quot;男&quot;,</div><div class="line">	age: 24,</div><div class="line">	say: function(school, grade) &#123;</div><div class="line">		console.log(`$&#123;this.name&#125;,$&#123;this.gender&#125;,今年$&#123;this.age&#125;,在$&#123;scroll&#125;上$&#123;grade&#125;)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var xh = &#123;</div><div class="line">	name: &quot;小红&quot;,</div><div class="line">	gender: &quot;女&quot;,</div><div class="line">	age: 18</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到say方法多了两个参数，我们通过call/apply的参数进行传参。对于call可以这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xw.say.call(xh, &quot;实验小学&quot;, &quot;六年级&quot;);</div></pre></td></tr></table></figure>
+<p>对于apply可以这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xw.say.call(xh, [&quot;实验小学&quot;, &quot;六年级&quot;]);</div></pre></td></tr></table></figure>
+<p>可以看到区别,call后面的参数是与say方法中是一一对应的，而apply的第二个参数是个数组，数组中的元素和say方法中一一对应的，这就是两者的最大区别，那bind如何传参呢？它可以像call那样传参</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xw.say.bind(xh, &quot;实验小学&quot;, &quot;六年级&quot;)();</div></pre></td></tr></table></figure>
+<p>但由于bind返回的仍是一个函数，所以我们需要再调用一下才可以。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-04T12:00:06.000Z" itemprop="dateUpdated">2017-09-04 20:00:06</time>
+</span><br>
+
+
+        
+        原始链接：<a href="/2017/08/04/call-apply-bind-区别/" target="_blank" rel="external">http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apply/">apply</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bind/">bind</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/call/">call</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/&title=《call apply bind 区别》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/&title=《call apply bind 区别》 — ChenBlog-chenqiangyi.cn&source=IT技术分享,前端技术分享,JavaScript,CSS,NodeJS,个人博客 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《call apply bind 区别》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/22/javascript中的this/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">javascript中的this</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/index.html',
+        sourceId: 'call-apply-bind-区别',
+        productKey: '506ecdd478bc49caab66fa9b51442d32',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/pc.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/pc.min.js',
+        ],
+        mobileFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/mobile.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/mobile.min.js'
+        ]
+    };
+    </script>
+    <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/loader.min.js"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/&title=《call apply bind 区别》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/&title=《call apply bind 区别》 — ChenBlog-chenqiangyi.cn&source=IT技术分享,前端技术分享,JavaScript,CSS,NodeJS,个人博客 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《call apply bind 区别》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHklEQVR42u3aQW7DMAwEwP7/0+k1l7i7lBM00uhUJHascQGCpPjzE6/H03r+JL/++sr2ruHCwMD4Wsbjcq0/4NVvJi8o2RsGBsY5jCQUXv90e1fOuN4bBgYGRnLNdTDNU8A8AcXAwMDIGeubyIMvBgYGRp7wtW21PNR+qBbHwMD4QkbeMvv8328538DAwPgqxqNcyb15oy0JytGuMDAwtmbMCtRkQ7PydaVgxsDA2JVxffO7C86kVE72gIGBsTdjlsblrbQZqU03MTAwzmGsJG1taM4PUItvMTAwNmW0LbY8sN51Zf1/wMDAOIYxG+FaGcJI2PVAGAYGxnaM2bHiLNVrQ/MfrxUDA2Nrxl1F7OxgoA3Nb2+3YWBg/GNGm18liV0SKJPDy5qNgYGxKSMvNdvxiFkRm6ebGBgYJzBmKWBbZLbla93sw8DAOIaRN8XWjw3aMjgatsDAwDiAMUv4WnaePhb3YmBgbM3It3gvry2Sh5MjGBgYmzLa5lebGs5eRNSew8DAOIYxC3lt2L3GDItkDAyMYxizwYv2eHLWjPvj6RgYGJsyHuXK07t82GKpcMXAwDiAMTtcnI12zYL1vUekGBgY38uYBdn8kevDZNErwMDAOIBx7xbvGsuoa3EMDAyMhRZb3uYblqwYGBgYo8PLvLnWltAvi1gMDIytGbPELj8ASD7JfwcDA+M0Rpt35cncLOzmo2MYGBgHMH4BlceTYQq/2a4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1262814007&web_id=1262814007')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+console.log("%c Powered by Chenqiangyi - chenqiangyi.cn","background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
+</script>
+
+
+
+</body>
+</html>
