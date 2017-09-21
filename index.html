@@ -192,6 +192,61 @@ ga('send', 'pageview');
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-雅虎前端优化法则"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-09-21 18:33:24" datetime="2017-09-21T10:33:24.000Z"  itemprop="datePublished">2017-09-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/性能优化/">性能优化</a></li></ul></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/09/21/雅虎前端优化法则/">雅虎前端优化法则</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        尽量减少HTTP请求次数网页加载中大部分时间都在下载js,css,flash,图片
+
+合并文件css,js,图片(css sprite)
+内联图像data:URL scheme 低级浏览器不支持，如果放到页面中会加大html,放到css中最好，因为他可以在客户端进行缓存
+
+减少DNS查找次数即减少页面中的主机名(css,js,img,flash等)
+dns解析时浏览器处于等待状态，大部分浏览...
+    
+
+        <a href="/2017/09/21/雅虎前端优化法则/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/雅虎军规/">雅虎军规</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-call-apply-bind-区别"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -674,61 +729,6 @@ call 和 apply 都是为了改变某个函数运行时的 context 即上下文�
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apply/">apply</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/call/">call</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-垂直水平居中总结"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-01-08 18:48:00" datetime="2017-01-08T10:48:00.000Z"  itemprop="datePublished">2017-01-08</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/垂直水平居中/">垂直水平居中</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/01/08/垂直水平居中总结/">垂直水平居中总结</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        既然写到flex布局了，那就总结一下垂直水平居中遇到的问题吧
-宽高不定，上下左右垂直居中。transform绝对定位top left 各50%，然后 transform 负数撑回来
-代码如下：
-HTML代码
-1&lt;div class=&quot;toast&quot;&gt;提交成功&lt;/div&gt;
-CSS代码
-1234567891011.toast &#123;  positi...
-    
-
-        <a href="/2017/01/08/垂直水平居中总结/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/垂直水平居中/">垂直水平居中</a></li></ul>
 
     </div>
     

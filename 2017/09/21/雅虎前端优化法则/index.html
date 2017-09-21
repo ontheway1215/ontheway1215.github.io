@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101091518-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=63011053"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?e9d0ebf9ee66ca3b0f0599e4a85ee733"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="fKSnk-43hoqWu410Gy8MznrpJ9NNVTuz7G-hB2JFi5s">
+    
+    
+    <link rel="canonical" href="https://chenqiangyi.cn/2017/09/21/雅虎前端优化法则/">
+    
+    
+    <title>雅虎前端优化法则 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="性能优化,雅虎军规">
+    <meta name="description" content="尽量减少HTTP请求次数网页加载中大部分时间都在下载js,css,flash,图片  合并文件css,js,图片(css sprite) 内联图像data:URL scheme 低级浏览器不支持，如果放到页面中会加大html,放到css中最好，因为他可以在客户端进行缓存  减少DNS查找次数即减少页面中的主机名(css,js,img,flash等) dns解析时浏览器处于等待状态，大部分浏览器有自">
+<meta name="keywords" content="性能优化,雅虎军规">
+<meta property="og:type" content="article">
+<meta property="og:title" content="雅虎前端优化法则">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="尽量减少HTTP请求次数网页加载中大部分时间都在下载js,css,flash,图片  合并文件css,js,图片(css sprite) 内联图像data:URL scheme 低级浏览器不支持，如果放到页面中会加大html,放到css中最好，因为他可以在客户端进行缓存  减少DNS查找次数即减少页面中的主机名(css,js,img,flash等) dns解析时浏览器处于等待状态，大部分浏览器有自">
+<meta property="og:updated_time" content="2017-09-21T10:35:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="雅虎前端优化法则">
+<meta name="twitter:description" content="尽量减少HTTP请求次数网页加载中大部分时间都在下载js,css,flash,图片  合并文件css,js,图片(css sprite) 内联图像data:URL scheme 低级浏览器不支持，如果放到页面中会加大html,放到css中最好，因为他可以在客户端进行缓存  减少DNS查找次数即减少页面中的主机名(css,js,img,flash等) dns解析时浏览器处于等待状态，大部分浏览器有自">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.chenqiangyi.cn/other-project/vue-element" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">雅虎前端优化法则</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">雅虎前端优化法则</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-21T10:33:24.000Z" itemprop="datePublished" class="page-time">
+  2017-09-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/性能优化/">性能优化</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#尽量减少HTTP请求次数"><span class="post-toc-number">1.</span> <span class="post-toc-text">尽量减少HTTP请求次数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#减少DNS查找次数即减少页面中的主机名-css-js-img-flash等"><span class="post-toc-number">2.</span> <span class="post-toc-text">减少DNS查找次数即减少页面中的主机名(css,js,img,flash等)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#避免跳转"><span class="post-toc-number">3.</span> <span class="post-toc-text">避免跳转</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可缓存的ajax"><span class="post-toc-number">4.</span> <span class="post-toc-text">可缓存的ajax</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#推迟加载内容-不是立刻要用的"><span class="post-toc-number">5.</span> <span class="post-toc-text">推迟加载内容(不是立刻要用的)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#预加载"><span class="post-toc-number">6.</span> <span class="post-toc-text">预加载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#减少DOM元素数量"><span class="post-toc-number">7.</span> <span class="post-toc-text">减少DOM元素数量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#根据域名划页面内容"><span class="post-toc-number">8.</span> <span class="post-toc-text">根据域名划页面内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使iframe的数量最小"><span class="post-toc-number">9.</span> <span class="post-toc-text">使iframe的数量最小</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#避免404"><span class="post-toc-number">10.</span> <span class="post-toc-text">避免404</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为文件头制定Expires或Cache-Control"><span class="post-toc-number">11.</span> <span class="post-toc-text">为文件头制定Expires或Cache-Control</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Gzip压缩文件内容"><span class="post-toc-number">12.</span> <span class="post-toc-text">Gzip压缩文件内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置ETag"><span class="post-toc-number">13.</span> <span class="post-toc-text">配置ETag</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#尽早刷新输出缓冲"><span class="post-toc-number">14.</span> <span class="post-toc-text">尽早刷新输出缓冲</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用GET来完成AJAX请求"><span class="post-toc-number">15.</span> <span class="post-toc-text">使用GET来完成AJAX请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#把样式表置于顶部"><span class="post-toc-number">16.</span> <span class="post-toc-text">把样式表置于顶部</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用外部JavaScript和CSS"><span class="post-toc-number">17.</span> <span class="post-toc-text">使用外部JavaScript和CSS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#消减JavaScript和CSS"><span class="post-toc-number">18.</span> <span class="post-toc-text">消减JavaScript和CSS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用代替-import"><span class="post-toc-number">19.</span> <span class="post-toc-text">用代替@import</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#避免使用滤镜"><span class="post-toc-number">20.</span> <span class="post-toc-text">避免使用滤镜</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#把脚本置于页面底部"><span class="post-toc-number">21.</span> <span class="post-toc-text">把脚本置于页面底部</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提出重复脚本"><span class="post-toc-number">22.</span> <span class="post-toc-text">提出重复脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#减少DOM访问"><span class="post-toc-number">23.</span> <span class="post-toc-text">减少DOM访问</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发智能事件处理程序"><span class="post-toc-number">24.</span> <span class="post-toc-text">开发智能事件处理程序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#减少Cookie体积"><span class="post-toc-number">25.</span> <span class="post-toc-text">减少Cookie体积</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#减少页面内容使用无cookie域名"><span class="post-toc-number">26.</span> <span class="post-toc-text">减少页面内容使用无cookie域名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优化图像"><span class="post-toc-number">27.</span> <span class="post-toc-text">优化图像</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优化CSS-Spirite"><span class="post-toc-number">28.</span> <span class="post-toc-text">优化CSS Spirite</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不要在HTML中缩放图像"><span class="post-toc-number">29.</span> <span class="post-toc-text">不要在HTML中缩放图像</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#favicon-ico要小而且可缓存"><span class="post-toc-number">30.</span> <span class="post-toc-text">favicon.ico要小而且可缓存</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#保持单个内用小于25K"><span class="post-toc-number">31.</span> <span class="post-toc-text">保持单个内用小于25K</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打包组件成复合文本"><span class="post-toc-number">32.</span> <span class="post-toc-text">打包组件成复合文本</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-雅虎前端优化法则"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">雅虎前端优化法则</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-21 18:33:24" datetime="2017-09-21T10:33:24.000Z"  itemprop="datePublished">2017-09-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/性能优化/">性能优化</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="尽量减少HTTP请求次数"><a href="#尽量减少HTTP请求次数" class="headerlink" title="尽量减少HTTP请求次数"></a>尽量减少HTTP请求次数</h2><p>网页加载中大部分时间都在下载js,css,flash,图片</p>
+<ul>
+<li>合并文件css,js,图片(css sprite)</li>
+<li>内联图像data:URL scheme 低级浏览器不支持，如果放到页面中会加大html,放到css中最好，因为他可以在客户端进行缓存</li>
+</ul>
+<h2 id="减少DNS查找次数即减少页面中的主机名-css-js-img-flash等"><a href="#减少DNS查找次数即减少页面中的主机名-css-js-img-flash等" class="headerlink" title="减少DNS查找次数即减少页面中的主机名(css,js,img,flash等)"></a>减少DNS查找次数即减少页面中的主机名(css,js,img,flash等)</h2><ul>
+<li>dns解析时浏览器处于等待状态，大部分浏览器有自己的缓存不会受到系统缓存的影响</li>
+<li>减少主机名数量，则减少了dns查询，但同时减少了页面中并行下载的数量</li>
+<li>把页面中的主机分成2~4个，二者可兼得</li>
+</ul>
+<h2 id="避免跳转"><a href="#避免跳转" class="headerlink" title="避免跳转"></a>避免跳转</h2><ul>
+<li>降低了用户体验</li>
+<li>url本身最后应该有/如果不带则用户访问时会发生一次301跳转</li>
+<li>可以在服务器中进行设置来避免它</li>
+</ul>
+<h2 id="可缓存的ajax"><a href="#可缓存的ajax" class="headerlink" title="可缓存的ajax"></a>可缓存的ajax</h2><ul>
+<li>可将请求的地址设置为永不过期，然后请求的地址中带上文件的最后修改时间</li>
+</ul>
+<h2 id="推迟加载内容-不是立刻要用的"><a href="#推迟加载内容-不是立刻要用的" class="headerlink" title="推迟加载内容(不是立刻要用的)"></a>推迟加载内容(不是立刻要用的)</h2><ul>
+<li>用onload把页面分成两部分 折叠的，隐藏的，js效果可以后加重</li>
+<li>img, css, js根据需求进行加重</li>
+</ul>
+<h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2><ul>
+<li>在用户空闲时加载以后要用到的img,css,js这些都可以缓存</li>
+<li>在这个页面加载下个页面要用到的页面组件</li>
+<li>同样可以把这些要加载的放到onload里面</li>
+</ul>
+<h2 id="减少DOM元素数量"><a href="#减少DOM元素数量" class="headerlink" title="减少DOM元素数量"></a>减少DOM元素数量</h2><ul>
+<li>页面元素越多JavaScript遍历DOM的效率越慢</li>
+<li>YUI CSS utilities</li>
+<li>document.getElementsByTagName(‘*’).length计算页面全部的元素个数</li>
+</ul>
+<h2 id="根据域名划页面内容"><a href="#根据域名划页面内容" class="headerlink" title="根据域名划页面内容"></a>根据域名划页面内容</h2><ul>
+<li>可以并行下载考虑到dns查询时间2~3个最好</li>
+</ul>
+<h2 id="使iframe的数量最小"><a href="#使iframe的数量最小" class="headerlink" title="使iframe的数量最小"></a>使iframe的数量最小</h2><p>优点：</p>
+<pre><code>* 解决加载缓慢的第三方内容如图表和广告等的加载问题
+
+* Security sandbox
+
+* 并行加载脚本
+</code></pre><p>缺点：</p>
+<pre><code>* 即时内容为空，加载也需要时间
+
+* 会阻止页面加载
+
+* 没有语义
+</code></pre><h2 id="避免404"><a href="#避免404" class="headerlink" title="避免404"></a>避免404</h2><p>##使用内容分发网络</p>
+<h2 id="为文件头制定Expires或Cache-Control"><a href="#为文件头制定Expires或Cache-Control" class="headerlink" title="为文件头制定Expires或Cache-Control"></a>为文件头制定Expires或Cache-Control</h2><h2 id="Gzip压缩文件内容"><a href="#Gzip压缩文件内容" class="headerlink" title="Gzip压缩文件内容"></a>Gzip压缩文件内容</h2><h2 id="配置ETag"><a href="#配置ETag" class="headerlink" title="配置ETag"></a>配置ETag</h2><p>web服务器和浏览器用于判断浏览器缓存中的内容和服务器中的原始内容是否匹配的一种机制</p>
+<h2 id="尽早刷新输出缓冲"><a href="#尽早刷新输出缓冲" class="headerlink" title="尽早刷新输出缓冲"></a>尽早刷新输出缓冲</h2><p>最好放到head和body之间&lt;?php flush();?&gt;</p>
+<h2 id="使用GET来完成AJAX请求"><a href="#使用GET来完成AJAX请求" class="headerlink" title="使用GET来完成AJAX请求"></a>使用GET来完成AJAX请求</h2><p>POST方法是一个“两步走”的过程：首先发送文件头，然后才发送数据</p>
+<h2 id="把样式表置于顶部"><a href="#把样式表置于顶部" class="headerlink" title="把样式表置于顶部"></a>把样式表置于顶部</h2><p>把样式表放到<head>内会使页面有步骤的加载显示，以便于及时给用户反馈(显示的页面),改善了用户体验</head></p>
+<p>##避免使用CSS表达式(Expression)<br>他们的计算频率要比我们想象的多，在页面缩放，滚动，或者即使是鼠标的移动时都会计算</p>
+<h2 id="使用外部JavaScript和CSS"><a href="#使用外部JavaScript和CSS" class="headerlink" title="使用外部JavaScript和CSS"></a>使用外部JavaScript和CSS</h2><p>可以被缓存</p>
+<h2 id="消减JavaScript和CSS"><a href="#消减JavaScript和CSS" class="headerlink" title="消减JavaScript和CSS"></a>消减JavaScript和CSS</h2><p>减少请求的大小</p>
+<h2 id="用代替-import"><a href="#用代替-import" class="headerlink" title="用代替@import"></a>用<link>代替@import</h2><h2 id="避免使用滤镜"><a href="#避免使用滤镜" class="headerlink" title="避免使用滤镜"></a>避免使用滤镜</h2><p>完全避免使用AlphaImageLoader的最好方法是使用PNG8格式来代替</p>
+<h2 id="把脚本置于页面底部"><a href="#把脚本置于页面底部" class="headerlink" title="把脚本置于页面底部"></a>把脚本置于页面底部</h2><ul>
+<li>阻止了页面平行下载</li>
+<li>HTTP/1.1规范建议，浏览器每个主机名的并行下载内容不超过两个</li>
+<li>脚本加载时会阻止页面上所有的元素进行加载，即使是不同域名</li>
+</ul>
+<h2 id="提出重复脚本"><a href="#提出重复脚本" class="headerlink" title="提出重复脚本"></a>提出重复脚本</h2><h2 id="减少DOM访问"><a href="#减少DOM访问" class="headerlink" title="减少DOM访问"></a>减少DOM访问</h2><ul>
+<li>缓存已经访问过的有关元素</li>
+<li>线下更新完节点之后再将他们添加到文档中</li>
+<li>避免使用JavaScript来修改页面布局</li>
+</ul>
+<h2 id="开发智能事件处理程序"><a href="#开发智能事件处理程序" class="headerlink" title="开发智能事件处理程序"></a>开发智能事件处理程序</h2><p>delegate方法绑定</p>
+<h2 id="减少Cookie体积"><a href="#减少Cookie体积" class="headerlink" title="减少Cookie体积"></a>减少Cookie体积</h2><h2 id="减少页面内容使用无cookie域名"><a href="#减少页面内容使用无cookie域名" class="headerlink" title="减少页面内容使用无cookie域名"></a>减少页面内容使用无cookie域名</h2><h2 id="优化图像"><a href="#优化图像" class="headerlink" title="优化图像"></a>优化图像</h2><h2 id="优化CSS-Spirite"><a href="#优化CSS-Spirite" class="headerlink" title="优化CSS Spirite"></a>优化CSS Spirite</h2><ul>
+<li>水平排列图像会比垂直要小</li>
+<li>颜色相近的摆放一起</li>
+<li>空隙不宜过大</li>
+</ul>
+<h2 id="不要在HTML中缩放图像"><a href="#不要在HTML中缩放图像" class="headerlink" title="不要在HTML中缩放图像"></a>不要在HTML中缩放图像</h2><h2 id="favicon-ico要小而且可缓存"><a href="#favicon-ico要小而且可缓存" class="headerlink" title="favicon.ico要小而且可缓存"></a>favicon.ico要小而且可缓存</h2><h2 id="保持单个内用小于25K"><a href="#保持单个内用小于25K" class="headerlink" title="保持单个内用小于25K"></a>保持单个内用小于25K</h2><h2 id="打包组件成复合文本"><a href="#打包组件成复合文本" class="headerlink" title="打包组件成复合文本"></a>打包组件成复合文本</h2>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-21T10:35:59.000Z" itemprop="dateUpdated">2017-09-21 18:35:59</time>
+</span><br>
+
+
+        
+        原始链接：<a href="/2017/09/21/雅虎前端优化法则/" target="_blank" rel="external">http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/雅虎军规/">雅虎军规</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/&title=《雅虎前端优化法则》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/&title=《雅虎前端优化法则》 — ChenBlog-chenqiangyi.cn&source=IT技术分享,前端技术分享,JavaScript,CSS,NodeJS,个人博客 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《雅虎前端优化法则》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/04/call-apply-bind-区别/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">call apply bind 区别</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/index.html',
+        sourceId: '雅虎前端优化法则',
+        productKey: '506ecdd478bc49caab66fa9b51442d32',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/pc.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/pc.min.js',
+        ],
+        mobileFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/mobile.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/mobile.min.js'
+        ]
+    };
+    </script>
+    <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/loader.min.js"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/&title=《雅虎前端优化法则》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/&title=《雅虎前端优化法则》 — ChenBlog-chenqiangyi.cn&source=IT技术分享,前端技术分享,JavaScript,CSS,NodeJS,个人博客 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《雅虎前端优化法则》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/09/21/雅虎前端优化法则/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3aS27DMAxF0ex/0y7QUQHDzn2kEtTU1chwm9hHA4YfvV54Hb/rfP33znldfc/5f8hnFywZMmQ8lnHcLsIg7PuXvn8W2iYZMmRswOBBlodXAqttmQwZMmSkQZOngJ3tkyFDhow04KbFbVoSy5AhQ0atiF3V1TvA+mAtLkOGjAcyOoOBT19/ab4hQ4aMf8w4GisdZ5IUsPgmMmTIGM0gjbO1AwOebpIte5GKWYYMGSMYPO8iA4N0I9JGW/G5MmTIeDiDBMdVI4R08FkcDMiQIWMQg4TOfnHb/wV4s9EyZMgYzUgDbprq8U4+T0kvN0iGDBlDGbUv4qEwPeDF09PL+YYMGTLGMTrlJb9fG23Gf5UhQ8ZQRtpi46Vmyk4HopftNhkyZIxjpOUib8+lzTJSBsfHwmTIkDGCUZx59k9w4IElosqQIWM0g4fIzhiSt+T42QkZMmTsw+Ct//RARpomdgK3DBkyZjNqwZG3+PtDzfsEEeW8MmTIGMSoHQ7rh1cS1nmzT4YMGVMZvKFGXrdTAKcj1WJfUIYMGY9l8LSPt+eKsT9MFmXIkLEDY9Uw8j7JSw+q1kaeMmTImMc4wpUegOgHYlToypAhYzSjFlJXNfFrbbi0/JYhQ8YMRqdwXXUnDbgyZMjYk9EfT9aueex/A5MhQ4YMnALWXpeH3Vb2KkOGjA0Y/HXTo67ps2TIkLEngxSxaw9h1EKwDBky9mT0BwO1QjQdlAZnRmTIkDGH8QNDGgPxjh3jbAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1262814007&web_id=1262814007')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+console.log("%c Powered by Chenqiangyi - chenqiangyi.cn","background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
+</script>
+
+
+
+</body>
+</html>
