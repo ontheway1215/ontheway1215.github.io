@@ -114,6 +114,111 @@
   </entry>
   
   <entry>
+    <title>centos7 安装Nginx</title>
+    <link href="http://www.chenqiangyi.cn/2017/09/20/centos%207%20%E5%AE%89%E8%A3%85nginx/"/>
+    <id>http://www.chenqiangyi.cn/2017/09/20/centos 7 安装nginx/</id>
+    <published>2017-09-20T02:30:19.000Z</published>
+    <updated>2017-11-16T12:21:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装所需环境"><a href="#安装所需环境" class="headerlink" title="安装所需环境"></a>安装所需环境</h1><h2 id="一-gcc-安装"><a href="#一-gcc-安装" class="headerlink" title="一. gcc 安装"></a>一. gcc 安装</h2><blockquote>
+<p>安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：</p>
+</blockquote>
+<h3 id="yum-install-gcc-gcc-c-y"><a href="#yum-install-gcc-gcc-c-y" class="headerlink" title="yum install gcc gcc-c++ -y"></a>yum install gcc gcc-c++ -y</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">error: rpmdb: BDB0113 Thread/process 30841/139693394622464 failed: BDB1507 Thread died in Berkeley DB library</div><div class="line">error: db5 error(-30973) from dbenv-&gt;failchk: BDB0087 DB_RUNRECOVERY: Fatal error, run database recovery</div><div class="line">error: cannot open Packages index using db5 -  (-30973)</div><div class="line">error: cannot open Packages database in /var/lib/rpm</div><div class="line">CRITICAL:yum.main:</div><div class="line">Error: rpmdb open failed</div></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#首先清除掉缓存，之后再重建就可以了</div><div class="line">rm -f /var/lib/rpm/__db*</div><div class="line">rpm --rebuilddb</div></pre></td></tr></table></figure>
+<h2 id="二-PCRE-pcre-devel-安装"><a href="#二-PCRE-pcre-devel-安装" class="headerlink" title="二. PCRE pcre-devel 安装"></a>二. PCRE pcre-devel 安装</h2><blockquote>
+<p>PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：</p>
+</blockquote>
+<h3 id="yum-install-y-pcre-pcre-devel"><a href="#yum-install-y-pcre-pcre-devel" class="headerlink" title="yum install -y pcre pcre-devel"></a>yum install -y pcre pcre-devel</h3><h2 id="三-zlib-安装"><a href="#三-zlib-安装" class="headerlink" title="三. zlib 安装"></a>三. zlib 安装</h2><blockquote>
+<p>zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。</p>
+</blockquote>
+<h3 id="yum-install-y-zlib-zlib-devel"><a href="#yum-install-y-zlib-zlib-devel" class="headerlink" title="yum install -y zlib zlib-devel"></a>yum install -y zlib zlib-devel</h3><h2 id="四-OpenSSL-安装"><a href="#四-OpenSSL-安装" class="headerlink" title="四. OpenSSL 安装"></a>四. OpenSSL 安装</h2><blockquote>
+<p>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。<br>nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。</p>
+</blockquote>
+<h3 id="yum-install-y-openssl-openssl-devel"><a href="#yum-install-y-openssl-openssl-devel" class="headerlink" title="yum install -y openssl openssl-devel"></a>yum install -y openssl openssl-devel</h3><h1 id="官网下载"><a href="#官网下载" class="headerlink" title="官网下载"></a>官网下载</h1><h2 id="1-直接下载"><a href="#1-直接下载" class="headerlink" title="1.直接下载"></a>1.直接下载</h2><p>直接下载.tar.gz安装包，地址：<a href="https://nginx.org/en/download.html" title="地址" target="_blank" rel="noopener">https://nginx.org/en/download.html</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://orw66421u.bkt.clouddn.com/nginx.png" alt="nginx下载" title="">
+                </div>
+                <div class="image-caption">nginx下载</div>
+            </figure>
+<h2 id="2-使用wget命令下载（推荐）。"><a href="#2-使用wget命令下载（推荐）。" class="headerlink" title="2.使用wget命令下载（推荐）。"></a>2.使用wget命令下载（推荐）。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home</div><div class="line">wget -c https://nginx.org/download/nginx-1.12.2.tar.gz</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://orw66421u.bkt.clouddn.com/nginx2.png" alt="wget安装" title="">
+                </div>
+                <div class="image-caption">wget安装</div>
+            </figure>
+<p>我下载的是1.12.2版本，这个是目前的稳定版。</p>
+<h1 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h1><p>依然是直接命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf nginx-1.12.2.tar.gz</div><div class="line">cd nginx-1.12.2</div></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><blockquote>
+<p>其实在 nginx-1.10.1 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。</p>
+</blockquote>
+<h2 id="1-使用默认配置"><a href="#1-使用默认配置" class="headerlink" title="1.使用默认配置"></a>1.使用默认配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure</div></pre></td></tr></table></figure>
+<h2 id="2-自定义配置（不推荐）"><a href="#2-自定义配置（不推荐）" class="headerlink" title="2.自定义配置（不推荐）"></a>2.自定义配置（不推荐）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--prefix=/usr/local/nginx \</div><div class="line">--conf-path=/usr/local/nginx/conf/nginx.conf \</div><div class="line">--pid-path=/usr/local/nginx/conf/nginx.pid \</div><div class="line">--lock-path=/var/lock/nginx.lock \</div><div class="line">--error-log-path=/var/log/nginx/error.log \</div><div class="line">--http-log-path=/var/log/nginx/access.log \</div><div class="line">--with-http_gzip_static_module \</div><div class="line">--http-client-body-temp-path=/var/temp/nginx/client \</div><div class="line">--http-proxy-temp-path=/var/temp/nginx/proxy \</div><div class="line">--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</div><div class="line">--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</div><div class="line">--http-scgi-temp-path=/var/temp/nginx/scgi</div></pre></td></tr></table></figure>
+<ul>
+<li>注：将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录</li>
+</ul>
+<h1 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>查找安装路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whereis nginx</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://orw66421u.bkt.clouddn.com/nginx3.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="启动、停止nginx"><a href="#启动、停止nginx" class="headerlink" title="启动、停止nginx"></a>启动、停止nginx</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/nginx/sbin/</div><div class="line">./nginx </div><div class="line">./nginx -s stop</div><div class="line">./nginx -s quit</div><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* ./nginx -s quit:此方式停止步骤是待nginx进程处理任务完毕进行停止。</div><div class="line">* ./nginx -s stop:此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程。</div></pre></td></tr></table></figure>
+<h2 id="查询nginx进程："><a href="#查询nginx进程：" class="headerlink" title="查询nginx进程："></a>查询nginx进程：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux|grep nginx</div></pre></td></tr></table></figure>
+<h1 id="重启-nginx"><a href="#重启-nginx" class="headerlink" title="重启 nginx"></a>重启 nginx</h1><h2 id="1-先停止再启动（推荐）："><a href="#1-先停止再启动（推荐）：" class="headerlink" title="1.先停止再启动（推荐）："></a>1.先停止再启动（推荐）：</h2><blockquote>
+<p>对 nginx 进行重启相当于先停止再启动，即先执行停止命令再执行启动命令。如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./nginx -s quit</div><div class="line">./nginx</div></pre></td></tr></table></figure>
+<h2 id="2-重新加载配置文件："><a href="#2-重新加载配置文件：" class="headerlink" title="2.重新加载配置文件："></a>2.重新加载配置文件：</h2><blockquote>
+<p>当 ngin x的配置文件 nginx.conf 修改后，要想让配置生效需要重启 nginx，使用-s reload不用先停止 ngin x再启动 nginx 即可将配置信息在 nginx 中生效，如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
+<p>启动成功后，在浏览器可以看到这样的页面：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://orw66421u.bkt.clouddn.com/nginx4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h1 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h1><blockquote>
+<p>即在rc.local增加启动代码就可以了。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/rc.local</div></pre></td></tr></table></figure>
+<p>增加一行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/nginx/sbin/nginx</div></pre></td></tr></table></figure>
+<p>设置执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc</div><div class="line">chmod 755 rc.local</div></pre></td></tr></table></figure>
+<p>到这里，nginx就安装完毕了，启动、停止、重启操作也都完成了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;安装所需环境&quot;&gt;&lt;a href=&quot;#安装所需环境&quot; class=&quot;headerlink&quot; title=&quot;安装所需环境&quot;&gt;&lt;/a&gt;安装所需环境&lt;/h1&gt;&lt;h2 id=&quot;一-gcc-安装&quot;&gt;&lt;a href=&quot;#一-gcc-安装&quot; class=&quot;headerlink&quot; 
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://www.chenqiangyi.cn/categories/Nginx/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/tags/JavaScript/"/>
+    
+      <category term="Nginx" scheme="http://www.chenqiangyi.cn/tags/Nginx/"/>
+    
+      <category term="服务器" scheme="http://www.chenqiangyi.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>call apply bind 区别</title>
     <link href="http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-%E5%8C%BA%E5%88%AB/"/>
     <id>http://www.chenqiangyi.cn/2017/08/04/call-apply-bind-区别/</id>
@@ -1666,313 +1771,6 @@
       <category term="ES6" scheme="http://www.chenqiangyi.cn/tags/ES6/"/>
     
       <category term="JavaScript" scheme="http://www.chenqiangyi.cn/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6新特性(1)——Arguments和Parameters</title>
-    <link href="http://www.chenqiangyi.cn/2016/08/02/ES6%E6%96%B0%E7%89%B9%E6%80%A7(1)%E2%80%94%E2%80%94Arguments%E5%92%8CParameters/"/>
-    <id>http://www.chenqiangyi.cn/2016/08/02/ES6新特性(1)——Arguments和Parameters/</id>
-    <published>2016-08-02T01:05:29.000Z</published>
-    <updated>2017-06-14T13:07:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>ECMAScript 6 (也称 ECMAScript 2015) 是ECMAScript 标准的最新版本，显著地完善了JS中参数的处理方式。除了其它新特性外，我们还可以使用rest参数、默认值、解构赋值等。</p>
-</blockquote>
-<h1 id="对比-Arguments-和-Parameters"><a href="#对比-Arguments-和-Parameters" class="headerlink" title="对比 Arguments 和 Parameters"></a>对比 Arguments 和 Parameters</h1><p>通常情况下提到 Arguments 和 Parameters， 都认为是可以互换使用的。然而，基于本教程的目的，我们做了明确的区分。在大多数标准中，parameters (形式参数) 指声明函数名和函数体的时候使用的参数，而 arguments (实际参数) 指在函数实际调用时，传入的确定值。思考下面这个函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function foo(param1, param2) &#123;</div><div class="line">  // do something</div><div class="line">&#125;</div><div class="line">foo(10, 20);</div></pre></td></tr></table></figure>
-<p>在这个函数中， param1 和 param2 是函数的形式参数（形参）, 而在函数foo调用时，传入的 (10 和 20) 则是实际参数（实参）。</p>
-<h1 id="扩展操作符"><a href="#扩展操作符" class="headerlink" title="扩展操作符"></a>扩展操作符</h1><p>在 ES5 中，用 apply() 方法可以很方便地将一个数组传递给函数。例如，我们经常把它和 Math.max() 结合使用，来取得数组中的最大值。请看下面代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var myArray = [5, 10, 50];</div><div class="line">Math.max()myArray;        // Error: NaN</div><div class="line">Math.max.apply(Math, myArray);     //50</div></pre></td></tr></table></figure>
-<p>Math.max() 方法并不支持传入数组，它只接受数字。所以当我们把数组作为参数传递给它时，就会抛出错误。但是，加上 apply() 方法后，数组会被转换成单独的数字，就能被 Math.max() 处理了。</p>
-<p>庆幸的是，ES6 引入了扩展操作符，我们不需要再使用 apply() 方法了。通过扩展操作符，我们可以很方便地为表达式传入多个参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var myArray = [5, 10, 50];</div><div class="line">Math.max(...myArray);      //50</div></pre></td></tr></table></figure>
-<p>这里，扩展操作符把 myArray 展开成独立的数值传给了函数。 ES5里面使用 apply() 来模仿操作符是可以达到目的的，只是语法上令人困惑，并且缺乏扩展操作符的灵活性。 扩展操作符不仅易于使用，还涵盖了很多其他特性。例如，它可以被多次使用，还可以在 function 调用时，和其它参数混合使用:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function myFunction() &#123;</div><div class="line">  for(var i in arguments)&#123;</div><div class="line">    console.log(arguments[i]);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var params = [10, 15];</div><div class="line">myFunction(5, ...params, 20, ...[25]);       // 5 10 15 20 25</div></pre></td></tr></table></figure>
-<p>扩展操作符的另一个优点，就是它可以很简单地和构造函数一起使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">new Date(...[2016, 5, 6]);       //  Mon Jun 06 2016</div><div class="line">00 : 00: 00 GMT-0700 (Pacific Daylight Time)</div></pre></td></tr></table></figure>
-<p>当然，我们可以用ES5重写上面的代码，但我们则需要用一个复杂的模式来避免类型错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">new Date.apply(null, [2016, 4, 24]);       //  TypeError:Date.apply is not a constructor</div><div class="line">new (Function.prototype.bind.apply(Date,[null].concat([2016, 5, 6])));   // Mon Jun 06 2016 00 : 00 : 00 GMT-0700 (Pacific Daylight Time)</div></pre></td></tr></table></figure>
-<p>浏览器对扩展操作符在函数中调用的支持情况</p>
-<p>桌面浏览器</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Chrome</th>
-<th style="text-align:center">Firefox</th>
-<th style="text-align:center">Internet Explorer</th>
-<th style="text-align:center">Microsoft Edge</th>
-<th style="text-align:center">Opera</th>
-<th style="text-align:center">Safari</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">46</td>
-<td style="text-align:center">27</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">supported</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">7.1</td>
-</tr>
-</tbody>
-</table>
-<p>移动端浏览器：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Chrome for Android</th>
-<th style="text-align:center">Firefox Mobile</th>
-<th style="text-align:center">Safari</th>
-<th style="text-align:center">Oprea Mobile</th>
-<th style="text-align:center">IE Mobile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">46</td>
-<td style="text-align:center">27</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Rest参数"><a href="#Rest参数" class="headerlink" title="Rest参数"></a>Rest参数</h1><p>rest参数和扩展操作符拥有相同的语法，不同的是，rest参数是把所有的参数收集起来转换成数组，而扩展操作符是把数组扩展成单独的参数。</p>
-<figure class="highlight plain"><figcaption><span>myFunction(...options) &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  return options;</div><div class="line">&#125;</div><div class="line">myFunction(&apos;a&apos;, &apos;b&apos;, &apos;c&apos;);     //  [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</div></pre></td></tr></table></figure>
-<p>如果函数调用时，没有传入实际参数，则rest参数会输出一个空数组，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function myFunction(...options) &#123;</div><div class="line">  return options;</div><div class="line">&#125;</div><div class="line">myFunction();      //[]</div></pre></td></tr></table></figure>
-<p>rest参数在创建一个可变函数（即一个参数个数可变的函数）时尤其有用。rest参数有着数组固有的优势，可以快捷地替换 arguments 对象（下文会解释这个名词）。下面这个函数是用ES5写的，我们来看下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function checkSubstrings(string) &#123;</div><div class="line">  for(var i = 1; i &amp;lt; arguments.length; i++) &#123;</div><div class="line">    if(string.indexOf(arguments[i]) === -1)&#123;</div><div class="line">      return false;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line">checkSubstrings(&apos;this is a string&apos;, &apos;is&apos;, &apos;this&apos;);    //true</div></pre></td></tr></table></figure>
-<p>该函数检查字符串（this is a string）是否包括这些子串（is, this）。这个函数存在的第一个问题是，我们必须看函数体内是否有多个参数。第二个问题是，循环必须从 1 开始，而不是从 0 开始, 因为 arguments[0] 指向的就是第一个参数（this is a string）。 如果以后我们想要在这个字符串的前面或者后面添加另一个参数，我们可能会忘记更新循环体。而使用rest参数，我们就可以很容易地避免这些问题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function checkSubstrings(string, ...keys) &#123;</div><div class="line">  for (var key of keys) &#123;</div><div class="line">    if(string.indexOf(key) === -1) &#123;</div><div class="line">      return false;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line">checkSubstrings(&apos;this is a string&apos;, &apos;is&apos;, &apos;this&apos;);    //true</div></pre></td></tr></table></figure>
-<p>该函数的输出跟前一个函数的输出是一样的。这里再提一下，参数 string 被包含在这个函数的 argument 中，并且第一个被传递进来，剩下的参数都被放到一个数组，并且赋给了名为 keys 的变量。</p>
-<p>使用rest参数替代 arguments 对象来提高代码的可读性和避免一些js的优化问题1。 然而，rest参数也不是没有缺点的。例如，它必须是最后一个参数，否则就会报错，如下面函数所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function logArguments(a, ...params, b) &#123;</div><div class="line">  console.log(a, params, b);</div><div class="line">&#125;</div><div class="line">logArguments(5, 10, 15);      //SyntaxError: parameter after rest parameter</div></pre></td></tr></table></figure>
-<p>另一个缺点是，一个函数声明只能允许有一个rest参数：</p>
-<figure class="highlight plain"><figcaption><span>logArguments(...param1, ...param2) &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#125;</div><div class="line">logArgument(5, 10, 15);      //SyntaxError: parameter after rest parameter</div></pre></td></tr></table></figure>
-<p>浏览器对Rest参数的支持情况</p>
-<p>桌面浏览器：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Chrome</th>
-<th style="text-align:center">Firefox</th>
-<th style="text-align:center">Internet Explorer</th>
-<th style="text-align:center">Microsoft Edge</th>
-<th style="text-align:center">Opera</th>
-<th style="text-align:center">Safari</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">47</td>
-<td style="text-align:center">15</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">supported</td>
-<td style="text-align:center">34</td>
-<td style="text-align:center">–</td>
-</tr>
-</tbody>
-</table>
-<p>移动端浏览器：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Chrome for Android</th>
-<th style="text-align:center">Firefox Mobile</th>
-<th style="text-align:center">Safari</th>
-<th style="text-align:center">Oprea Mobile</th>
-<th style="text-align:center">IE Mobile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">46</td>
-<td style="text-align:center">15</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-</tr>
-</tbody>
-</table>
-<p>默认参数</p>
-<p>ES5 默认参数</p>
-<p>在ES5中，JS 并不支持默认参数, 但是，我们也有一种变通的方案，那就是在函数中使用 OR 操作符（ ||）。我们简单地模仿ES5中的默认参数，请看下面函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo(param1, param2) &#123;</div><div class="line">  param1 = param1 || 10;</div><div class="line">  param2 = param2 || 10;</div><div class="line">  console.log(param1, param2);</div><div class="line">&#125;</div><div class="line">foo(5, 5);</div><div class="line">foo(5);</div><div class="line">foo();</div><div class="line">VM2450:4 5 5</div><div class="line">VM2450:4 5 10</div><div class="line">VM2450:4 10 10</div></pre></td></tr></table></figure>
-<p>该函数预期传入两个参数，但如果在调用该函数时，没有传入实参，则它会用默认值。在函数体内，如果没有传入实际参数，则会被自动设为 undefined, 所以，我们可以检测这些参数，并且声明他们的默认值。我们可以使用 OR 操作符（||）来检测是否有传入实际参数，并且设定他们的默认值。OR 操作符会检测它的第一个参数，如果有实际值2，则用第一个，如果没有，则用它的第二个参数。</p>
-<p>这种方法在函数中普遍使用，但它有一个瑕疵，那就是传入 0 或者 null 也会触发默认值，因为 0 和 null 都被认为是false. 所以，如果我们需要给函数传入 0 和 null 时，我们需要另一种方式去检测这个参数是否缺失：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function foo(param1, param2) &#123;</div><div class="line">  if(param1 === undefined) &#123;</div><div class="line">    param1 = 10;</div><div class="line">  &#125;</div><div class="line">  if(param2 === undefined) &#123;</div><div class="line">    param2 = 10;</div><div class="line">  &#125;</div><div class="line">  console.log(param1, param2);</div><div class="line">&#125;</div><div class="line">foo(0, null);</div><div class="line">foo();</div><div class="line">VM788:8 0 null</div><div class="line">VM788:8 10 10</div></pre></td></tr></table></figure>
-<p>在上面这个函数中，只有当所传的参数全等于 undefined 时，才会使用默认值。这种方式需要用到的代码稍微多点，但是安全度更高，我们可以给函数传入 0 和 null 。</p>
-<p>ES6 默认参数</p>
-<p>有了ES6,我们不需要再去检测哪些值为undefined并且给它们设定默认值了。现在我们可以直接在函数声明中放置默认值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo(a = 10, b = 10) &#123;</div><div class="line">  console.log(a, b);</div><div class="line">&#125;</div><div class="line">foo(5);</div><div class="line">foo(0, null);</div><div class="line">VM837:2 5 10</div><div class="line">VM837:2 0 null</div></pre></td></tr></table></figure>
-<p>如你所见，省略一个参数，就会触发一个默认值，但是传入 0 或者 null 时，则不会。 我们甚至可以使用函数去找回默认参数的值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function getParam() &#123;</div><div class="line">  alert(&quot;getParam was called&quot;);</div><div class="line">  return 3;</div><div class="line">&#125;</div><div class="line">function multiply(param1, param2 = getParam()) &#123;</div><div class="line">  return param1 * param2;</div><div class="line">&#125;</div><div class="line">multiply(2, 5);    //10</div><div class="line">multiply(2);     // 6 (also displays an alert dialog)</div></pre></td></tr></table></figure>
-<p>注意 getParam 这个函数只有在第二个参数省略时才会被调用。所以当我们给 multiply 传入两个参数并调用它时，alert是不会出现的。</p>
-<p>默认参数还有一个有趣的特性，那就是我们可以在函数声明中指定其它参数和变量的值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function myFunction(a = 10, b = a) &#123;</div><div class="line">  console.log(&apos;a = &apos; + a + &apos; ; b = &apos; + b);</div><div class="line">&#125;</div><div class="line">myFunction();       //  a=10; b=10</div><div class="line">myFunction(22);   //  a=22; b=22</div><div class="line">myFunction(2, 4); //  a=2; b=4</div></pre></td></tr></table></figure>
-<p>你甚至可以在函数声明中做运算：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function myFunction (a, b = ++a, c = a*b) &#123;</div><div class="line">  console.log(c);</div><div class="line">&#125;</div><div class="line">myFunction(5);    //36</div></pre></td></tr></table></figure>
-<p>请注意，JavaScript 和其它语言不同， 它是在函数被调用时，才去求参数的默认值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function add(value, array = []) &#123;</div><div class="line">  array.push(value);</div><div class="line">  return array;</div><div class="line">&#125;</div><div class="line">add(5);    //  [5]</div><div class="line">add(6);    //  [6], not [5, 6]</div></pre></td></tr></table></figure>
-<p>浏览器对默认参数的支持情况</p>
-<p>桌面浏览器：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Feature</th>
-<th style="text-align:center">Chrome</th>
-<th style="text-align:center">Firefox</th>
-<th style="text-align:center">Internet Explorer</th>
-<th style="text-align:center">Microsoft Edge</th>
-<th style="text-align:center">Opera</th>
-<th style="text-align:center">Safari</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Basic support</td>
-<td style="text-align:center">49</td>
-<td style="text-align:center">15</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">14</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-</tr>
-<tr>
-<td style="text-align:center">Parameters without defaults after default parameter</td>
-<td style="text-align:center">49</td>
-<td style="text-align:center">26</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">14</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-</tr>
-</tbody>
-</table>
-<p>移动端浏览器：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Feature</th>
-<th style="text-align:center">Chrome</th>
-<th style="text-align:center">Firefox</th>
-<th style="text-align:center">Internet Explorer</th>
-<th style="text-align:center">Microsoft Edge</th>
-<th style="text-align:center">Opera</th>
-<th style="text-align:center">Safari</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Basic support</td>
-<td style="text-align:center">49</td>
-<td style="text-align:center">15</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-</tr>
-<tr>
-<td style="text-align:center">Parameters without defaults after default parameter</td>
-<td style="text-align:center">49</td>
-<td style="text-align:center">25</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-<td style="text-align:center">–</td>
-</tr>
-</tbody>
-</table>
-<h1 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h1><p>解构赋值是ES6的新特性。我们可以从数组和对象中提取值，对变量进行赋值。这种语法清晰且易于理解，尤其是在给函数传参时特别有用。</p>
-<p>在ES5里面，我们经常用一个配置对象来处理大量的可选参数， 特别是当对象属性的顺序可变时：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function initiateTransfer(options) &#123;</div><div class="line">  var protoclo = options.protocol,</div><div class="line">  port = options.port,</div><div class="line">  retires = options.retries,</div><div class="line">  timeout = options.timeout,</div><div class="line">  log = options.log;</div><div class="line">&#125;</div><div class="line">options = &#123;</div><div class="line">  protocol: &apos;http&apos;,</div><div class="line">  port: 800,</div><div class="line">  delay: 150,</div><div class="line">  retries: 10,</div><div class="line">  timeout: 500,</div><div class="line">  log: true</div><div class="line">&#125;;</div><div class="line">initiateTransfer(options);</div></pre></td></tr></table></figure>
-<p>这种方式实现起来很好，已经被许多JS开发者所采用。 只是我们必须看函数内部，才知道函数预期需要哪些参数。结合解构赋值，我们就可以在函数声明中清晰地表示这些参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function initiateTransfer(&#123;protocol, port, delay, retries, timeout, log&#125;) &#123;</div><div class="line">  //code to initiate transfer</div><div class="line">&#125;;</div><div class="line">var options = &#123;</div><div class="line">  protocol: &apos;http&apos;,</div><div class="line">  port: 800,</div><div class="line">  delay: 150,</div><div class="line">  retries: 10,</div><div class="line">  timeout: 500,</div><div class="line">  log: true</div><div class="line">&#125;</div><div class="line">initiateTransfer(options);</div></pre></td></tr></table></figure>
-<p>在该函数中，我们没有传入一个配置对象，而是以对象解构赋值的方式，给它传参数。这样做不仅使这个函数更加简明，可读性也更高。</p>
-<p>我们也可以把解构赋值传参和其它规则的参数一起使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function initiateTransfer(param1, &#123;protocol, port, delay, retires, timeout,log&#125;) &#123;</div><div class="line">  //code to initiate transfer</div><div class="line">&#125;</div><div class="line">initiateTransfer(&apos;some value&apos;, options);</div></pre></td></tr></table></figure>
-<p>注意如果函数调用时，参数被省略掉，则会抛出错误，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function initiateTransfer(&#123;protocol, port, delay, retries, timeout, log&#125;) &#123;</div><div class="line">  //code to initiate transfer</div><div class="line">&#125;</div><div class="line">initiateTransfer();     //TypeError:Cannot match against &apos;undefined&apos; or &apos;null&apos;</div></pre></td></tr></table></figure>
-<p>当我们需要让参数都是必填时，这种方法能够得到我们想要的结果，但如果我们希望参数是可选的时候呢？想要让参数缺失时不会报错，我们就需要给默认参数设定一个默认值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function initiateTransfer (&#123;protocol, port, delay, retries, timeout, log&#125; = &#123;&#125;) &#123;</div><div class="line">  //code to initiate transfer</div><div class="line">&#125;</div><div class="line">initiateTransfer();    //  no error</div></pre></td></tr></table></figure>
-<p>上面这个函数中，需要解构赋值的参数有了一个默认值，这个默认值就是一个空对象。这时候，函数被调用时，即使没有传入参数，也不会报错了。</p>
-<p>我们也可以给每个被解构的参数设定默认值，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function initiateTransfer(&#123;</div><div class="line">  protocol = &apos;http&apos;,</div><div class="line">  port = 800,</div><div class="line">  delay = 150,</div><div class="line">  retries = 10,</div><div class="line">  timeout = 500,</div><div class="line">  log = true</div><div class="line">&#125;) &#123;</div><div class="line">  //code to initiate transfer</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这个例子中，每个属性都有一个默认值，我们不需要手动去检查哪个参数值是 undefined ，然后在函数中给它设定默认值了。</p>
-<h1 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h1><p>参数能通过引用或值传递给函数。修改按引用传递的参数，一般反映在全局中，而修改按值传递的参数，则只是反映在函数内部。</p>
-<p>在像 Visual Basic 和 PowerShell 这样的语言中，我们可以选择是按引用还是按值来传递参数，但是在 JavaScript 中则不行。</p>
-<h2 id="按值传递参数"><a href="#按值传递参数" class="headerlink" title="按值传递参数"></a>按值传递参数</h2><p>从技术上来讲，JavaScript 只允许按值传参。当我们给函数按值传递一个参数时，该函数的作用域内就已经复制了这个值。因此，这个值的改变，只会在函数内部反映出来。请思考下面这个列子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = 5;</div><div class="line">function increment(a) &#123;</div><div class="line">  a = ++a;</div><div class="line">  console.log(a);</div><div class="line">&#125;</div><div class="line">increment(a);        //6</div><div class="line">console.log(a);     //5</div></pre></td></tr></table></figure>
-<p>这里，修改函数里面的参数 a = ++a，是不会影响到原来a的值。 所以在函数外面打印 a 的值，输出仍然是 5。</p>
-<h2 id="按引用传递参数"><a href="#按引用传递参数" class="headerlink" title="按引用传递参数"></a>按引用传递参数</h2><p>在JavaScript中，一切都是按值传递的。但当我们给函数传一个变量，而这个变量所指向的是一个对象（包括数组）时，这个 变量 就是对象的一个引用。通过这个变量来改变对象的属性值，是会从根本上改变这个对象的。</p>
-<p>来看下面这个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function foo(param) &#123;</div><div class="line">  param.bar = &apos;new value&apos;;</div><div class="line">&#125;</div><div class="line">obj = &#123;</div><div class="line">  bar : &apos;value&apos;</div><div class="line">&#125;</div><div class="line">console.log(obj.bar);    //  value</div><div class="line">foo(obj);</div><div class="line">console.log(obj.bar);    //  new value</div></pre></td></tr></table></figure>
-<p>如你所见，对象的属性值在函数内部被修改了，被修改的值在函数外面也是可见的。</p>
-<p>当我们传递一个没有初始值的参数时，如数组或对象，会隐形地创建了一个变量，这个变量指向记忆中原对象所在的位置。这个变量随后被传递给了函数，在函数内部对这个变量进行修改将会影响到原对象。</p>
-<p>参数类型检测、参数缺失或参数多余</p>
-<p>在强类型语言中，我们必须在函数声明中明确参数的类型，但是 JavaScript 没有这种特性。在JavaScript中，我们传递给函数的参数个数不限，也可以是任何类型的数据。</p>
-<p>假设现在有一个函数，这个函数只接受一个参数。但是当函数被调用时，它本身没有限制传入的参数只能是一个，我们可以随意地传入一个、两个、甚至是更多。我们也可以什么都不传，这样都不会报错。</p>
-<h2 id="形参（arguments）和-实参（parameters）的个数不同有两种情况："><a href="#形参（arguments）和-实参（parameters）的个数不同有两种情况：" class="headerlink" title="形参（arguments）和 实参（parameters）的个数不同有两种情况："></a>形参（arguments）和 实参（parameters）的个数不同有两种情况：</h2><ul>
-<li>实参少于形参</li>
-</ul>
-<p>缺失的参数都会等同于 undefined。</p>
-<ul>
-<li>实参多于形参</li>
-</ul>
-<p>多余的参数都将被忽略，但它们会以数组的形式保存于变量 arguments 中（下文会讨论到）。</p>
-<h2 id="必填参数"><a href="#必填参数" class="headerlink" title="必填参数"></a>必填参数</h2><p>如果一个参数在函数调用时缺失了，它将被设为 undefined。基于这一点，我们可以在参数缺失时抛出一个错误：</p>
-<figure class="highlight plain"><figcaption><span>foo(mandatory, optional) &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  if (mandatory === undefined) &#123;</div><div class="line">    throw new Error (&apos;Missing parameter: mandatory&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 ES6 中，我们可以更好地利用这个特性，使用默认参数来设定必填参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function throwError() &#123;</div><div class="line">  throw new Error(&apos;Missing parameter&apos;);</div><div class="line">&#125;</div><div class="line">function foo(parama1 = throwError(), param2 =</div><div class="line">throwError()) &#123;</div><div class="line">  //do something</div><div class="line">&#125;</div><div class="line">foo(10,20);    //ok</div><div class="line">foo(10);    //Error: missing parameter</div></pre></td></tr></table></figure>
-<h2 id="参数对象"><a href="#参数对象" class="headerlink" title="参数对象"></a>参数对象</h2><p>为了取代参数对象，rest参数在 ECMAScript 4 中就已经得到支持，但是 ECMAScript 4 没有落实。随着 ECMAScript 6 版本的发布，JS 正式支持rest参数。它也拟定计划，准备抛弃 对参数对象 arguments object 的支持。</p>
-<p>参数对象是一个类数组对象，可在一切函数内使用。它允许通过数字而不是名称，来找回被传递给函数的参数值。这个对象使得我们可以给函数传递任何参数。思考以下代码段：</p>
-<figure class="highlight plain"><figcaption><span>checkParams(param1) &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  console.log(param1);      //  2</div><div class="line">  console.log(arguments[0], arguments[1], arguments[2]);      //  2  3  4</div><div class="line">  console.log(param1 + arguments[0]);      //  2 + 2</div><div class="line">&#125;</div><div class="line">checkParams(2, 3, 4);</div></pre></td></tr></table></figure>
-<p>该函数预期接收一个参数。但是当我们给它传入两个参数并且调用它时，第一个参数通过名为 param1 的形参或者参数对象 arguments[0] 被函数所接受，而第二个参数只能被放在argument[1] 里面。此外，请注意，参数对象可以与命名参数一起使用。</p>
-<p>参数对象给每个被传递给函数的参数提供了一个入口，并且第一个入口的下标从 0 开始。如果我们要给上面这个函数传递更多的参数，我们可以写 arguments[2],arguments[3] 等等。</p>
-<p>我们甚至可以跳过设定命名参数这一步，直接使用参数对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function checkParams() &#123;</div><div class="line">  console.log(arguments[1], arguments[0] ,arguments[2]);</div><div class="line">&#125;</div><div class="line">checkParams(2, 4, 6)      //  4  2  6</div></pre></td></tr></table></figure>
-<p>事实上，命名参数只是为了方便使用，并不是必须的。类似地，rest参数也可用于反映被传递的参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function checkParams(...params) &#123;</div><div class="line">  console.log(params[1], params[0], params[2]);    // 4 2 6</div><div class="line">  console.log(arguments[1], arguments[0], arguments[2]);    // 4 2 6</div><div class="line">&#125;</div><div class="line">checkParams(2, 4, 6);</div></pre></td></tr></table></figure>
-<p>参数对象是一个类数组的对象，只是它没有数组本身具备的方法，如slice() 和 foreach()。 如果要在参数对象中使用数组的方法，首先要把它转换成一个真正的数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function sort() &#123;</div><div class="line">  var a = Array.prototype.slice.call(arguments);</div><div class="line">  return a.sort();</div><div class="line">&#125;</div><div class="line">sort(40, 20, 50,30);      //  [20, 30, 40, 50]</div></pre></td></tr></table></figure>
-<p>在该函数中，采用了 Array.prototype.slice.call() 来快速地把参数对象转换成一个数组。接着，在 sort() 方法中，为这个数组排序并且把它返回。</p>
-<p>ES6 新增了更直接的方法，用 Array.from() 把任何类数组对象转换成数组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function sort() &#123;</div><div class="line">  var a = Array.from(arguments);</div><div class="line">  return a.sort();</div><div class="line">&#125;</div><div class="line">sort(40, 20, 50,30);      //  [20, 30, 40, 50]</div></pre></td></tr></table></figure>
-<h2 id="长度属性"><a href="#长度属性" class="headerlink" title="长度属性"></a>长度属性</h2><p>尽管参数对象从技术上来讲，不算是一个数组，但仍有一个长度属性，来检测传递给函数的参数个数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function countArguments() &#123;</div><div class="line">  console.log(arguments.length);</div><div class="line">&#125;</div><div class="line">countArguments();      // 0</div><div class="line">countArguments(10, null, &quot;string&quot;);      //3</div></pre></td></tr></table></figure>
-<p>通过 length 属性，我们可以更好地控制传递给函数的参数个数。举个例子，如果一个函数只要求两个参数，那么我们就可以使用 length 属性来检测所传入的参数个数，如果少于要求的个数，则抛出错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo(param1, param2) &#123;</div><div class="line">  if(arguments.length &amp;lt; 2) &#123;</div><div class="line">    throw new Error (&quot;This function expects at least two arguments&quot;);</div><div class="line">  &#125; else if (arguments.length === 2) &#123;</div><div class="line">    //do something</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>rest参数是数组，所以他们都有 length 属性。 所以上面的代码，在ES6里面可以用rest参数写成下面这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo(...params) &#123;</div><div class="line">  if (params.length &amp;lt; 2) &#123;</div><div class="line">    throw new Error(&quot;This function expects at least two arguments&quot;);</div><div class="line">  &#125; else if (params.length === 2) &#123;</div><div class="line">    //do something</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="被调用属性与调用属性"><a href="#被调用属性与调用属性" class="headerlink" title="被调用属性与调用属性"></a>被调用属性与调用属性</h1><p>被调用 属性指向当前正在执行的函数，而 调用 属性则指向那个调用了 当前正在执行的函数 的函数。 在ES5的严格模式下，这些属性是不被支持的，如果尝试使用它们，则会报错。</p>
-<p>arguments.callee 这个属性在递归函数中很有用，尤其在匿名函数中。因为匿名函数没有名称，只能通过 arguments.callee 来指向它。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var result = (function(n) &#123;</div><div class="line"> if (n &amp;lt;= 1) &#123;</div><div class="line">  return 1;</div><div class="line">&#125; else &#123;</div><div class="line"> return n * arguments.callee(n - 1);</div><div class="line">&#125;</div><div class="line">&#125;)(4);     //undefined</div></pre></td></tr></table></figure>
-<h1 id="严格模式和非严格模式下的参数对象"><a href="#严格模式和非严格模式下的参数对象" class="headerlink" title="严格模式和非严格模式下的参数对象"></a>严格模式和非严格模式下的参数对象</h1><p>在ES5非严格模式下，参数对象 有个不一般的特性：它能使 自身的值 跟 与之相对应的命名参数的值 保持同步。</p>
-<p>请看下面这个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo(param) &#123;</div><div class="line">  console.log(param === arguments[0]);      // true</div><div class="line">  arguments[0] = 500;</div><div class="line">  console.log(param === arguments[0]);      //true</div><div class="line">  return param</div><div class="line">&#125;</div><div class="line">foo(200);        //500</div></pre></td></tr></table></figure>
-<p>在这个函数里面，arguments[0] 被重新赋值为 500。由于 arguments 的值总是和对应的命名参数保持同步，所以改变了arguments[0] 的值，也就相应的改变了 param 的值。实际上，他们就像是同一个变量，拥有两个不同的名字而已。而在 ES5严格模式下，参数对象的这种特性则被移除了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&quot;use strict&quot;;</div><div class="line">function foo(param) &#123;</div><div class="line">  console.log(param === arguments[0]);      //  true</div><div class="line">  arguments[0] = 500;</div><div class="line">  console.log(param === arguments[0]);      //  false</div><div class="line">  return param;</div><div class="line">&#125;</div><div class="line">foo(200);       //  200</div></pre></td></tr></table></figure>
-<p>加上 严格模式， 现在改变 arguments[0] 的值是不会影响到 param 的值了，打印出来的值也跟预期的一致。 在 ES6中 该函数的输出跟在 ES5 严格模式下是一样的。需要记住的是，当函数声明中使用了默认值时，参数对象是不会受到影响的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function foo(param1, param2 = 10, param3 = 20) &#123;</div><div class="line">  console.log(param1 === arguments[0]);    //  true</div><div class="line">  console.log(param2 === arguments[1]);    //  true</div><div class="line">  console.log(param3 === arguments[2]);    //  false</div><div class="line">  console.log(arguments[2]);      //  undefined</div><div class="line">  console.log(param3);        //  20</div><div class="line">&#125;</div><div class="line">foo(&apos;string1&apos;, &apos;string2&apos;);</div></pre></td></tr></table></figure>
-<p>在这个函数中，尽管 param3 有默认值 20，但是 arguments[2] 仍然是 undefined, 因为函数调用时只传了两个值。换言之，设定默认值对参数对象是没有任何影响的。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>ES6 给 JS 带来了上百个大大小小的改进。 越来越多的开发者正使用ES6的新特性, 所以我们都需要去了解它们。在本教程中，我们学习了ES6是如何改善JS的参数处理的，但我们仍只是知晓了ES6的皮毛。更多新的、有趣的特性值得我们去探讨。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;ECMAScript 6 (也称 ECMAScript 2015) 是ECMAScript 标准的最新版本，显著地完善了JS中参数的处理方式。除了其它新特性外，我们还可以使用rest参数、默认值、解构赋值等。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/categories/JavaScript/"/>
-    
-    
-      <category term="ES6" scheme="http://www.chenqiangyi.cn/tags/ES6/"/>
     
   </entry>
   
