@@ -268,9 +268,9 @@ ga('send', 'pageview');
 <h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>箭头函数里面this始终指向外部对象，因为箭头函数没有this，因此它自身不能进行new实例化，同时也不能使用call,apply,bind等方法来改变this的指向。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var person = &#123;</div><div class="line">    name: &apos;chen&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        var fn = () =&gt; &#123;</div><div class="line">            return () =&gt; &#123;</div><div class="line">                console.log(this);  //Object &#123;name: &apos;chen&apos;, ...&#125;</div><div class="line">                coneole.log(this.name);  //chen</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        fn()();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
 <p>参考资料：</p>
-<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3988422.html" target="_blank" rel="external">深入理解javascript原型和闭包（10）——this</a></p>
-<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3996037.html" target="_blank" rel="external">深入理解javascript原型和闭包（17）——补this</a></p>
-<p><a href="http://www.cnblogs.com/justany/archive/2012/11/01/the_keyword_this_in_javascript.html" target="_blank" rel="external">Javascript中this关键字详解 - Justany_WhiteSnow - 博客园</a></p>
+<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3988422.html" target="_blank" rel="noopener">深入理解javascript原型和闭包（10）——this</a></p>
+<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3996037.html" target="_blank" rel="noopener">深入理解javascript原型和闭包（17）——补this</a></p>
+<p><a href="http://www.cnblogs.com/justany/archive/2012/11/01/the_keyword_this_in_javascript.html" target="_blank" rel="noopener">Javascript中this关键字详解 - Justany_WhiteSnow - 博客园</a></p>
 
         </div>
 

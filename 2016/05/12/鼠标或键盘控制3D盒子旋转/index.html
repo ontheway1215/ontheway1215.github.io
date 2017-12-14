@@ -232,8 +232,8 @@ ga('send', 'pageview');
                 <div class="image-caption"></div>
             </figure>
 <p>两种旋转的方式都需要先把盒子的布局完成，前面的几步是相同的</p>
-<p>通过键盘控制3D盒子旋转，demo链接：<a href="http://chenqiangyi.com/example/3Dbox1.html" target="_blank" rel="external">http://chenqiangyi.com/example/3Dbox1.html</a></p>
-<p>通过鼠标控制3D盒子旋转，demo链接：<a href="http://chenqiangyi.com/example/3Dbox1.html" target="_blank" rel="external">http://chenqiangyi.com/example/3Dbox1.html</a></p>
+<p>通过键盘控制3D盒子旋转，demo链接：<a href="http://chenqiangyi.com/example/3Dbox1.html" target="_blank" rel="noopener">http://chenqiangyi.com/example/3Dbox1.html</a></p>
+<p>通过鼠标控制3D盒子旋转，demo链接：<a href="http://chenqiangyi.com/example/3Dbox1.html" target="_blank" rel="noopener">http://chenqiangyi.com/example/3Dbox1.html</a></p>
 <p>1.页面布局</p>
 <p>需要一个大的盒子来包住，前后左右上下六个盒子，且他们的定位都是绝对定位，这样形成了六个盒子重叠到了一块，此时我们需要把盒子的每一个面变动一下，使其组合成一个盒子。此时我们需要想象一下盒子的3D空间，对于右边的那个面，他需要先沿Z轴正方向平移100px，然后再沿着y轴旋转正90度就得到了右边的面其中的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#div1 .right&#123; transform:rotateY(90deg) translateZ(100px);&#125;</div></pre></td></tr></table></figure>

@@ -228,7 +228,7 @@ ga('send', 'pageview');
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章<a href="http://es6.ruanyifeng.com/。" target="_blank" rel="external">http://es6.ruanyifeng.com/。</a></p>
+            <p>ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章<a href="http://es6.ruanyifeng.com/。" target="_blank" rel="noopener">http://es6.ruanyifeng.com/。</a></p>
 <h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>function() 函数的简写表示法，但它不绑定 this。</p>
 <p>ES6 代码:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var odds = evens.map(v =&amp;gt; v + 1);  // no parentes and no brackets</div><div class="line">var nums = evens.map((v, i) =&amp;gt; v + i);</div><div class="line">var pairs = evens.map(v =&amp;gt; (&#123;even: v, odd: v + 1&#125;));</div><div class="line"></div><div class="line">// Statement bodies</div><div class="line">nums.forEach(v =&amp;gt; &#123;</div><div class="line">  if (v % 5 === 0)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>

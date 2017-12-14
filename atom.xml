@@ -358,9 +358,9 @@
 <h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>箭头函数里面this始终指向外部对象，因为箭头函数没有this，因此它自身不能进行new实例化，同时也不能使用call,apply,bind等方法来改变this的指向。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var person = &#123;</div><div class="line">    name: &apos;chen&apos;,</div><div class="line">    sayName: function() &#123;</div><div class="line">        var fn = () =&gt; &#123;</div><div class="line">            return () =&gt; &#123;</div><div class="line">                console.log(this);  //Object &#123;name: &apos;chen&apos;, ...&#125;</div><div class="line">                coneole.log(this.name);  //chen</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        fn()();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
 <p>参考资料：</p>
-<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3988422.html" target="_blank" rel="external">深入理解javascript原型和闭包（10）——this</a></p>
-<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3996037.html" target="_blank" rel="external">深入理解javascript原型和闭包（17）——补this</a></p>
-<p><a href="http://www.cnblogs.com/justany/archive/2012/11/01/the_keyword_this_in_javascript.html" target="_blank" rel="external">Javascript中this关键字详解 - Justany_WhiteSnow - 博客园</a></p>
+<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3988422.html" target="_blank" rel="noopener">深入理解javascript原型和闭包（10）——this</a></p>
+<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3996037.html" target="_blank" rel="noopener">深入理解javascript原型和闭包（17）——补this</a></p>
+<p><a href="http://www.cnblogs.com/justany/archive/2012/11/01/the_keyword_this_in_javascript.html" target="_blank" rel="noopener">Javascript中this关键字详解 - Justany_WhiteSnow - 博客园</a></p>
 ]]></content>
     
     <summary type="html">
@@ -406,7 +406,7 @@
                 <div class="image-caption"></div>
             </figure><br>证书到手，然后下载下来，传到放到<code>/etc/nginx/</code>目录下，注意两个文件需要和Nginx的配置文件在同一个目录下（腾讯云指导书上说可以随意放一个到同一个目录下，但是我的不知道为什么会报错）<br>按照文档的指示配置Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 443;</div><div class="line">        server_name www.domain.com; #填写绑定证书的域名</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate 1_www.domain.com_bundle.crt;</div><div class="line">        ssl_certificate_key 2_www.domain.com.key;</div><div class="line">        ssl_session_timeout 5m;</div><div class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        location / &#123;</div><div class="line">            root   html; #站点目录</div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 <p>配置完成后用nginx -t测试一下配置文件是否有误，正确无误的话重启Nginx，就可以使用了。<br>然而，我用https访问一直报500的错误，最后才发现HTTPS默认使用的端口是443，需要我们开放443端口。</p>
-<p>然后可以正常使用<a href="https:www.chenqiangyi.cn" target="_blank" rel="external">https:www.chenqiangyi.cn</a>正常访问。<br>但是，当使用<a href="http://www.chenqiangyi.cn">http://www.chenqiangyi.cn</a>访问的时候又报错。需要我们对http的请求强制转为https访问。</p>
+<p>然后可以正常使用<a href="https:www.chenqiangyi.cn" target="_blank" rel="noopener">https:www.chenqiangyi.cn</a>正常访问。<br>但是，当使用<a href="http://www.chenqiangyi.cn">http://www.chenqiangyi.cn</a>访问的时候又报错。需要我们对http的请求强制转为https访问。</p>
 <h1 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h1><p>https服务器监听443端口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       443;</div><div class="line">        server_name  www.chenqiangyi.cn;</div><div class="line">	ssl on;</div><div class="line">        ssl_certificate      1_www.chenqiangyi.cn_bundle.crt;</div><div class="line">        ssl_certificate_key  2_www.chenqiangyi.cn.key;</div><div class="line"></div><div class="line">        ssl_session_cache    shared:SSL:1m;</div><div class="line">        ssl_session_timeout  5m;</div><div class="line">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">	ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</div><div class="line"> 	ssl_prefer_server_ciphers  on;</div><div class="line">        ...</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>把http的请求重定向到https</p>
@@ -441,8 +441,8 @@
     <updated>2017-06-14T14:25:11.000Z</updated>
     
     <content type="html"><![CDATA[<p>译者按: 程序员应该知道递归，但是你真的知道是怎么回事么？</p>
-<p>原文: <a href="http://lucasfcosta.com/2017/05/08/All-About-Recursion-PTC-TCO-and-STC-in-JavaScript.html" target="_blank" rel="external">All About Recursion, PTC, TCO and STC in JavaScript</a></p>
-<p>译者: <a href="https://fundebug.com/" target="_blank" rel="external">Fundebug</a></p>
+<p>原文: <a href="http://lucasfcosta.com/2017/05/08/All-About-Recursion-PTC-TCO-and-STC-in-JavaScript.html" target="_blank" rel="noopener">All About Recursion, PTC, TCO and STC in JavaScript</a></p>
+<p>译者: <a href="https://fundebug.com/" target="_blank" rel="noopener">Fundebug</a></p>
 <p>为了保证可读性，本文采用意译而非直译。</p>
 <blockquote>
 <p>一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法，它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。</p>
@@ -574,7 +574,7 @@
     <published>2017-04-25T04:28:31.000Z</published>
     <updated>2017-06-14T11:33:54.000Z</updated>
     
-    <content type="html"><![CDATA[<p>ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章<a href="http://es6.ruanyifeng.com/。" target="_blank" rel="external">http://es6.ruanyifeng.com/。</a></p>
+    <content type="html"><![CDATA[<p>ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章<a href="http://es6.ruanyifeng.com/。" target="_blank" rel="noopener">http://es6.ruanyifeng.com/。</a></p>
 <h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>function() 函数的简写表示法，但它不绑定 this。</p>
 <p>ES6 代码:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var odds = evens.map(v =&amp;gt; v + 1);  // no parentes and no brackets</div><div class="line">var nums = evens.map((v, i) =&amp;gt; v + i);</div><div class="line">var pairs = evens.map(v =&amp;gt; (&#123;even: v, odd: v + 1&#125;));</div><div class="line"></div><div class="line">// Statement bodies</div><div class="line">nums.forEach(v =&amp;gt; &#123;</div><div class="line">  if (v % 5 === 0)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -739,7 +739,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章&lt;a href=&quot;http://es6.ruanyifeng.com/。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://es6.ruanyifeng.com/
+      &lt;p&gt;ES6语法已经出来很久了，为了加强学习和记忆，总结一下ES6中出现的新特性，参考文章&lt;a href=&quot;http://es6.ruanyifeng.com/。&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://es6.ruanyifeng.com/
     
     </summary>
     
@@ -888,7 +888,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angyi_ygt: 506ecdd478bc49caab66fa9b5144  #这个为网易云申请的key</div></pre></td></tr></table></figure>
 <p>相关文章：</p>
 <ul>
-<li><a href="https://hexo.io/" target="_blank" rel="external">hexo官网</a></li>
+<li><a href="https://hexo.io/" target="_blank" rel="noopener">hexo官网</a></li>
 </ul>
 ]]></content>
     
@@ -1350,7 +1350,7 @@
             </figure>
 <p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
 <hr>
-<p>本文参考阮一峰老师的文章 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></p>
+<p>本文参考阮一峰老师的文章 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></p>
 ]]></content>
     
     <summary type="html">
