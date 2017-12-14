@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenqiangyi.cn/"/>
-  <updated>2017-12-14T05:57:24.000Z</updated>
+  <updated>2017-12-14T06:10:26.000Z</updated>
   <id>http://www.chenqiangyi.cn/</id>
   
   <author>
@@ -14,6 +14,103 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://www.chenqiangyi.cn/2017/12/14/centos%207%20%E5%AE%89%E8%A3%85nginx/"/>
+    <id>http://www.chenqiangyi.cn/2017/12/14/centos 7 安装nginx/</id>
+    <published>2017-12-14T06:10:26.000Z</published>
+    <updated>2017-12-14T06:10:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装所需环境"><a href="#安装所需环境" class="headerlink" title="安装所需环境"></a>安装所需环境</h1><h2 id="一-gcc-安装"><a href="#一-gcc-安装" class="headerlink" title="一. gcc 安装"></a>一. gcc 安装</h2><blockquote>
+<p>安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：</p>
+</blockquote>
+<h3 id="yum-install-gcc-gcc-c-y"><a href="#yum-install-gcc-gcc-c-y" class="headerlink" title="yum install gcc gcc-c++ -y"></a>yum install gcc gcc-c++ -y</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">error: rpmdb: BDB0113 Thread/process 30841/139693394622464 failed: BDB1507 Thread died in Berkeley DB library</div><div class="line">error: db5 error(-30973) from dbenv-&gt;failchk: BDB0087 DB_RUNRECOVERY: Fatal error, run database recovery</div><div class="line">error: cannot open Packages index using db5 -  (-30973)</div><div class="line">error: cannot open Packages database in /var/lib/rpm</div><div class="line">CRITICAL:yum.main:</div><div class="line">Error: rpmdb open failed</div></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#首先清除掉缓存，之后再重建就可以了</div><div class="line">rm -f /var/lib/rpm/__db*</div><div class="line">rpm --rebuilddb</div></pre></td></tr></table></figure>
+<h2 id="二-PCRE-pcre-devel-安装"><a href="#二-PCRE-pcre-devel-安装" class="headerlink" title="二. PCRE pcre-devel 安装"></a>二. PCRE pcre-devel 安装</h2><blockquote>
+<p>PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：</p>
+</blockquote>
+<h3 id="yum-install-y-pcre-pcre-devel"><a href="#yum-install-y-pcre-pcre-devel" class="headerlink" title="yum install -y pcre pcre-devel"></a>yum install -y pcre pcre-devel</h3><h2 id="三-zlib-安装"><a href="#三-zlib-安装" class="headerlink" title="三. zlib 安装"></a>三. zlib 安装</h2><blockquote>
+<p>zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。</p>
+</blockquote>
+<h3 id="yum-install-y-zlib-zlib-devel"><a href="#yum-install-y-zlib-zlib-devel" class="headerlink" title="yum install -y zlib zlib-devel"></a>yum install -y zlib zlib-devel</h3><h2 id="四-OpenSSL-安装"><a href="#四-OpenSSL-安装" class="headerlink" title="四. OpenSSL 安装"></a>四. OpenSSL 安装</h2><blockquote>
+<p>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。<br>nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。</p>
+</blockquote>
+<h3 id="yum-install-y-openssl-openssl-devel"><a href="#yum-install-y-openssl-openssl-devel" class="headerlink" title="yum install -y openssl openssl-devel"></a>yum install -y openssl openssl-devel</h3><h1 id="官网下载"><a href="#官网下载" class="headerlink" title="官网下载"></a>官网下载</h1><h2 id="1-直接下载"><a href="#1-直接下载" class="headerlink" title="1.直接下载"></a>1.直接下载</h2><p>直接下载.tar.gz安装包，地址：<a href="https://nginx.org/en/download.html" title="地址" target="_blank" rel="noopener">https://nginx.org/en/download.html</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/nginx.png" alt="nginx下载" title="">
+                </div>
+                <div class="image-caption">nginx下载</div>
+            </figure>
+<h2 id="2-使用wget命令下载（推荐）。"><a href="#2-使用wget命令下载（推荐）。" class="headerlink" title="2.使用wget命令下载（推荐）。"></a>2.使用wget命令下载（推荐）。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home</div><div class="line">wget -c https://nginx.org/download/nginx-1.12.2.tar.gz</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/nginx2.png" alt="wget安装" title="">
+                </div>
+                <div class="image-caption">wget安装</div>
+            </figure>
+<p>我下载的是1.12.2版本，这个是目前的稳定版。</p>
+<h1 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h1><p>依然是直接命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf nginx-1.12.2.tar.gz</div><div class="line">cd nginx-1.12.2</div></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><blockquote>
+<p>其实在 nginx-1.10.1 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。</p>
+</blockquote>
+<h2 id="1-使用默认配置"><a href="#1-使用默认配置" class="headerlink" title="1.使用默认配置"></a>1.使用默认配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure</div></pre></td></tr></table></figure>
+<h2 id="2-自定义配置（不推荐）"><a href="#2-自定义配置（不推荐）" class="headerlink" title="2.自定义配置（不推荐）"></a>2.自定义配置（不推荐）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--prefix=/usr/local/nginx \</div><div class="line">--conf-path=/usr/local/nginx/conf/nginx.conf \</div><div class="line">--pid-path=/usr/local/nginx/conf/nginx.pid \</div><div class="line">--lock-path=/var/lock/nginx.lock \</div><div class="line">--error-log-path=/var/log/nginx/error.log \</div><div class="line">--http-log-path=/var/log/nginx/access.log \</div><div class="line">--with-http_gzip_static_module \</div><div class="line">--http-client-body-temp-path=/var/temp/nginx/client \</div><div class="line">--http-proxy-temp-path=/var/temp/nginx/proxy \</div><div class="line">--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</div><div class="line">--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</div><div class="line">--http-scgi-temp-path=/var/temp/nginx/scgi</div></pre></td></tr></table></figure>
+<ul>
+<li>注：将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录</li>
+</ul>
+<h1 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>查找安装路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whereis nginx</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/nginx3.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="启动、停止nginx"><a href="#启动、停止nginx" class="headerlink" title="启动、停止nginx"></a>启动、停止nginx</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/nginx/sbin/</div><div class="line">./nginx </div><div class="line">./nginx -s stop</div><div class="line">./nginx -s quit</div><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* ./nginx -s quit:此方式停止步骤是待nginx进程处理任务完毕进行停止。</div><div class="line">* ./nginx -s stop:此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程。</div></pre></td></tr></table></figure>
+<h2 id="查询nginx进程："><a href="#查询nginx进程：" class="headerlink" title="查询nginx进程："></a>查询nginx进程：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux|grep nginx</div></pre></td></tr></table></figure>
+<h1 id="重启-nginx"><a href="#重启-nginx" class="headerlink" title="重启 nginx"></a>重启 nginx</h1><h2 id="1-先停止再启动（推荐）："><a href="#1-先停止再启动（推荐）：" class="headerlink" title="1.先停止再启动（推荐）："></a>1.先停止再启动（推荐）：</h2><blockquote>
+<p>对 nginx 进行重启相当于先停止再启动，即先执行停止命令再执行启动命令。如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./nginx -s quit</div><div class="line">./nginx</div></pre></td></tr></table></figure>
+<h2 id="2-重新加载配置文件："><a href="#2-重新加载配置文件：" class="headerlink" title="2.重新加载配置文件："></a>2.重新加载配置文件：</h2><blockquote>
+<p>当 ngin x的配置文件 nginx.conf 修改后，要想让配置生效需要重启 nginx，使用-s reload不用先停止 ngin x再启动 nginx 即可将配置信息在 nginx 中生效，如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
+<p>启动成功后，在浏览器可以看到这样的页面：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/nginx4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h1 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h1><blockquote>
+<p>即在rc.local增加启动代码就可以了。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/rc.local</div></pre></td></tr></table></figure>
+<p>增加一行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/nginx/sbin/nginx</div></pre></td></tr></table></figure>
+<p>设置执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc</div><div class="line">chmod 755 rc.local</div></pre></td></tr></table></figure>
+<p>到这里，nginx就安装完毕了，启动、停止、重启操作也都完成了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;安装所需环境&quot;&gt;&lt;a href=&quot;#安装所需环境&quot; class=&quot;headerlink&quot; title=&quot;安装所需环境&quot;&gt;&lt;/a&gt;安装所需环境&lt;/h1&gt;&lt;h2 id=&quot;一-gcc-安装&quot;&gt;&lt;a href=&quot;#一-gcc-安装&quot; class=&quot;headerlink&quot; 
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>内网穿透魔法隧道</title>
@@ -191,111 +288,6 @@
       <category term="性能优化" scheme="http://www.chenqiangyi.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     
       <category term="雅虎军规" scheme="http://www.chenqiangyi.cn/tags/%E9%9B%85%E8%99%8E%E5%86%9B%E8%A7%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>centos7 安装Nginx</title>
-    <link href="http://www.chenqiangyi.cn/2017/09/20/centos%207%20%E5%AE%89%E8%A3%85nginx/"/>
-    <id>http://www.chenqiangyi.cn/2017/09/20/centos 7 安装nginx/</id>
-    <published>2017-09-20T02:30:19.000Z</published>
-    <updated>2017-11-16T12:21:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="安装所需环境"><a href="#安装所需环境" class="headerlink" title="安装所需环境"></a>安装所需环境</h1><h2 id="一-gcc-安装"><a href="#一-gcc-安装" class="headerlink" title="一. gcc 安装"></a>一. gcc 安装</h2><blockquote>
-<p>安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：</p>
-</blockquote>
-<h3 id="yum-install-gcc-gcc-c-y"><a href="#yum-install-gcc-gcc-c-y" class="headerlink" title="yum install gcc gcc-c++ -y"></a>yum install gcc gcc-c++ -y</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">error: rpmdb: BDB0113 Thread/process 30841/139693394622464 failed: BDB1507 Thread died in Berkeley DB library</div><div class="line">error: db5 error(-30973) from dbenv-&gt;failchk: BDB0087 DB_RUNRECOVERY: Fatal error, run database recovery</div><div class="line">error: cannot open Packages index using db5 -  (-30973)</div><div class="line">error: cannot open Packages database in /var/lib/rpm</div><div class="line">CRITICAL:yum.main:</div><div class="line">Error: rpmdb open failed</div></pre></td></tr></table></figure>
-<p>解决办法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#首先清除掉缓存，之后再重建就可以了</div><div class="line">rm -f /var/lib/rpm/__db*</div><div class="line">rpm --rebuilddb</div></pre></td></tr></table></figure>
-<h2 id="二-PCRE-pcre-devel-安装"><a href="#二-PCRE-pcre-devel-安装" class="headerlink" title="二. PCRE pcre-devel 安装"></a>二. PCRE pcre-devel 安装</h2><blockquote>
-<p>PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：</p>
-</blockquote>
-<h3 id="yum-install-y-pcre-pcre-devel"><a href="#yum-install-y-pcre-pcre-devel" class="headerlink" title="yum install -y pcre pcre-devel"></a>yum install -y pcre pcre-devel</h3><h2 id="三-zlib-安装"><a href="#三-zlib-安装" class="headerlink" title="三. zlib 安装"></a>三. zlib 安装</h2><blockquote>
-<p>zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。</p>
-</blockquote>
-<h3 id="yum-install-y-zlib-zlib-devel"><a href="#yum-install-y-zlib-zlib-devel" class="headerlink" title="yum install -y zlib zlib-devel"></a>yum install -y zlib zlib-devel</h3><h2 id="四-OpenSSL-安装"><a href="#四-OpenSSL-安装" class="headerlink" title="四. OpenSSL 安装"></a>四. OpenSSL 安装</h2><blockquote>
-<p>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。<br>nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。</p>
-</blockquote>
-<h3 id="yum-install-y-openssl-openssl-devel"><a href="#yum-install-y-openssl-openssl-devel" class="headerlink" title="yum install -y openssl openssl-devel"></a>yum install -y openssl openssl-devel</h3><h1 id="官网下载"><a href="#官网下载" class="headerlink" title="官网下载"></a>官网下载</h1><h2 id="1-直接下载"><a href="#1-直接下载" class="headerlink" title="1.直接下载"></a>1.直接下载</h2><p>直接下载.tar.gz安装包，地址：<a href="https://nginx.org/en/download.html" title="地址" target="_blank" rel="noopener">https://nginx.org/en/download.html</a></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://orw66421u.bkt.clouddn.com/nginx.png" alt="nginx下载" title="">
-                </div>
-                <div class="image-caption">nginx下载</div>
-            </figure>
-<h2 id="2-使用wget命令下载（推荐）。"><a href="#2-使用wget命令下载（推荐）。" class="headerlink" title="2.使用wget命令下载（推荐）。"></a>2.使用wget命令下载（推荐）。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home</div><div class="line">wget -c https://nginx.org/download/nginx-1.12.2.tar.gz</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://orw66421u.bkt.clouddn.com/nginx2.png" alt="wget安装" title="">
-                </div>
-                <div class="image-caption">wget安装</div>
-            </figure>
-<p>我下载的是1.12.2版本，这个是目前的稳定版。</p>
-<h1 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h1><p>依然是直接命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf nginx-1.12.2.tar.gz</div><div class="line">cd nginx-1.12.2</div></pre></td></tr></table></figure>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><blockquote>
-<p>其实在 nginx-1.10.1 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。</p>
-</blockquote>
-<h2 id="1-使用默认配置"><a href="#1-使用默认配置" class="headerlink" title="1.使用默认配置"></a>1.使用默认配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure</div></pre></td></tr></table></figure>
-<h2 id="2-自定义配置（不推荐）"><a href="#2-自定义配置（不推荐）" class="headerlink" title="2.自定义配置（不推荐）"></a>2.自定义配置（不推荐）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--prefix=/usr/local/nginx \</div><div class="line">--conf-path=/usr/local/nginx/conf/nginx.conf \</div><div class="line">--pid-path=/usr/local/nginx/conf/nginx.pid \</div><div class="line">--lock-path=/var/lock/nginx.lock \</div><div class="line">--error-log-path=/var/log/nginx/error.log \</div><div class="line">--http-log-path=/var/log/nginx/access.log \</div><div class="line">--with-http_gzip_static_module \</div><div class="line">--http-client-body-temp-path=/var/temp/nginx/client \</div><div class="line">--http-proxy-temp-path=/var/temp/nginx/proxy \</div><div class="line">--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</div><div class="line">--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</div><div class="line">--http-scgi-temp-path=/var/temp/nginx/scgi</div></pre></td></tr></table></figure>
-<ul>
-<li>注：将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录</li>
-</ul>
-<h1 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
-<p>查找安装路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whereis nginx</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://orw66421u.bkt.clouddn.com/nginx3.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h1 id="启动、停止nginx"><a href="#启动、停止nginx" class="headerlink" title="启动、停止nginx"></a>启动、停止nginx</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/nginx/sbin/</div><div class="line">./nginx </div><div class="line">./nginx -s stop</div><div class="line">./nginx -s quit</div><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* ./nginx -s quit:此方式停止步骤是待nginx进程处理任务完毕进行停止。</div><div class="line">* ./nginx -s stop:此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程。</div></pre></td></tr></table></figure>
-<h2 id="查询nginx进程："><a href="#查询nginx进程：" class="headerlink" title="查询nginx进程："></a>查询nginx进程：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux|grep nginx</div></pre></td></tr></table></figure>
-<h1 id="重启-nginx"><a href="#重启-nginx" class="headerlink" title="重启 nginx"></a>重启 nginx</h1><h2 id="1-先停止再启动（推荐）："><a href="#1-先停止再启动（推荐）：" class="headerlink" title="1.先停止再启动（推荐）："></a>1.先停止再启动（推荐）：</h2><blockquote>
-<p>对 nginx 进行重启相当于先停止再启动，即先执行停止命令再执行启动命令。如下：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./nginx -s quit</div><div class="line">./nginx</div></pre></td></tr></table></figure>
-<h2 id="2-重新加载配置文件："><a href="#2-重新加载配置文件：" class="headerlink" title="2.重新加载配置文件："></a>2.重新加载配置文件：</h2><blockquote>
-<p>当 ngin x的配置文件 nginx.conf 修改后，要想让配置生效需要重启 nginx，使用-s reload不用先停止 ngin x再启动 nginx 即可将配置信息在 nginx 中生效，如下：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./nginx -s reload</div></pre></td></tr></table></figure>
-<p>启动成功后，在浏览器可以看到这样的页面：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://orw66421u.bkt.clouddn.com/nginx4.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<h1 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h1><blockquote>
-<p>即在rc.local增加启动代码就可以了。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/rc.local</div></pre></td></tr></table></figure>
-<p>增加一行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/nginx/sbin/nginx</div></pre></td></tr></table></figure>
-<p>设置执行权限：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc</div><div class="line">chmod 755 rc.local</div></pre></td></tr></table></figure>
-<p>到这里，nginx就安装完毕了，启动、停止、重启操作也都完成了</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;安装所需环境&quot;&gt;&lt;a href=&quot;#安装所需环境&quot; class=&quot;headerlink&quot; title=&quot;安装所需环境&quot;&gt;&lt;/a&gt;安装所需环境&lt;/h1&gt;&lt;h2 id=&quot;一-gcc-安装&quot;&gt;&lt;a href=&quot;#一-gcc-安装&quot; class=&quot;headerlink&quot; 
-    
-    </summary>
-    
-      <category term="Nginx" scheme="http://www.chenqiangyi.cn/categories/Nginx/"/>
-    
-    
-      <category term="JavaScript" scheme="http://www.chenqiangyi.cn/tags/JavaScript/"/>
-    
-      <category term="Nginx" scheme="http://www.chenqiangyi.cn/tags/Nginx/"/>
-    
-      <category term="服务器" scheme="http://www.chenqiangyi.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
