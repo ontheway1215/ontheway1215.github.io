@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101091518-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=63011053"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?e9d0ebf9ee66ca3b0f0599e4a85ee733"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="fKSnk-43hoqWu410Gy8MznrpJ9NNVTuz7G-hB2JFi5s">
+    
+    
+    <link rel="canonical" href="https://chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/">
+    
+    
+    <title>内网穿透魔法隧道 | ChenBlog-chenqiangyi.cn | IT技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="tools">
+    <meta name="description" content="内网穿透魔法隧道一、 花生壳优缺点： 对Windows比较友好，下载客户端可以直接使用，Mac用户要使用的话，需要买一个花生棒辅助使用 地址：http://service.oray.com/question/2480.html 按照说明下载使用即可。 二、魔法隧道优缺点：对Windows比较友好，Mac系统使用不是很舒">
+<meta name="keywords" content="tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内网穿透魔法隧道">
+<meta property="og:url" content="http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/index.html">
+<meta property="og:site_name" content="ChenBlog-chenqiangyi.cn">
+<meta property="og:description" content="内网穿透魔法隧道一、 花生壳优缺点： 对Windows比较友好，下载客户端可以直接使用，Mac用户要使用的话，需要买一个花生棒辅助使用 地址：http://service.oray.com/question/2480.html 按照说明下载使用即可。 二、魔法隧道优缺点：对Windows比较友好，Mac系统使用不是很舒服 地址：http://www.mofasuidao.cn/ 三、ngrok优缺">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://image.chenqiangyi.cn/image/ngrok1.jpeg">
+<meta property="og:image" content="https://image.chenqiangyi.cn/image/ngrok2.jpeg">
+<meta property="og:image" content="https://image.chenqiangyi.cn/image/ngrok4.jpeg">
+<meta property="og:image" content="https://image.chenqiangyi.cn/image/ngrok5.jpeg">
+<meta property="og:image" content="https://image.chenqiangyi.cn/image/ngrok3.jpeg">
+<meta property="og:updated_time" content="2017-12-14T05:57:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内网穿透魔法隧道">
+<meta name="twitter:description" content="内网穿透魔法隧道一、 花生壳优缺点： 对Windows比较友好，下载客户端可以直接使用，Mac用户要使用的话，需要买一个花生棒辅助使用 地址：http://service.oray.com/question/2480.html 按照说明下载使用即可。 二、魔法隧道优缺点：对Windows比较友好，Mac系统使用不是很舒服 地址：http://www.mofasuidao.cn/ 三、ngrok优缺">
+<meta name="twitter:image" content="https://image.chenqiangyi.cn/image/ngrok1.jpeg">
+    
+        <link rel="alternate" type="application/atom+xml" title="ChenBlog-chenqiangyi.cn" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ontheway1215</h5>
+          <a href="mailto:chenqy1215@gmail.com" title="chenqy1215@gmail.com" class="mail">chenqy1215@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ontheway1215" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/people/chen-yi-91-72/activities" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                知乎
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://home.cnblogs.com/u/ontheway1215/" target="_blank" >
+                <i class="icon icon-lg icon-key"></i>
+                博客园
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/3230197595/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.chenqiangyi.cn/other-project/vue-element" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                element
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">内网穿透魔法隧道</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">内网穿透魔法隧道</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-13T02:44:01.000Z" itemprop="datePublished" class="page-time">
+  2017-11-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/tools/">tools</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#内网穿透魔法隧道"><span class="post-toc-number">1.</span> <span class="post-toc-text">内网穿透魔法隧道</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、-花生壳"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一、 花生壳</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、魔法隧道"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">二、魔法隧道</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、ngrok"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">三、ngrok</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用方法"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">使用方法</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-内网穿透魔法隧道"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">内网穿透魔法隧道</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-13 10:44:01" datetime="2017-11-13T02:44:01.000Z"  itemprop="datePublished">2017-11-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/tools/">tools</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="内网穿透魔法隧道"><a href="#内网穿透魔法隧道" class="headerlink" title="内网穿透魔法隧道"></a>内网穿透魔法隧道</h1><h2 id="一、-花生壳"><a href="#一、-花生壳" class="headerlink" title="一、 花生壳"></a>一、 花生壳</h2><p>优缺点： 对Windows比较友好，下载客户端可以直接使用，Mac用户要使用的话，需要买一个花生棒辅助使用</p>
+<p>地址：<a href="http://service.oray.com/question/2480.html" target="_blank" rel="noopener">http://service.oray.com/question/2480.html</a> 按照说明下载使用即可。</p>
+<h2 id="二、魔法隧道"><a href="#二、魔法隧道" class="headerlink" title="二、魔法隧道"></a>二、魔法隧道</h2><p>优缺点：对Windows比较友好，Mac系统使用不是很舒服</p>
+<p>地址：<a href="http://www.mofasuidao.cn/" target="_blank" rel="noopener">http://www.mofasuidao.cn/</a></p>
+<h2 id="三、ngrok"><a href="#三、ngrok" class="headerlink" title="三、ngrok"></a>三、ngrok</h2><p>优缺点：版本比较多，Windows、Mac、Linux系统都有<br>地址：<a href="https://www.ngrok.cc/" target="_blank" rel="noopener">https://www.ngrok.cc/</a></p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ul>
+<li>注册、登录账号</li>
+<li>隧道管理 - 开通隧道 - 香港Ngrok免费服务器 （如果是付费用户的话，权限会更多）</li>
+<li>输入隧道协议、隧道名称、前置域名、本地端口 然后 - 确定添加 - 确定开通（http用户名和密码可不填）<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/ngrok1.jpeg" alt="ngrok1" title="">
+                </div>
+                <div class="image-caption">ngrok1</div>
+            </figure></li>
+<li>下载mac端客户端工具 - 进入下载后的目录darwin_amd64 </li>
+<li><p>执行二进制软件：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /darwin_amd64</div><div class="line">./sunny clientid 004e4c4cab46d277</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/ngrok2.jpeg" alt="ngrok2" title="">
+                </div>
+                <div class="image-caption">ngrok2</div>
+            </figure>
+<ul>
+<li>然后会有开启成功的提示<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/ngrok4.jpeg" alt="ngrok4" title="">
+                </div>
+                <div class="image-caption">ngrok4</div>
+            </figure></li>
+<li><p>在本地创建一个node server服务</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">const http = require(&apos;http&apos;);</div><div class="line"></div><div class="line">const hostname = &apos;127.0.0.1&apos;;</div><div class="line">const port = 3006;</div><div class="line"></div><div class="line">const server = http.createServer((req, res) =&gt; &#123;</div><div class="line">  res.statusCode = 200;</div><div class="line">  res.setHeader(&apos;Content-Type&apos;, &apos;text/plain&apos;);</div><div class="line">  res.end(&apos;Hello World\n&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, hostname, () =&gt; &#123;</div><div class="line">  console.log(`Server running at http://$&#123;hostname&#125;:$&#123;port&#125;/`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>打开127.0.0.1:3006即可看到服务已开启</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/ngrok5.jpeg" alt="ngrok5" title="">
+                </div>
+                <div class="image-caption">ngrok5</div>
+            </figure>
+</li>
+<li><p>换域名，用 <a href="http://ontheway1215.free.ngrok.cc" target="_blank" rel="noopener">http://ontheway1215.free.ngrok.cc</a> 查看，结果访问效果一样</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://image.chenqiangyi.cn/image/ngrok3.jpeg" alt="ngrok3" title="">
+                </div>
+                <div class="image-caption">ngrok3</div>
+            </figure>
+</li>
+<li><p>这样就可以使用外网访问内网的网页了</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-12-14T05:57:24.000Z" itemprop="dateUpdated">2017-12-14 13:57:24</time>
+</span><br>
+
+
+        
+        原始链接：<a href="/2017/11/13/内网穿透魔法隧道/" target="_blank" rel="external">http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.chenqiangyi.cn">
+            <img src="/img/avatar.jpg" alt="ontheway1215">
+            ontheway1215
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/&title=《内网穿透魔法隧道》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/&title=《内网穿透魔法隧道》 — ChenBlog-chenqiangyi.cn&source=IT技术分享,前端技术分享,JavaScript,CSS,NodeJS,个人博客 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《内网穿透魔法隧道》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/09/21/雅虎前端优化法则/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">雅虎前端优化法则</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/index.html',
+        sourceId: '内网穿透魔法隧道',
+        productKey: '506ecdd478bc49caab66fa9b51442d32',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/pc.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/pc.min.js',
+        ],
+        mobileFiles: [
+            '//unpkg.com/hexo-theme-material-indigo@latest/css/cloudTie/mobile.css',
+            '//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/mobile.min.js'
+        ]
+    };
+    </script>
+    <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/cloudTie/loader.min.js"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+    </div>
+    <div class="bottom">
+        <p>
+            <span>ontheway1215 &copy; 2015 - 2017</span>
+        </p>
+        <p><a href="http://www.miibeian.gov.cn/state/outPortal/loginPortal.action">豫ICP备16014588号-3</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/&title=《内网穿透魔法隧道》 — ChenBlog-chenqiangyi.cn&pic=http://www.chenqiangyi.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/&title=《内网穿透魔法隧道》 — ChenBlog-chenqiangyi.cn&source=IT技术分享,前端技术分享,JavaScript,CSS,NodeJS,个人博客 ChenBlog-chenqiangyi.cn" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《内网穿透魔法隧道》 — ChenBlog-chenqiangyi.cn&url=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/&via=http://www.chenqiangyi.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenqiangyi.cn/2017/11/13/内网穿透魔法隧道/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aO47DMAxFUe9/0047QBDN5aNcmLqugmRg60xB83dd+Lr/XN/fkF+r97yeuGTIkPFaxr28qg/gh15j+NlkyJBxDmN9IHK4X0ckf08+/3NmGTJkyMBpHw/K5A4yZMiQ0WdkYZQnlzJkyJBRLWL5w/ivWVNPhgwZpzE6QfDpz4/MN2TIkPEqxl28qmlcNVDe0SVDhozZjE6DrFBeNgI3X/6QIUPGVAZvmXW+r5asfEXj4lMLGTJkvJZRbr6DIQFZtqgOG9BzZciQMZpBgm920854oJpoypAhYzaDL55Wg2+2qEr+Hei9IUOGjBGM7BDr8EqCcrUwDt8VMmTIGMFAc4NGm6zzDU9JZciQMZvRafSTAUCn9c9PJUOGjNmMveEyC6ZZ2YxGmDJkyBjHyMLo3nJ0W+EqQ4aM0YxsDLALnDXvZMiQcQKDlJc8ESRtsix9LM86ZMiQMYKBUi6cUGbrFHwJDC1byJAhYxwjS8L4OkW/9VYAy5Ah4zAGP2K1DCZpZZjhypAh4xhGZ5TIAzFfuQgDrgwZMoYyquGPHK7TSit0CmXIkDGakS2n8oXUavusWgzLkCHjBEY2BkBRHAR03ozbFrJlyJDxWkYWZHlxy4N7K+DKkCHjAMYTLfv1EbM3AKrFZciQIQMEQb5yUS2PNwdcGTJkDGWQm/LELiuDfxaxMmTIGM3ghWV/taLfmJMhQ8ZpjKx0rLL52LIfxGXIkDGI8QEjXQPxe7njcgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1262814007&web_id=1262814007')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+console.log("%c Powered by Chenqiangyi - chenqiangyi.cn","background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
+</script>
+
+
+
+</body>
+</html>
